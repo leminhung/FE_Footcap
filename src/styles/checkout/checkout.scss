@@ -1,0 +1,102 @@
+.m-breadcrumb {
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+.checkout-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    padding: 32px;
+    margin-top: 100px;
+
+    .address-infor {
+
+        width: 50%;
+        padding: 20px;
+
+        .my-input {
+            margin-top: 20px;
+        }
+
+        .my-textarea {
+            margin-bottom: 10px;
+        }
+
+        .mode-of-payment {
+            border: solid 1px rgb(210, 211, 205);
+            border-radius: 5px;
+
+            width: 100%;
+
+            .my-option {
+                display: flex;
+                justify-content: left;
+                align-items: center;
+                padding-left: 20px;
+                min-height: 70px;
+                border-bottom: solid 1px rgb(210, 211, 205);
+            }
+
+            .description {
+                padding: 30px;
+                text-align: center;
+                background-color: #f5f5f5;
+            }
+        }
+
+        .back-to-cart {
+            padding-top: 10px;
+        }
+    }
+
+    .product-infor {
+        padding: 50px;
+        width: 50%;
+        background-color: #f5f5f5;
+
+        .product-order {
+
+            display: flex;
+            height: 50px;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+
+            del {
+                color: gray;
+            }
+        }
+
+        .voucher {
+            display: flex;
+            padding-top: 25px;
+
+        }
+
+        .ship-fee {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .description {
+            border: solid 1px orange;
+            padding: 12px;
+            margin-top: 10px;
+        }
+
+        button.checkout {
+            margin-top: 30px;
+            float: right;
+        }
+    }
+}

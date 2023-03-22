@@ -1,0 +1,218 @@
+.bg-grey {
+    background-color: #f8f8f8;
+}
+/* CSS Sibar */
+#sidebarMenu {
+    border-radius: 5px;
+    padding: 14px 0 44px 0px;
+    position: relative;
+    top: 23%;
+    left: 5%;
+}
+
+.flex {
+    display: flex !important;
+    align-items: center;
+}
+
+.flex i {
+    font-size: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+    z-index: 600;
+}
+  
+@media (max-width: 991.98px) {
+    .sidebar {
+      width: 100%;
+    }
+  }
+  .sidebar .active {
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+  }
+  
+  .sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  }
+
+  /* profile */
+  .profile {
+    padding: 58px 0 0;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+    width: 240px;
+    z-index: 600;
+    background-color: white;
+    width: 98%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    top: -7px;
+    position: relative;
+    left: 20px;
+}
+
+.profile-content {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.profile-img {
+    width: 30%;
+    height: 30%;
+}
+
+.profile img {
+    width: 215px;
+    height: 215px;
+    border-radius: 50%;
+    margin-left: 20px;
+}
+
+.profile-right {
+    padding-left: 50px;
+    width: 50%;
+}
+  
+    .user-account {
+        display: flex !important;
+    }
+
+  .account-left-header .user-account .user-acc-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 16px;
+    }
+
+    .account-left-header {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .user-acc-logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .user-acc-logo img {
+        width: 100%;
+        border-radius: 50%;
+        height: 100%;
+    }
+
+    .user-account-right {
+        display: flex;
+        flex-direction: column;
+        padding: 5px 10px 10px 10px;
+    }
+
+    .user-account-name {
+        font-size: 18px;
+        font-weight: 500;
+        text-align: left;
+        margin-bottom: 5px;
+    }
+
+    .user-account-email {
+        font-size: 12px;
+        color: #545454;
+        width: 100%;
+    }
+
+    /* User Edit */
+    .list-group-item {
+        position: relative;
+        display: block;
+        color: #262626;
+        text-decoration: none;
+        background-color: #fff;
+        border: 1px solid rgba(0,0,0,.125);
+        padding: 12px;
+    }
+
+    /* User Edit  */
+    .container.custom_class {
+        padding-top: 32px;
+        padding-bottom: 100px;
+        margin-left: 20px !important;
+    }
+
+    .signup_title {
+        text-align: center;
+        padding-bottom: 30px;
+      }
+
+    .edit-content {
+        padding-left: 15%;
+    }
+
+    .content-wrapper {
+        display: flex;
+        max-width: 1280px;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .signup_form {
+        box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+        padding-bottom: 10px;
+        border-radius: 5px;
+        padding: 15px;
+    }
+
+    .button-update {
+        justify-content: center;
+        display: flex;
+    }
+
+    .mb-60 {
+        margin-bottom: 60px;
+    }
+
+    .container.custom_class {
+        padding-top: 40px;
+        padding-bottom: 100px;
+        margin-left: 40px;
+    }
+
+    .ml-10 {
+        margin-left: 10px;
+    }
+
+    .edit-item {
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .edit-item label {
+        margin-right: 10px;
+    }
+
+    .pl-3 {
+        padding-left: 3px !important;
+    }
+
+    .signup_form {
+        background-color: #fff;
+    }
+
+.mt-100 {
+    margin-top: 100px;
+}

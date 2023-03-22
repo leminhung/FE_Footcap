@@ -1,0 +1,295 @@
+/* base */
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mt-40 {
+  margin-top: 40px;
+}
+
+/* loader */
+.loading {
+  /* position: absolute; */
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  background: white;
+  min-height: 400px;
+}
+
+/* single product {paddingTop: "100px", textAlign: "center"}*/
+.single_product {
+  min-height: 700px;
+  margin-top: 100px;
+  padding-bottom: 50px;
+}
+
+.img_wrapper {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+/* increase decrease value */
+/* form{
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 50px;
+  } */
+/* .qty_and_addtocart {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+  } */
+
+.menu-nav-link {
+  font-weight: 600;
+}
+
+.qty {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+}
+
+/* Product detail */
+
+.wrap-product-img {
+  position: relative;
+  user-select: none;
+}
+
+.product-img {
+  width: 100%;
+  height: 600px;
+  object-fit: contain;
+}
+
+.control-img {
+  display: flex;
+}
+
+.prev {
+  font-size: 40px;
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+}
+
+.next {
+  font-size: 40px;
+  position: absolute;
+  top: 50%;
+  left: 92%;
+  cursor: pointer;
+}
+
+.num-rating-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.num-rating {
+  margin-left: 8px;
+}
+
+.price-discount-wrap {
+  display: flex;
+}
+
+.price-wrap {
+  margin-right: 15px;
+}
+
+.price-discount {
+  color: tomato;
+}
+
+.price-prev {
+  font-size: 14px;
+  text-decoration: line-through;
+}
+
+.product-color {
+  margin-top: 20px;
+}
+
+.product-color-list {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.product-color-item {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 0 8px 0;
+  cursor: pointer;
+  border: 2px solid #fff;
+}
+
+.color-item-chose {
+  outline: 2px solid #000;
+}
+
+.color-title {
+  width: 85px;
+}
+
+.size-title {
+  width: 85px;
+}
+
+.product-size {
+  margin-top: 20px;
+}
+
+.product-size-list {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.product-size-item {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #888;
+  margin: 0 8px 0;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.size-item-chose {
+  border: 3px solid #000;
+}
+
+/* .qty_and_addtocart {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 13px;
+  } */
+
+.addtocart {
+  height: 40px;
+  width: 250px;
+  border-radius: 20px;
+  background: rgba(255, 117, 97, 1);
+  cursor: pointer;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+/* Reviews */
+
+.value-button {
+  display: inline-block;
+  border: 1px solid #ddd;
+  margin: 0px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 6px 0;
+  background: #eee;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.value-button:hover {
+  cursor: pointer;
+}
+
+.btn-add-review {
+  max-width: 220px;
+}
+
+form #decrease {
+  margin-right: -4px;
+  border-radius: 8px 0 0 8px;
+}
+
+form #increase {
+  margin-left: -4px;
+  border-radius: 0 8px 8px 0;
+}
+
+form #input-wrap {
+  margin: 0px;
+  padding: 0px;
+}
+
+input#number {
+  text-align: center;
+  border: none;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  margin: 0px;
+  width: 40px;
+  height: 40px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.review_list {
+  margin-left: 20px !important;
+}
+
+
+.rating {
+  display: flex;
+}
+
+.comment-username-and-time-wrap {
+  display: flex;
+}
+
+.comment-user-name {
+  font-size: 12px;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.comment-time {
+  font-size: 10px;
+  font-weight: 400;
+}
+
+
+.comment-content {
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.comment-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.comment-user-icon-div {
+  width: 40px;
+}
+
+.comment-user-icon-div>* {
+  font-size: 50px;
+  color: #999;
+}

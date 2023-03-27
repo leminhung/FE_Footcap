@@ -90,262 +90,268 @@ export default function Header() {
                 <ul class='ul_li_center clearfix'>
                   <li class='menu_item_has_child'>
                     <a href='#!'>Home</a>
-                    {/* <div class='mega_menu text-center'>
-                        <div class='background' data-bg-color='#ffffff'>
-                          <div class='container'>
-                            <ul class='home_pages ul_li clearfix'>
-                              <li>
-                                <a href='home_carparts.html'>
-                                  <span class='item_image'>
-                                    <img
-                                      src='assets/images/home_pages/carparts.png'
-                                      alt='image_not_found'
-                                    />
-                                  </span>
-                                  <span class='item_title'>Car Parts</span>
-                                </a>
-                              </li>
-                              <li>
-                                <a href='home_classic_ecommerce.html'>
-                                  <span class='item_image'>
-                                    <img
-                                      src='assets/images/home_pages/classic_ecommarce.png'
-                                      alt='image_not_found'
-                                    />
-                                  </span>
-                                  <span class='item_title'>
-                                    Classic Ecommerce
-                                  </span>
-                                </a>
-                              </li>
-                              <li>
-                                <a href='home_creative_onelook.html'>
-                                  <span class='item_image'>
-                                    <img
-                                      src='assets/images/home_pages/creative_onelook.png'
-                                      alt='image_not_found'
-                                    />
-                                  </span>
-                                  <span class='item_title'>
-                                    Creative Onelook
-                                  </span>
-                                </a>
-                              </li>
-                              <li>
-                                <a href='home_electronic.html'>
-                                  <span class='item_image'>
-                                    <img
-                                      src='assets/images/home_pages/electronic.png'
-                                      alt='image_not_found'
-                                    />
-                                  </span>
-                                  <span class='item_title'>Electronic</span>
-                                </a>
-                              </li>
-                              <li>
-                                <a href='home_fashion.html'>
-                                  <span class='item_image'>
-                                    <img
-                                      src='assets/images/home_pages/fashion.png'
-                                      alt='image_not_found'
-                                    />
-                                  </span>
-                                  <span class='item_title'>Fashion</span>
-                                </a>
-                              </li>
-                              <li>
-                                <a href='home_fashion_minimal.html'>
-                                  <span class='item_image'>
-                                    <img
-                                      src='assets/images/home_pages/fashion_minimal.png'
-                                      alt='image_not_found'
-                                    />
-                                  </span>
-                                  <span class='item_title'>
-                                    Fashion Minimal
-                                  </span>
-                                </a>
-                              </li>
-                              <li>
-                                <a href='home_furniture.html'>
-                                  <span class='item_image'>
-                                    <img
-                                      src='assets/images/home_pages/furniture.png'
-                                      alt='image_not_found'
-                                    />
-                                  </span>
-                                  <span class='item_title'>Furniture</span>
-                                </a>
-                              </li>
-                              <li>
-                                <a href='home_gadget.html'>
-                                  <span class='item_image'>
-                                    <img
-                                      src='assets/images/home_pages/gadget.png'
-                                      alt='image_not_found'
-                                    />
-                                  </span>
-                                  <span class='item_title'>Gadget</span>
-                                </a>
-                              </li>
-                              <li>
-                                <a href='home_lookbook_creative.html'>
-                                  <span class='item_image'>
-                                    <img
-                                      src='assets/images/home_pages/lookbook_creative.png'
-                                      alt='image_not_found'
-                                    />
-                                  </span>
-                                  <span class='item_title'>
-                                    Lookbook Creative
-                                  </span>
-                                </a>
-                              </li>
-                              <li>
-                                <a href='home_lookbook_slide.html'>
-                                  <span class='item_image'>
-                                    <img
-                                      src='assets/images/home_pages/lookbook_slide.png'
-                                      alt='image_not_found'
-                                    />
-                                  </span>
-                                  <span class='item_title'>Lookbook Slide</span>
-                                </a>
-                              </li>
-                              <li>
-                                <a href='home_medical.html'>
-                                  <span class='item_image'>
-                                    <img
-                                      src='assets/images/home_pages/medical.png'
-                                      alt='image_not_found'
-                                    />
-                                  </span>
-                                  <span class='item_title'>Medical</span>
-                                </a>
-                              </li>
-                              <li>
-                                <a href='home_modern.html'>
-                                  <span class='item_image'>
-                                    <img
-                                      src='assets/images/home_pages/modern.png'
-                                      alt='image_not_found'
-                                    />
-                                  </span>
-                                  <span class='item_title'>Modern</span>
-                                </a>
-                              </li>
-                              <li>
-                                <a href='home_modern_minimal.html'>
-                                  <span class='item_image'>
-                                    <img
-                                      src='assets/images/home_pages/modern_minimal.png'
-                                      alt='image_not_found'
-                                    />
-                                  </span>
-                                  <span class='item_title'>Modern Minimal</span>
-                                </a>
-                              </li>
-                              <li>
-                                <a href='home_motorcycle.html'>
-                                  <span class='item_image'>
-                                    <img
-                                      src='assets/images/home_pages/motorcycle.png'
-                                      alt='image_not_found'
-                                    />
-                                  </span>
-                                  <span class='item_title'>Motorcycle</span>
-                                </a>
-                              </li>
-                              <li>
-                                <a href='home_parallax_shop.html'>
-                                  <span class='item_image'>
-                                    <img
-                                      src='assets/images/home_pages/parallax_shop.png'
-                                      alt='image_not_found'
-                                    />
-                                  </span>
-                                  <span class='item_title'>Parallax Shop</span>
-                                </a>
-                              </li>
-                              <li>
-                                <a href='home_simple_shop.html'>
-                                  <span class='item_image'>
-                                    <img
-                                      src='assets/images/home_pages/simple_shop.png'
-                                      alt='image_not_found'
-                                    />
-                                  </span>
-                                  <span class='item_title'>Simple Shop</span>
-                                </a>
-                              </li>
-                              <li>
-                                <a href='home_single_story_black.html'>
-                                  <span class='item_image'>
-                                    <img
-                                      src='assets/images/home_pages/single_story_black.png'
-                                      alt='image_not_found'
-                                    />
-                                  </span>
-                                  <span class='item_title'>
-                                    Single Story Black
-                                  </span>
-                                </a>
-                              </li>
-                              <li>
-                                <a href='home_single_story_white.html'>
-                                  <span class='item_image'>
-                                    <img
-                                      src='assets/images/home_pages/single_story_white.png'
-                                      alt='image_not_found'
-                                    />
-                                  </span>
-                                  <span class='item_title'>
-                                    Single Story White
-                                  </span>
-                                </a>
-                              </li>
-                              <li>
-                                <a href='home_sports.html'>
-                                  <span class='item_image'>
-                                    <img
-                                      src='assets/images/home_pages/sports.png'
-                                      alt='image_not_found'
-                                    />
-                                  </span>
-                                  <span class='item_title'>Sports Shop</span>
-                                </a>
-                              </li>
-                              <li>
-                                <a href='home_supermarket.html'>
-                                  <span class='item_image'>
-                                    <img
-                                      src='assets/images/home_pages/supermarket.png'
-                                      alt='image_not_found'
-                                    />
-                                  </span>
-                                  <span class='item_title'>Supermarket</span>
-                                </a>
-                              </li>
-                              <li>
-                                <a href='home_watch.html'>
-                                  <span class='item_image'>
-                                    <img
-                                      src='assets/images/home_pages/watch.png'
-                                      alt='image_not_found'
-                                    />
-                                  </span>
-                                  <span class='item_title'>Watch</span>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
+                    <div class='mega_menu text-center'>
+                      <div
+                        class='background'
+                        style={{
+                          backgroundColor: `#ffffff`,
+                        }}
+                      >
+                        <div class='container'>
+                          <ul class='home_pages ul_li clearfix'>
+                            <li>
+                              <a href='home_carparts.html'>
+                                <span class='item_image'>
+                                  <img
+                                    src='assets/images/home_pages/carparts.png'
+                                    alt='image_not_found'
+                                  />
+                                </span>
+                                <span class='item_title'>Car Parts</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href='home_classic_ecommerce.html'>
+                                <span class='item_image'>
+                                  <img
+                                    src='assets/images/home_pages/classic_ecommarce.png'
+                                    alt='image_not_found'
+                                  />
+                                </span>
+                                <span class='item_title'>
+                                  Classic Ecommerce
+                                </span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href='home_creative_onelook.html'>
+                                <span class='item_image'>
+                                  <img
+                                    src='assets/images/home_pages/creative_onelook.png'
+                                    alt='image_not_found'
+                                  />
+                                </span>
+                                <span class='item_title'>Creative Onelook</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href='home_electronic.html'>
+                                <span class='item_image'>
+                                  <img
+                                    src='assets/images/home_pages/electronic.png'
+                                    alt='image_not_found'
+                                  />
+                                </span>
+                                <span class='item_title'>Electronic</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href='home_fashion.html'>
+                                <span class='item_image'>
+                                  <img
+                                    src='assets/images/home_pages/fashion.png'
+                                    alt='image_not_found'
+                                  />
+                                </span>
+                                <span class='item_title'>Fashion</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href='home_fashion_minimal.html'>
+                                <span class='item_image'>
+                                  <img
+                                    src='assets/images/home_pages/fashion_minimal.png'
+                                    alt='image_not_found'
+                                  />
+                                </span>
+                                <span class='item_title'>Fashion Minimal</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href='home_furniture.html'>
+                                <span class='item_image'>
+                                  <img
+                                    src='assets/images/home_pages/furniture.png'
+                                    alt='image_not_found'
+                                  />
+                                </span>
+                                <span class='item_title'>Furniture</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href='home_gadget.html'>
+                                <span class='item_image'>
+                                  <img
+                                    src='assets/images/home_pages/gadget.png'
+                                    alt='image_not_found'
+                                  />
+                                </span>
+                                <span class='item_title'>Gadget</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href='home_lookbook_creative.html'>
+                                <span class='item_image'>
+                                  <img
+                                    src='assets/images/home_pages/lookbook_creative.png'
+                                    alt='image_not_found'
+                                  />
+                                </span>
+                                <span class='item_title'>
+                                  Lookbook Creative
+                                </span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href='home_lookbook_slide.html'>
+                                <span class='item_image'>
+                                  <img
+                                    src='assets/images/home_pages/lookbook_slide.png'
+                                    alt='image_not_found'
+                                  />
+                                </span>
+                                <span class='item_title'>Lookbook Slide</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href='home_medical.html'>
+                                <span class='item_image'>
+                                  <img
+                                    src='assets/images/home_pages/medical.png'
+                                    alt='image_not_found'
+                                  />
+                                </span>
+                                <span class='item_title'>Medical</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href='home_modern.html'>
+                                <span class='item_image'>
+                                  <img
+                                    src='assets/images/home_pages/modern.png'
+                                    alt='image_not_found'
+                                  />
+                                </span>
+                                <span class='item_title'>Modern</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href='home_modern_minimal.html'>
+                                <span class='item_image'>
+                                  <img
+                                    src='assets/images/home_pages/modern_minimal.png'
+                                    alt='image_not_found'
+                                  />
+                                </span>
+                                <span class='item_title'>Modern Minimal</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href='home_motorcycle.html'>
+                                <span class='item_image'>
+                                  <img
+                                    src='assets/images/home_pages/motorcycle.png'
+                                    alt='image_not_found'
+                                  />
+                                </span>
+                                <span class='item_title'>Motorcycle</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href='home_parallax_shop.html'>
+                                <span class='item_image'>
+                                  <img
+                                    src='assets/images/home_pages/parallax_shop.png'
+                                    alt='image_not_found'
+                                  />
+                                </span>
+                                <span class='item_title'>Parallax Shop</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href='home_simple_shop.html'>
+                                <span class='item_image'>
+                                  <img
+                                    src='assets/images/home_pages/simple_shop.png'
+                                    alt='image_not_found'
+                                  />
+                                </span>
+                                <span class='item_title'>Simple Shop</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href='home_single_story_black.html'>
+                                <span class='item_image'>
+                                  <img
+                                    src='assets/images/home_pages/single_story_black.png'
+                                    alt='image_not_found'
+                                  />
+                                </span>
+                                <span class='item_title'>
+                                  Single Story Black
+                                </span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href='home_single_story_white.html'>
+                                <span class='item_image'>
+                                  <img
+                                    src='assets/images/home_pages/single_story_white.png'
+                                    alt='image_not_found'
+                                  />
+                                </span>
+                                <span class='item_title'>
+                                  Single Story White
+                                </span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href='home_sports.html'>
+                                <span class='item_image'>
+                                  <img
+                                    src='assets/images/home_pages/sports.png'
+                                    alt='image_not_found'
+                                  />
+                                </span>
+                                <span class='item_title'>Sports Shop</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href='home_supermarket.html'>
+                                <span class='item_image'>
+                                  <img
+                                    src='assets/images/home_pages/supermarket.png'
+                                    alt='image_not_found'
+                                  />
+                                </span>
+                                <span class='item_title'>Supermarket</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href='home_watch.html'>
+                                <span class='item_image'>
+                                  <img
+                                    src='assets/images/home_pages/watch.png'
+                                    alt='image_not_found'
+                                  />
+                                </span>
+                                <span class='item_title'>Watch</span>
+                              </a>
+                            </li>
+                          </ul>
                         </div>
-                      </div> */}
+                      </div>
+                    </div>
                   </li>
                   <li class='menu_item_has_child'>
                     <a href='#!'>Shop</a>
                     <div class='mega_menu'>
-                      <div class='background' data-bg-color='#ffffff'>
+                      <div
+                        class='background'
+                        style={{
+                          backgroundColor: `#ffffff`,
+                        }}
+                      >
                         <div class='container'>
                           <div class='row mt__30'>
                             <div class='col-lg-3'>

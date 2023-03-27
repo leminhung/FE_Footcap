@@ -1,0 +1,10 @@
+.bg-fit {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  min-height: 575px;
+}
+
+.bg-fit-signin {
+  background-position: center;
+}

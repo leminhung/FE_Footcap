@@ -15,6 +15,8 @@ import SignUp from "src/containers/Signup/SignUp";
 import Blog from "src/containers/Blog/Blog";
 import BlogDetail from "src/containers/Blog/BlogDetail";
 import ContactUs from "src/containers/ContactUs/ContactUs";
+import Profile from "src/containers/Profile/Profile";
+import ProfileEdit from "src/containers/Profile/ProfileEdit";
 
 const App = () => {
   return (
@@ -35,6 +37,8 @@ const App = () => {
           <Route path='/blog' element={<Blog />} />
           <Route path='/blog-detail' element={<BlogDetail />} />
           <Route path='/contact-us' element={<ContactUs />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/profile-edit' element={<ProfileEdit />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </Router>

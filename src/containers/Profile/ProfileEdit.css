@@ -1,0 +1,54 @@
+.profile_form {
+  margin-top: 200px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.col-xs-12 {
+  width: 100%;
+}
+
+.profile_form .btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  background-color: cyan;
+  margin-left: 4px;
+}
+
+.formAcount {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+  margin: 24px 0;
+}
+
+.formAcount .left,
+.formAcount .right {
+  flex-basis: 44%;
+  margin-left: 64px;
+}
+
+.col-sm-8 {
+  max-width: 100%;
+}
+
+@media screen and (max-width: 1200px) {
+  .formAcount .left,
+  .formAcount .right {
+    flex-basis: 100%;
+    margin-left: 32px;
+  }
+}

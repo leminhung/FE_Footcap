@@ -1,36 +1,11 @@
-import React from "react";
-
-import Header from "src/components/Header/Header";
-import BackToTop from "src/components/BackToTop/BackToTop";
-import SideBar from "src/components/SideBar/SideBar";
-import Footer from "src/components/Footer/Footer";
-
 const HomePage = () => {
   return (
     <body class='home_classic_ecommerce'>
-      {/* <!-- backtotop - start --> */}
-      <div id='thetop'></div>
-      <BackToTop />
-      {/* <!-- backtotop - end --> */}
-
-      {/* <!-- header_section - start */}
-      <Header />
-      {/* <!-- header_section - end
-
-
-		<!-- main body - start */}
       <main>
-        {/* 
-			<!-- sidebar mobile menu & sidebar cart - start*/}
-        <SideBar />
-        {/* <!-- sidebar mobile menu & sidebar cart - end -->
-
-
-			<!-- breadcrumb_section - start */}
         <section
           class='breadcrumb_section classic_ecommerce_breadcrumb d-flex align-items-end clearfix bg-fit'
           style={{
-            backgroundImage: `url(assets/images/breadcrumb/bg_03.jpg)`,
+            backgroundImage: `url(../assets/images/breadcrumb/bg_03.jpg)`,
           }}
         >
           <div class='container'>
@@ -79,7 +54,7 @@ const HomePage = () => {
               <div class='grid-item'>
                 <div class='ecommerce_category_fullimage'>
                   <img
-                    src='assets/images/category/classic_ecommerce/img_03.jpg'
+                    src='../assets/images/category/classic_ecommerce/img_03.jpg'
                     alt='image_not_found'
                   />
                   <h3 class='item_title'>
@@ -91,7 +66,7 @@ const HomePage = () => {
               <div class='grid-item'>
                 <div class='ecommerce_category_fullimage'>
                   <img
-                    src='assets/images/category/classic_ecommerce/img_04.jpg'
+                    src='../assets/images/category/classic_ecommerce/img_04.jpg'
                     alt='image_not_found'
                   />
                   <h3 class='item_title'>
@@ -103,7 +78,7 @@ const HomePage = () => {
               <div class='grid-item'>
                 <div class='ecommerce_category_fullimage'>
                   <img
-                    src='assets/images/category/classic_ecommerce/img_05.jpg'
+                    src='../assets/images/category/classic_ecommerce/img_05.jpg'
                     alt='image_not_found'
                   />
                   <h3 class='item_title'>
@@ -183,7 +158,7 @@ const HomePage = () => {
                     <div id='ptab1_1' class='tab-pane fade active'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_01.png'
+                          src='../assets/images/shop/classic_ecommerce/img_01.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -191,7 +166,7 @@ const HomePage = () => {
                     <div id='ptab1_2' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_02.png'
+                          src='../assets/images/shop/classic_ecommerce/img_02.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -199,7 +174,7 @@ const HomePage = () => {
                     <div id='ptab1_3' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_03.png'
+                          src='../assets/images/shop/classic_ecommerce/img_03.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -282,7 +257,7 @@ const HomePage = () => {
                     <div id='ptab2_1' class='tab-pane fade active'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_02.png'
+                          src='../assets/images/shop/classic_ecommerce/img_02.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -290,7 +265,7 @@ const HomePage = () => {
                     <div id='ptab2_2' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_03.png'
+                          src='../assets/images/shop/classic_ecommerce/img_03.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -298,7 +273,7 @@ const HomePage = () => {
                     <div id='ptab2_3' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_04.png'
+                          src='../assets/images/shop/classic_ecommerce/img_04.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -381,7 +356,7 @@ const HomePage = () => {
                     <div id='ptab3_1' class='tab-pane fade active'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_03.png'
+                          src='../assets/images/shop/classic_ecommerce/img_03.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -389,7 +364,7 @@ const HomePage = () => {
                     <div id='ptab3_2' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_04.png'
+                          src='../assets/images/shop/classic_ecommerce/img_04.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -397,7 +372,7 @@ const HomePage = () => {
                     <div id='ptab3_3' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_05.png'
+                          src='../assets/images/shop/classic_ecommerce/img_05.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -480,7 +455,7 @@ const HomePage = () => {
                     <div id='ptab4_1' class='tab-pane fade active'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_04.png'
+                          src='../assets/images/shop/classic_ecommerce/img_04.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -488,7 +463,7 @@ const HomePage = () => {
                     <div id='ptab4_2' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_05.png'
+                          src='../assets/images/shop/classic_ecommerce/img_05.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -496,7 +471,7 @@ const HomePage = () => {
                     <div id='ptab4_3' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_06.png'
+                          src='../assets/images/shop/classic_ecommerce/img_06.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -579,7 +554,7 @@ const HomePage = () => {
                     <div id='ptab5_1' class='tab-pane fade active'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_05.png'
+                          src='../assets/images/shop/classic_ecommerce/img_05.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -587,7 +562,7 @@ const HomePage = () => {
                     <div id='ptab5_2' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_06.png'
+                          src='../assets/images/shop/classic_ecommerce/img_06.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -595,7 +570,7 @@ const HomePage = () => {
                     <div id='ptab5_3' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_07.png'
+                          src='../assets/images/shop/classic_ecommerce/img_07.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -678,7 +653,7 @@ const HomePage = () => {
                     <div id='ptab6_1' class='tab-pane fade active'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_06.png'
+                          src='../assets/images/shop/classic_ecommerce/img_06.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -686,7 +661,7 @@ const HomePage = () => {
                     <div id='ptab6_2' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_07.png'
+                          src='../assets/images/shop/classic_ecommerce/img_07.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -694,7 +669,7 @@ const HomePage = () => {
                     <div id='ptab6_3' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_08.png'
+                          src='../assets/images/shop/classic_ecommerce/img_08.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -777,7 +752,7 @@ const HomePage = () => {
                     <div id='ptab7_1' class='tab-pane fade active'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_07.png'
+                          src='../assets/images/shop/classic_ecommerce/img_07.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -785,7 +760,7 @@ const HomePage = () => {
                     <div id='ptab7_2' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_08.png'
+                          src='../assets/images/shop/classic_ecommerce/img_08.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -793,7 +768,7 @@ const HomePage = () => {
                     <div id='ptab7_3' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_09.png'
+                          src='../assets/images/shop/classic_ecommerce/img_09.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -876,7 +851,7 @@ const HomePage = () => {
                     <div id='ptab8_1' class='tab-pane fade active'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_08.png'
+                          src='../assets/images/shop/classic_ecommerce/img_08.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -884,7 +859,7 @@ const HomePage = () => {
                     <div id='ptab8_2' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_09.png'
+                          src='../assets/images/shop/classic_ecommerce/img_09.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -892,7 +867,7 @@ const HomePage = () => {
                     <div id='ptab8_3' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_10.png'
+                          src='../assets/images/shop/classic_ecommerce/img_10.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -975,7 +950,7 @@ const HomePage = () => {
                     <div id='ptab9_1' class='tab-pane fade active'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_09.png'
+                          src='../assets/images/shop/classic_ecommerce/img_09.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -983,7 +958,7 @@ const HomePage = () => {
                     <div id='ptab9_2' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_10.png'
+                          src='../assets/images/shop/classic_ecommerce/img_10.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -991,7 +966,7 @@ const HomePage = () => {
                     <div id='ptab9_3' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_11.png'
+                          src='../assets/images/shop/classic_ecommerce/img_11.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -1074,7 +1049,7 @@ const HomePage = () => {
                     <div id='ptab10_1' class='tab-pane fade active'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_10.png'
+                          src='../assets/images/shop/classic_ecommerce/img_10.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -1082,7 +1057,7 @@ const HomePage = () => {
                     <div id='ptab10_2' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_11.png'
+                          src='../assets/images/shop/classic_ecommerce/img_11.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -1090,7 +1065,7 @@ const HomePage = () => {
                     <div id='ptab10_3' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_12.png'
+                          src='../assets/images/shop/classic_ecommerce/img_12.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -1173,7 +1148,7 @@ const HomePage = () => {
                     <div id='ptab11_1' class='tab-pane fade active'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_11.png'
+                          src='../assets/images/shop/classic_ecommerce/img_11.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -1181,7 +1156,7 @@ const HomePage = () => {
                     <div id='ptab11_2' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_12.png'
+                          src='../assets/images/shop/classic_ecommerce/img_12.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -1189,7 +1164,7 @@ const HomePage = () => {
                     <div id='ptab11_3' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_01.png'
+                          src='../assets/images/shop/classic_ecommerce/img_01.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -1272,7 +1247,7 @@ const HomePage = () => {
                     <div id='ptab12_1' class='tab-pane fade active'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_12.png'
+                          src='../assets/images/shop/classic_ecommerce/img_12.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -1280,7 +1255,7 @@ const HomePage = () => {
                     <div id='ptab12_2' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_01.png'
+                          src='../assets/images/shop/classic_ecommerce/img_01.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -1288,7 +1263,7 @@ const HomePage = () => {
                     <div id='ptab12_3' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='assets/images/shop/classic_ecommerce/img_02.png'
+                          src='../assets/images/shop/classic_ecommerce/img_02.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -1643,7 +1618,7 @@ const HomePage = () => {
               <div class='small_blog'>
                 <a href='blog_details.html' class='item_image'>
                   <img
-                    src='assets/images/recent_post/img_01.jpg'
+                    src='../assets/images/recent_post/img_01.jpg'
                     alt='image_not_found'
                   />
                 </a>
@@ -1660,7 +1635,7 @@ const HomePage = () => {
               <div class='small_blog'>
                 <a href='blog_details.html' class='item_image'>
                   <img
-                    src='assets/images/recent_post/img_01.jpg'
+                    src='../assets/images/recent_post/img_01.jpg'
                     alt='image_not_found'
                   />
                 </a>
@@ -1677,7 +1652,7 @@ const HomePage = () => {
               <div class='small_blog'>
                 <a href='blog_details.html' class='item_image'>
                   <img
-                    src='assets/images/recent_post/img_01.jpg'
+                    src='../assets/images/recent_post/img_01.jpg'
                     alt='image_not_found'
                   />
                 </a>
@@ -1704,7 +1679,7 @@ const HomePage = () => {
               <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
                 <div class='ce_offer_fullimage offer_fullimage text-white text-center'>
                   <img
-                    src='assets/images/offer/classic_ecommerce/img_01.jpg'
+                    src='../assets/images/offer/classic_ecommerce/img_01.jpg'
                     alt='image_not_found'
                   />
                   <div class='item_content'>
@@ -1719,7 +1694,7 @@ const HomePage = () => {
               <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
                 <div class='ce_offer_fullimage offer_fullimage text-white text-center'>
                   <img
-                    src='assets/images/offer/classic_ecommerce/img_02.jpg'
+                    src='../assets/images/offer/classic_ecommerce/img_02.jpg'
                     alt='image_not_found'
                   />
                   <div class='item_content'>
@@ -1736,15 +1711,7 @@ const HomePage = () => {
           </div>
         </section>
       </main>
-      {/* <!-- offer_section - end -->
-		<!-- main body - end -->
-
-
-		<!-- footer_section - start  */}
-      <Footer />
-      {/* <!-- footer_section - end  -->
-
-      {/* <!-- product quick view - start --> */}
+      {/* product quick view */}
       <div
         class='quickview_modal modal fade'
         id='quickview_modal'
@@ -1764,7 +1731,7 @@ const HomePage = () => {
             </button>
             <div class='item_image'>
               <img
-                src='assets/images/shop/fashion_minimal/img_07.jpg'
+                src='../assets/images/shop/fashion_minimal/img_07.jpg'
                 alt='image_not_found'
               />
             </div>
@@ -1870,8 +1837,6 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      {/* <!-- product quick view - end -->
-		<!-- shop_section - end  --> */}
     </body>
   );
 };

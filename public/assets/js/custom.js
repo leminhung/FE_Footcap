@@ -471,6 +471,7 @@
     ],
   });
 
+  console.log("hèuhuhdsuhf");
   $(".slideshow3_slider").slick({
     dots: true,
     speed: 1000,

@@ -17,7 +17,9 @@ export default function ShoppingCart() {
 			================================================== --> */}
         <section
           class='breadcrumb_section text-white text-center text-uppercase d-flex align-items-end clearfix'
-          data-background='assets/images/breadcrumb/bg_01.jpg'
+          style={{
+            backgroundImage: `url(../assets/images/breadcrumb/bg_01.jpg)`,
+          }}
         >
           <div class='overlay' data-bg-color='#1d1d1d'></div>
           <div class='container'>
@@ -41,17 +43,17 @@ export default function ShoppingCart() {
           <div class='container'>
             <ul class='checkout_step ul_li clearfix'>
               <li class='active'>
-                <a href='/checkout-shopping-cart'>
+                <a href='/checkout/shopping-cart'>
                   <span>01.</span> Shopping Cart
                 </a>
               </li>
               <li>
-                <a href='/checkout-payment'>
+                <a href='/checkout/payment'>
                   <span>02.</span> Checkout
                 </a>
               </li>
               <li>
-                <a href='/checkout-order-completed'>
+                <a href='/checkout/order-completed'>
                   <span>03.</span> Order Completed
                 </a>
               </li>
@@ -73,7 +75,7 @@ export default function ShoppingCart() {
                       <div class='cart_product'>
                         <div class='item_image'>
                           <img
-                            src='assets/images/cart/img_04.jpg'
+                            src='../assets/images/cart/img_04.jpg'
                             alt='image_not_found'
                           />
                         </div>
@@ -108,7 +110,7 @@ export default function ShoppingCart() {
                       <div class='cart_product'>
                         <div class='item_image'>
                           <img
-                            src='assets/images/cart/img_05.jpg'
+                            src='../assets/images/cart/img_05.jpg'
                             alt='image_not_found'
                           />
                         </div>
@@ -143,7 +145,7 @@ export default function ShoppingCart() {
                       <div class='cart_product'>
                         <div class='item_image'>
                           <img
-                            src='assets/images/cart/img_06.jpg'
+                            src='../assets/images/cart/img_06.jpg'
                             alt='image_not_found'
                           />
                         </div>

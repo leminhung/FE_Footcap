@@ -2,10 +2,13 @@ import React from "react";
 
 export default function BackToTop() {
   return (
-    <div class='backtotop bg_default_red'>
-      <a href='#' class='scroll'>
-        <i class='far fa-arrow-up'></i>
-      </a>
-    </div>
+    <>
+      <div id='thetop'></div>
+      <div className='backtotop bg_default_red'>
+        <a href='#' className='scroll'>
+          <i className='far fa-arrow-up'></i>
+        </a>
+      </div>
+    </>
   );
 }

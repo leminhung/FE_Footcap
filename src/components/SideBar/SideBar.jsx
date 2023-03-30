@@ -2,52 +2,61 @@ import React from "react";
 
 export default function SideBar() {
   return (
-    <div class='sidebar-menu-wrapper'>
-      <div class='cart_sidebar'>
-        <button type='button' class='close_btn'>
-          <i class='fal fa-times'></i>
+    <div className='sidebar-menu-wrapper'>
+      <div className='cart_sidebar'>
+        <button type='button' className='close_btn'>
+          <i className='fal fa-times'></i>
         </button>
 
-        <ul class='cart_items_list ul_li_block mb_30 clearfix'>
+        <ul className='cart_items_list ul_li_block mb_30 clearfix'>
           <li>
-            <div class='item_image'>
-              <img src='assets/images/cart/img_01.jpg' alt='image_not_found' />
+            <div className='item_image'>
+              <img
+                src='../assets/images/cart/img_01.jpg'
+                alt='image_not_found'
+              />
             </div>
-            <div class='item_content'>
-              <h4 class='item_title'>Yellow Blouse</h4>
-              <span class='item_price'>$30.00</span>
+            <div className='item_content'>
+              <h4 className='item_title'>Yellow Blouse</h4>
+              <span className='item_price'>$30.00</span>
             </div>
-            <button type='button' class='remove_btn'>
-              <i class='fal fa-trash-alt'></i>
+            <button type='button' className='remove_btn'>
+              <i className='fal fa-trash-alt'></i>
             </button>
           </li>
           <li>
-            <div class='item_image'>
-              <img src='assets/images/cart/img_01.jpg' alt='image_not_found' />
+            <div className='item_image'>
+              <img
+                src='../assets/images/cart/img_01.jpg'
+                alt='image_not_found'
+              />
             </div>
-            <div class='item_content'>
-              <h4 class='item_title'>Yellow Blouse</h4>
-              <span class='item_price'>$30.00</span>
+            <div className='item_content'>
+              <h4 className='item_title'>Yellow Blouse</h4>
+              <span className='item_price'>$30.00</span>
             </div>
-            <button type='button' class='remove_btn'>
-              <i class='fal fa-trash-alt'></i>
+            <button type='button' className='remove_btn'>
+              <i className='fal fa-trash-alt'></i>
             </button>
           </li>
           <li>
-            <div class='item_image'>
-              <img src='assets/images/cart/img_01.jpg' alt='image_not_found' />
+            <div className='item_image'>
+              <img
+                src='../assets/images/cart/img_01.jpg'
+                alt='image_not_found'
+              />
             </div>
-            <div class='item_content'>
-              <h4 class='item_title'>Yellow Blouse</h4>
-              <span class='item_price'>$30.00</span>
+            <div className='item_content'>
+              <h4 className='item_title'>Yellow Blouse</h4>
+              <span className='item_price'>$30.00</span>
             </div>
-            <button type='button' class='remove_btn'>
-              <i class='fal fa-trash-alt'></i>
+            <button type='button' className='remove_btn'>
+              <i className='fal fa-trash-alt'></i>
             </button>
           </li>
         </ul>
 
-        <ul class='total_price ul_li_block mb_30 clearfix'>
+        <ul className='total_price ul_li_block mb_30 clearfix'>
           <li>
             <span>Subtotal:</span>
             <span>$90</span>
@@ -66,7 +75,7 @@ export default function SideBar() {
           </li>
         </ul>
 
-        <ul class='btns_group ul_li_block clearfix'>
+        <ul className='btns_group ul_li_block clearfix'>
           <li>
             <a href='/cart'>View Cart</a>
           </li>
@@ -76,27 +85,27 @@ export default function SideBar() {
         </ul>
       </div>
 
-      <div class='sidebar_mobile_menu'>
-        <button type='button' class='close_btn'>
-          <i class='fal fa-times'></i>
+      <div className='sidebar_mobile_menu'>
+        <button type='button' className='close_btn'>
+          <i className='fal fa-times'></i>
         </button>
 
-        <div class='msb_widget brand_logo text-center'>
+        <div className='msb_widget brand_logo text-center'>
           <a href='index.html'>
             <img
-              src='assets/images/logo/logo_25_1x.png'
-              srcset='assets/images/logo/logo_25_2x.png 2x'
+              src='../assets/images/logo/logo_25_1x.png'
+              srcSet='../assets/images/logo/logo_25_2x.png 2x'
               alt='logo_not_found'
             />
           </a>
         </div>
 
-        <div class='msb_widget mobile_menu_list clearfix'>
-          <h3 class='title_text mb_15 text-uppercase'>
-            <i class='far fa-bars mr-2'></i> Menu List
+        <div className='msb_widget mobile_menu_list clearfix'>
+          <h3 className='title_text mb_15 text-uppercase'>
+            <i className='far fa-bars mr-2'></i> Menu List
           </h3>
-          <ul class='ul_li_block clearfix'>
-            <li class='active dropdown'>
+          <ul className='ul_li_block clearfix'>
+            <li className='active dropdown'>
               <a
                 href='#!'
                 data-toggle='dropdown'
@@ -105,7 +114,7 @@ export default function SideBar() {
               >
                 Home
               </a>
-              <ul class='ul_li_block dropdown-menu'>
+              <ul className='ul_li_block dropdown-menu'>
                 <li>
                   <a href='home_carparts.html'>Carparts</a>
                 </li>
@@ -171,7 +180,7 @@ export default function SideBar() {
                 </li>
               </ul>
             </li>
-            <li class='dropdown'>
+            <li className='dropdown'>
               <a
                 href='#!'
                 data-toggle='dropdown'
@@ -180,8 +189,8 @@ export default function SideBar() {
               >
                 Shop
               </a>
-              <ul class='dropdown-menu'>
-                <li class='dropdown ul_li_block'>
+              <ul className='dropdown-menu'>
+                <li className='dropdown ul_li_block'>
                   <a
                     href='#!'
                     data-toggle='dropdown'
@@ -190,7 +199,7 @@ export default function SideBar() {
                   >
                     Carparts
                   </a>
-                  <ul class='dropdown-menu ul_li_block'>
+                  <ul className='dropdown-menu ul_li_block'>
                     <li>
                       <a href='carparts_shop.html'>Shop Page</a>
                     </li>
@@ -206,7 +215,7 @@ export default function SideBar() {
                   </ul>
                 </li>
 
-                <li class='dropdown'>
+                <li className='dropdown'>
                   <a
                     href='#!'
                     data-toggle='dropdown'
@@ -215,7 +224,7 @@ export default function SideBar() {
                   >
                     Classic Ecommerce
                   </a>
-                  <ul class='dropdown-menu ul_li_block'>
+                  <ul className='dropdown-menu ul_li_block'>
                     <li>
                       <a href='classic_ecommerce_shop.html'>Shop Page</a>
                     </li>
@@ -227,7 +236,7 @@ export default function SideBar() {
                   </ul>
                 </li>
 
-                <li class='dropdown'>
+                <li className='dropdown'>
                   <a
                     href='#!'
                     data-toggle='dropdown'
@@ -236,7 +245,7 @@ export default function SideBar() {
                   >
                     Electronic
                   </a>
-                  <ul class='dropdown-menu ul_li_block'>
+                  <ul className='dropdown-menu ul_li_block'>
                     <li>
                       <a href='electronic_shop.html'>Shop Page</a>
                     </li>
@@ -246,7 +255,7 @@ export default function SideBar() {
                   </ul>
                 </li>
 
-                <li class='dropdown'>
+                <li className='dropdown'>
                   <a
                     href='#!'
                     data-toggle='dropdown'
@@ -255,7 +264,7 @@ export default function SideBar() {
                   >
                     Fashion
                   </a>
-                  <ul class='dropdown-menu ul_li_block'>
+                  <ul className='dropdown-menu ul_li_block'>
                     <li>
                       <a href='fashion_shop.html'>Shop Page</a>
                     </li>
@@ -265,7 +274,7 @@ export default function SideBar() {
                   </ul>
                 </li>
 
-                <li class='dropdown'>
+                <li className='dropdown'>
                   <a
                     href='#!'
                     data-toggle='dropdown'
@@ -274,7 +283,7 @@ export default function SideBar() {
                   >
                     Fashion Minimal
                   </a>
-                  <ul class='dropdown-menu ul_li_block'>
+                  <ul className='dropdown-menu ul_li_block'>
                     <li>
                       <a href='fashion_minimal_shop.html'>Shop Page</a>
                     </li>
@@ -286,7 +295,7 @@ export default function SideBar() {
                   </ul>
                 </li>
 
-                <li class='dropdown'>
+                <li className='dropdown'>
                   <a
                     href='#!'
                     data-toggle='dropdown'
@@ -295,7 +304,7 @@ export default function SideBar() {
                   >
                     Fashion Minimal
                   </a>
-                  <ul class='dropdown-menu ul_li_block'>
+                  <ul className='dropdown-menu ul_li_block'>
                     <li>
                       <a href='fashion_minimal_shop.html'>Shop Page</a>
                     </li>
@@ -307,7 +316,7 @@ export default function SideBar() {
                   </ul>
                 </li>
 
-                <li class='dropdown'>
+                <li className='dropdown'>
                   <a
                     href='#!'
                     data-toggle='dropdown'
@@ -316,7 +325,7 @@ export default function SideBar() {
                   >
                     Furniture
                   </a>
-                  <ul class='dropdown-menu ul_li_block'>
+                  <ul className='dropdown-menu ul_li_block'>
                     <li>
                       <a href='furniture_shop.html'>Shop Page</a>
                     </li>
@@ -326,7 +335,7 @@ export default function SideBar() {
                   </ul>
                 </li>
 
-                <li class='dropdown'>
+                <li className='dropdown'>
                   <a
                     href='#!'
                     data-toggle='dropdown'
@@ -335,7 +344,7 @@ export default function SideBar() {
                   >
                     Gadget
                   </a>
-                  <ul class='dropdown-menu ul_li_block'>
+                  <ul className='dropdown-menu ul_li_block'>
                     <li>
                       <a href='gadget_shop.html'>Shop Page</a>
                     </li>
@@ -345,7 +354,7 @@ export default function SideBar() {
                   </ul>
                 </li>
 
-                <li class='dropdown'>
+                <li className='dropdown'>
                   <a
                     href='#!'
                     data-toggle='dropdown'
@@ -354,7 +363,7 @@ export default function SideBar() {
                   >
                     Medical
                   </a>
-                  <ul class='dropdown-menu ul_li_block'>
+                  <ul className='dropdown-menu ul_li_block'>
                     <li>
                       <a href='medical_shop.html'>Shop Page</a>
                     </li>
@@ -364,7 +373,7 @@ export default function SideBar() {
                   </ul>
                 </li>
 
-                <li class='dropdown'>
+                <li className='dropdown'>
                   <a
                     href='#!'
                     data-toggle='dropdown'
@@ -373,7 +382,7 @@ export default function SideBar() {
                   >
                     Modern Minimal
                   </a>
-                  <ul class='dropdown-menu ul_li_block'>
+                  <ul className='dropdown-menu ul_li_block'>
                     <li>
                       <a href='modern_minimal_shop.html'>Shop Page</a>
                     </li>
@@ -385,7 +394,7 @@ export default function SideBar() {
                   </ul>
                 </li>
 
-                <li class='dropdown'>
+                <li className='dropdown'>
                   <a
                     href='#!'
                     data-toggle='dropdown'
@@ -394,7 +403,7 @@ export default function SideBar() {
                   >
                     Modern
                   </a>
-                  <ul class='dropdown-menu ul_li_block'>
+                  <ul className='dropdown-menu ul_li_block'>
                     <li>
                       <a href='modern_shop.html'>Shop Page</a>
                     </li>
@@ -404,7 +413,7 @@ export default function SideBar() {
                   </ul>
                 </li>
 
-                <li class='dropdown'>
+                <li className='dropdown'>
                   <a
                     href='#!'
                     data-toggle='dropdown'
@@ -413,7 +422,7 @@ export default function SideBar() {
                   >
                     Motorcycle
                   </a>
-                  <ul class='dropdown-menu ul_li_block'>
+                  <ul className='dropdown-menu ul_li_block'>
                     <li>
                       <a href='motorcycle_shop_grid.html'>Shop Grid</a>
                     </li>
@@ -426,7 +435,7 @@ export default function SideBar() {
                   </ul>
                 </li>
 
-                <li class='dropdown'>
+                <li className='dropdown'>
                   <a
                     href='#!'
                     data-toggle='dropdown'
@@ -435,7 +444,7 @@ export default function SideBar() {
                   >
                     Simple Shop
                   </a>
-                  <ul class='dropdown-menu ul_li_block'>
+                  <ul className='dropdown-menu ul_li_block'>
                     <li>
                       <a href='simple_shop.html'>Shop Page</a>
                     </li>
@@ -445,7 +454,7 @@ export default function SideBar() {
                   </ul>
                 </li>
 
-                <li class='dropdown'>
+                <li className='dropdown'>
                   <a
                     href='#!'
                     data-toggle='dropdown'
@@ -454,7 +463,7 @@ export default function SideBar() {
                   >
                     Sports
                   </a>
-                  <ul class='dropdown-menu ul_li_block'>
+                  <ul className='dropdown-menu ul_li_block'>
                     <li>
                       <a href='sports_shop.html'>Shop Page</a>
                     </li>
@@ -464,7 +473,7 @@ export default function SideBar() {
                   </ul>
                 </li>
 
-                <li class='dropdown'>
+                <li className='dropdown'>
                   <a
                     href='#!'
                     data-toggle='dropdown'
@@ -473,7 +482,7 @@ export default function SideBar() {
                   >
                     Lookbook
                   </a>
-                  <ul class='dropdown-menu ul_li_block'>
+                  <ul className='dropdown-menu ul_li_block'>
                     <li>
                       <a href='lookbook_creative_shop.html'>Shop Page</a>
                     </li>
@@ -485,7 +494,7 @@ export default function SideBar() {
                   </ul>
                 </li>
 
-                <li class='dropdown'>
+                <li className='dropdown'>
                   <a
                     href='#!'
                     data-toggle='dropdown'
@@ -494,7 +503,7 @@ export default function SideBar() {
                   >
                     Shop Other Pages
                   </a>
-                  <ul class='dropdown-menu ul_li_block'>
+                  <ul className='dropdown-menu ul_li_block'>
                     <li>
                       <a href='#!'>
                         <del>Shop Page</del>
@@ -507,7 +516,7 @@ export default function SideBar() {
                 </li>
               </ul>
             </li>
-            <li class='dropdown'>
+            <li className='dropdown'>
               <a
                 href='#!'
                 data-toggle='dropdown'
@@ -516,8 +525,8 @@ export default function SideBar() {
               >
                 Pages
               </a>
-              <ul class='dropdown-menu'>
-                <li class='dropdown'>
+              <ul className='dropdown-menu'>
+                <li className='dropdown'>
                   <a
                     href='#!'
                     data-toggle='dropdown'
@@ -526,7 +535,7 @@ export default function SideBar() {
                   >
                     Shop Inner Pages
                   </a>
-                  <ul class='dropdown-menu'>
+                  <ul className='dropdown-menu'>
                     <li>
                       <a href='shop_cart.html'>Shopping Cart</a>
                     </li>
@@ -544,7 +553,7 @@ export default function SideBar() {
                 <li>
                   <a href='404.html'>404 Page</a>
                 </li>
-                <li class='dropdown'>
+                <li className='dropdown'>
                   <a
                     href='#!'
                     data-toggle='dropdown'
@@ -553,7 +562,7 @@ export default function SideBar() {
                   >
                     Blogs
                   </a>
-                  <ul class='dropdown-menu'>
+                  <ul className='dropdown-menu'>
                     <li>
                       <a href='blog.html'>Blog Page</a>
                     </li>
@@ -562,7 +571,7 @@ export default function SideBar() {
                     </li>
                   </ul>
                 </li>
-                <li class='dropdown'>
+                <li className='dropdown'>
                   <a
                     href='#!'
                     data-toggle='dropdown'
@@ -571,7 +580,7 @@ export default function SideBar() {
                   >
                     Compare
                   </a>
-                  <ul class='dropdown-menu'>
+                  <ul className='dropdown-menu'>
                     <li>
                       <a href='compare_1.html'>Compare V.1</a>
                     </li>
@@ -580,7 +589,7 @@ export default function SideBar() {
                     </li>
                   </ul>
                 </li>
-                <li class='dropdown'>
+                <li className='dropdown'>
                   <a
                     href='#!'
                     data-toggle='dropdown'
@@ -589,7 +598,7 @@ export default function SideBar() {
                   >
                     Register
                   </a>
-                  <ul class='dropdown-menu'>
+                  <ul className='dropdown-menu'>
                     <li>
                       <a href='login.html'>Login</a>
                     </li>
@@ -606,43 +615,43 @@ export default function SideBar() {
           </ul>
         </div>
 
-        <div class='user_info'>
-          <h3 class='title_text mb_30 text-uppercase'>
-            <i class='fas fa-user mr-2'></i> User Info
+        <div className='user_info'>
+          <h3 className='title_text mb_30 text-uppercase'>
+            <i className='fas fa-user mr-2'></i> User Info
           </h3>
-          <div class='profile_info clearfix'>
-            <div class='user_thumbnail'>
+          <div className='profile_info clearfix'>
+            <div className='user_thumbnail'>
               <img
-                src='assets/images/meta/img_01.png'
+                src='../assets/images/meta/img_01.png'
                 alt='thumbnail_not_found'
               />
             </div>
-            <div class='user_content'>
-              <h4 class='user_name'>Jone Doe</h4>
-              <span class='user_title'>Seller</span>
+            <div className='user_content'>
+              <h4 className='user_name'>Jone Doe</h4>
+              <span className='user_title'>Seller</span>
             </div>
           </div>
-          <ul class='settings_options ul_li_block clearfix'>
+          <ul className='settings_options ul_li_block clearfix'>
             <li>
               <a href='#!'>
-                <i class='fal fa-user-circle'></i> Profile
+                <i className='fal fa-user-circle'></i> Profile
               </a>
             </li>
             <li>
               <a href='#!'>
-                <i class='fal fa-user-cog'></i> Settings
+                <i className='fal fa-user-cog'></i> Settings
               </a>
             </li>
             <li>
               <a href='#!'>
-                <i class='fal fa-sign-out-alt'></i> Logout
+                <i className='fal fa-sign-out-alt'></i> Logout
               </a>
             </li>
           </ul>
         </div>
       </div>
 
-      <div class='overlay'></div>
+      <div className='overlay'></div>
     </div>
   );
 }

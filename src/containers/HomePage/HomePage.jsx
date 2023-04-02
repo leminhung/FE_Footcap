@@ -1,3 +1,5 @@
+import "./styles.css";
+
 const HomePage = () => {
   return (
     <body class='home_classic_ecommerce'>
@@ -5,7 +7,7 @@ const HomePage = () => {
         <section
           class='breadcrumb_section classic_ecommerce_breadcrumb d-flex align-items-end clearfix bg-fit'
           style={{
-            backgroundImage: `url(../assets/images/breadcrumb/bg_03.jpg)`,
+            backgroundImage: `url(../assets/images/slider/classic_ecommerce/test.png)`,
           }}
         >
           <div class='container'>
@@ -54,36 +56,36 @@ const HomePage = () => {
               <div class='grid-item'>
                 <div class='ecommerce_category_fullimage'>
                   <img
-                    src='../assets/images/category/classic_ecommerce/img_03.jpg'
+                    src='../assets/images/category/classic_ecommerce/collection-1.jpg'
                     alt='image_not_found'
                   />
-                  <h3 class='item_title'>
+                  {/* <h3 class='item_title'>
                     <a href='#!'>Pouch Pocket Jacket</a>
-                  </h3>
+                  </h3> */}
                 </div>
               </div>
 
               <div class='grid-item'>
                 <div class='ecommerce_category_fullimage'>
                   <img
-                    src='../assets/images/category/classic_ecommerce/img_04.jpg'
+                    src='../assets/images/category/classic_ecommerce/collection-2.jpg'
                     alt='image_not_found'
                   />
-                  <h3 class='item_title'>
+                  {/* <h3 class='item_title'>
                     <a href='#!'>Lightweight Quilted</a>
-                  </h3>
+                  </h3> */}
                 </div>
               </div>
 
               <div class='grid-item'>
                 <div class='ecommerce_category_fullimage'>
                   <img
-                    src='../assets/images/category/classic_ecommerce/img_05.jpg'
+                    src='../assets/images/category/classic_ecommerce/collection-3.jpg'
                     alt='image_not_found'
                   />
-                  <h3 class='item_title'>
+                  {/* <h3 class='item_title'>
                     <a href='#!'>Faux Leather Biker</a>
-                  </h3>
+                  </h3> */}
                 </div>
               </div>
             </div>
@@ -1679,7 +1681,7 @@ const HomePage = () => {
               <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
                 <div class='ce_offer_fullimage offer_fullimage text-white text-center'>
                   <img
-                    src='../assets/images/offer/classic_ecommerce/img_01.jpg'
+                    src='../assets/images/offer/classic_ecommerce/imgg_01.jpg'
                     alt='image_not_found'
                   />
                   <div class='item_content'>
@@ -1694,7 +1696,7 @@ const HomePage = () => {
               <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
                 <div class='ce_offer_fullimage offer_fullimage text-white text-center'>
                   <img
-                    src='../assets/images/offer/classic_ecommerce/img_02.jpg'
+                    src='../assets/images/offer/classic_ecommerce/imgg_02.jpg'
                     alt='image_not_found'
                   />
                   <div class='item_content'>

@@ -9,8 +9,10 @@
     "env-cmd": "^10.1.0",
     "formik": "^2.2.9",
     "node-sass": "^8.0.0",
+    "query-string": "^8.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-query": "^3.39.3",
     "react-redux": "^7.2.6",
     "react-router": "^6.0.0-beta.0",
     "react-router-dom": "^6.9.0",
@@ -33,19 +35,14 @@
       "react-app/jest"
     ]
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
   "devDependencies": {
+    "react-app-rewire-babel-loader": "^0.1.1",
+    "react-app-rewired": "^2.2.1",
     "react-error-overlay": "6.0.9",
     "redux-devtools-extension": "^2.13.9"
   },

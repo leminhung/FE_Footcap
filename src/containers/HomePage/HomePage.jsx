@@ -1,6 +1,16 @@
+import { useGetListProductsHome } from "src/features/Product/useGetListProductsHome";
+
 import "./styles.css";
+const sort = true;
 
 const HomePage = () => {
+  const params = {
+    // category: category,
+    sort: sort ? sort : "-sold", // high order
+    // limit: width < 600 ? 4 : limit ? limit : 10,
+  };
+  const { status, data, error, isFetching } = useGetListProductsHome(params);
+
   return (
     <body class='home_classic_ecommerce'>
       <main>

@@ -8,5 +8,5 @@
       "@constants/*": ["./src/constants/*"]
     }
   },
-  "include": ["src", "public/assets/js"]
+  "include": ["src", "public/assets/js", "config-overrides.js"]
 }

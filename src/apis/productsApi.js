@@ -2,7 +2,7 @@ import axiosClient from "src/services/api.service";
 
 const productAPI = {
   getListProducts: (params) => {
-    const url = "/api/product";
+    const url = "/products";
     return axiosClient.get(url, { params });
   },
   getRelated: (params) => {

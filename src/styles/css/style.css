@@ -19404,6 +19404,72 @@ blockquote .blockquote_title {
 
 /* contact page - end
 ==================================================================================================== */
+.product-skeleton {
+  position: relative;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.product-skeleton .product-source {
+  width: 280px;
+  display: -webkit-inline-box;
+  position: relative;
+}
+.product-skeleton .product-detail {
+  width: 280px;
+  display: inline-flex;
+  position: relative;
+  flex-direction: column;
+}
+.product-skeleton .line-breadcrumb {
+  width: 100%;
+  padding-top: 16px;
+  margin-bottom: 16px;
+}
+.product-skeleton .line-product-title {
+  width: 100%;
+  padding-top: 50px;
+  margin-bottom: 20px;
+}
+.product-skeleton .line-product-cost {
+  width: 150px !important;
+  padding-top: 50px;
+}
+.product-skeleton .pulse {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(-90deg, #efefef 0%, #fcfcfc 50%, #efefef 100%);
+  background-size: 400% 400%;
+  animation: pulse 1.3s ease-in-out infinite;
+}
+@keyframes pulse {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: -135% 0%;
+  }
+}
+.product-skeleton .lines {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.product-skeleton .lines .line {
+  margin-top: 10px;
+}
+.product-skeleton .lines .line,
+.product-skeleton .lines .thumb {
+  background-color: #f5f5f5;
+  width: 100%;
+  height: 1rem;
+}
+.product-skeleton .lines .thumb {
+  padding-top: 100%;
+}
+
 /* ==================================================================================================== */
 /* 
 *	Project Name 	:  Neoncart

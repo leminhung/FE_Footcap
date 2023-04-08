@@ -6,7 +6,7 @@ export default function CheckOut() {
       <section
         class='breadcrumb_section text-white text-center text-uppercase d-flex align-items-end clearfix bg-fit'
         style={{
-          backgroundImage: `url(../assets/images/slider/classic_ecommerce/test.png)`,
+          backgroundImage: `url(/assets/images/slider/classic_ecommerce/test.png)`,
         }}
       >
         <div class='overlay' data-bg-color='#1d1d1d'></div>
@@ -278,7 +278,7 @@ export default function CheckOut() {
                           <div class='cart_product'>
                             <div class='item_image'>
                               <img
-                                src='../assets/images/cart/img_04.jpg'
+                                src='/assets/images/cart/img_04.jpg'
                                 alt='image_not_found'
                               />
                             </div>
@@ -305,7 +305,7 @@ export default function CheckOut() {
                           <div class='cart_product'>
                             <div class='item_image'>
                               <img
-                                src='../assets/images/cart/img_04.jpg'
+                                src='/assets/images/cart/img_04.jpg'
                                 alt='image_not_found'
                               />
                             </div>
@@ -332,7 +332,7 @@ export default function CheckOut() {
                           <div class='cart_product'>
                             <div class='item_image'>
                               <img
-                                src='../assets/images/cart/img_04.jpg'
+                                src='/assets/images/cart/img_04.jpg'
                                 alt='image_not_found'
                               />
                             </div>
@@ -458,7 +458,7 @@ export default function CheckOut() {
                           <a href='#!'>
                             <img
                               class='paypal_image'
-                              src='../assets/images/payment_methods_03.png'
+                              src='/assets/images/payment_methods_03.png'
                               alt='image_not_found'
                             />
                           </a>

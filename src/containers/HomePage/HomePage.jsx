@@ -26,7 +26,7 @@ const HomePage = () => {
         <section
           class='breadcrumb_section classic_ecommerce_breadcrumb d-flex align-items-end clearfix bg-fit'
           style={{
-            backgroundImage: `url(../assets/images/slider/classic_ecommerce/test.png)`,
+            backgroundImage: `url(/assets/images/slider/classic_ecommerce/test.png)`,
           }}
         >
           <div class='container'>
@@ -75,7 +75,7 @@ const HomePage = () => {
               <div class='grid-item'>
                 <div class='ecommerce_category_fullimage'>
                   <img
-                    src='../assets/images/category/classic_ecommerce/collection-1.jpg'
+                    src='/assets/images/category/classic_ecommerce/collection-1.jpg'
                     alt='image_not_found'
                   />
                   {/* <h3 class='item_title'>
@@ -87,7 +87,7 @@ const HomePage = () => {
               <div class='grid-item'>
                 <div class='ecommerce_category_fullimage'>
                   <img
-                    src='../assets/images/category/classic_ecommerce/collection-2.jpg'
+                    src='/assets/images/category/classic_ecommerce/collection-2.jpg'
                     alt='image_not_found'
                   />
                   {/* <h3 class='item_title'>
@@ -99,7 +99,7 @@ const HomePage = () => {
               <div class='grid-item'>
                 <div class='ecommerce_category_fullimage'>
                   <img
-                    src='../assets/images/category/classic_ecommerce/collection-3.jpg'
+                    src='/assets/images/category/classic_ecommerce/collection-3.jpg'
                     alt='image_not_found'
                   />
                   {/* <h3 class='item_title'>
@@ -197,7 +197,7 @@ const HomePage = () => {
               <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
                 <div class='ce_offer_fullimage offer_fullimage text-white text-center'>
                   <img
-                    src='../assets/images/offer/classic_ecommerce/imgg_01.jpg'
+                    src='/assets/images/offer/classic_ecommerce/imgg_01.jpg'
                     alt='image_not_found'
                   />
                   <div class='item_content'>
@@ -212,7 +212,7 @@ const HomePage = () => {
               <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
                 <div class='ce_offer_fullimage offer_fullimage text-white text-center'>
                   <img
-                    src='../assets/images/offer/classic_ecommerce/imgg_02.jpg'
+                    src='/assets/images/offer/classic_ecommerce/imgg_02.jpg'
                     alt='image_not_found'
                   />
                   <div class='item_content'>

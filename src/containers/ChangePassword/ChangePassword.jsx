@@ -1,36 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { register } from "src/store/user/user.action";
+import { updatePassword } from "src/store/user/user.action";
 
-import "./SignUp.css";
+import "./ChangePassword.css";
 
-const SignUp = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+const ChangePassword = () => {
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
 
   const dispatch = useDispatch();
 
-  const userRegister = useSelector((state) => state.userRegister);
-  const { loading, error, userInfo } = userRegister;
-
-  let history = useNavigate();
-  useEffect(() => {
-    if (userInfo) {
-      history("/");
-    }
-  }, [history, userInfo]);
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading, error, userInfo } = userLogin;
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
+    if (newPassword !== confirmNewPassword) {
       toast.error("Passwords do not match");
     } else {
-      dispatch(register(name, email, password));
+      dispatch(updatePassword({ currentPassword, newPassword }));
     }
   };
   return (
@@ -48,13 +39,13 @@ const SignUp = () => {
           }}
         ></div>
         <div class='container'>
-          <h1 class='page_title text-white'>Register Page</h1>
+          <h1 class='page_title text-white'>Change Password Page</h1>
           <ul class='breadcrumb_nav ul_li_center clearfix'>
             <li>
-              <a href='#!'>Home</a>
+              <a href='/'>Home</a>
             </li>
             <li>Pages</li>
-            <li>Register</li>
+            <li>Change password</li>
           </ul>
         </div>
       </section>
@@ -75,62 +66,54 @@ const SignUp = () => {
           >
             <form action='#'>
               <div class='reg_form'>
-                <h2 class='form_title text-uppercase'>Register</h2>
-                <div class='form_item'>
-                  <input
-                    type='text'
-                    name='name'
-                    placeholder='Username'
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </div>
+                <h2 class='form_title text-uppercase'>Change Password</h2>
                 <div class='form_item'>
                   <input
                     type='email'
                     name='email'
                     placeholder='Email'
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </div>
-                <div class='form_item'>
-                  <input type='tel' name='phone' placeholder='phone' />
-                </div>
-                <div class='form_item'>
-                  <input
-                    type='password'
-                    name='password'
-                    placeholder='Password'
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={userInfo?.actor?.email}
+                    disabled
                   />
                 </div>
                 <div class='form_item'>
                   <input
                     type='password'
                     name='password'
-                    placeholder='Confirm Password'
-                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    placeholder='Current password'
+                    onChange={(e) => setCurrentPassword(e.target.value)}
                   />
                 </div>
-                <div class='checkbox_item mb_30'>
-                  <label for='agree_checkbox'>
-                    <input id='agree_checkbox' type='checkbox' /> I agree to the
-                    Terms of User
-                  </label>
+                <div class='form_item'>
+                  <input
+                    type='password'
+                    name='password'
+                    placeholder='New password'
+                    onChange={(e) => setNewPassword(e.target.value)}
+                  />
+                </div>
+                <div class='form_item'>
+                  <input
+                    type='password'
+                    name='password'
+                    placeholder='Confirm New Password'
+                    onChange={(e) => setConfirmNewPassword(e.target.value)}
+                  />
                 </div>
                 <button
                   type='submit'
                   class='custom_btn bg_default_red text-uppercase mb_50'
                   onClick={(e) => submitHandler(e)}
                 >
-                  Create Account
+                  Change Now
                 </button>
 
                 <div class='create_account text-center'>
                   <h4 class='small_title_text text-center text-uppercase'>
-                    Have not account yet?
+                    Have you want to change password now?
                   </h4>
-                  <a class='create_account_btn text-uppercase' href='/signin'>
-                    Login
+                  <a class='create_account_btn text-uppercase' href='/'>
+                    Home
                   </a>
                 </div>
               </div>
@@ -142,4 +125,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default ChangePassword;

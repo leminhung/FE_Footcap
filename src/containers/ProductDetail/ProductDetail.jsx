@@ -5,7 +5,7 @@ export default function ProductDetail() {
     <main>
       <section
         class='breadcrumb_section classic_ecommerce_breadcrumb d-flex align-items-end clearfix'
-        data-background='../assets/images/breadcrumb/bg_03.jpg'
+        data-background='/assets/images/breadcrumb/bg_03.jpg'
       >
         <div class='container'>
           <p class='mb_15'>Fresh looks for summer</p>
@@ -48,25 +48,25 @@ export default function ProductDetail() {
                 <div class='tab-content'>
                   <div id='tab_1' class='tab-pane active'>
                     <img
-                      src='../assets/images/details/shop/img_01.jpg'
+                      src='/assets/images/details/shop/img_01.jpg'
                       alt='image_not_found'
                     />
                   </div>
                   <div id='tab_2' class='tab-pane fade'>
                     <img
-                      src='../assets/images/details/shop/img_01.jpg'
+                      src='/assets/images/details/shop/img_01.jpg'
                       alt='image_not_found'
                     />
                   </div>
                   <div id='tab_3' class='tab-pane fade'>
                     <img
-                      src='../assets/images/details/shop/img_01.jpg'
+                      src='/assets/images/details/shop/img_01.jpg'
                       alt='image_not_found'
                     />
                   </div>
                   <div id='tab_4' class='tab-pane fade'>
                     <img
-                      src='../assets/images/details/shop/img_01.jpg'
+                      src='/assets/images/details/shop/img_01.jpg'
                       alt='image_not_found'
                     />
                   </div>
@@ -76,7 +76,7 @@ export default function ProductDetail() {
                   <li>
                     <a class='active' data-toggle='tab' href='#tab_1'>
                       <img
-                        src='../assets/images/details/shop/img_02.jpg'
+                        src='/assets/images/details/shop/img_02.jpg'
                         alt='image_not_found'
                       />
                     </a>
@@ -84,7 +84,7 @@ export default function ProductDetail() {
                   <li>
                     <a data-toggle='tab' href='#tab_2'>
                       <img
-                        src='../assets/images/details/shop/img_03.jpg'
+                        src='/assets/images/details/shop/img_03.jpg'
                         alt='image_not_found'
                       />
                     </a>
@@ -92,7 +92,7 @@ export default function ProductDetail() {
                   <li>
                     <a data-toggle='tab' href='#tab_3'>
                       <img
-                        src='../assets/images/details/shop/img_04.jpg'
+                        src='/assets/images/details/shop/img_04.jpg'
                         alt='image_not_found'
                       />
                     </a>
@@ -100,7 +100,7 @@ export default function ProductDetail() {
                   <li>
                     <a data-toggle='tab' href='#tab_4'>
                       <img
-                        src='../assets/images/details/shop/img_05.jpg'
+                        src='/assets/images/details/shop/img_05.jpg'
                         alt='image_not_found'
                       />
                     </a>
@@ -123,7 +123,7 @@ export default function ProductDetail() {
                         data-bg-color='#f7f7f7'
                       >
                         <img
-                          src='../assets/images/product_brands/img_01.png'
+                          src='/assets/images/product_brands/img_01.png'
                           alt='image_not_found'
                         />
                       </span>
@@ -296,7 +296,7 @@ export default function ProductDetail() {
                   <div class='col-lg-3 col-md-4 col-sm-12 col-xs-12'>
                     <div class='image_wrap'>
                       <img
-                        src='../assets/images/details/shop/img_06.jpg'
+                        src='/assets/images/details/shop/img_06.jpg'
                         alt='image_not_found'
                       />
                     </div>
@@ -352,7 +352,7 @@ export default function ProductDetail() {
                   <div class='col-lg-3 col-md-4 col-sm-12 col-xs-12 order-last'>
                     <div class='image_wrap'>
                       <img
-                        src='../assets/images/details/shop/img_07.jpg'
+                        src='/assets/images/details/shop/img_07.jpg'
                         alt='image_not_found'
                       />
                     </div>
@@ -396,7 +396,7 @@ export default function ProductDetail() {
 
                 <span class='aware_info_icons'>
                   <img
-                    src='../assets/images/icons/aware_icons.png'
+                    src='/assets/images/icons/aware_icons.png'
                     alt='image_not_found'
                   />
                 </span>
@@ -456,7 +456,7 @@ export default function ProductDetail() {
                   <div class='col-lg-3 col-md-4 col-sm-12 col-xs-12'>
                     <div class='image_wrap'>
                       <img
-                        src='../assets/images/details/shop/img_06.jpg'
+                        src='/assets/images/details/shop/img_06.jpg'
                         alt='image_not_found'
                       />
                     </div>
@@ -512,7 +512,7 @@ export default function ProductDetail() {
                   <div class='col-lg-3 col-md-4 col-sm-12 col-xs-12 order-last'>
                     <div class='image_wrap'>
                       <img
-                        src='../assets/images/details/shop/img_07.jpg'
+                        src='/assets/images/details/shop/img_07.jpg'
                         alt='image_not_found'
                       />
                     </div>
@@ -556,7 +556,7 @@ export default function ProductDetail() {
 
                 <span class='aware_info_icons'>
                   <img
-                    src='../assets/images/icons/aware_icons.png'
+                    src='/assets/images/icons/aware_icons.png'
                     alt='image_not_found'
                   />
                 </span>
@@ -577,7 +577,7 @@ export default function ProductDetail() {
                     <div id='ptab1_1' class='tab-pane fade active'>
                       <div class='item_image'>
                         <img
-                          src='../assets/images/shop/classic_ecommerce/img_01.png'
+                          src='/assets/images/shop/classic_ecommerce/img_01.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -585,7 +585,7 @@ export default function ProductDetail() {
                     <div id='ptab1_2' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='../assets/images/shop/classic_ecommerce/img_02.png'
+                          src='/assets/images/shop/classic_ecommerce/img_02.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -593,7 +593,7 @@ export default function ProductDetail() {
                     <div id='ptab1_3' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='../assets/images/shop/classic_ecommerce/img_03.png'
+                          src='/assets/images/shop/classic_ecommerce/img_03.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -676,7 +676,7 @@ export default function ProductDetail() {
                     <div id='ptab2_1' class='tab-pane fade active'>
                       <div class='item_image'>
                         <img
-                          src='../assets/images/shop/classic_ecommerce/img_02.png'
+                          src='/assets/images/shop/classic_ecommerce/img_02.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -684,7 +684,7 @@ export default function ProductDetail() {
                     <div id='ptab2_2' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='../assets/images/shop/classic_ecommerce/img_03.png'
+                          src='/assets/images/shop/classic_ecommerce/img_03.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -692,7 +692,7 @@ export default function ProductDetail() {
                     <div id='ptab2_3' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='../assets/images/shop/classic_ecommerce/img_04.png'
+                          src='/assets/images/shop/classic_ecommerce/img_04.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -775,7 +775,7 @@ export default function ProductDetail() {
                     <div id='ptab3_1' class='tab-pane fade active'>
                       <div class='item_image'>
                         <img
-                          src='../assets/images/shop/classic_ecommerce/img_03.png'
+                          src='/assets/images/shop/classic_ecommerce/img_03.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -783,7 +783,7 @@ export default function ProductDetail() {
                     <div id='ptab3_2' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='../assets/images/shop/classic_ecommerce/img_04.png'
+                          src='/assets/images/shop/classic_ecommerce/img_04.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -791,7 +791,7 @@ export default function ProductDetail() {
                     <div id='ptab3_3' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='../assets/images/shop/classic_ecommerce/img_05.png'
+                          src='/assets/images/shop/classic_ecommerce/img_05.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -874,7 +874,7 @@ export default function ProductDetail() {
                     <div id='ptab4_1' class='tab-pane fade active'>
                       <div class='item_image'>
                         <img
-                          src='../assets/images/shop/classic_ecommerce/img_04.png'
+                          src='/assets/images/shop/classic_ecommerce/img_04.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -882,7 +882,7 @@ export default function ProductDetail() {
                     <div id='ptab4_2' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='../assets/images/shop/classic_ecommerce/img_05.png'
+                          src='/assets/images/shop/classic_ecommerce/img_05.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -890,7 +890,7 @@ export default function ProductDetail() {
                     <div id='ptab4_3' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='../assets/images/shop/classic_ecommerce/img_06.png'
+                          src='/assets/images/shop/classic_ecommerce/img_06.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -973,7 +973,7 @@ export default function ProductDetail() {
                     <div id='ptab5_1' class='tab-pane fade active'>
                       <div class='item_image'>
                         <img
-                          src='../assets/images/shop/classic_ecommerce/img_05.png'
+                          src='/assets/images/shop/classic_ecommerce/img_05.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -981,7 +981,7 @@ export default function ProductDetail() {
                     <div id='ptab5_2' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='../assets/images/shop/classic_ecommerce/img_06.png'
+                          src='/assets/images/shop/classic_ecommerce/img_06.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -989,7 +989,7 @@ export default function ProductDetail() {
                     <div id='ptab5_3' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='../assets/images/shop/classic_ecommerce/img_07.png'
+                          src='/assets/images/shop/classic_ecommerce/img_07.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -1072,7 +1072,7 @@ export default function ProductDetail() {
                     <div id='ptab6_1' class='tab-pane fade active'>
                       <div class='item_image'>
                         <img
-                          src='../assets/images/shop/classic_ecommerce/img_06.png'
+                          src='/assets/images/shop/classic_ecommerce/img_06.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -1080,7 +1080,7 @@ export default function ProductDetail() {
                     <div id='ptab6_2' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='../assets/images/shop/classic_ecommerce/img_07.png'
+                          src='/assets/images/shop/classic_ecommerce/img_07.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -1088,7 +1088,7 @@ export default function ProductDetail() {
                     <div id='ptab6_3' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='../assets/images/shop/classic_ecommerce/img_08.png'
+                          src='/assets/images/shop/classic_ecommerce/img_08.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -1171,7 +1171,7 @@ export default function ProductDetail() {
                     <div id='ptab7_1' class='tab-pane fade active'>
                       <div class='item_image'>
                         <img
-                          src='../assets/images/shop/classic_ecommerce/img_07.png'
+                          src='/assets/images/shop/classic_ecommerce/img_07.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -1179,7 +1179,7 @@ export default function ProductDetail() {
                     <div id='ptab7_2' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='../assets/images/shop/classic_ecommerce/img_08.png'
+                          src='/assets/images/shop/classic_ecommerce/img_08.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -1187,7 +1187,7 @@ export default function ProductDetail() {
                     <div id='ptab7_3' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='../assets/images/shop/classic_ecommerce/img_09.png'
+                          src='/assets/images/shop/classic_ecommerce/img_09.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -1270,7 +1270,7 @@ export default function ProductDetail() {
                     <div id='ptab8_1' class='tab-pane fade active'>
                       <div class='item_image'>
                         <img
-                          src='../assets/images/shop/classic_ecommerce/img_08.png'
+                          src='/assets/images/shop/classic_ecommerce/img_08.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -1278,7 +1278,7 @@ export default function ProductDetail() {
                     <div id='ptab8_2' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='../assets/images/shop/classic_ecommerce/img_09.png'
+                          src='/assets/images/shop/classic_ecommerce/img_09.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -1286,7 +1286,7 @@ export default function ProductDetail() {
                     <div id='ptab8_3' class='tab-pane fade'>
                       <div class='item_image'>
                         <img
-                          src='../assets/images/shop/classic_ecommerce/img_10.png'
+                          src='/assets/images/shop/classic_ecommerce/img_10.png'
                           alt='image_not_found'
                         />
                       </div>
@@ -1377,7 +1377,7 @@ export default function ProductDetail() {
             <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
               <div class='ce_offer_fullimage offer_fullimage text-white text-center'>
                 <img
-                  src='../assets/images/offer/classic_ecommerce/img_01.jpg'
+                  src='/assets/images/offer/classic_ecommerce/img_01.jpg'
                   alt='image_not_found'
                 />
                 <div class='item_content'>
@@ -1392,7 +1392,7 @@ export default function ProductDetail() {
             <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
               <div class='ce_offer_fullimage offer_fullimage text-white text-center'>
                 <img
-                  src='../assets/images/offer/classic_ecommerce/img_02.jpg'
+                  src='/assets/images/offer/classic_ecommerce/img_02.jpg'
                   alt='image_not_found'
                 />
                 <div class='item_content'>

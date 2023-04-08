@@ -14,7 +14,6 @@ const Login = () => {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
-  console.log(userInfo);
 
   let history = useNavigate();
   useEffect(() => {
@@ -33,7 +32,7 @@ const Login = () => {
       <section
         className='breadcrumb_section text-white text-center text-uppercase d-flex align-items-end clearfix bg-fit'
         style={{
-          backgroundImage: `url(../assets/images/slider/classic_ecommerce/test.png)`,
+          backgroundImage: `url(/assets/images/slider/classic_ecommerce/test.png)`,
         }}
       >
         <div
@@ -56,7 +55,7 @@ const Login = () => {
       <section
         className='register_section sec_ptb_140 has_overlay parallaxie clearfix bg-fit bg-fit-signin'
         style={{
-          backgroundImage: `url(../assets/images/backgrounds/bg_22.jpg)`,
+          backgroundImage: `url(/assets/images/backgrounds/bg_22.jpg)`,
         }}
       >
         <div className='overlay' data-bg-color='rgba(55, 55, 55, 0.75)'></div>
@@ -64,7 +63,7 @@ const Login = () => {
           <div
             className='reg_form_wrap login_form'
             style={{
-              backgroundImage: `url(../assets/images/reg_bg_01.png)`,
+              backgroundImage: `url(/assets/images/reg_bg_01.png)`,
               backgroundRepeat: "no-repeat",
             }}
           >

@@ -2005,7 +2005,8 @@ button {
 .header_register_btns li:not(:last-child) {
   margin-right: 15px;
 }
-.header_register_btns a, .header_register_btns button {
+.header_register_btns a,
+.header_register_btns button {
   color: #2e2e2e;
 }
 
@@ -2015,7 +2016,8 @@ button {
 .header_cartbtns_group li:not(:last-child) {
   margin-right: 25px;
 }
-.header_cartbtns_group a, .header_cartbtns_group button {
+.header_cartbtns_group a,
+.header_cartbtns_group button {
   font-weight: 500;
   color: #2e2e2e;
 }
@@ -2410,16 +2412,19 @@ button {
 .sidebar_mobile_menu .user_info .settings_options > li:not(:last-child) {
   margin-bottom: 10px;
 }
-.sidebar_mobile_menu .user_info .settings_options > li > a, .sidebar_mobile_menu .user_info .settings_options > li > button {
+.sidebar_mobile_menu .user_info .settings_options > li > a,
+.sidebar_mobile_menu .user_info .settings_options > li > button {
   font-size: 15px;
   font-weight: 600;
   color: #6b6b6b;
 }
-.sidebar_mobile_menu .user_info .settings_options > li > a i, .sidebar_mobile_menu .user_info .settings_options > li > button i {
+.sidebar_mobile_menu .user_info .settings_options > li > a i,
+.sidebar_mobile_menu .user_info .settings_options > li > button i {
   margin-right: 8px;
   color: #2e2e2e;
 }
-.sidebar_mobile_menu .user_info .settings_options > li:hover > a, .sidebar_mobile_menu .user_info .settings_options > li:hover > button {
+.sidebar_mobile_menu .user_info .settings_options > li:hover > a,
+.sidebar_mobile_menu .user_info .settings_options > li:hover > button {
   color: #2e2e2e;
 }
 
@@ -2683,7 +2688,8 @@ button {
 .login_cart_btn .item_icon {
   margin-right: 12px;
 }
-.login_cart_btn span, .login_cart_btn strong {
+.login_cart_btn span,
+.login_cart_btn strong {
   display: block;
   line-height: 1;
   color: #040404;
@@ -2904,7 +2910,8 @@ button {
 .medical_header .header_register_btns .or_text {
   color: #4e97fd;
 }
-.medical_header .header_register_btns a, .medical_header .header_register_btns button {
+.medical_header .header_register_btns a,
+.medical_header .header_register_btns button {
   color: #2d2d2d;
 }
 .medical_header .header_content_wrap {
@@ -3237,7 +3244,8 @@ button {
   display: grid;
   align-items: center;
 }
-.electronic_action_btns button, .electronic_action_btns a {
+.electronic_action_btns button,
+.electronic_action_btns a {
   color: #969696;
   display: block;
   font-size: 14px;
@@ -3246,16 +3254,21 @@ button {
   text-align: center;
   border: 2px solid #eeeeee;
 }
-.electronic_action_btns button:hover, .electronic_action_btns a:hover {
+.electronic_action_btns button:hover,
+.electronic_action_btns a:hover {
   color: #ffffff;
   border-color: #0063d1;
   background-color: #0063d1;
 }
-.electronic_action_btns button i, .electronic_action_btns button span, .electronic_action_btns a i, .electronic_action_btns a span {
+.electronic_action_btns button i,
+.electronic_action_btns button span,
+.electronic_action_btns a i,
+.electronic_action_btns a span {
   line-height: 1;
   display: block;
 }
-.electronic_action_btns button i, .electronic_action_btns a i {
+.electronic_action_btns button i,
+.electronic_action_btns a i {
   font-size: 22px;
   margin-bottom: 8px;
 }
@@ -3297,7 +3310,8 @@ button {
 .supermarket_header .info_list > li:last-child:after {
   display: none;
 }
-.supermarket_header .info_list a, .supermarket_header .info_list button {
+.supermarket_header .info_list a,
+.supermarket_header .info_list button {
   color: #ffffff;
 }
 .supermarket_header .info_list i {
@@ -3369,7 +3383,8 @@ button {
   border-radius: 0px;
   background-color: transparent;
 }
-.supermarket_header .action_btns_group span, .supermarket_header .action_btns_group strong {
+.supermarket_header .action_btns_group span,
+.supermarket_header .action_btns_group strong {
   display: block;
   line-height: 1;
 }
@@ -3443,7 +3458,8 @@ button {
 .onelook_header .mobile_menu_btn span:not(:last-child) {
   margin-right: 8px;
 }
-.onelook_header .mobile_menu_btn small, .onelook_header .mobile_menu_btn strong {
+.onelook_header .mobile_menu_btn small,
+.onelook_header .mobile_menu_btn strong {
   line-height: 1;
   color: #ffffff;
   display: block;
@@ -3512,7 +3528,8 @@ button {
 .fashion_minimal_header .btns_group > li:not(:last-child) {
   margin-right: 20px;
 }
-.fashion_minimal_header .btns_group button, .fashion_minimal_header .btns_group a {
+.fashion_minimal_header .btns_group button,
+.fashion_minimal_header .btns_group a {
   display: block;
   line-height: 1;
   color: #252525;

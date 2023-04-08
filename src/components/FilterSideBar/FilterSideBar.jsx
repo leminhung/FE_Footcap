@@ -13,9 +13,10 @@ const FilterSideBar = () => {
             <li>
               <a href='#!'>
                 <span>
-                  <i class='fab fa-black-tie'></i>
+                  {/* <i class='fab fa-black-tie'></i> */}
+                  <i class='fas fa-shoe-prints'></i>
                 </span>
-                Andy
+                Shoes
               </a>
             </li>
             <li>
@@ -23,7 +24,7 @@ const FilterSideBar = () => {
                 <span>
                   <i class='fal fa-tshirt'></i>
                 </span>
-                Ariadne’s Thread
+                Clothes
               </a>
             </li>
             <li>
@@ -31,7 +32,7 @@ const FilterSideBar = () => {
                 <span>
                   <i class='fal fa-watch'></i>
                 </span>
-                Black Swan
+                Watch
               </a>
             </li>
             <li>
@@ -39,55 +40,15 @@ const FilterSideBar = () => {
                 <span>
                   <i class='fal fa-compact-disc'></i>
                 </span>
-                Disco
+                Accessories
               </a>
             </li>
             <li>
               <a href='#!'>
                 <span>
-                  <i class='fas fa-gem'></i>
+                  <i class='fas fa-suitcase'></i>
                 </span>
-                Discovering Greece
-              </a>
-            </li>
-            <li>
-              <a href='#!'>
-                <span>
-                  <i class='fal fa-bicycle'></i>
-                </span>
-                Folding the News
-              </a>
-            </li>
-            <li>
-              <a href='#!'>
-                <span>
-                  <i class='far fa-laptop'></i>
-                </span>
-                George C.
-              </a>
-            </li>
-            <li>
-              <a href='#!'>
-                <span>
-                  <i class='fas fa-mobile-alt'></i>
-                </span>
-                Helen of Troy
-              </a>
-            </li>
-            <li>
-              <a href='#!'>
-                <span>
-                  <i class='fab fa-black-tie'></i>
-                </span>
-                Hi-Tech
-              </a>
-            </li>
-            <li>
-              <a href='#!'>
-                <span>
-                  <i class='fab fa-black-tie'></i>
-                </span>
-                Yokoso
+                Bag
               </a>
             </li>
           </ul>
@@ -134,21 +95,21 @@ const FilterSideBar = () => {
                 <input
                   type='radio'
                   name='fs_color_froup'
-                  data-bg-color='#ffa037'
+                  style={{ backgroundColor: "#ffa037" }}
                 />
               </li>
               <li>
                 <input
                   type='radio'
                   name='fs_color_froup'
-                  data-bg-color='#6c7ae0'
+                  style={{ backgroundColor: "#6c7ae0" }}
                 />
               </li>
               <li>
                 <input
                   type='radio'
                   name='fs_color_froup'
-                  data-bg-color='#f23226'
+                  style={{ backgroundColor: "#f23226" }}
                 />
               </li>
               <li>
@@ -271,7 +232,7 @@ const FilterSideBar = () => {
           <div class='small_blog'>
             <a href='blog_details.html' class='item_image'>
               <img
-                src='../assets/images/recent_post/img_01.jpg'
+                src='/assets/images/recent_post/img_01.jpg'
                 alt='image_not_found'
               />
             </a>
@@ -288,7 +249,7 @@ const FilterSideBar = () => {
           <div class='small_blog'>
             <a href='blog_details.html' class='item_image'>
               <img
-                src='../assets/images/recent_post/img_01.jpg'
+                src='/assets/images/recent_post/img_01.jpg'
                 alt='image_not_found'
               />
             </a>
@@ -305,7 +266,7 @@ const FilterSideBar = () => {
           <div class='small_blog'>
             <a href='blog_details.html' class='item_image'>
               <img
-                src='../assets/images/recent_post/img_01.jpg'
+                src='/assets/images/recent_post/img_01.jpg'
                 alt='image_not_found'
               />
             </a>

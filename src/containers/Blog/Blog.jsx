@@ -6,7 +6,7 @@ export default function Blog() {
       <section
         class='breadcrumb_section text-white text-center text-uppercase d-flex align-items-end clearfix bg-fit'
         style={{
-          backgroundImage: `url(../assets/images/slider/classic_ecommerce/test.png)`,
+          backgroundImage: `url(/assets/images/slider/classic_ecommerce/test.png)`,
         }}
       >
         <div
@@ -33,7 +33,7 @@ export default function Blog() {
               <div class='blog_grid'>
                 <a class='blog_image' href='blog_details.html'>
                   <img
-                    src='../assets/images/blog/main_blog/img_01.jpg'
+                    src='/assets/images/blog/main_blog/img_01.jpg'
                     alt='image_not_found'
                   />
                 </a>
@@ -75,7 +75,7 @@ export default function Blog() {
               <div class='blog_grid'>
                 <a class='blog_image' href='blog_details.html'>
                   <img
-                    src='../assets/images/blog/main_blog/img_02.jpg'
+                    src='/assets/images/blog/main_blog/img_02.jpg'
                     alt='image_not_found'
                   />
                 </a>
@@ -117,7 +117,7 @@ export default function Blog() {
               <div class='blog_grid'>
                 <a class='blog_image' href='blog_details.html'>
                   <img
-                    src='../assets/images/blog/main_blog/img_03.jpg'
+                    src='/assets/images/blog/main_blog/img_03.jpg'
                     alt='image_not_found'
                   />
                 </a>
@@ -159,7 +159,7 @@ export default function Blog() {
               <div class='blog_grid'>
                 <a class='blog_image' href='blog_details.html'>
                   <img
-                    src='../assets/images/blog/main_blog/img_04.jpg'
+                    src='/assets/images/blog/main_blog/img_04.jpg'
                     alt='image_not_found'
                   />
                 </a>
@@ -201,7 +201,7 @@ export default function Blog() {
               <div class='blog_grid'>
                 <a class='blog_image' href='blog_details.html'>
                   <img
-                    src='../assets/images/blog/main_blog/img_05.jpg'
+                    src='/assets/images/blog/main_blog/img_05.jpg'
                     alt='image_not_found'
                   />
                 </a>
@@ -243,7 +243,7 @@ export default function Blog() {
               <div class='blog_grid'>
                 <a class='blog_image' href='blog_details.html'>
                   <img
-                    src='../assets/images/blog/main_blog/img_06.jpg'
+                    src='/assets/images/blog/main_blog/img_06.jpg'
                     alt='image_not_found'
                   />
                 </a>

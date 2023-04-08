@@ -14,10 +14,10 @@ export default function Footer() {
             <div className='col-lg-3 col-md-6 col-sm-12 col-xs-12'>
               <div className='footer_widget df_about_area'>
                 <div className='brand_logo mb_30'>
-                  <a href='index.html'>
+                  <a href='/'>
                     <img
-                      src='../assets/images/logo/logo_28_1x.png'
-                      srcSet='../assets/images/logo/logo_28_2x.png 2x'
+                      src='/assets/images/logo/logo_28_1x.png'
+                      srcSet='/assets/images/logo/logo_28_2x.png 2x'
                       alt='logo_not_found'
                     />
                   </a>
@@ -49,7 +49,7 @@ export default function Footer() {
                     <div className='small_product'>
                       <div className='item_image'>
                         <img
-                          src='../assets/images/shop/minimal/img_10.jpg'
+                          src='/assets/images/footer/img_1.jpg'
                           alt='image_not_found'
                         />
                       </div>
@@ -68,7 +68,7 @@ export default function Footer() {
                     <div className='small_product'>
                       <div className='item_image'>
                         <img
-                          src='../assets/images/shop/minimal/img_11.jpg'
+                          src='/assets/images/footer/img_2.jpg'
                           alt='image_not_found'
                         />
                       </div>
@@ -96,7 +96,7 @@ export default function Footer() {
                     <div className='small_product'>
                       <div className='item_image'>
                         <img
-                          src='../assets/images/shop/minimal/img_12.jpg'
+                          src='/assets/images/footer/img_3.jpg'
                           alt='image_not_found'
                         />
                       </div>
@@ -115,7 +115,7 @@ export default function Footer() {
                     <div className='small_product'>
                       <div className='item_image'>
                         <img
-                          src='../assets/images/shop/minimal/img_13.jpg'
+                          src='/assets/images/footer/img_4.jpg'
                           alt='image_not_found'
                         />
                       </div>

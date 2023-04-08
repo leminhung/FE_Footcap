@@ -6,7 +6,7 @@ export default function BlogDetail() {
       <section
         className='breadcrumb_section text-white text-center text-uppercase d-flex align-items-end clearfix bg-fit'
         style={{
-          backgroundImage: `url(../assets/images/slider/classic_ecommerce/test.png)`,
+          backgroundImage: `url(/assets/images/slider/classic_ecommerce/test.png)`,
         }}
       >
         <div
@@ -32,7 +32,7 @@ export default function BlogDetail() {
             <div className='col-lg-9 col-md-12 col-sm-12 col-xs-12'>
               <div className='details_image mb_30'>
                 <img
-                  src='../assets/images/blog/main_blog/img_07.jpg'
+                  src='/assets/images/blog/main_blog/img_07.jpg'
                   alt='image_not_found'
                 />
               </div>
@@ -43,7 +43,7 @@ export default function BlogDetail() {
                       <a className='post_admin' href='#!'>
                         <span className='admin_thumbnail'>
                           <img
-                            src='../assets/images/meta/img_01.png'
+                            src='/assets/images/meta/img_01.png'
                             alt='image_not_found'
                           />
                         </span>{" "}
@@ -209,7 +209,7 @@ export default function BlogDetail() {
               >
                 <div className='author_image'>
                   <img
-                    src='../assets/images/meta/img_05.png'
+                    src='/assets/images/meta/img_05.png'
                     alt='image_not_found'
                   />
                 </div>
@@ -236,7 +236,7 @@ export default function BlogDetail() {
                     <div className='blog_grid'>
                       <a className='blog_image' href='blog_details.html'>
                         <img
-                          src='../assets/images/blog/main_blog/img_08.jpg'
+                          src='/assets/images/blog/main_blog/img_08.jpg'
                           alt='image_not_found'
                         />
                       </a>
@@ -266,7 +266,7 @@ export default function BlogDetail() {
                     <div className='blog_grid'>
                       <a className='blog_image' href='blog_details.html'>
                         <img
-                          src='../assets/images/blog/main_blog/img_09.jpg'
+                          src='/assets/images/blog/main_blog/img_09.jpg'
                           alt='image_not_found'
                         />
                       </a>
@@ -296,7 +296,7 @@ export default function BlogDetail() {
                     <div className='blog_grid'>
                       <a className='blog_image' href='blog_details.html'>
                         <img
-                          src='../assets/images/blog/main_blog/img_10.jpg'
+                          src='/assets/images/blog/main_blog/img_10.jpg'
                           alt='image_not_found'
                         />
                       </a>
@@ -326,7 +326,7 @@ export default function BlogDetail() {
                     <div className='blog_grid'>
                       <a className='blog_image' href='blog_details.html'>
                         <img
-                          src='../assets/images/blog/main_blog/img_08.jpg'
+                          src='/assets/images/blog/main_blog/img_08.jpg'
                           alt='image_not_found'
                         />
                       </a>
@@ -356,7 +356,7 @@ export default function BlogDetail() {
                     <div className='blog_grid'>
                       <a className='blog_image' href='blog_details.html'>
                         <img
-                          src='../assets/images/blog/main_blog/img_09.jpg'
+                          src='/assets/images/blog/main_blog/img_09.jpg'
                           alt='image_not_found'
                         />
                       </a>
@@ -386,7 +386,7 @@ export default function BlogDetail() {
                     <div className='blog_grid'>
                       <a className='blog_image' href='blog_details.html'>
                         <img
-                          src='../assets/images/blog/main_blog/img_10.jpg'
+                          src='/assets/images/blog/main_blog/img_10.jpg'
                           alt='image_not_found'
                         />
                       </a>
@@ -489,7 +489,7 @@ export default function BlogDetail() {
                   <div className='small_blog'>
                     <a href='blog_details.html' className='item_image'>
                       <img
-                        src='../assets/images/recent_post/img_01.jpg'
+                        src='/assets/images/recent_post/img_01.jpg'
                         alt='image_not_found'
                       />
                     </a>
@@ -506,7 +506,7 @@ export default function BlogDetail() {
                   <div className='small_blog'>
                     <a href='blog_details.html' className='item_image'>
                       <img
-                        src='../assets/images/recent_post/img_02.jpg'
+                        src='/assets/images/recent_post/img_02.jpg'
                         alt='image_not_found'
                       />
                     </a>
@@ -523,7 +523,7 @@ export default function BlogDetail() {
                   <div className='small_blog'>
                     <a href='blog_details.html' className='item_image'>
                       <img
-                        src='../assets/images/recent_post/img_03.jpg'
+                        src='/assets/images/recent_post/img_03.jpg'
                         alt='image_not_found'
                       />
                     </a>
@@ -540,7 +540,7 @@ export default function BlogDetail() {
                   <div className='small_blog'>
                     <a href='blog_details.html' className='item_image'>
                       <img
-                        src='../assets/images/recent_post/img_04.jpg'
+                        src='/assets/images/recent_post/img_04.jpg'
                         alt='image_not_found'
                       />
                     </a>
@@ -557,7 +557,7 @@ export default function BlogDetail() {
                   <div className='small_blog'>
                     <a href='blog_details.html' className='item_image'>
                       <img
-                        src='../assets/images/recent_post/img_05.jpg'
+                        src='/assets/images/recent_post/img_05.jpg'
                         alt='image_not_found'
                       />
                     </a>
@@ -578,10 +578,10 @@ export default function BlogDetail() {
                     <li>
                       <a
                         className='popup_image'
-                        href='../assets/images/instagram/img_48.jpg'
+                        href='/assets/images/instagram/img_48.jpg'
                       >
                         <img
-                          src='../assets/images/instagram/img_48.jpg'
+                          src='/assets/images/instagram/img_48.jpg'
                           alt='image_not_found'
                         />
                         <i className='fab fa-instagram'></i>
@@ -590,10 +590,10 @@ export default function BlogDetail() {
                     <li>
                       <a
                         className='popup_image'
-                        href='../assets/images/instagram/img_49.jpg'
+                        href='/assets/images/instagram/img_49.jpg'
                       >
                         <img
-                          src='../assets/images/instagram/img_49.jpg'
+                          src='/assets/images/instagram/img_49.jpg'
                           alt='image_not_found'
                         />
                         <i className='fab fa-instagram'></i>
@@ -602,10 +602,10 @@ export default function BlogDetail() {
                     <li>
                       <a
                         className='popup_image'
-                        href='../assets/images/instagram/img_50.jpg'
+                        href='/assets/images/instagram/img_50.jpg'
                       >
                         <img
-                          src='../assets/images/instagram/img_50.jpg'
+                          src='/assets/images/instagram/img_50.jpg'
                           alt='image_not_found'
                         />
                         <i className='fab fa-instagram'></i>
@@ -614,10 +614,10 @@ export default function BlogDetail() {
                     <li>
                       <a
                         className='popup_image'
-                        href='../assets/images/instagram/img_51.jpg'
+                        href='/assets/images/instagram/img_51.jpg'
                       >
                         <img
-                          src='../assets/images/instagram/img_51.jpg'
+                          src='/assets/images/instagram/img_51.jpg'
                           alt='image_not_found'
                         />
                         <i className='fab fa-instagram'></i>
@@ -626,10 +626,10 @@ export default function BlogDetail() {
                     <li>
                       <a
                         className='popup_image'
-                        href='../assets/images/instagram/img_52.jpg'
+                        href='/assets/images/instagram/img_52.jpg'
                       >
                         <img
-                          src='../assets/images/instagram/img_52.jpg'
+                          src='/assets/images/instagram/img_52.jpg'
                           alt='image_not_found'
                         />
                         <i className='fab fa-instagram'></i>
@@ -638,10 +638,10 @@ export default function BlogDetail() {
                     <li>
                       <a
                         className='popup_image'
-                        href='../assets/images/instagram/img_53.jpg'
+                        href='/assets/images/instagram/img_53.jpg'
                       >
                         <img
-                          src='../assets/images/instagram/img_53.jpg'
+                          src='/assets/images/instagram/img_53.jpg'
                           alt='image_not_found'
                         />
                         <i className='fab fa-instagram'></i>

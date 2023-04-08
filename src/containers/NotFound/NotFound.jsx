@@ -6,7 +6,7 @@ export default function NotFound() {
       <section
         class='breadcrumb_section text-white text-center text-uppercase d-flex align-items-end clearfix'
         style={{
-          backgroundImage: `url(../assets/images/slider/classic_ecommerce/test.png)`,
+          backgroundImage: `url(/assets/images/slider/classic_ecommerce/test.png)`,
         }}
       >
         <div class='overlay' data-bg-color='#1d1d1d'></div>
@@ -33,7 +33,7 @@ export default function NotFound() {
             <h2 class='error_text d-flex align-items-center justify-content-center'>
               4{" "}
               <span>
-                <img src='../assets/images/404.png' alt='image_not_found' />
+                <img src='/assets/images/404.png' alt='image_not_found' />
               </span>{" "}
               4
             </h2>

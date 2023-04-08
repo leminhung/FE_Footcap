@@ -4,6 +4,18 @@
   z-index: 0;
 }
 
+.isCursor {
+  cursor: pointer;
+}
+.isCursor a {
+  color: #252a2b;
+}
+
+.isCursor:hover,
+.isCursor a:hover {
+  color: #007bff;
+}
+
 .profile__main .profile__title {
   font-size: 31px;
   font-weight: 700;

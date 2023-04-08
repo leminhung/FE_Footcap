@@ -27,7 +27,7 @@ const QuickView = () => {
               src={
                 product?.assets?.length > 0
                   ? product?.assets[1]?.filename
-                  : "../assets/images/shop/fashion_minimal/img_07.jpg"
+                  : "/assets/images/shop/fashion_minimal/img_07.jpg"
               }
               alt='image_not_found'
             />

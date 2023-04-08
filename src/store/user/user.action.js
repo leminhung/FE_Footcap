@@ -178,6 +178,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
     });
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
+    toast.error(error.response.data.msg);
     const message =
       error.response && error.response.data.message
         ? error.response.data.message
@@ -280,14 +281,20 @@ export const updateUser = (user) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.put(`/api/users/${user._id}`, user, config);
+    const { data } = await axios.put(
+      `${process.env.REACT_APP_BASE_URL}/auth/update-details`,
+      user,
+      config
+    );
 
     dispatch({ type: USER_UPDATE_SUCCESS });
 
     dispatch({ type: USER_DETAILS_SUCCESS, payload: data });
+    toast.success("Update successfully");
 
     dispatch({ type: USER_DETAILS_RESET });
   } catch (error) {
+    toast.error(error?.response?.data?.msg);
     const message =
       error.response && error.response.data.message
         ? error.response.data.message
@@ -301,3 +308,50 @@ export const updateUser = (user) => async (dispatch, getState) => {
     });
   }
 };
+
+export const updatePassword =
+  ({ currentPassword, newPassword }) =>
+  async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: USER_UPDATE_REQUEST,
+      });
+
+      const {
+        userLogin: { userInfo },
+      } = getState();
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+
+      const { data } = await axios.put(
+        `${process.env.REACT_APP_BASE_URL}/auth/update-password`,
+        { currentPassword, newPassword },
+        config
+      );
+
+      dispatch({ type: USER_UPDATE_SUCCESS });
+
+      dispatch({ type: USER_DETAILS_SUCCESS, payload: data });
+      toast.success("Change Password successfully");
+
+      dispatch({ type: USER_DETAILS_RESET });
+    } catch (error) {
+      toast.error(error.response.data.msg);
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      if (message === "Not authorized, token failed") {
+        dispatch(logout());
+      }
+      dispatch({
+        type: USER_UPDATE_FAIL,
+        payload: message,
+      });
+    }
+  };

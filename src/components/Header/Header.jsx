@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { logout } from "src/store/user/user.action";
@@ -65,10 +65,10 @@ export default function Header() {
           <div className='row align-items-center'>
             <div className='col-lg-3'>
               <div className='brand_logo'>
-                <a className='brand_link' href='#!'>
+                <a className='brand_link' href='/'>
                   <img
-                    src='../assets/images/logo/logo_03_1x.png'
-                    srcSet='../assets/images/logo/logo_03_2x.png 2x'
+                    src='/assets/images/logo/logo_03_1x.png'
+                    srcSet='/assets/images/logo/logo_03_2x.png 2x'
                     alt='logo_not_found'
                   />
                 </a>
@@ -121,7 +121,7 @@ export default function Header() {
                               <a href='home_carparts.html'>
                                 <span className='item_image'>
                                   <img
-                                    src='../../assets/images/home_pages/carparts.png'
+                                    src='/assets/images/home_pages/carparts.png'
                                     alt='image_not_found'
                                   />
                                 </span>
@@ -132,7 +132,7 @@ export default function Header() {
                               <a href='home_classic_ecommerce.html'>
                                 <span className='item_image'>
                                   <img
-                                    src='../assets/images/home_pages/classic_ecommarce.png'
+                                    src='/assets/images/home_pages/classic_ecommarce.png'
                                     alt='image_not_found'
                                   />
                                 </span>
@@ -145,7 +145,7 @@ export default function Header() {
                               <a href='home_creative_onelook.html'>
                                 <span className='item_image'>
                                   <img
-                                    src='../assets/images/home_pages/creative_onelook.png'
+                                    src='/assets/images/home_pages/creative_onelook.png'
                                     alt='image_not_found'
                                   />
                                 </span>
@@ -158,7 +158,7 @@ export default function Header() {
                               <a href='home_electronic.html'>
                                 <span className='item_image'>
                                   <img
-                                    src='../assets/images/home_pages/electronic.png'
+                                    src='/assets/images/home_pages/electronic.png'
                                     alt='image_not_found'
                                   />
                                 </span>
@@ -169,7 +169,7 @@ export default function Header() {
                               <a href='home_fashion.html'>
                                 <span className='item_image'>
                                   <img
-                                    src='../assets/images/home_pages/fashion.png'
+                                    src='/assets/images/home_pages/fashion.png'
                                     alt='image_not_found'
                                   />
                                 </span>
@@ -180,7 +180,7 @@ export default function Header() {
                               <a href='home_fashion_minimal.html'>
                                 <span className='item_image'>
                                   <img
-                                    src='../assets/images/home_pages/fashion_minimal.png'
+                                    src='/assets/images/home_pages/fashion_minimal.png'
                                     alt='image_not_found'
                                   />
                                 </span>
@@ -193,7 +193,7 @@ export default function Header() {
                               <a href='home_furniture.html'>
                                 <span className='item_image'>
                                   <img
-                                    src='../assets/images/home_pages/furniture.png'
+                                    src='/assets/images/home_pages/furniture.png'
                                     alt='image_not_found'
                                   />
                                 </span>
@@ -204,7 +204,7 @@ export default function Header() {
                               <a href='home_gadget.html'>
                                 <span className='item_image'>
                                   <img
-                                    src='../assets/images/home_pages/gadget.png'
+                                    src='/assets/images/home_pages/gadget.png'
                                     alt='image_not_found'
                                   />
                                 </span>
@@ -215,7 +215,7 @@ export default function Header() {
                               <a href='home_lookbook_creative.html'>
                                 <span className='item_image'>
                                   <img
-                                    src='../assets/images/home_pages/lookbook_creative.png'
+                                    src='/assets/images/home_pages/lookbook_creative.png'
                                     alt='image_not_found'
                                   />
                                 </span>
@@ -228,7 +228,7 @@ export default function Header() {
                               <a href='home_lookbook_slide.html'>
                                 <span className='item_image'>
                                   <img
-                                    src='../assets/images/home_pages/lookbook_slide.png'
+                                    src='/assets/images/home_pages/lookbook_slide.png'
                                     alt='image_not_found'
                                   />
                                 </span>
@@ -241,7 +241,7 @@ export default function Header() {
                               <a href='home_medical.html'>
                                 <span className='item_image'>
                                   <img
-                                    src='../assets/images/home_pages/medical.png'
+                                    src='/assets/images/home_pages/medical.png'
                                     alt='image_not_found'
                                   />
                                 </span>
@@ -252,7 +252,7 @@ export default function Header() {
                               <a href='home_modern.html'>
                                 <span className='item_image'>
                                   <img
-                                    src='../assets/images/home_pages/modern.png'
+                                    src='/assets/images/home_pages/modern.png'
                                     alt='image_not_found'
                                   />
                                 </span>
@@ -263,7 +263,7 @@ export default function Header() {
                               <a href='home_modern_minimal.html'>
                                 <span className='item_image'>
                                   <img
-                                    src='../assets/images/home_pages/modern_minimal.png'
+                                    src='/assets/images/home_pages/modern_minimal.png'
                                     alt='image_not_found'
                                   />
                                 </span>
@@ -276,7 +276,7 @@ export default function Header() {
                               <a href='home_motorcycle.html'>
                                 <span className='item_image'>
                                   <img
-                                    src='../assets/images/home_pages/motorcycle.png'
+                                    src='/assets/images/home_pages/motorcycle.png'
                                     alt='image_not_found'
                                   />
                                 </span>
@@ -287,7 +287,7 @@ export default function Header() {
                               <a href='home_parallax_shop.html'>
                                 <span className='item_image'>
                                   <img
-                                    src='../assets/images/home_pages/parallax_shop.png'
+                                    src='/assets/images/home_pages/parallax_shop.png'
                                     alt='image_not_found'
                                   />
                                 </span>
@@ -300,7 +300,7 @@ export default function Header() {
                               <a href='home_simple_shop.html'>
                                 <span className='item_image'>
                                   <img
-                                    src='../assets/images/home_pages/simple_shop.png'
+                                    src='/assets/images/home_pages/simple_shop.png'
                                     alt='image_not_found'
                                   />
                                 </span>
@@ -311,7 +311,7 @@ export default function Header() {
                               <a href='home_single_story_black.html'>
                                 <span className='item_image'>
                                   <img
-                                    src='../assets/images/home_pages/single_story_black.png'
+                                    src='/assets/images/home_pages/single_story_black.png'
                                     alt='image_not_found'
                                   />
                                 </span>
@@ -324,7 +324,7 @@ export default function Header() {
                               <a href='home_single_story_white.html'>
                                 <span className='item_image'>
                                   <img
-                                    src='../assets/images/home_pages/single_story_white.png'
+                                    src='/assets/images/home_pages/single_story_white.png'
                                     alt='image_not_found'
                                   />
                                 </span>
@@ -337,7 +337,7 @@ export default function Header() {
                               <a href='home_sports.html'>
                                 <span className='item_image'>
                                   <img
-                                    src='../assets/images/home_pages/sports.png'
+                                    src='/assets/images/home_pages/sports.png'
                                     alt='image_not_found'
                                   />
                                 </span>
@@ -348,7 +348,7 @@ export default function Header() {
                               <a href='home_supermarket.html'>
                                 <span className='item_image'>
                                   <img
-                                    src='../assets/images/home_pages/supermarket.png'
+                                    src='/assets/images/home_pages/supermarket.png'
                                     alt='image_not_found'
                                   />
                                 </span>
@@ -359,7 +359,7 @@ export default function Header() {
                               <a href='home_watch.html'>
                                 <span className='item_image'>
                                   <img
-                                    src='../assets/images/home_pages/watch.png'
+                                    src='/assets/images/home_pages/watch.png'
                                     alt='image_not_found'
                                   />
                                 </span>

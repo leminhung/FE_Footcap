@@ -7,7 +7,6 @@ import Cart from "src/containers/Cart/Cart";
 import ShoppingCart from "src/containers/CheckOut/ShoppingCart";
 import CheckOut from "src/containers/CheckOut/CheckOut";
 import OrderCompleted from "src/containers/CheckOut/OrderComplete";
-import ProductDetail from "src/containers/ProductDetail/ProductDetail";
 import Login from "src/containers/Login/Login";
 import SignUp from "src/containers/Signup/SignUp";
 import Blog from "src/containers/Blog/Blog";
@@ -15,6 +14,7 @@ import BlogDetail from "src/containers/Blog/BlogDetail";
 import ContactUs from "src/containers/ContactUs/ContactUs";
 import Profile from "src/containers/Profile/Profile";
 import ProfileEdit from "src/containers/Profile/ProfileEdit";
+import ChangePassword from "src/containers/ChangePassword/ChangePassword";
 
 const routes = () => [
   {
@@ -54,8 +54,8 @@ const routes = () => [
     element: <ProfileEdit />,
   },
   {
-    path: "product-details",
-    element: <ProductDetail />,
+    path: "profile/change-password",
+    element: <ChangePassword />,
   },
   {
     path: "checkout",

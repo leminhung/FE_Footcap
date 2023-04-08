@@ -27,6 +27,10 @@
   margin-left: 4px;
 }
 
+.ripple-surface {
+  background-color: red !important;
+}
+
 .formAcount {
   display: flex;
   justify-content: center;

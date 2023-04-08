@@ -17,7 +17,7 @@ export default function SideBar() {
             <li>
               <div className='item_image'>
                 <img
-                  src='../assets/images/cart/img_01.jpg'
+                  src='/assets/images/cart/img_01.jpg'
                   alt='image_not_found'
                 />
               </div>
@@ -69,8 +69,8 @@ export default function SideBar() {
         <div className='msb_widget brand_logo text-center'>
           <a href='index.html'>
             <img
-              src='../assets/images/logo/logo_25_1x.png'
-              srcSet='../assets/images/logo/logo_25_2x.png 2x'
+              src='/assets/images/logo/logo_25_1x.png'
+              srcSet='/assets/images/logo/logo_25_2x.png 2x'
               alt='logo_not_found'
             />
           </a>
@@ -598,7 +598,7 @@ export default function SideBar() {
           <div className='profile_info clearfix'>
             <div className='user_thumbnail'>
               <img
-                src='../assets/images/meta/img_01.png'
+                src='/assets/images/meta/img_01.png'
                 alt='thumbnail_not_found'
               />
             </div>

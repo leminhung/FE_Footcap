@@ -17,7 +17,10 @@ export const addToCart = (product) => async (dispatch, getState) => {
     },
   });
 
+  let subtotal = getState().cart.subtotal + product.price;
+
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
+  localStorage.setItem("subtotal", JSON.stringify(subtotal));
 };
 
 export const removeFromCart = (id) => (dispatch, getState) => {

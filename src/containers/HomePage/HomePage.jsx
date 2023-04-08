@@ -1,4 +1,4 @@
-import { useGetListProductsHome } from "src/features/Product/useGetListProductsHome";
+import { useSelector } from "react-redux";
 
 import Product from "src/components/Product/Product";
 import ProductSkeleton from "src/components/Product/ProductSkeleton/ProductSkeleton";
@@ -6,18 +6,18 @@ import QuickView from "src/components/QuickView/QuickView";
 import FilterSideBar from "src/components/FilterSideBar/FilterSideBar";
 
 import "./styles.css";
-
-const sort = true;
+import { useState } from "react";
 
 const HomePage = () => {
-  const params = {
-    // category: category,
-    sort: sort ? sort : "-sold", // high order
-    // limit: width < 600 ? 4 : limit ? limit : 10,
-    limit: 12,
+  const [limit, setLimit] = useState(12);
+  const [sort, setSort] = useState(undefined);
+
+  const handleChangeSort = (value) => {
+    setSort(value);
   };
-  const { status, data, error, isFetching } = useGetListProductsHome(params);
-  console.log(data);
+
+  const products = useSelector((state) => state.productList);
+  console.log("products--", products);
 
   return (
     <body class='home_classic_ecommerce'>
@@ -78,9 +78,6 @@ const HomePage = () => {
                     src='/assets/images/category/classic_ecommerce/collection-1.jpg'
                     alt='image_not_found'
                   />
-                  {/* <h3 class='item_title'>
-                    <a href='#!'>Pouch Pocket Jacket</a>
-                  </h3> */}
                 </div>
               </div>
 
@@ -90,9 +87,6 @@ const HomePage = () => {
                     src='/assets/images/category/classic_ecommerce/collection-2.jpg'
                     alt='image_not_found'
                   />
-                  {/* <h3 class='item_title'>
-                    <a href='#!'>Lightweight Quilted</a>
-                  </h3> */}
                 </div>
               </div>
 
@@ -102,9 +96,6 @@ const HomePage = () => {
                     src='/assets/images/category/classic_ecommerce/collection-3.jpg'
                     alt='image_not_found'
                   />
-                  {/* <h3 class='item_title'>
-                    <a href='#!'>Faux Leather Biker</a>
-                  </h3> */}
                 </div>
               </div>
             </div>
@@ -130,7 +121,9 @@ const HomePage = () => {
                   <div class='row align-items-center justify-content-lg-between'>
                     <div class='col-lg-5 col-md-4 col-sm-12 col-xs-12'>
                       <h4 class='result_text text-lg-center'>
-                        Showing 1 to 16 of 17 total
+                        Showing {products?.count ? 1 : 0} to{" "}
+                        {products?.count ? products?.count : 0} of{" "}
+                        {products?.total ? products?.total : 0} total
                       </h4>
                     </div>
                     <div class='col-lg-4 col-md-4 col-sm-12 col-xs-12'>
@@ -139,19 +132,16 @@ const HomePage = () => {
                           <span class='option_title text-uppercase'>
                             Sort by:
                           </span>
-                          <select>
-                            <option data-display='Select Your Option'>
-                              Nothing
-                            </option>
-                            <option value='1' selected>
+                          <select
+                            onChange={(e) => handleChangeSort(e.target.value)}
+                          >
+                            <option value='title'>Name of product</option>
+                            <option value='numReviews'>Number of review</option>
+                            <option value='rating'>Rating</option>
+                            <option value='price' selected>
                               {" "}
-                              Popularity
+                              Price
                             </option>
-                            <option value='2'>Another option</option>
-                            <option value='3' disabled>
-                              A disabled option
-                            </option>
-                            <option value='4'>Potato</option>
                           </select>
                         </div>
                       </form>
@@ -170,22 +160,34 @@ const HomePage = () => {
             </div>
 
             <div class='row mb_50'>
-              {status === "loading"
-                ? [...Array(8)].map(() => <ProductSkeleton />)
-                : data.data.map((p, index) => (
-                    <Product product={p} index={index} />
-                  ))}
+              {products?.loading ? (
+                [...Array(8)].map(() => <ProductSkeleton />)
+              ) : products.products.length === 0 ? (
+                <img
+                  src='images/not-found.png'
+                  className='mx-auto'
+                  alt='image_not_found'
+                />
+              ) : (
+                products?.products.map((p, index) => (
+                  <Product product={p} index={index} />
+                ))
+              )}
             </div>
 
             <div class='load_more text-center clearfix'>
-              <a class='custom_btn bg_gray text-uppercase' href='#!'>
+              <a
+                class='custom_btn bg_gray text-uppercase'
+                href='#!'
+                onClick={() => setLimit(32)}
+              >
                 Load More
               </a>
             </div>
           </div>
         </section>
 
-        <FilterSideBar />
+        <FilterSideBar limit={limit} sort={sort} />
         {/* <!-- product_section - end
 			================================================== -->
 

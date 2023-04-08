@@ -1,232 +1,166 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { listProducts } from "src/store/product/product.action";
 
-const FilterSideBar = () => {
+const FilterSideBar = ({ limit, sort }) => {
+  const [category, setCategory] = useState(undefined);
+  const [color, setColor] = useState(undefined);
+  const [size, setSize] = useState(undefined);
+  const [price, setPrice] = useState({ from: undefined, to: undefined });
+
+  // categories items
+  const categories = [
+    {
+      class: "fas fa-shoe-prints",
+      title: "Shoes",
+      id: "620d1c5ae5667cdd09ee7e23",
+    },
+    {
+      class: "fal fa-tshirt",
+      title: "Clothes",
+      id: "620d1c5ac3badda50a46072c",
+    },
+    { class: "fal fa-watch", title: "Watch", id: "620d1c5ae5667cdd09ee7e23" },
+    {
+      class: "fal fa-compact-disc",
+      title: "Accessories",
+      id: "620d1c5ac3badda50a46072c",
+    },
+    {
+      class: "fas fa-suitcase",
+      title: "Bag",
+      id: "620d1c5ac3badda50a46072c",
+    },
+  ];
+
+  // prices
+  const prices = [
+    { name: "fs_price_1", from: 25, to: 100 },
+    { name: "fs_price_2", from: 100, to: 200 },
+    { name: "fs_price_3", from: 200, to: 300 },
+    { name: "fs_price_4", from: 400, to: 500 },
+    { name: "fs_price_5", from: 500, to: 1000 },
+  ];
+
+  // colors
+  const colors = [
+    { color: "#ffa037", name: "green" },
+    { color: "#6c7ae0", name: "blue" },
+    { color: "#f23226", name: "red" },
+    { color: "#828664", name: "pink" },
+    { color: "#68a3c2", name: "blue" },
+    { color: "#009122", name: "green" },
+    { color: "#875546", name: "red" },
+    { color: "#f74877", name: "pink" },
+    { color: "#1f1e29", name: "black" },
+    { color: "#dddddd", name: "pink" },
+  ];
+
+  // sizes
+  const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const params = {
+      category: category,
+      color,
+      size,
+      price: { gte: price.from, lte: price.to },
+      page: 1,
+      limit,
+      sort: sort ? sort : "-sold",
+    };
+    dispatch(listProducts(params));
+  }, [dispatch, category, color, size, price, limit, sort]);
+
   return (
     <div class='sidebar-menu-wrapper'>
       <div class='filter_sidebar'>
         <button type='button' class='close_btn mb_50'>
           <i class='fal fa-times'></i>
         </button>
+
+        {/* categories  */}
         <div class='fs_widget fs_category_list'>
           <h3 class='fs_widget_title text-uppercase'>Top Categories</h3>
           <ul class='ul_li_block clearfix'>
-            <li>
-              <a href='#!'>
-                <span>
-                  {/* <i class='fab fa-black-tie'></i> */}
-                  <i class='fas fa-shoe-prints'></i>
-                </span>
-                Shoes
-              </a>
-            </li>
-            <li>
-              <a href='#!'>
-                <span>
-                  <i class='fal fa-tshirt'></i>
-                </span>
-                Clothes
-              </a>
-            </li>
-            <li>
-              <a href='#!'>
-                <span>
-                  <i class='fal fa-watch'></i>
-                </span>
-                Watch
-              </a>
-            </li>
-            <li>
-              <a href='#!'>
-                <span>
-                  <i class='fal fa-compact-disc'></i>
-                </span>
-                Accessories
-              </a>
-            </li>
-            <li>
-              <a href='#!'>
-                <span>
-                  <i class='fas fa-suitcase'></i>
-                </span>
-                Bag
-              </a>
-            </li>
+            {categories.map((c) => (
+              <li onClick={() => setCategory(c.id)}>
+                <a href='#!'>
+                  <span>
+                    <i class={c.class}></i>
+                  </span>
+                  {c.title}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
 
+        {/* prices */}
         <div class='fs_widget fs_price_list'>
           <h3 class='fs_widget_title text-uppercase'>Price filter</h3>
           <form action='#'>
             <ul class='ul_li_block clearfix'>
-              <li>
-                <input
-                  id='fs_price_1'
-                  type='radio'
-                  name='fs_price_wroup'
-                  checked
-                />
-                <label for='fs_price_1'>$25 - $100</label>
-              </li>
-              <li>
-                <input id='fs_price_2' type='radio' name='fs_price_wroup' />
-                <label for='fs_price_2'>$100 - $200</label>
-              </li>
-              <li>
-                <input id='fs_price_3' type='radio' name='fs_price_wroup' />
-                <label for='fs_price_3'>$200 - $300</label>
-              </li>
-              <li>
-                <input id='fs_price_4' type='radio' name='fs_price_wroup' />
-                <label for='fs_price_4'>$400 - $500</label>
-              </li>
-              <li>
-                <input id='fs_price_5' type='radio' name='fs_price_wroup' />
-                <label for='fs_price_5'>$500 - $1000</label>
-              </li>
+              {prices.map((p) => (
+                <li>
+                  <input
+                    id='fs_price_1'
+                    type='radio'
+                    name='fs_price_wroup'
+                    onClick={() => setPrice({ from: p.from, to: p.to })}
+                  />
+                  <label for={p.name}>
+                    ${p.from} - ${p.to}
+                  </label>
+                </li>
+              ))}
             </ul>
           </form>
         </div>
 
+        {/* color */}
         <div class='fs_widget fs_color_list'>
           <h3 class='fs_widget_title text-uppercase'>Color filter</h3>
           <form action='#'>
             <ul class='ul_li clearfix'>
-              <li>
-                <input
-                  type='radio'
-                  name='fs_color_froup'
-                  style={{ backgroundColor: "#ffa037" }}
-                />
-              </li>
-              <li>
-                <input
-                  type='radio'
-                  name='fs_color_froup'
-                  style={{ backgroundColor: "#6c7ae0" }}
-                />
-              </li>
-              <li>
-                <input
-                  type='radio'
-                  name='fs_color_froup'
-                  style={{ backgroundColor: "#f23226" }}
-                />
-              </li>
-              <li>
-                <input
-                  type='radio'
-                  name='fs_color_froup'
-                  data-bg-color='#828664'
-                />
-              </li>
-              <li>
-                <input
-                  type='radio'
-                  name='fs_color_froup'
-                  data-bg-color='#68a3c2'
-                />
-              </li>
-              <li>
-                <input
-                  type='radio'
-                  name='fs_color_froup'
-                  data-bg-color='#009122'
-                />
-              </li>
-              <li>
-                <input
-                  type='radio'
-                  name='fs_color_froup'
-                  data-bg-color='#0099f7'
-                />
-              </li>
-              <li>
-                <input
-                  type='radio'
-                  name='fs_color_froup'
-                  data-bg-color='#bb8c80'
-                />
-              </li>
-              <li>
-                <input
-                  type='radio'
-                  name='fs_color_froup'
-                  data-bg-color='#ffa037'
-                />
-              </li>
-              <li>
-                <input
-                  type='radio'
-                  name='fs_color_froup'
-                  data-bg-color='#875546'
-                />
-              </li>
-              <li>
-                <input
-                  type='radio'
-                  name='fs_color_froup'
-                  data-bg-color='#f74877'
-                />
-              </li>
-              <li>
-                <input
-                  type='radio'
-                  name='fs_color_froup'
-                  data-bg-color='#1f1e29'
-                />
-              </li>
-              <li>
-                <input
-                  type='radio'
-                  name='fs_color_froup'
-                  data-bg-color='#dddddd'
-                />
-              </li>
+              {colors.map((color) => (
+                <li>
+                  <input
+                    type='radio'
+                    name='fs_color_froup'
+                    onClick={() => setColor(color.name)}
+                    style={{ backgroundColor: color.color }}
+                  />
+                </li>
+              ))}
             </ul>
           </form>
         </div>
 
+        {/* size */}
         <div class='fs_widget fs_size_list'>
           <h3 class='fs_widget_title text-uppercase'>Size filter</h3>
           <form action='#'>
             <ul class='ul_li clearfix'>
-              <li>
-                <label for='fs_size_1'>
-                  <input id='fs_size_1' type='radio' name='fs_size_group' />
-                  XS
-                </label>
-              </li>
-              <li>
-                <label for='fs_size_2'>
-                  <input id='fs_size_2' type='radio' name='fs_size_group' />S
-                </label>
-              </li>
-              <li>
-                <label for='fs_size_3'>
-                  <input id='fs_size_3' type='radio' name='fs_size_group' />M
-                </label>
-              </li>
-              <li>
-                <label for='fs_size_4'>
-                  <input id='fs_size_4' type='radio' name='fs_size_group' />L
-                </label>
-              </li>
-              <li>
-                <label for='fs_size_5'>
-                  <input id='fs_size_5' type='radio' name='fs_size_group' />
-                  XL
-                </label>
-              </li>
-              <li>
-                <label for='fs_size_6'>
-                  <input id='fs_size_6' type='radio' name='fs_size_group' />
-                  XXL
-                </label>
-              </li>
+              {sizes.map((size, index) => (
+                <li>
+                  <label for={`fs_size_${index}`}>
+                    <input
+                      id={`fs_size_${index}`}
+                      type='radio'
+                      name='fs_size_group'
+                      onClick={() => setSize(size)}
+                    />
+                    {size}
+                  </label>
+                </li>
+              ))}
             </ul>
           </form>
         </div>
 
+        {/* related posts */}
         <div class='fs_widget fs_realted_post'>
           <h3 class='fs_widget_title text-uppercase'>Your may also like</h3>
           <div class='small_blog'>

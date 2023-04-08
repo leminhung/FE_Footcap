@@ -1,9 +1,14 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromCart } from "src/store/cart/cart.action";
 
 export default function Cart() {
-  const cartItemsFromStorage = localStorage.getItem("cartItems")
-    ? JSON.parse(localStorage.getItem("cartItems"))
-    : [];
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
+
+  const handleDeleteItem = (id) => {
+    dispatch(removeFromCart(id));
+  };
 
   return (
     <main>
@@ -13,7 +18,12 @@ export default function Cart() {
           backgroundImage: `url(/assets/images/slider/classic_ecommerce/test.png)`,
         }}
       >
-        <div class='overlay' data-bg-color='#1d1d1d'></div>
+        <div
+          class='overlay'
+          style={{
+            backgroundColor: "#1d1d1d",
+          }}
+        ></div>
         <div class='container'>
           <h1 class='page_title text-white'>Cart Page</h1>
           <ul class='breadcrumb_nav ul_li_center clearfix'>
@@ -38,42 +48,44 @@ export default function Cart() {
                 </tr>
               </thead>
               <tbody>
-                {cartItemsFromStorage.map((item) => (
-                  <tr>
-                    <td>
-                      <div class='cart_product'>
-                        <div class='item_image'>
-                          <img
-                            src='/assets/images/cart/img_04.jpg'
-                            alt='image_not_found'
-                          />
+                {cart.cartItems.length > 0 &&
+                  cart.cartItems.map((item) => (
+                    <tr>
+                      <td>
+                        <div key={item.product} class='cart_product'>
+                          <div class='item_image'>
+                            <img src={item?.image} alt='image_not_found' />
+                          </div>
+                          <div class='item_content'>
+                            <h4 class='item_title'>{item?.name}</h4>
+                            <span class='item_type'>Clothes</span>
+                          </div>
+                          <button
+                            type='button'
+                            class='remove_btn'
+                            onClick={() => handleDeleteItem(item.product)}
+                          >
+                            <i class='fal fa-times'></i>
+                          </button>
                         </div>
-                        <div class='item_content'>
-                          <h4 class='item_title'>Men's Polo T-shirt</h4>
-                          <span class='item_type'>Clothes</span>
+                      </td>
+                      <td>
+                        <span class='price_text'>${item?.price}</span>
+                      </td>
+                      <td>
+                        <div class='quantity_input'>
+                          <form action='#'>
+                            <span class='input_number_decrement'>–</span>
+                            <input class='input_number' type='text' value='2' />
+                            <span class='input_number_increment'>+</span>
+                          </form>
                         </div>
-                        <button type='button' class='remove_btn'>
-                          <i class='fal fa-times'></i>
-                        </button>
-                      </div>
-                    </td>
-                    <td>
-                      <span class='price_text'>$69.00</span>
-                    </td>
-                    <td>
-                      <div class='quantity_input'>
-                        <form action='#'>
-                          <span class='input_number_decrement'>–</span>
-                          <input class='input_number' type='text' value='2' />
-                          <span class='input_number_increment'>+</span>
-                        </form>
-                      </div>
-                    </td>
-                    <td>
-                      <span class='total_price'>$138.00</span>
-                    </td>
-                  </tr>
-                ))}
+                      </td>
+                      <td>
+                        <span class='total_price'>${item.price}</span>
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>
@@ -122,10 +134,10 @@ export default function Cart() {
                 </h3>
                 <ul class='ul_li_block clearfix'>
                   <li>
-                    <span>Subtotal</span> <span>$197.99</span>
+                    <span>Subtotal</span> <span>${cart.subtotal}</span>
                   </li>
                   <li>
-                    <span>Total</span> <span>$197.99</span>
+                    <span>Total</span> <span>${cart.total}</span>
                   </li>
                 </ul>
                 <a href='shop_checkout.html' class='custom_btn bg_success'>

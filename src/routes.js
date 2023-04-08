@@ -15,6 +15,7 @@ import ContactUs from "src/containers/ContactUs/ContactUs";
 import Profile from "src/containers/Profile/Profile";
 import ProfileEdit from "src/containers/Profile/ProfileEdit";
 import ChangePassword from "src/containers/ChangePassword/ChangePassword";
+import ProductDetail from "src/containers/ProductDetail/ProductDetail";
 
 const routes = () => [
   {
@@ -32,6 +33,10 @@ const routes = () => [
   {
     path: "signup",
     element: <SignUp />,
+  },
+  {
+    path: "products/:id",
+    element: <ProductDetail />,
   },
   {
     path: "blog",

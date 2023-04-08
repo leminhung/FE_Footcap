@@ -7,12 +7,12 @@ import {
 } from "src/constants/cartConstants";
 
 export const cartReducer = (
-  state = { cartItems: [], shippingAddress: {} },
+  state = { cartItems: [], shippingAddress: {}, subtotal: 0, total: 0 },
   action
 ) => {
   switch (action.type) {
     case CART_ADD_ITEM:
-      const item = action.payload;
+      let item = action.payload;
 
       const existItem = state.cartItems.find((x) => x.product === item.product);
 
@@ -24,15 +24,22 @@ export const cartReducer = (
           ),
         };
       } else {
+        let subtotal = state.subtotal + item.price;
         return {
           ...state,
           cartItems: [...state.cartItems, item],
+          subtotal,
+          total: Math.round((subtotal * 0.9 + Number.EPSILON) * 100) / 100,
         };
       }
     case CART_REMOVE_ITEM:
+      item = state.cartItems.find((x) => x.product === action.payload);
+      let subtotal = state.subtotal - item.price;
       return {
         ...state,
         cartItems: state.cartItems.filter((x) => x.product !== action.payload),
+        subtotal,
+        total: Math.round((subtotal * 0.9 + Number.EPSILON) * 100) / 100,
       };
     case CART_SAVE_SHIPPING_ADDRESS:
       return {

@@ -1,9 +1,14 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromCart } from "src/store/cart/cart.action";
 
 export default function SideBar() {
-  const cartItemsFromStorage = localStorage.getItem("cartItems")
-    ? JSON.parse(localStorage.getItem("cartItems"))
-    : [];
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
+
+  const handleDeleteItem = (id) => {
+    dispatch(removeFromCart(id));
+  };
 
   return (
     <div className='sidebar-menu-wrapper'>
@@ -13,41 +18,39 @@ export default function SideBar() {
         </button>
 
         <ul className='cart_items_list ul_li_block mb_30 clearfix'>
-          {cartItemsFromStorage.map((item) => (
-            <li>
-              <div className='item_image'>
-                <img
-                  src='/assets/images/cart/img_01.jpg'
-                  alt='image_not_found'
-                />
-              </div>
-              <div className='item_content'>
-                <h4 className='item_title'>Yellow Blouse</h4>
-                <span className='item_price'>$30.00</span>
-              </div>
-              <button type='button' className='remove_btn'>
-                <i className='fal fa-trash-alt'></i>
-              </button>
-            </li>
-          ))}
+          {cart.cartItems.length > 0 &&
+            cart.cartItems.map((item) => (
+              <li key={item.product}>
+                <div className='item_image'>
+                  <img src={item?.image} alt='image_not_found' />
+                </div>
+                <div className='item_content'>
+                  <h4 className='item_title'>{item?.name}</h4>
+                  <span className='item_price'>${item?.price}</span>
+                </div>
+                <button
+                  type='button'
+                  className='remove_btn'
+                  onClick={() => handleDeleteItem(item.product)}
+                >
+                  <i className='fal fa-trash-alt'></i>
+                </button>
+              </li>
+            ))}
         </ul>
 
         <ul className='total_price ul_li_block mb_30 clearfix'>
           <li>
             <span>Subtotal:</span>
-            <span>$90</span>
+            <span>${cart.subtotal}</span>
           </li>
           <li>
-            <span>Vat 5%:</span>
-            <span>$4.5</span>
-          </li>
-          <li>
-            <span>Discount 20%:</span>
-            <span>- $18.9</span>
+            <span>Discount 10%:</span>
+            <span>- ${cart.subtotal * 0.1}</span>
           </li>
           <li>
             <span>Total:</span>
-            <span>$75.6</span>
+            <span>${cart.total}</span>
           </li>
         </ul>
 

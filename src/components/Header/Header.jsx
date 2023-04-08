@@ -5,12 +5,9 @@ import { logout } from "src/store/user/user.action";
 
 export default function Header() {
   const dispatch = useDispatch();
-
-  const cartItemsFromStorage = localStorage.getItem("cartItems")
-    ? JSON.parse(localStorage.getItem("cartItems"))
-    : [];
-
+  const cartItems = useSelector((state) => state.cart.cartItems);
   const userLogin = useSelector((state) => state.userLogin);
+
   const { loading, error, userInfo } = userLogin;
 
   const logoutHandler = () => {
@@ -89,9 +86,7 @@ export default function Header() {
                   <li>
                     <button type='button' className='cart_btn'>
                       <i className='fal fa-shopping-cart'></i>
-                      <span className='btn_badge'>
-                        {cartItemsFromStorage.length}
-                      </span>
+                      <span className='btn_badge'>{cartItems.length}</span>
                     </button>
                   </li>
                   <li>
@@ -809,9 +804,7 @@ export default function Header() {
                 <li>
                   <button type='button' className='cart_btn'>
                     <i className='fal fa-shopping-cart'></i>
-                    <span className='btn_badge'>
-                      {cartItemsFromStorage.length}
-                    </span>
+                    <span className='btn_badge'>{cartItems.length}</span>
                   </button>
                 </li>
               </ul>

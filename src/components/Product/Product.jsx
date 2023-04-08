@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import ImageItem from "src/components/Image/ImageItem";
 import { setProduct } from "src/store/product/product.action";
-import { addItemToCart } from "src/store/cart/cart.action";
+import { addToCart } from "src/store/cart/cart.action";
 
 const itemDisplay = {
   active: "tab-pane fade active",
@@ -34,7 +34,7 @@ const ProductActionButtons = ({ product }) => {
 
   const handleAction = (title) => {
     if (title.includes("Cart")) {
-      dispatch(addItemToCart(product));
+      dispatch(addToCart(product));
     }
   };
   return (
@@ -74,7 +74,7 @@ const ProductActionButtons = ({ product }) => {
 };
 
 const Product = (props) => {
-  const { product, index } = props;
+  const { product, index, setRerender, rerender } = props;
 
   return (
     <div className='col-lg-3 col-md-4 col-sm-6 col-xs-12'>

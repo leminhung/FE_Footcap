@@ -1,91 +1,55 @@
-// import axios from "axios";
 import {
-  ADD_TO_CART,
-  REMOVE_TO_CART,
-  // SAVE_SHIPPING_ADDRESS,
-  // CART_EMPTY,
-  // CLEAR_SHIPPING_ADDRESS,
-  // GET_CART_PRODUCTS,
-  ORDER_CART,
+  CART_ADD_ITEM,
+  CART_REMOVE_ITEM,
+  CART_SAVE_SHIPPING_ADDRESS,
+  CART_SAVE_PAYMENT_METHOD,
+  CART_CLEAR_ITEMS,
 } from "src/constants/cartConstants";
 
-export const cartReducer = (state = { cartItems: [] }, action) => {
-  try {
-    switch (action.type) {
-      case ADD_TO_CART: {
-        const item = action.payload;
-        const isItemExist = state.cartItems.find(
-          (i) =>
-            i.product === item.product &&
-            i.size === item.size &&
-            i.color === item.color
-        );
+export const cartReducer = (
+  state = { cartItems: [], shippingAddress: {} },
+  action
+) => {
+  switch (action.type) {
+    case CART_ADD_ITEM:
+      const item = action.payload;
 
-        if (isItemExist) {
-          const productList = state.cartItems.map((i) =>
-            i.product === item.product &&
-            i.size === item.size &&
-            i.color === item.color
-              ? { ...i, ...item }
-              : i
-          );
-          localStorage.setItem(ORDER_CART, JSON.stringify(productList));
-          return {
-            ...state,
-            cartItems: productList,
-          };
-        }
+      const existItem = state.cartItems.find((x) => x.product === item.product);
 
-        const productList = [...state.cartItems, item];
-        localStorage.setItem(ORDER_CART, JSON.stringify(productList));
+      if (existItem) {
         return {
           ...state,
-          cartItems: productList,
-        };
-      }
-
-      case REMOVE_TO_CART: {
-        const item = action.payload;
-        return {
-          ...state,
-          cartItems: state.cartItems.filter(
-            (i) =>
-              !(
-                i.product === item.product &&
-                i.size === item.size &&
-                i.color === item.color
-              )
+          cartItems: state.cartItems.map((x) =>
+            x.product === existItem.product ? item : x
           ),
         };
+      } else {
+        return {
+          ...state,
+          cartItems: [...state.cartItems, item],
+        };
       }
-
-      // case SAVE_SHIPPING_ADDRESS:
-      //   return {
-      //     ...state,
-      //     shippingAddress: action.payload,
-      //   };
-
-      // case CLEAR_SHIPPING_ADDRESS:
-      //   return {
-      //     ...state,
-      //     shippingAddress: {},
-      //   };
-
-      // case CART_EMPTY:
-      //   return {
-      //     ...state,
-      //     cartItems: [],
-      //   };
-      // case GET_CART_PRODUCTS: {
-      //   return {
-      //     ...state,
-      //     cartItems: action.payload,
-      //   };
-      // }
-      default:
-        return state;
-    }
-  } catch (err) {
-    console.log(err);
+    case CART_REMOVE_ITEM:
+      return {
+        ...state,
+        cartItems: state.cartItems.filter((x) => x.product !== action.payload),
+      };
+    case CART_SAVE_SHIPPING_ADDRESS:
+      return {
+        ...state,
+        shippingAddress: action.payload,
+      };
+    case CART_SAVE_PAYMENT_METHOD:
+      return {
+        ...state,
+        paymentMethod: action.payload,
+      };
+    case CART_CLEAR_ITEMS:
+      return {
+        ...state,
+        cartItems: [],
+      };
+    default:
+      return state;
   }
 };

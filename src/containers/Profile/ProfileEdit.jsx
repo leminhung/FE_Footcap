@@ -6,7 +6,7 @@ const ProfileEdit = () => {
   return (
     <div class='profile_form'>
       <div class='section-content col-md-12'>
-        <h1 class='text-center col-md-12'>Thông tin cá nhân</h1>
+        <h1 class='text-center col-md-12'>Personal Inforamation</h1>
         <div class='clearfix'></div>
         <div class='col-sm-2'></div>
         <form
@@ -17,7 +17,7 @@ const ProfileEdit = () => {
         >
           <div className='left'>
             <div class='form-group clearfix'>
-              <label class='col-sm-3 control-label'> Họ tên: </label>
+              <label class='col-sm-3 control-label'> Username: </label>
               <div class='col-lg-9'>
                 <input
                   type='text'
@@ -30,7 +30,7 @@ const ProfileEdit = () => {
               </div>
             </div>
             <div class='form-group clearfix'>
-              <label class='col-sm-3 control-label'>Ngày sinh: </label>
+              <label class='col-sm-3 control-label'>Date born: </label>
               <div class='col-lg-9'>
                 <input
                   type='text'
@@ -44,7 +44,7 @@ const ProfileEdit = () => {
               </div>
             </div>
             <div class='form-group clearfix'>
-              <label class='col-sm-3 control-label'>Điện thoại:</label>
+              <label class='col-sm-3 control-label'>Phone number:</label>
               <div class='col-lg-9'>
                 <input
                   type='text'
@@ -72,7 +72,7 @@ const ProfileEdit = () => {
               </div>
             </div>
             <div class='form-group clearfix'>
-              <label class='col-sm-3 control-label'>Tỉnh/Thành:</label>
+              <label class='col-sm-3 control-label'>Province/City:</label>
               <div class='col-lg-9'>
                 <select
                   id='cityId'
@@ -148,7 +148,7 @@ const ProfileEdit = () => {
             </div>
             <div class='form-group clearfix'>
               <label for='districtId' class='col-sm-3 control-label'>
-                Quận/Huyện:{" "}
+                District:{" "}
               </label>
               <div class='col-lg-9'>
                 <select

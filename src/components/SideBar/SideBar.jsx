@@ -1,6 +1,10 @@
 import React from "react";
 
 export default function SideBar() {
+  const cartItemsFromStorage = localStorage.getItem("cartItems")
+    ? JSON.parse(localStorage.getItem("cartItems"))
+    : [];
+
   return (
     <div className='sidebar-menu-wrapper'>
       <div className='cart_sidebar'>
@@ -9,51 +13,23 @@ export default function SideBar() {
         </button>
 
         <ul className='cart_items_list ul_li_block mb_30 clearfix'>
-          <li>
-            <div className='item_image'>
-              <img
-                src='../assets/images/cart/img_01.jpg'
-                alt='image_not_found'
-              />
-            </div>
-            <div className='item_content'>
-              <h4 className='item_title'>Yellow Blouse</h4>
-              <span className='item_price'>$30.00</span>
-            </div>
-            <button type='button' className='remove_btn'>
-              <i className='fal fa-trash-alt'></i>
-            </button>
-          </li>
-          <li>
-            <div className='item_image'>
-              <img
-                src='../assets/images/cart/img_01.jpg'
-                alt='image_not_found'
-              />
-            </div>
-            <div className='item_content'>
-              <h4 className='item_title'>Yellow Blouse</h4>
-              <span className='item_price'>$30.00</span>
-            </div>
-            <button type='button' className='remove_btn'>
-              <i className='fal fa-trash-alt'></i>
-            </button>
-          </li>
-          <li>
-            <div className='item_image'>
-              <img
-                src='../assets/images/cart/img_01.jpg'
-                alt='image_not_found'
-              />
-            </div>
-            <div className='item_content'>
-              <h4 className='item_title'>Yellow Blouse</h4>
-              <span className='item_price'>$30.00</span>
-            </div>
-            <button type='button' className='remove_btn'>
-              <i className='fal fa-trash-alt'></i>
-            </button>
-          </li>
+          {cartItemsFromStorage.map((item) => (
+            <li>
+              <div className='item_image'>
+                <img
+                  src='../assets/images/cart/img_01.jpg'
+                  alt='image_not_found'
+                />
+              </div>
+              <div className='item_content'>
+                <h4 className='item_title'>Yellow Blouse</h4>
+                <span className='item_price'>$30.00</span>
+              </div>
+              <button type='button' className='remove_btn'>
+                <i className='fal fa-trash-alt'></i>
+              </button>
+            </li>
+          ))}
         </ul>
 
         <ul className='total_price ul_li_block mb_30 clearfix'>

@@ -1,6 +1,6 @@
 import React from "react";
 
-import HeaderDark from "src/components/Header/HeaderDark";
+import Header from "src/components/Header/Header";
 import BackToTop from "src/components/BackToTop/BackToTop";
 import SideBar from "src/components/SideBar/SideBar";
 import Footer from "src/components/Footer/Footer";
@@ -10,7 +10,7 @@ export default function ShoppingCart() {
     <div>
       <div id='thetop'></div>
       <BackToTop />
-      <HeaderDark />
+      <Header />
       <main>
         <SideBar />
         {/* <!-- breadcrumb_section - start
@@ -18,7 +18,7 @@ export default function ShoppingCart() {
         <section
           class='breadcrumb_section text-white text-center text-uppercase d-flex align-items-end clearfix'
           style={{
-            backgroundImage: `url(../assets/images/breadcrumb/bg_01.jpg)`,
+            backgroundImage: `url(../assets/images/slider/classic_ecommerce/test.png)`,
           }}
         >
           <div class='overlay' data-bg-color='#1d1d1d'></div>

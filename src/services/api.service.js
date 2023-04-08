@@ -1,6 +1,5 @@
 import axios from "axios";
 // import queryString from "qs";
-console.log(process.env.REACT_APP_BASE_URL);
 
 const axiosClient = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,

@@ -6,7 +6,7 @@ export default function BlogDetail() {
       <section
         className='breadcrumb_section text-white text-center text-uppercase d-flex align-items-end clearfix bg-fit'
         style={{
-          backgroundImage: `url(../assets/images/breadcrumb/bg_01.jpg)`,
+          backgroundImage: `url(../assets/images/slider/classic_ecommerce/test.png)`,
         }}
       >
         <div

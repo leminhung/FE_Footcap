@@ -48,7 +48,10 @@ const routes = () => [
   {
     path: "profile",
     element: <Profile />,
-    children: [{ path: "edit", element: <ProfileEdit /> }],
+  },
+  {
+    path: "profile/edit",
+    element: <ProfileEdit />,
   },
   {
     path: "product-details",

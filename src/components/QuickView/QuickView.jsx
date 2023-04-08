@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const QuickView = () => {
-  const { product } = useSelector((state) => state.product);
+  const { product = {} } = useSelector((state) => state.product);
   console.log(product);
   return (
     <div

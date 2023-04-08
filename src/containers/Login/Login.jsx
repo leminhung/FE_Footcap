@@ -1,25 +1,50 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import { login } from "src/store/user/user.action";
 
 import "./Login.css";
 
-export default function Login() {
+const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading, error, userInfo } = userLogin;
+  console.log(userInfo);
+
+  let history = useNavigate();
+  useEffect(() => {
+    if (userInfo) {
+      history("/");
+    }
+  }, [history, userInfo]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(login(email, password));
+  };
+
   return (
     <main>
       <section
-        class='breadcrumb_section text-white text-center text-uppercase d-flex align-items-end clearfix bg-fit'
+        className='breadcrumb_section text-white text-center text-uppercase d-flex align-items-end clearfix bg-fit'
         style={{
-          backgroundImage: `url(../assets/images/breadcrumb/bg_01.jpg)`,
+          backgroundImage: `url(../assets/images/slider/classic_ecommerce/test.png)`,
         }}
       >
         <div
-          class='overlay'
+          className='overlay'
           style={{
             backgroundColor: `#1d1d1d`,
           }}
         ></div>
-        <div class='container'>
-          <h1 class='page_title text-white'>Login Page</h1>
-          <ul class='breadcrumb_nav ul_li_center clearfix'>
+        <div className='container'>
+          <h1 className='page_title text-white'>Login Page</h1>
+          <ul className='breadcrumb_nav ul_li_center clearfix'>
             <li>
               <a href='#!'>Home</a>
             </li>
@@ -29,60 +54,63 @@ export default function Login() {
         </div>
       </section>
       <section
-        class='register_section sec_ptb_140 has_overlay parallaxie clearfix bg-fit bg-fit-signin'
+        className='register_section sec_ptb_140 has_overlay parallaxie clearfix bg-fit bg-fit-signin'
         style={{
           backgroundImage: `url(../assets/images/backgrounds/bg_22.jpg)`,
         }}
       >
-        <div class='overlay' data-bg-color='rgba(55, 55, 55, 0.75)'></div>
-        <div class='container'>
+        <div className='overlay' data-bg-color='rgba(55, 55, 55, 0.75)'></div>
+        <div className='container'>
           <div
-            class='reg_form_wrap login_form'
+            className='reg_form_wrap login_form'
             style={{
               backgroundImage: `url(../assets/images/reg_bg_01.png)`,
               backgroundRepeat: "no-repeat",
             }}
           >
             <form action='#'>
-              <div class='reg_form'>
-                <h2 class='form_title text-uppercase text-center'>Login</h2>
-                <div class='form_item'>
+              <div className='reg_form'>
+                <h2 className='form_title text-uppercase text-center'>Login</h2>
+                <div className='form_item'>
                   <input
-                    id='username_input'
+                    id='email_input'
                     type='text'
-                    name='username'
-                    placeholder='username'
+                    name='email'
+                    placeholder='email'
+                    onChange={(e) => setEmail(e.target.value)}
                   />
-                  <label for='username_input'>
-                    <i class='fal fa-user'></i>
+                  <label for='email_input'>
+                    <i className='fal fa-user'></i>
                   </label>
                 </div>
-                <div class='form_item'>
+                <div className='form_item'>
                   <input
                     id='password_input'
                     type='password'
                     name='password'
                     placeholder='password'
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                   <label for='password_input'>
-                    <i class='fal fa-unlock-alt'></i>
+                    <i className='fal fa-unlock-alt'></i>
                   </label>
                 </div>
-                <a class='forget_pass text-uppercase mb_30' href='#!'>
+                <a className='forget_pass text-uppercase mb_30' href='#!'>
                   Forgot password?
                 </a>
                 <button
                   type='submit'
-                  class='custom_btn bg_default_red text-uppercase mb_50'
+                  className='custom_btn bg_default_red text-uppercase mb_50'
+                  onClick={(e) => submitHandler(e)}
                 >
                   Login
                 </button>
 
-                <div class='social_wrap mb_100'>
-                  <h4 class='small_title_text mb_15 text-center text-uppercase'>
+                <div className='social_wrap mb_100'>
+                  <h4 className='small_title_text mb_15 text-center text-uppercase'>
                     Or Login With
                   </h4>
-                  <ul class='circle_social_links ul_li_center clearfix'>
+                  <ul className='circle_social_links ul_li_center clearfix'>
                     <li>
                       <a
                         style={{
@@ -90,7 +118,7 @@ export default function Login() {
                         }}
                         href='#!'
                       >
-                        <i class='fab fa-facebook-f'></i>
+                        <i className='fab fa-facebook-f'></i>
                       </a>
                     </li>
                     <li>
@@ -100,7 +128,7 @@ export default function Login() {
                         }}
                         href='#!'
                       >
-                        <i class='fab fa-twitter'></i>
+                        <i className='fab fa-twitter'></i>
                       </a>
                     </li>
                     <li>
@@ -110,17 +138,20 @@ export default function Login() {
                         }}
                         href='#!'
                       >
-                        <i class='fab fa-google-plus-g'></i>
+                        <i className='fab fa-google-plus-g'></i>
                       </a>
                     </li>
                   </ul>
                 </div>
 
-                <div class='create_account text-center'>
-                  <h4 class='small_title_text text-center text-uppercase'>
+                <div className='create_account text-center'>
+                  <h4 className='small_title_text text-center text-uppercase'>
                     Have not account yet?
                   </h4>
-                  <a class='create_account_btn text-uppercase' href='#!'>
+                  <a
+                    className='create_account_btn text-uppercase'
+                    href='/signup'
+                  >
                     Sign Up
                   </a>
                 </div>
@@ -131,4 +162,6 @@ export default function Login() {
       </section>
     </main>
   );
-}
+};
+
+export default Login;

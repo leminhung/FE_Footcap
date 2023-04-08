@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { logout } from "src/store/user/user.action";
 
 export default function Header() {
+  const dispatch = useDispatch();
+
+  const cartItemsFromStorage = localStorage.getItem("cartItems")
+    ? JSON.parse(localStorage.getItem("cartItems"))
+    : [];
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading, error, userInfo } = userLogin;
+
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
+
   return (
     <header className='header_section classic_ecommerce_header sticky_header clearfix'>
       <div className='header_top bg_black text-white clearfix'>
@@ -73,7 +89,9 @@ export default function Header() {
                   <li>
                     <button type='button' className='cart_btn'>
                       <i className='fal fa-shopping-cart'></i>
-                      <span className='btn_badge'>2</span>
+                      <span className='btn_badge'>
+                        {cartItemsFromStorage.length}
+                      </span>
                     </button>
                   </li>
                   <li>
@@ -726,47 +744,74 @@ export default function Header() {
                   >
                     <i className='fal fa-user'></i>
                   </button>
+
+                  {/* user */}
                   <div
                     id='use_deropdown'
                     className='collapse_dropdown collapse'
                   >
-                    <div className='dropdown_content'>
-                      <div className='profile_info clearfix'>
-                        <div className='user_thumbnail'>
-                          <img
-                            src='../assets/images/meta/img_01.png'
-                            alt='thumbnail_not_found'
-                          />
+                    {userInfo ? (
+                      <div className='dropdown_content'>
+                        <div className='profile_info clearfix'>
+                          <div className='user_thumbnail'>
+                            <img
+                              src={userInfo?.actor?.avatar}
+                              alt='thumbnail_not_found'
+                            />
+                          </div>
+                          <div className='user_content'>
+                            <h4 className='user_name'>
+                              {userInfo?.actor?.name}
+                            </h4>
+                            <span className='user_title'>
+                              {userInfo?.actor.role === "user"
+                                ? "user"
+                                : "admin"}
+                            </span>
+                          </div>
                         </div>
-                        <div className='user_content'>
-                          <h4 className='user_name'>Jone Doe</h4>
-                          <span className='user_title'>Seller</span>
-                        </div>
+                        <ul className='settings_options ul_li_block clearfix'>
+                          <li>
+                            <a href='/profile'>
+                              <i className='fal fa-user-circle'></i> Profile
+                            </a>
+                          </li>
+                          <li>
+                            <a href='/profile/edit'>
+                              <i className='fal fa-user-cog'></i> Settings
+                            </a>
+                          </li>
+                          <li onClick={() => logoutHandler()}>
+                            <a href='#!'>
+                              <i className='fal fa-sign-out-alt'></i> Logout
+                            </a>
+                          </li>
+                        </ul>
                       </div>
-                      <ul className='settings_options ul_li_block clearfix'>
-                        <li>
-                          <a href='#!'>
-                            <i className='fal fa-user-circle'></i> Profile
-                          </a>
-                        </li>
-                        <li>
-                          <a href='#!'>
-                            <i className='fal fa-user-cog'></i> Settings
-                          </a>
-                        </li>
-                        <li>
-                          <a href='#!'>
-                            <i className='fal fa-sign-out-alt'></i> Logout
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
+                    ) : (
+                      <div className='dropdown_content'>
+                        <ul className='settings_options ul_li_block clearfix'>
+                          <li>
+                            <a href='/signin'>
+                              <i className='fal fa-user-circle'></i> Sign in
+                            </a>
+                          </li>
+                          <li>
+                            <a href='/signup'>
+                              <i className='fal fa-user-cog'></i> Sign up
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 </li>
                 <li>
                   <button type='button' className='cart_btn'>
                     <i className='fal fa-shopping-cart'></i>
-                    <span className='btn_badge'>2</span>
+                    <span className='btn_badge'>
+                      {cartItemsFromStorage.length}
+                    </span>
                   </button>
                 </li>
               </ul>

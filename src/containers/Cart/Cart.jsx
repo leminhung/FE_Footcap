@@ -1,12 +1,16 @@
 import React from "react";
 
 export default function Cart() {
+  const cartItemsFromStorage = localStorage.getItem("cartItems")
+    ? JSON.parse(localStorage.getItem("cartItems"))
+    : [];
+
   return (
     <main>
       <section
         class='breadcrumb_section text-white text-center text-uppercase d-flex align-items-end clearfix bg-fit'
         style={{
-          backgroundImage: `url(../assets/images/breadcrumb/bg_01.jpg)`,
+          backgroundImage: `url(../assets/images/slider/classic_ecommerce/test.png)`,
         }}
       >
         <div class='overlay' data-bg-color='#1d1d1d'></div>
@@ -34,110 +38,42 @@ export default function Cart() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    <div class='cart_product'>
-                      <div class='item_image'>
-                        <img
-                          src='../assets/images/cart/img_04.jpg'
-                          alt='image_not_found'
-                        />
+                {cartItemsFromStorage.map((item) => (
+                  <tr>
+                    <td>
+                      <div class='cart_product'>
+                        <div class='item_image'>
+                          <img
+                            src='../assets/images/cart/img_04.jpg'
+                            alt='image_not_found'
+                          />
+                        </div>
+                        <div class='item_content'>
+                          <h4 class='item_title'>Men's Polo T-shirt</h4>
+                          <span class='item_type'>Clothes</span>
+                        </div>
+                        <button type='button' class='remove_btn'>
+                          <i class='fal fa-times'></i>
+                        </button>
                       </div>
-                      <div class='item_content'>
-                        <h4 class='item_title'>Men's Polo T-shirt</h4>
-                        <span class='item_type'>Clothes</span>
+                    </td>
+                    <td>
+                      <span class='price_text'>$69.00</span>
+                    </td>
+                    <td>
+                      <div class='quantity_input'>
+                        <form action='#'>
+                          <span class='input_number_decrement'>–</span>
+                          <input class='input_number' type='text' value='2' />
+                          <span class='input_number_increment'>+</span>
+                        </form>
                       </div>
-                      <button type='button' class='remove_btn'>
-                        <i class='fal fa-times'></i>
-                      </button>
-                    </div>
-                  </td>
-                  <td>
-                    <span class='price_text'>$69.00</span>
-                  </td>
-                  <td>
-                    <div class='quantity_input'>
-                      <form action='#'>
-                        <span class='input_number_decrement'>–</span>
-                        <input class='input_number' type='text' value='2' />
-                        <span class='input_number_increment'>+</span>
-                      </form>
-                    </div>
-                  </td>
-                  <td>
-                    <span class='total_price'>$138.00</span>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <div class='cart_product'>
-                      <div class='item_image'>
-                        <img
-                          src='../assets/images/cart/img_05.jpg'
-                          alt='image_not_found'
-                        />
-                      </div>
-                      <div class='item_content'>
-                        <h4 class='item_title'>Men's Polo T-shirt</h4>
-                        <span class='item_type'>Clothes</span>
-                      </div>
-                      <button type='button' class='remove_btn'>
-                        <i class='fal fa-times'></i>
-                      </button>
-                    </div>
-                  </td>
-                  <td>
-                    <span class='price_text'>$23.00</span>
-                  </td>
-                  <td>
-                    <div class='quantity_input'>
-                      <form action='#'>
-                        <span class='input_number_decrement'>–</span>
-                        <input class='input_number' type='text' value='1' />
-                        <span class='input_number_increment'>+</span>
-                      </form>
-                    </div>
-                  </td>
-                  <td>
-                    <span class='total_price'>$23.00</span>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <div class='cart_product'>
-                      <div class='item_image'>
-                        <img
-                          src='../assets/images/cart/img_06.jpg'
-                          alt='image_not_found'
-                        />
-                      </div>
-                      <div class='item_content'>
-                        <h4 class='item_title'>Men's Polo T-shirt</h4>
-                        <span class='item_type'>Clothes</span>
-                      </div>
-                      <button type='button' class='remove_btn'>
-                        <i class='fal fa-times'></i>
-                      </button>
-                    </div>
-                  </td>
-                  <td>
-                    <span class='price_text'>$36.00</span>
-                  </td>
-                  <td>
-                    <div class='quantity_input'>
-                      <form action='#'>
-                        <span class='input_number_decrement'>–</span>
-                        <input class='input_number' type='text' value='1' />
-                        <span class='input_number_increment'>+</span>
-                      </form>
-                    </div>
-                  </td>
-                  <td>
-                    <span class='total_price'>$36.00</span>
-                  </td>
-                </tr>
+                    </td>
+                    <td>
+                      <span class='total_price'>$138.00</span>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>

@@ -35,7 +35,7 @@ const routes = () => [
     element: <SignUp />,
   },
   {
-    path: "products/:id",
+    path: "products/:slug",
     element: <ProductDetail />,
   },
   {

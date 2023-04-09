@@ -63,7 +63,10 @@ const cartItemsFromStorage = localStorage.getItem("cartItems")
 const subtotal = localStorage.getItem("subtotal")
   ? JSON.parse(localStorage.getItem("subtotal"))
   : 0;
-const total = subtotal * 0.9;
+
+const total = localStorage.getItem("total")
+  ? JSON.parse(localStorage.getItem("total"))
+  : 0;
 
 // user
 const userInfoFromStorage = localStorage.getItem("userInfo")

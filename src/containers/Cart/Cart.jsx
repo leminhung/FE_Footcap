@@ -73,7 +73,7 @@ export default function Cart() {
                         <span class='price_text'>${item?.price}</span>
                       </td>
                       <td>
-                        <div class='quantity_input'>
+                        <div class='quantity_input pt-3'>
                           <form action='#'>
                             <span class='input_number_decrement'>–</span>
                             <input class='input_number' type='text' value='2' />

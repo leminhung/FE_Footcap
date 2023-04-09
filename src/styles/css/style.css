@@ -65,7 +65,12 @@ main {
   position: relative;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: #000000;
   font-weight: 700;
   font-family: "Jost", sans-serif;
@@ -113,7 +118,8 @@ hr {
   position: relative;
   margin-bottom: 30px;
 }
-.form_item input, .form_item textarea {
+.form_item input,
+.form_item textarea {
   width: 100%;
   border: none;
   outline: none;
@@ -121,7 +127,8 @@ hr {
   border: 1px solid #e8e8e8;
   transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
-.form_item input:focus, .form_item textarea:focus {
+.form_item input:focus,
+.form_item textarea:focus {
   border-color: #ce0b2b;
 }
 .form_item input {
@@ -349,17 +356,20 @@ hr {
 .collapse_dropdown .settings_options > li {
   line-height: 1;
 }
-.collapse_dropdown .settings_options > li > a, .collapse_dropdown .settings_options > li > button {
+.collapse_dropdown .settings_options > li > a,
+.collapse_dropdown .settings_options > li > button {
   display: block;
   font-size: 16px;
   padding: 10px 20px;
   color: #6b6b6b;
 }
-.collapse_dropdown .settings_options > li > a i, .collapse_dropdown .settings_options > li > button i {
+.collapse_dropdown .settings_options > li > a i,
+.collapse_dropdown .settings_options > li > button i {
   margin-right: 8px;
   color: #2e2e2e;
 }
-.collapse_dropdown .settings_options > li:hover > a, .collapse_dropdown .settings_options > li:hover > button {
+.collapse_dropdown .settings_options > li:hover > a,
+.collapse_dropdown .settings_options > li:hover > button {
   color: #2e2e2e;
   background-color: #f8f8f8;
 }
@@ -650,7 +660,7 @@ hr {
 /* rating star - start
 ================================================== */
 .rating_star > li {
-  color: #FDCC0D;
+  color: #fdcc0d;
   line-height: 1;
   font-size: 12px;
 }
@@ -817,7 +827,8 @@ hr {
 ================================================== */
 /* count down timer - start
 ================================================== */
-.countdown_timer strong, .countdown_timer span {
+.countdown_timer strong,
+.countdown_timer span {
   display: block;
   color: #151515;
   line-height: 1;
@@ -881,6 +892,10 @@ hr {
 
 .sec_ptb_140 {
   padding: 140px 0px;
+}
+
+.sec_ptb_48 {
+  padding: 48px 0px;
 }
 
 .prl_100 {
@@ -19487,6 +19502,10 @@ blockquote .blockquote_title {
   padding-top: 100%;
 }
 
+.product-details .breadcrumb_nav {
+  margin-top: 180px;
+}
+
 /* ==================================================================================================== */
 /* 
 *	Project Name 	:  Neoncart
@@ -20236,7 +20255,8 @@ blockquote .blockquote_title {
     min-width: 40px;
     line-height: 40px;
   }
-  .weekly_deals_carousel .electronic_deals_item .countdown_timer span, .weekly_deals_carousel .electronic_deals_item .countdown_timer strong {
+  .weekly_deals_carousel .electronic_deals_item .countdown_timer span,
+  .weekly_deals_carousel .electronic_deals_item .countdown_timer strong {
     font-size: 12px;
   }
   /* home electronic - end */
@@ -20566,6 +20586,9 @@ blockquote .blockquote_title {
   }
   .sec_ptb_140 {
     padding: 120px 0px;
+  }
+  .sec_ptb_48 {
+    padding: 48px 0px;
   }
   .sports_feature_fullimage .item_content {
     padding: 25px;
@@ -21179,7 +21202,8 @@ blockquote .blockquote_title {
   .Interior_carparts .parts_category_list a {
     font-size: 16px;
   }
-  .carparts_deals_grid .countdown_timer li span, .carparts_deals_grid .countdown_timer li strong {
+  .carparts_deals_grid .countdown_timer li span,
+  .carparts_deals_grid .countdown_timer li strong {
     font-size: 15px;
   }
   .carparts_deals_grid .countdown_timer li:not(:last-child) {
@@ -21571,6 +21595,9 @@ blockquote .blockquote_title {
   /* global - start */
   .sec_ptb_140 {
     padding: 100px 0px;
+  }
+  .sec_ptb_48 {
+    padding: 42px 0px;
   }
   .custom_btn {
     height: 50px;
@@ -23589,6 +23616,9 @@ blockquote .blockquote_title {
   }
   .sec_ptb_140 {
     padding: 100px 0px;
+  }
+  .sec_ptb_48 {
+    padding: 42px 0px;
   }
   .mb_100 {
     margin-bottom: 80px;
@@ -26257,6 +26287,9 @@ blockquote .blockquote_title {
   }
   .sec_ptb_140 {
     padding: 80px 0px;
+  }
+  .sec_ptb_48 {
+    padding: 36px 0px;
   }
   .mb_100 {
     margin-bottom: 60px;

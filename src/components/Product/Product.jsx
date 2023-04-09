@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 import ImageItem from "src/components/Image/ImageItem";
 import { setProduct } from "src/store/product/product.action";
@@ -103,8 +104,9 @@ const Product = (props) => {
         </div>
         <div className='item_content'>
           <h3 className='item_title'>
-            {/* <a href='#!'>Rag & Bone Beck Coat</a> */}
-            <a href='#!'>{product.title}</a>
+            <Link to={`products/${product.slug}`} state={{ from: product.id }}>
+              {product.title}
+            </Link>
           </h3>
           <ul className='product_color ul_li nav clearfix'>
             <li className='active'>

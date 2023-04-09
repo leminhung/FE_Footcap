@@ -17,10 +17,9 @@ export const addToCart = (product) => async (dispatch, getState) => {
     },
   });
 
-  let subtotal = getState().cart.subtotal + product.price;
-
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
-  localStorage.setItem("subtotal", JSON.stringify(subtotal));
+  localStorage.setItem("subtotal", JSON.stringify(getState().cart.subtotal));
+  localStorage.setItem("total", JSON.stringify(getState().cart.total));
 };
 
 export const removeFromCart = (id) => (dispatch, getState) => {
@@ -30,6 +29,8 @@ export const removeFromCart = (id) => (dispatch, getState) => {
   });
 
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
+  localStorage.setItem("subtotal", JSON.stringify(getState().cart.subtotal));
+  localStorage.setItem("total", JSON.stringify(getState().cart.total));
 };
 
 export const saveShippingAddress = (data) => (dispatch) => {

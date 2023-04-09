@@ -13,7 +13,7 @@ body {
   text-rendering: optimizelegibility;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 ::selection {
@@ -37,10 +37,15 @@ main {
   position: relative;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: #000000;
   font-weight: 700;
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
 }
 
 a,
@@ -81,7 +86,8 @@ hr {
 .form_item {
   position: relative;
   margin-bottom: 30px;
-  input,textarea {
+  input,
+  textarea {
     width: 100%;
     border: none;
     outline: none;
@@ -141,12 +147,12 @@ hr {
       opacity: 0;
       color: #ffffff;
       font-size: 14px;
-      content: '\f00c';
+      content: "\f00c";
       font-weight: 400;
       position: absolute;
       transition: $default_transition;
       transform: translate(-50%, -50%);
-      font-family: 'Font Awesome 5 Pro';
+      font-family: "Font Awesome 5 Pro";
     }
     &:checked {
       border-color: $default_red;
@@ -182,7 +188,7 @@ hr {
       height: auto;
       border: none;
       float: right;
-      content: '\f0d7';
+      content: "\f0d7";
       font-weight: 700;
       transform: unset;
       position: static;
@@ -190,7 +196,7 @@ hr {
       display: inline-block;
       transform-origin: unset;
       transition: $default_transition;
-      font-family: 'Font Awesome 5 Pro';
+      font-family: "Font Awesome 5 Pro";
     }
 
     .list {
@@ -202,7 +208,9 @@ hr {
       overflow-y: scroll;
       border-radius: 0px;
       box-shadow: 0px 5px 20px 1px rgba(0, 0, 0, 0.15);
-      &::-webkit-scrollbar {width: 0px;}
+      &::-webkit-scrollbar {
+        width: 0px;
+      }
       .option {
         min-height: 45px;
         line-height: 45px;
@@ -245,7 +253,6 @@ hr {
   }
 }
 
-
 /* bootstrap settings - start 
 ================================================== */
 .container {
@@ -264,13 +271,13 @@ hr {
   max-width: 1630px;
 }
 
-.tab-content>.tab-pane {
+.tab-content > .tab-pane {
   opacity: 0;
   height: 0px;
   display: block;
   visibility: hidden;
 }
-.tab-content>.active {
+.tab-content > .active {
   opacity: 1;
   height: auto;
   visibility: visible;
@@ -310,9 +317,10 @@ hr {
 
   .settings_options {
     padding: 10px 0px;
-    >li {
+    > li {
       line-height: 1;
-      >a,>button {
+      > a,
+      > button {
         display: block;
         font-size: 16px;
         padding: 10px 20px;
@@ -323,7 +331,8 @@ hr {
         }
       }
       &:hover {
-        >a,>button {
+        > a,
+        > button {
           color: $default_black;
           background-color: #f8f8f8;
         }
@@ -333,7 +342,8 @@ hr {
 }
 
 /* all departments dropdown - start */
-.alldepartments_menu_wrap {}
+.alldepartments_menu_wrap {
+}
 .alldepartments_btn {
   width: 100%;
   height: 60px;
@@ -364,7 +374,7 @@ hr {
 
   .alldepartments_menulist {
     padding: 7px 25px;
-    >li {
+    > li {
       line-height: 1;
       &:not(:last-child) {
         border-bottom: 1px solid #f3f3f3;
@@ -375,7 +385,7 @@ hr {
         &:before {
           top: 50%;
           right: 0px;
-          content: '\f105';
+          content: "\f105";
           font-weight: 400;
           position: absolute;
           transform: translateY(-50%);
@@ -383,14 +393,14 @@ hr {
         }
       }
 
-      >a {
+      > a {
         color: #444444;
         display: block;
         font-size: 15px;
         padding: 12px 0px;
       }
       &:hover {
-        >a {
+        > a {
           color: $electronic_blue;
         }
       }
@@ -408,7 +418,6 @@ hr {
 
 /* bootstrap settings - end 
 ================================================== */
-
 
 /* slick slider settings - start 
 ================================================== */
@@ -437,7 +446,7 @@ hr {
       height: 10px;
       border: 0px;
       padding: 0px;
-      opacity: .3;
+      opacity: 0.3;
       border-radius: 100%;
       background: $carparts_red;
     }
@@ -477,7 +486,7 @@ hr {
     justify-content: center;
     background-color: #ebebeb;
     transition: $default_transition;
-    font-family: 'Font Awesome 5 Pro';
+    font-family: "Font Awesome 5 Pro";
   }
   &:hover {
     &:before {
@@ -488,12 +497,12 @@ hr {
 }
 .slick-prev {
   &:before {
-    content: '\f104';
+    content: "\f104";
   }
 }
 .slick-next {
   &:before {
-    content: '\f105';
+    content: "\f105";
   }
 }
 
@@ -566,9 +575,10 @@ hr {
     width: 0px;
     height: 100%;
     position: absolute;
-    background-color: rgba(49, 56, 72, .298);
-    -webkit-transition: all 0s linear;transition:all 0s linear;
-    &.active{
+    background-color: rgba(49, 56, 72, 0.298);
+    -webkit-transition: all 0s linear;
+    transition: all 0s linear;
+    &.active {
       width: 100%;
     }
   }
@@ -584,7 +594,7 @@ hr {
     display: inline-block;
     &:not(:last-child) {
       &:after {
-        content: '/';
+        content: "/";
         margin: 0px 6px;
         display: inline-block;
       }
@@ -594,7 +604,7 @@ hr {
 
 // slick slider not workin in bootstrap tab
 .has_multy_carousel {
-  >.tab-pane {
+  > .tab-pane {
     .slick_slider {
     }
     &.active {
@@ -606,7 +616,6 @@ hr {
 /* slick slider settings - end 
 ================================================== */
 
-
 /* list style settings - start 
 ================================================== */
 .ul_li,
@@ -617,7 +626,7 @@ hr {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  >li {
+  > li {
     float: left;
     list-style: none;
     display: inline-block;
@@ -638,7 +647,7 @@ hr {
   margin: 0px;
   padding: 0px;
   display: block;
-  >li {
+  > li {
     display: block;
     list-style: none;
   }
@@ -646,12 +655,11 @@ hr {
 /* list style settings - end
 ================================================== */
 
-
 /* rating star - start
 ================================================== */
 .rating_star {
-  >li {
-    color: #FDCC0D;
+  > li {
+    color: #fdcc0d;
     line-height: 1;
     font-size: 12px;
     &:not(:last-child) {
@@ -661,7 +669,6 @@ hr {
 }
 /* rating star - end
 ================================================== */
-
 
 /* product label - start
 ================================================== */
@@ -683,7 +690,6 @@ hr {
 }
 /* product label - end
 ================================================== */
-
 
 /* product action btns - start
 ================================================== */
@@ -715,11 +721,10 @@ hr {
 /* product action btns - end
 ================================================== */
 
-
 /* post meta - start
 ================================================== */
 .post_meta {
-  >li {
+  > li {
     font-size: 14px;
     position: relative;
     &:not(:last-child) {
@@ -730,7 +735,7 @@ hr {
       top: 50%;
       width: 2px;
       right: -1px;
-      content: '';
+      content: "";
       height: 14px;
       position: absolute;
       background-color: #6c6c6c;
@@ -764,7 +769,6 @@ hr {
 }
 /* post meta - end
 ================================================== */
-
 
 /* pagination - start
 ================================================== */
@@ -813,7 +817,6 @@ hr {
 /* pagination - end
 ================================================== */
 
-
 /* social links - start
 ================================================== */
 .primary_social_links {
@@ -849,11 +852,11 @@ hr {
 /* social links - end
 ================================================== */
 
-
 /* count down timer - start
 ================================================== */
 .countdown_timer {
-  strong,span {
+  strong,
+  span {
     display: block;
     color: #151515;
     line-height: 1;
@@ -873,7 +876,7 @@ hr {
         &:after {
           top: 50%;
           right: -30px;
-          content: ':';
+          content: ":";
           position: absolute;
           transform: translateY(-50%);
         }
@@ -919,12 +922,20 @@ hr {
 /* count down timer - end
 ================================================== */
 
-
 /* padding - margin setting - start 
 ================================================== */
-.sec_ptb_50 {padding: 50px 0px;}
-.sec_ptb_100 {padding: 100px 0px;}
-.sec_ptb_140 {padding: 140px 0px;}
+.sec_ptb_50 {
+  padding: 50px 0px;
+}
+.sec_ptb_100 {
+  padding: 100px 0px;
+}
+.sec_ptb_140 {
+  padding: 140px 0px;
+}
+.sec_ptb_48 {
+  padding: 48px 0px;
+}
 
 .prl_100 {
   padding-left: 100px;
@@ -939,18 +950,31 @@ hr {
   padding-right: 60px;
 }
 
-.mt__30 {margin-top: -30px;}
-.mt__50 {margin-top: -50px;}
+.mt__30 {
+  margin-top: -30px;
+}
+.mt__50 {
+  margin-top: -50px;
+}
 
-.mt_50 {margin-top: 50px;}
+.mt_50 {
+  margin-top: 50px;
+}
 
-.mb_15 {margin-bottom: 15px;}
-.mb_30 {margin-bottom: 30px;}
-.mb_50 {margin-bottom: 50px;}
-.mb_100 {margin-bottom: 100px;}
+.mb_15 {
+  margin-bottom: 15px;
+}
+.mb_30 {
+  margin-bottom: 30px;
+}
+.mb_50 {
+  margin-bottom: 50px;
+}
+.mb_100 {
+  margin-bottom: 100px;
+}
 /* padding - margin setting - end
 ================================================== */
-
 
 /* back to top - start
 ================================================== */
@@ -990,7 +1014,6 @@ hr {
 /* back to top - end
 ================================================== */
 
-
 /* preloader - start
 ================================================== */
 #preloader {
@@ -1005,7 +1028,6 @@ hr {
 }
 /* preloader - end
 ================================================== */
-
 
 /* effects - start
 ================================================== */
@@ -1036,7 +1058,6 @@ hr {
 */
 /* effects - end
 ================================================== */
-
 
 /* css animations - start
 ================================================== */
@@ -1089,7 +1110,6 @@ hr {
 /* css animations - end
 ================================================== */
 
-
 /* transition - start
 ================================================== */
 a,
@@ -1106,7 +1126,7 @@ button {
 .zoom-image img {
   cursor: none;
   border-radius: 5px;
-  box-shadow: 0 18px 5px -15px rgba(0, 0, 0, .5);
+  box-shadow: 0 18px 5px -15px rgba(0, 0, 0, 0.5);
 }
 
 .hover-image {
@@ -1117,7 +1137,7 @@ button {
   border-radius: 50%;
   transform: translate(-50%, -20%);
   pointer-events: none;
-  box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 /* global area - end

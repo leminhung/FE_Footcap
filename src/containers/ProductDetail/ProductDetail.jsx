@@ -5,13 +5,49 @@ import { useLocation } from "react-router-dom";
 import OfferSection from "src/components/OfferSection/OfferSection";
 import { listProductDetails } from "src/store/product/product.action";
 import ProductDetailSkeleton from "src/containers/ProductDetail/ProductDetailSkeleton";
+import { capitalizeFirstLetter } from "src/utils/convertFirstLetterToUpperCase";
+
+import { addToCart } from "src/store/cart/cart.action";
+
+import { roundNumber } from "src/utils/roundNumber";
 
 const itemDisplay = {
   active: "tab-pane active",
   unactive: "tab-pane fade",
 };
 
-const Product = ({ product }) => {
+const Product = ({ product = {} }) => {
+  const [quantity, setQuantity] = useState(1);
+  const [color, setColor] = useState(undefined);
+  const [size, setSize] = useState(undefined);
+
+  console.log("product--", product);
+
+  // colors
+  const colors = {
+    green: "#ffa037",
+    blue: "#68a3c2",
+    red: "#f23226",
+    pink: "#828664",
+    black: "#1f1e29",
+    brown: "#cc7b4a",
+  };
+
+  const dispatch = useDispatch();
+  const handleAction = (e) => {
+    e.preventDefault();
+    let prod = {
+      product: product.data._id,
+      name: product.data.title,
+      image: product.data.assets[0]?.filename,
+      price: product.data.price,
+      quantity,
+      size,
+      color,
+    };
+    dispatch(addToCart(prod));
+  };
+
   return (
     <section className='details_section shop_details sec_ptb_48 clearfix'>
       <div className='container'>
@@ -43,38 +79,16 @@ const Product = ({ product }) => {
                     </a>
                   </li>
                 ))}
-                {/* <li>
-                  <a data-toggle='tab' href='#tab_2'>
-                    <img
-                      src='/assets/images/details/shop/img_03.jpg'
-                      alt='image_not_found'
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a data-toggle='tab' href='#tab_3'>
-                    <img
-                      src='/assets/images/details/shop/img_04.jpg'
-                      alt='image_not_found'
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a data-toggle='tab' href='#tab_4'>
-                    <img
-                      src='/assets/images/details/shop/img_05.jpg'
-                      alt='image_not_found'
-                    />
-                  </a>
-                </li> */}
               </ul>
             </div>
           </div>
 
           <div className='col-lg-7 col-md-7'>
             <div className='shop_details_content'>
-              <h2 className='item_title'>Beautifully Design Dress</h2>
-              <span className='item_price'>$30.00 – $40.00</span>
+              <h2 className='item_title'>{product.data.title}</h2>
+              <span className='item_price'>
+                ${product.data.price} – ${roundNumber(product.data.price * 1.2)}
+              </span>
               <hr />
               <div className='row mb_30 align-items-center justify-content-lg-between'>
                 <div className='col-lg-5 col-md-12 col-sm-12 col-xs-12'>
@@ -82,7 +96,7 @@ const Product = ({ product }) => {
                     <span className='brand_title'>Brands:</span>
                     <span
                       className='brand_image d-flex align-items-center justify-content-center'
-                      data-bg-color='#f7f7f7'
+                      style={{ backgroundColor: "#f7f7f7" }}
                     >
                       <img
                         src='/assets/images/product_brands/img_01.png'
@@ -95,99 +109,90 @@ const Product = ({ product }) => {
                 <div className='col-lg-7 col-md-12 col-sm-12 col-xs-12'>
                   <div className='rating_review_wrap d-flex align-items-center clearfix'>
                     <ul className='rating_star ul_li'>
-                      <li>
-                        <i className='fas fa-star'></i>
-                      </li>
-                      <li>
-                        <i className='fas fa-star'></i>
-                      </li>
-                      <li>
-                        <i className='fas fa-star'></i>
-                      </li>
-                      <li>
-                        <i className='fas fa-star'></i>
-                      </li>
-                      <li>
-                        <i className='fas fa-star'></i>
-                      </li>
+                      {[...Array(product.data.rating)].map(() => (
+                        <li>
+                          <i className='fas fa-star'></i>
+                        </li>
+                      ))}
                     </ul>
-                    <span>4 Review(s)</span>
+                    <span>{product.data.numReviews} Review(s)</span>
                     <button type='button' className='add_review_btn'>
                       Add Your Review
                     </button>
                   </div>
                 </div>
               </div>
-              <p className='mb-0'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolo
-              </p>
+              <p className='mb-0'>{product.data.description}</p>
               <hr />
-              <div className='item_color_list mb_30 clearfix'>
-                <h4 className='list_title mb_15 text-uppercase'>Color</h4>
-                <ul className='ul_li clearfix'>
-                  <li>
-                    <button type='button'>
-                      <span>
-                        <small data-bg-color='#cc7b4a'></small>
-                      </span>{" "}
-                      Brown
-                    </button>
-                  </li>
-                  <li>
-                    <button type='button'>
-                      <span>
-                        <small data-bg-color='#b6b8ba'></small>
-                      </span>{" "}
-                      Grey
-                    </button>
-                  </li>
-                  <li>
-                    <button type='button'>
-                      <span>
-                        <small data-bg-color='#dd3333'></small>
-                      </span>{" "}
-                      Red
-                    </button>
-                  </li>
-                </ul>
+              <div class='fs_widget fs_color_list pb-0 mb-4'>
+                <h3 class='list_title mb_15 text-uppercase'>Color</h3>
+                <form action='#'>
+                  <ul class='ul_li clearfix'>
+                    {product.data.color.map((c) => (
+                      <li>
+                        <input
+                          type='radio'
+                          name='fs_color_froup'
+                          onClick={() => setColor(c)}
+                          style={{ backgroundColor: `${colors[c]}` }}
+                        />
+                        <span className='ml-1'>{capitalizeFirstLetter(c)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </form>
               </div>
-              <div className='item_size_list mb_30 clearfix'>
-                <h4 className='list_title mb_15 text-uppercase'>Size</h4>
-                <ul className='ul_li clearfix'>
-                  <li>
-                    <button type='button'>XL</button>
-                  </li>
-                  <li>
-                    <button type='button'>L</button>
-                  </li>
-                  <li>
-                    <button type='button'>M</button>
-                  </li>
-                  <li>
-                    <button type='button'>SM</button>
-                  </li>
-                  <li>
-                    <a className='size_guide' href='#!'>
-                      <i className='far fa-tape mr-1'></i> Size Guide
-                    </a>
-                  </li>
-                </ul>
+              <div className='fs_widget fs_size_list item_size_list clearfix py-0 mb-4'>
+                <h4 className='list_title text-uppercase'>Size</h4>
+                <div className='d-flex'>
+                  <form action='#' className='mr-3'>
+                    <ul class='ul_li clearfix'>
+                      {product.data.size.map((size, index) => (
+                        <li className='ml-0'>
+                          <label for={`fs_size_${index}`}>
+                            <input
+                              id={`fs_size_${index}`}
+                              type='radio'
+                              name='fs_size_group'
+                              onClick={() => setSize(size)}
+                            />
+                            {size}
+                          </label>
+                        </li>
+                      ))}
+                    </ul>
+                  </form>
+                  <a className='size_guide' href='#!'>
+                    <i className='far fa-tape mr-1'></i> Size Guide
+                  </a>
+                </div>
               </div>
 
               <ul className='btns_group_1 ul_li mb_30 clearfix'>
                 <li>
                   <div className='quantity_input pt-3'>
                     <form action='#'>
-                      <span className='input_number_decrement'>–</span>
-                      <input className='input_number' type='text' value='1' />
-                      <span className='input_number_increment'>+</span>
+                      <span
+                        className='input_number_decrement'
+                        onClick={() => setQuantity(quantity - 1)}
+                      >
+                        –
+                      </span>
+                      <input
+                        className='input_number'
+                        type='text'
+                        value={quantity}
+                      />
+                      <span
+                        className='input_number_increment'
+                        onClick={() => setQuantity(quantity + 1)}
+                      >
+                        +
+                      </span>
                     </form>
                   </div>
                 </li>
-                <li>
+                <li onClick={(e) => handleAction(e)}>
                   <a className='custom_btn bg_black text-uppercase' href='#!'>
                     <i className='fal fa-shopping-bag mr-2'></i> Add To Cart
                   </a>
@@ -242,11 +247,6 @@ const Product = ({ product }) => {
             <li>
               <a data-toggle='tab' href='#reviews_tab'>
                 Reviews
-              </a>
-            </li>
-            <li>
-              <a data-toggle='tab' href='#information_tab'>
-                Additional Information
               </a>
             </li>
           </ul>
@@ -346,61 +346,6 @@ const Product = ({ product }) => {
                   Submit Review
                 </button>
               </form>
-            </div>
-
-            <div id='information_tab' className='tab-pane fade'>
-              <div className='row mb_50'>
-                <div className='col-lg-3 col-md-4 col-sm-12 col-xs-12'>
-                  <div className='image_wrap'>
-                    <img
-                      src='/assets/images/details/shop/img_06.jpg'
-                      alt='image_not_found'
-                    />
-                  </div>
-                </div>
-
-                <div className='col-lg-9 col-md-8 col-sm-12 col-xs-12'>
-                  <div className='content_wrap'>
-                    <p className='mb_30'>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur
-                    </p>
-
-                    <h4 className='list_title'>Pretium turpis et arcu</h4>
-                    <p className='mb_30'>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur
-                    </p>
-
-                    <h4 className='list_title'>Unordered list</h4>
-                    <p className='mb_30'>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur.
-                    </p>
-
-                    <ul className='product_info ul_li_block clearfix'>
-                      <li>
-                        <strong>Color:</strong> Brown, Grey, Nude, Red
-                      </li>
-                      <li>
-                        <strong>Size:</strong> L, M, S, XL, XS
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -1222,10 +1167,9 @@ const ProductDetail = () => {
   const product = useSelector((state) => state.productDetails.product);
 
   useEffect(() => {
-    dispatch(listProductDetails(location.state.from));
-  }, [dispatch, location.state.from]);
+    dispatch(listProductDetails(location.state?.from));
+  }, [dispatch, location.state?.from]);
 
-  console.log(product);
   return (
     <main className='product-details'>
       <div className='container breadcrumb_nav'>

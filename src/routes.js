@@ -16,6 +16,7 @@ import Profile from "src/containers/Profile/Profile";
 import ProfileEdit from "src/containers/Profile/ProfileEdit";
 import ChangePassword from "src/containers/ChangePassword/ChangePassword";
 import ProductDetail from "src/containers/ProductDetail/ProductDetail";
+import SearchProduct from "src/containers/SearchProduct/SearchProduct";
 
 const routes = () => [
   {
@@ -41,6 +42,10 @@ const routes = () => [
   {
     path: "blog",
     element: <Blog />,
+  },
+  {
+    path: "search",
+    element: <SearchProduct />,
   },
   {
     path: "blog/:id",

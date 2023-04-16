@@ -6,8 +6,8 @@ export default function SideBar() {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
-  const handleDeleteItem = (id) => {
-    dispatch(removeFromCart(id));
+  const handleDeleteItem = (product) => {
+    dispatch(removeFromCart(product));
   };
 
   return (
@@ -26,12 +26,17 @@ export default function SideBar() {
                 </div>
                 <div className='item_content'>
                   <h4 className='item_title'>{item?.name}</h4>
-                  <span className='item_price'>${item?.price}</span>
+                  <span className='item_price'>
+                    ${item?.price} x {item?.quantity}
+                  </span>
+                  <span className='item_price'>
+                    {item?.color} - {item?.size}
+                  </span>
                 </div>
                 <button
                   type='button'
                   className='remove_btn'
-                  onClick={() => handleDeleteItem(item.product)}
+                  onClick={() => handleDeleteItem(item)}
                 >
                   <i className='fal fa-trash-alt'></i>
                 </button>
@@ -46,7 +51,7 @@ export default function SideBar() {
           </li>
           <li>
             <span>Discount 10%:</span>
-            <span>- ${cart.subtotal * 0.1}</span>
+            <span>{cart.subtotal ? cart.subtotal * -0.1 : 0}</span>
           </li>
           <li>
             <span>Total:</span>

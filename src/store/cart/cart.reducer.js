@@ -6,6 +6,8 @@ import {
   CART_CLEAR_ITEMS,
 } from "src/constants/cartConstants";
 
+import { roundNumber } from "src/utils/roundNumber";
+
 export const cartReducer = (
   state = { cartItems: [], shippingAddress: {}, subtotal: 0, total: 0 },
   action
@@ -13,33 +15,55 @@ export const cartReducer = (
   switch (action.type) {
     case CART_ADD_ITEM:
       let item = action.payload;
+      let subtotal = state.subtotal + item.price * item.quantity;
+      let total = roundNumber(subtotal * 0.9);
 
-      const existItem = state.cartItems.find((x) => x.product === item.product);
+      // differrent color && differrent size
+      let existedItem = state.cartItems.find(
+        (i) =>
+          i.product === item.product &&
+          i.color === item.color &&
+          i.size === item.size
+      );
 
-      if (existItem) {
+      if (existedItem) {
+        existedItem.quantity += item.quantity;
         return {
           ...state,
           cartItems: state.cartItems.map((x) =>
-            x.product === existItem.product ? item : x
+            x.product === state.cartItems.product &&
+            x.color === item.color &&
+            x.size === item.size
+              ? existedItem
+              : x
           ),
-        };
-      } else {
-        let subtotal = state.subtotal + item.price;
-        return {
-          ...state,
-          cartItems: [...state.cartItems, item],
           subtotal,
-          total: Math.round((subtotal * 0.9 + Number.EPSILON) * 100) / 100,
+          total,
         };
       }
-    case CART_REMOVE_ITEM:
-      item = state.cartItems.find((x) => x.product === action.payload);
-      let subtotal = state.subtotal - item.price;
+
       return {
         ...state,
-        cartItems: state.cartItems.filter((x) => x.product !== action.payload),
+        cartItems: [...state.cartItems, item],
         subtotal,
-        total: Math.round((subtotal * 0.9 + Number.EPSILON) * 100) / 100,
+        total,
+      };
+    case CART_REMOVE_ITEM:
+      item = action.payload;
+      subtotal = state.subtotal - item.price * item.quantity;
+
+      existedItem = state.cartItems.find(
+        (i) =>
+          i.product === item.product &&
+          i.color === item.color &&
+          i.size === item.size
+      );
+
+      return {
+        ...state,
+        cartItems: state.cartItems.filter((x) => x !== existedItem),
+        subtotal,
+        total: roundNumber(subtotal * 0.9),
       };
     case CART_SAVE_SHIPPING_ADDRESS:
       return {

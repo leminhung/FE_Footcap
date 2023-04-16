@@ -759,9 +759,9 @@ export default function Header() {
                               {userInfo?.actor?.name}
                             </h4>
                             <span className='user_title'>
-                              {userInfo?.actor.role === "user"
-                                ? "user"
-                                : "admin"}
+                              {userInfo?.actor?.role
+                                ? userInfo?.actor?.role
+                                : ""}
                             </span>
                           </div>
                         </div>

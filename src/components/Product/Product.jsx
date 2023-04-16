@@ -35,7 +35,16 @@ const ProductActionButtons = ({ product }) => {
 
   const handleAction = (title) => {
     if (title.includes("Cart")) {
-      dispatch(addToCart(product));
+      const props = {
+        product: product._id,
+        name: product.title,
+        image: product.assets[0]?.filename,
+        price: product.price,
+        quantity: 1,
+        size: product.size[0],
+        color: product.color[0],
+      };
+      dispatch(addToCart(props));
     }
   };
   return (
@@ -77,6 +86,16 @@ const ProductActionButtons = ({ product }) => {
 const Product = (props) => {
   const { product, index, setRerender, rerender } = props;
 
+  // colors
+  const colors = {
+    green: "#ffa037",
+    blue: "#68a3c2",
+    red: "#f23226",
+    pink: "#828664",
+    black: "#1f1e29",
+    brown: "#cc7b4a",
+  };
+
   return (
     <div className='col-lg-3 col-md-4 col-sm-6 col-xs-12'>
       <div className='ecommerce_product_grid'>
@@ -109,27 +128,11 @@ const Product = (props) => {
             </Link>
           </h3>
           <ul className='product_color ul_li nav clearfix'>
-            <li className='active'>
-              <a
-                className='pbg_brown'
-                data-toggle='tab'
-                href={`#ptab2_1_${index}`}
-              ></a>
-            </li>
-            <li>
-              <a
-                className='pbg_olivegreen'
-                data-toggle='tab'
-                href={`#ptab2_2_${index}`}
-              ></a>
-            </li>
-            <li>
-              <a
-                className='pbg_gray'
-                data-toggle='tab'
-                href={`#ptab2_3_${index}`}
-              ></a>
-            </li>
+            {product.color.map((c) => (
+              <li>
+                <a style={{ backgroundColor: `${colors[c]}` }} href='#!'></a>
+              </li>
+            ))}
           </ul>
           <span className='item_price'>
             <strong>${product.price}</strong> <del>$35.00</del>

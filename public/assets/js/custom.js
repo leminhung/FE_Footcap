@@ -300,23 +300,14 @@
           qty = target.closest(".quantity_input").find("input.input_number"),
           min,
           max,
-          step,
           value;
 
         if (qty.length) {
           min = qty.attr("min") || 0;
           max = qty.attr("max") || 0;
-          step = qty.attr("step") || 1;
           min = parseInt(min);
           max = parseInt(max);
-          step = parseInt(step);
           value = parseInt(qty.val());
-
-          if (target.is(".input_number_increment")) {
-            value += step;
-          } else {
-            value -= step;
-          }
 
           value = Math.max(min, value);
           if (max) {

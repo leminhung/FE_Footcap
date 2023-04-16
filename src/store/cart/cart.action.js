@@ -8,13 +8,7 @@ import {
 export const addToCart = (product) => async (dispatch, getState) => {
   dispatch({
     type: CART_ADD_ITEM,
-    payload: {
-      product: product._id,
-      name: product.title,
-      image: product.assets[0]?.filename,
-      price: product.price,
-      qty: product.quantity,
-    },
+    payload: product,
   });
 
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
@@ -22,10 +16,10 @@ export const addToCart = (product) => async (dispatch, getState) => {
   localStorage.setItem("total", JSON.stringify(getState().cart.total));
 };
 
-export const removeFromCart = (id) => (dispatch, getState) => {
+export const removeFromCart = (product) => (dispatch, getState) => {
   dispatch({
     type: CART_REMOVE_ITEM,
-    payload: id,
+    payload: product,
   });
 
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));

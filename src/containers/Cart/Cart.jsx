@@ -1,13 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromCart } from "src/store/cart/cart.action";
+
+import { removeFromCart, addToCart } from "src/store/cart/cart.action";
+import { capitalizeFirstLetter } from "src/utils/convertFirstLetterToUpperCase";
 
 export default function Cart() {
+  const [cartItems, setCartItems] = useState([]);
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
-  const handleDeleteItem = (id) => {
-    dispatch(removeFromCart(id));
+  useEffect(() => {
+    setCartItems(cart.cartItems);
+  }, [cart]);
+
+  const handleDeleteItem = (item) => {
+    dispatch(removeFromCart(item));
+  };
+
+  const handleQuantityIncrease = (item) => {
+    item.increase = 1;
+    dispatch(addToCart(item));
+  };
+
+  const handleQuantityDecrease = (item) => {
+    item.decrease = 1;
+    dispatch(removeFromCart(item));
   };
 
   return (
@@ -48,44 +65,60 @@ export default function Cart() {
                 </tr>
               </thead>
               <tbody>
-                {cart.cartItems.length > 0 &&
-                  cart.cartItems.map((item) => (
-                    <tr>
-                      <td>
-                        <div key={item.product} class='cart_product'>
-                          <div class='item_image'>
-                            <img src={item?.image} alt='image_not_found' />
+                {cartItems.length > 0 &&
+                  cartItems.map((item, index) => {
+                    return (
+                      <tr>
+                        <td>
+                          <div key={item.product} class='cart_product'>
+                            <div class='item_image'>
+                              <img src={item?.image} alt='image_not_found' />
+                            </div>
+                            <div class='item_content'>
+                              <h4 class='item_title'>{item?.name}</h4>
+                              <span class='item_type'>Shoes</span>
+                              <span class='item_type mt-2'>
+                                {capitalizeFirstLetter(item?.color)} -{" "}
+                                {item?.size}
+                              </span>
+                            </div>
+                            <button
+                              type='button'
+                              class='remove_btn'
+                              onClick={() => handleDeleteItem(item)}
+                            >
+                              <i class='fal fa-times'></i>
+                            </button>
                           </div>
-                          <div class='item_content'>
-                            <h4 class='item_title'>{item?.name}</h4>
-                            <span class='item_type'>Clothes</span>
+                        </td>
+                        <td>
+                          <span class='price_text'>${item?.price}</span>
+                        </td>
+                        <td>
+                          <div class='quantity_input pt-3'>
+                            <form action='#'>
+                              <span
+                                onClick={() => handleQuantityDecrease(item)}
+                              >
+                                –
+                              </span>
+                              <input type='text' value={item.quantity} />
+                              <span
+                                onClick={() => handleQuantityIncrease(item)}
+                              >
+                                +
+                              </span>
+                            </form>
                           </div>
-                          <button
-                            type='button'
-                            class='remove_btn'
-                            onClick={() => handleDeleteItem(item.product)}
-                          >
-                            <i class='fal fa-times'></i>
-                          </button>
-                        </div>
-                      </td>
-                      <td>
-                        <span class='price_text'>${item?.price}</span>
-                      </td>
-                      <td>
-                        <div class='quantity_input pt-3'>
-                          <form action='#'>
-                            <span class='input_number_decrement'>–</span>
-                            <input class='input_number' type='text' value='2' />
-                            <span class='input_number_increment'>+</span>
-                          </form>
-                        </div>
-                      </td>
-                      <td>
-                        <span class='total_price'>${item.price}</span>
-                      </td>
-                    </tr>
-                  ))}
+                        </td>
+                        <td>
+                          <span class='total_price'>
+                            ${item.price * item?.quantity}
+                          </span>
+                        </td>
+                      </tr>
+                    );
+                  })}
               </tbody>
             </table>
           </div>
@@ -127,9 +160,12 @@ export default function Cart() {
             <div class='col-lg-4 col-md-12 col-sm-12 col-xs-12'>
               <div
                 class='cart_pricing_table pt-0 text-uppercase'
-                data-bg-color='#f2f3f5'
+                style={{ backgroundColor: "#f2f3f5" }}
               >
-                <h3 class='table_title text-center' data-bg-color='#ededed'>
+                <h3
+                  class='table_title text-center'
+                  style={{ backgroundColor: "#ededed" }}
+                >
                   Cart Total
                 </h3>
                 <ul class='ul_li_block clearfix'>

@@ -27,7 +27,10 @@ export const cartReducer = (
       );
 
       if (existedItem) {
-        existedItem.quantity += item.quantity;
+        if (item.increase) {
+          existedItem.quantity += item.increase;
+          subtotal = state.subtotal + item.price;
+        } else existedItem.quantity += item.quantity;
         return {
           ...state,
           cartItems: state.cartItems.map((x) =>
@@ -58,6 +61,23 @@ export const cartReducer = (
           i.color === item.color &&
           i.size === item.size
       );
+
+      if (item.decrease && existedItem.quantity - item.decrease > 0) {
+        existedItem.quantity -= item.decrease;
+        subtotal = state.subtotal - item.price;
+        return {
+          ...state,
+          cartItems: state.cartItems.map((i) =>
+            i.product === item.product &&
+            i.color === item.color &&
+            i.size === item.size
+              ? existedItem
+              : i
+          ),
+          subtotal,
+          total: roundNumber(subtotal * 0.9),
+        };
+      }
 
       return {
         ...state,

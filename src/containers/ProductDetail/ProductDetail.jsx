@@ -21,8 +21,6 @@ const Product = ({ product = {} }) => {
   const [color, setColor] = useState(undefined);
   const [size, setSize] = useState(undefined);
 
-  console.log("product--", product);
-
   // colors
   const colors = {
     green: "#ffa037",

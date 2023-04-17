@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { logout } from "src/store/user/user.action";
+import { listProducts } from "src/store/product/product.action";
 
 export default function Header() {
+  const [title, setTitle] = useState("");
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const cartItems = useSelector((state) => state.cart.cartItems);
   const userLogin = useSelector((state) => state.userLogin);
 
@@ -12,6 +18,15 @@ export default function Header() {
 
   const logoutHandler = () => {
     dispatch(logout());
+  };
+
+  const handleSearchByTitle = (e) => {
+    e.preventDefault();
+    const params = {
+      title,
+    };
+    dispatch(listProducts(params));
+    navigate("/search");
   };
 
   return (
@@ -818,8 +833,13 @@ export default function Header() {
           <div className='container'>
             <form action='#'>
               <div className='form_item mb-0'>
-                <input type='search' name='search' placeholder='Type here...' />
-                <button type='submit'>
+                <input
+                  type='search'
+                  name='search'
+                  placeholder='Type here...'
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+                <button type='submit' onClick={(e) => handleSearchByTitle(e)}>
                   <i className='fal fa-search'></i>
                 </button>
               </div>

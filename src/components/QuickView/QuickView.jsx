@@ -1,9 +1,25 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import { addToCart } from "src/store/cart/cart.action";
 
 const QuickView = () => {
+  const [quantity, setQuantity] = useState(1);
   const { product = {} } = useSelector((state) => state.product);
-  console.log(product);
+
+  const dispatch = useDispatch();
+  const handleAction = () => {
+    const props = {
+      product: product._id,
+      name: product.title,
+      image: product.assets[0]?.filename,
+      price: product.price,
+      quantity,
+      size: product.size[0],
+      color: product.color[0],
+    };
+    dispatch(addToCart(props));
+  };
   return (
     <div
       className='quickview_modal modal fade'
@@ -58,24 +74,33 @@ const QuickView = () => {
               </span>
             </div>
             <span className='item_price mb_15'>${product.price}</span>
-            <p className='mb_30'>
-              {/* Best Electronic Digital Thermometer adipiscing elit, sed do
-              eiusmod teincididunt ut labore et dolore magna aliqua. Quis ipsum
-              suspendisse us ultrices gravidaes. */}
-              {product.description}
-            </p>
+            <p className='mb_30'>{product.description}</p>
             <div className='quantity_form mb_30 clearfix'>
               <strong className='list_title'>Quantity:</strong>
               <div className='quantity_input'>
                 <form action='#' className='mt-3'>
-                  <span className='input_number_decrement'>–</span>
-                  <input className='input_number' type='text' value='1' />
-                  <span className='input_number_increment'>+</span>
+                  <span
+                    className='input_number_decrement'
+                    onClick={() => setQuantity(quantity - 1)}
+                  >
+                    –
+                  </span>
+                  <input
+                    className='input_number'
+                    type='text'
+                    value={quantity}
+                  />
+                  <span
+                    className='input_number_increment'
+                    onClick={() => setQuantity(quantity + 1)}
+                  >
+                    +
+                  </span>
                 </form>
               </div>
             </div>
             <ul className='btns_group ul_li mb_30 clearfix'>
-              <li>
+              <li onClick={() => handleAction()}>
                 <a href='#!' className='custom_btn bg_carparts_red'>
                   Add to Cart
                 </a>

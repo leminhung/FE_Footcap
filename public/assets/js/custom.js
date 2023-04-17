@@ -308,6 +308,7 @@
           min = parseInt(min);
           max = parseInt(max);
           value = parseInt(qty.val());
+          console.log(value);
 
           value = Math.max(min, value);
           if (max) {

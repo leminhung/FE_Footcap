@@ -26,6 +26,9 @@ import {
   PRODUCT_SET_REQUEST,
   PRODUCT_SET_SUCCESS,
   PRODUCT_SET_FAIL,
+  PRODUCT_SEARCH_FAIL,
+  PRODUCT_SEARCH_SUCCESS,
+  PRODUCT_SEARCH_REQUEST,
 } from "src/constants/productConstants";
 
 export const productSetReducer = (state = { product: {} }, action) => {
@@ -57,6 +60,19 @@ export const productListReducer = (state = { products: [] }, action) => {
         pagination: action.payload.pagination,
       };
     case PRODUCT_LIST_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const productSearchReducer = (state = { search: "" }, action) => {
+  switch (action.type) {
+    case PRODUCT_SEARCH_REQUEST:
+      return { loading: true, search: "" };
+    case PRODUCT_SEARCH_SUCCESS:
+      return { loading: true, search: action.payload };
+    case PRODUCT_SEARCH_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

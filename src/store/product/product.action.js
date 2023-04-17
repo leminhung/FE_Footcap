@@ -26,6 +26,7 @@ import {
   PRODUCT_SET_REQUEST,
   PRODUCT_SET_SUCCESS,
   PRODUCT_SET_FAIL,
+  PRODUCT_SEARCH_SUCCESS,
 } from "src/constants/productConstants";
 import { logout } from "src/store/user/user.action";
 
@@ -46,12 +47,18 @@ export const setProduct = (data) => async (dispatch) => {
 
 export const listProducts = (params) => async (dispatch) => {
   try {
+    console.log("--params", params);
     dispatch({ type: PRODUCT_LIST_REQUEST });
+
+    if (params.title && !params.color) {
+      dispatch({ type: PRODUCT_SEARCH_SUCCESS, payload: params.title });
+    }
 
     const { data } = await axios.get(
       `${process.env.REACT_APP_BASE_URL}/products`,
       {
         params: {
+          title: params?.title ? params.title : undefined,
           category: params?.category,
           color: params?.color,
           size: params?.size,

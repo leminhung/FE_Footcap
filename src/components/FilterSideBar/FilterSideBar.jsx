@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "src/store/product/product.action";
 
 const FilterSideBar = ({ limit, sort }) => {
@@ -59,10 +59,13 @@ const FilterSideBar = ({ limit, sort }) => {
   // sizes
   const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
 
+  const search = useSelector((state) => state.productSearch.search);
+
   const dispatch = useDispatch();
   useEffect(() => {
     const params = {
-      category: category,
+      title: search,
+      category,
       color,
       size,
       price: { gte: price.from, lte: price.to },
@@ -71,7 +74,7 @@ const FilterSideBar = ({ limit, sort }) => {
       sort: sort ? sort : "-sold",
     };
     dispatch(listProducts(params));
-  }, [dispatch, category, color, size, price, limit, sort]);
+  }, [dispatch, category, color, size, price, limit, sort, search]);
 
   return (
     <div class='sidebar-menu-wrapper'>

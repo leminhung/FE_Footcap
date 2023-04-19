@@ -13,14 +13,29 @@ import Footer from "src/components/Footer/Footer";
 const Wrapper = () => {
   const routing = useRoutes(routes());
 
+  const { pathname } = routing?.props?.match;
+  let checkAdminPath = pathname.includes("admin");
+
   return (
     <div>
       <BackToTop />
-      <Header />
-      <SideBar />
+      {!checkAdminPath ? (
+        <>
+          <Header />
+          <SideBar />
+        </>
+      ) : (
+        ""
+      )}
       {routing}
       <ToastContainer />
-      <Footer />
+      {!checkAdminPath ? (
+        <>
+          <Footer />
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

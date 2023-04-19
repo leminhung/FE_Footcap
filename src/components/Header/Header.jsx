@@ -791,6 +791,16 @@ export default function Header() {
                               <i className='fal fa-user-cog'></i> Settings
                             </a>
                           </li>
+                          {userInfo?.actor?.role === "admin" ? (
+                            <li>
+                              <a href='/admin/dashboard'>
+                                <i className='fal fa-user-cog'></i> Admin
+                                dashboard
+                              </a>
+                            </li>
+                          ) : (
+                            ""
+                          )}
                           <li onClick={() => logoutHandler()}>
                             <a href='#!'>
                               <i className='fal fa-sign-out-alt'></i> Logout

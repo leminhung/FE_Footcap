@@ -18,6 +18,25 @@ import ChangePassword from "src/containers/ChangePassword/ChangePassword";
 import ProductDetail from "src/containers/ProductDetail/ProductDetail";
 import SearchProduct from "src/containers/SearchProduct/SearchProduct";
 
+// Admin Protect Route
+import PrivateAdminRoute from "src/components/PrivateAdminRoute";
+
+// Admin
+import AdminPage from "src/admin/index";
+import AdminDashboard from "src/admin/AdminDashboard/index";
+
+// import AdminShowProductList from "src/admin/AdminShowProductList/index";
+// import AdminShowOrderList from "src/admin/AdminShowOrderList/index";
+// import AdminShowOrderDetailList from "src/admin/AdminShowOrderDetailList/index";
+// import AdminCreateProduct from "src/admin/AdminCreateProduct/index";
+// import AdminEditProduct from "src/admin/AdminEditProduct/index";
+// import AdminShowCategoryList from "src/admin/AdminShowCategoryList/index";
+// import AdminCreateCategory from "src/admin/AdminCreateCategory/index";
+// import AdminEditCategory from "src/admin/AdminEditCategory/index";
+// import AdminShowUsersList from "src/admin/AdminShowUsersList/index";
+// import AdminCreateUser from "src/admin/AdminCreateUser/index";
+// import AdminEditUser from "src/admin/AdminEditUser/index";
+
 const routes = () => [
   {
     path: "/",
@@ -78,6 +97,18 @@ const routes = () => [
   {
     path: "checkout/order-completed",
     element: <OrderCompleted />,
+  },
+
+  // admin
+  {
+    path: "admin",
+    element: (
+      <PrivateAdminRoute>
+        <AdminPage>
+          <AdminDashboard />
+        </AdminPage>
+      </PrivateAdminRoute>
+    ),
   },
   {
     path: "*",

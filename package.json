@@ -4,7 +4,6 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "recharts": "^2.1.13",
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
     "@mui/icons-material": "^5.8.4",
@@ -15,21 +14,19 @@
     "env-cmd": "^10.1.0",
     "formik": "^2.2.9",
     "node-sass": "^8.0.0",
-    "qs": "^6.11.1",
-    "query-string": "^8.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-query": "^3.39.3",
     "react-redux": "^7.2.6",
-    "react-router": "^6.0.0-beta.0",
-    "react-router-dom": "^6.9.0",
+    "react-router": "^6.3.0",
+    "react-router-dom": "^5.3.0",
     "react-scripts": "^4.0.3",
     "react-toastify": "8.2.0",
+    "recharts": "^2.1.13",
     "redux": "^4.2.1",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.2",
-    "sass": "^1.54.0",
-    "use-force-update": "^1.0.11"
+    "sass": "^1.54.0"
   },
   "scripts": {
     "start": "react-scripts start",

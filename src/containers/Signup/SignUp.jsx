@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { register } from "src/store/user/user.action";
@@ -18,10 +18,10 @@ const SignUp = () => {
   const userRegister = useSelector((state) => state.userRegister);
   const { loading, error, userInfo } = userRegister;
 
-  let history = useNavigate();
+  let history = useHistory();
   useEffect(() => {
     if (userInfo) {
-      history("/");
+      history.push("/");
     }
   }, [history, userInfo]);
 

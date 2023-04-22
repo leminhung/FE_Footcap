@@ -13,6 +13,8 @@ const HomePage = () => {
   const [limit, setLimit] = useState(12);
   const [sort, setSort] = useState(undefined);
 
+  console.log("helo");
+
   const handleChangeSort = (value) => {
     setSort(value);
   };

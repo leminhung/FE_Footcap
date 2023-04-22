@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { login } from "src/store/user/user.action";
@@ -15,10 +15,10 @@ const Login = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
 
-  let history = useNavigate();
+  let history = useHistory();
   useEffect(() => {
     if (userInfo) {
-      history("/");
+      history.push("/");
     }
   }, [history, userInfo]);
 

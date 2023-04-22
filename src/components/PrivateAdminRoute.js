@@ -1,28 +1,49 @@
 import React from "react";
-import { Route, Navigate } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
-const PrivateAdminRoute = ({ ...rest }) => {
+const PrivateAdminRoute = ({ children, ...rest }) => {
   const userLogin = useSelector((state) => state.userLogin);
 
   const { loading, error, userInfo } = userLogin;
+
+  console.log("rest--", rest);
+
+  // const routeResult = useRoutes([
+  //   {
+  //     path: rest.path,
+  //     element:
+  //       userInfo?.token && userInfo?.actor.role === "admin" ? (
+  //         children
+  //       ) : (
+  //         <Redirect to='/' />
+  //       ),
+  //   },
+  // ]);
+
+  // return routeResult;
 
   if (userInfo?.token) {
     const { actor } = userInfo;
     if (actor.role === "user") {
       toast.error("You need to sign in as an Admin to access this resource!");
-      return <Navigate to='/' />;
+      return <Redirect to='/' />;
     } else {
-      return userInfo?.token && actor.role === "admin" ? (
-        <Route {...rest} />
-      ) : (
-        <Navigate to='/admin/dashboards' />
-      );
+      console.log("hello");
+      return <Route {...rest}>{children}</Route>;
+      // return  ? (
+      //   <Route {...rest} />
+      // ) : (
+      //   <Navigate to='/admin/dashboards' />
+      // );
     }
   }
 
-  return <Route {...rest} />;
+  return null;
+
+  // toast.error("You need to sign in as an Admin to access this resource!");
+  // return <Navigate to='/' />;
 };
 
 export default PrivateAdminRoute;

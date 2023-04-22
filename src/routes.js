@@ -1,6 +1,7 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import HomePage from "src/containers/HomePage/HomePage";
+import App from "src/App";
 import NotFound from "src/containers/NotFound/NotFound";
 import Cart from "src/containers/Cart/Cart";
 
@@ -37,83 +38,96 @@ import AdminDashboard from "src/admin/AdminDashboard/index";
 // import AdminCreateUser from "src/admin/AdminCreateUser/index";
 // import AdminEditUser from "src/admin/AdminEditUser/index";
 
-const routes = () => [
-  {
-    path: "/",
-    element: <HomePage />,
-  },
-  {
-    path: "cart",
-    element: <Cart />,
-  },
-  {
-    path: "signin",
-    element: <Login />,
-  },
-  {
-    path: "signup",
-    element: <SignUp />,
-  },
-  {
-    path: "products/:slug",
-    element: <ProductDetail />,
-  },
-  {
-    path: "blog",
-    element: <Blog />,
-  },
-  {
-    path: "search",
-    element: <SearchProduct />,
-  },
-  {
-    path: "blog/:id",
-    element: <BlogDetail />,
-  },
-  {
-    path: "contact-us",
-    element: <ContactUs />,
-  },
-  {
-    path: "profile",
-    element: <Profile />,
-  },
-  {
-    path: "profile/edit",
-    element: <ProfileEdit />,
-  },
-  {
-    path: "profile/change-password",
-    element: <ChangePassword />,
-  },
-  {
-    path: "checkout",
-    element: <ShoppingCart />,
-  },
-  {
-    path: "checkout/payment",
-    element: <CheckOut />,
-  },
-  {
-    path: "checkout/order-completed",
-    element: <OrderCompleted />,
-  },
+// const route = () => [
+//   {
+//     path: "/",
+//     element: <HomePage />,
+//   },
+//   {
+//     path: "cart",
+//     element: <Cart />,
+//   },
+//   {
+//     path: "signin",
+//     element: <Login />,
+//   },
+//   {
+//     path: "signup",
+//     element: <SignUp />,
+//   },
+//   {
+//     path: "products/:slug",
+//     element: <ProductDetail />,
+//   },
+//   {
+//     path: "blog",
+//     element: <Blog />,
+//   },
+//   {
+//     path: "search",
+//     element: <SearchProduct />,
+//   },
+//   {
+//     path: "blog/:id",
+//     element: <BlogDetail />,
+//   },
+//   {
+//     path: "contact-us",
+//     element: <ContactUs />,
+//   },
+//   {
+//     path: "profile",
+//     element: <Profile />,
+//   },
+//   {
+//     path: "profile/edit",
+//     element: <ProfileEdit />,
+//   },
+//   {
+//     path: "profile/change-password",
+//     element: <ChangePassword />,
+//   },
+//   {
+//     path: "checkout",
+//     element: <ShoppingCart />,
+//   },
+//   {
+//     path: "checkout/payment",
+//     element: <CheckOut />,
+//   },
+//   {
+//     path: "checkout/order-completed",
+//     element: <OrderCompleted />,
+//   },
 
-  // admin
-  {
-    path: "admin",
-    element: (
-      <PrivateAdminRoute>
-        <AdminPage>
-          <AdminDashboard />
-        </AdminPage>
-      </PrivateAdminRoute>
-    ),
-  },
-  {
-    path: "*",
-    element: <NotFound />,
-  },
-];
+//   // admin
+//   {
+//     path: "admin/dashboards",
+//     element: (
+//       <PrivateAdminRoute>
+//         <AdminPage>
+//           <AdminDashboard />
+//         </AdminPage>
+//       </PrivateAdminRoute>
+//     ),
+//   },
+//   {
+//     path: "*",
+//     element: <NotFound />,
+//   },
+// ];
 
-export default routes;
+const RoutesWrapper = () => {
+  return (
+    <>
+      <Router>
+        <Switch>
+          <Route path='/' exact component={App} />
+          <Route path='/cart' component={Cart} />
+        </Switch>
+      </Router>
+    </>
+  );
+};
+
+export default RoutesWrapper;

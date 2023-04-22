@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { logout } from "src/store/user/user.action";
 import { listProducts } from "src/store/product/product.action";
@@ -9,7 +9,7 @@ export default function Header() {
   const [title, setTitle] = useState("");
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const history = useHistory();
 
   const cartItems = useSelector((state) => state.cart.cartItems);
   const userLogin = useSelector((state) => state.userLogin);
@@ -26,7 +26,7 @@ export default function Header() {
       title,
     };
     dispatch(listProducts(params));
-    navigate("/search");
+    history.push("/search");
   };
 
   return (

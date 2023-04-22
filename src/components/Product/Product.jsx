@@ -123,7 +123,12 @@ const Product = (props) => {
         </div>
         <div className='item_content'>
           <h3 className='item_title'>
-            <Link to={`products/${product.slug}`} state={{ from: product.id }}>
+            <Link
+              to={{
+                pathname: `products/${product.slug}`,
+                state: { from: product.id },
+              }}
+            >
               {product.title}
             </Link>
           </h3>

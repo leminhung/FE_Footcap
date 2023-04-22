@@ -1,13 +1,15 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import App from "src/App";
+import HomePage from "src/containers/HomePage/HomePage";
 import NotFound from "src/containers/NotFound/NotFound";
 import Cart from "src/containers/Cart/Cart";
 
+// checkout
 import ShoppingCart from "src/containers/CheckOut/ShoppingCart";
 import CheckOut from "src/containers/CheckOut/CheckOut";
 import OrderCompleted from "src/containers/CheckOut/OrderComplete";
+
 import Login from "src/containers/Login/Login";
 import SignUp from "src/containers/Signup/SignUp";
 import Blog from "src/containers/Blog/Blog";
@@ -19,8 +21,9 @@ import ChangePassword from "src/containers/ChangePassword/ChangePassword";
 import ProductDetail from "src/containers/ProductDetail/ProductDetail";
 import SearchProduct from "src/containers/SearchProduct/SearchProduct";
 
-// Admin Protect Route
+// Protect Route
 import PrivateAdminRoute from "src/components/PrivateAdminRoute";
+import PrivateRoute from "src/components/PrivateRoute";
 
 // Admin
 import AdminPage from "src/admin/index";
@@ -38,92 +41,42 @@ import AdminDashboard from "src/admin/AdminDashboard/index";
 // import AdminCreateUser from "src/admin/AdminCreateUser/index";
 // import AdminEditUser from "src/admin/AdminEditUser/index";
 
-// const route = () => [
-//   {
-//     path: "/",
-//     element: <HomePage />,
-//   },
-//   {
-//     path: "cart",
-//     element: <Cart />,
-//   },
-//   {
-//     path: "signin",
-//     element: <Login />,
-//   },
-//   {
-//     path: "signup",
-//     element: <SignUp />,
-//   },
-//   {
-//     path: "products/:slug",
-//     element: <ProductDetail />,
-//   },
-//   {
-//     path: "blog",
-//     element: <Blog />,
-//   },
-//   {
-//     path: "search",
-//     element: <SearchProduct />,
-//   },
-//   {
-//     path: "blog/:id",
-//     element: <BlogDetail />,
-//   },
-//   {
-//     path: "contact-us",
-//     element: <ContactUs />,
-//   },
-//   {
-//     path: "profile",
-//     element: <Profile />,
-//   },
-//   {
-//     path: "profile/edit",
-//     element: <ProfileEdit />,
-//   },
-//   {
-//     path: "profile/change-password",
-//     element: <ChangePassword />,
-//   },
-//   {
-//     path: "checkout",
-//     element: <ShoppingCart />,
-//   },
-//   {
-//     path: "checkout/payment",
-//     element: <CheckOut />,
-//   },
-//   {
-//     path: "checkout/order-completed",
-//     element: <OrderCompleted />,
-//   },
-
-//   // admin
-//   {
-//     path: "admin/dashboards",
-//     element: (
-//       <PrivateAdminRoute>
-//         <AdminPage>
-//           <AdminDashboard />
-//         </AdminPage>
-//       </PrivateAdminRoute>
-//     ),
-//   },
-//   {
-//     path: "*",
-//     element: <NotFound />,
-//   },
-// ];
-
 const RoutesWrapper = () => {
   return (
     <>
       <Router>
         <Switch>
-          <Route path='/' exact component={App} />
+          <Route path='/' exact component={HomePage} />
           <Route path='/cart' component={Cart} />
+          <Route path='/signin' component={Login} />
+          <Route path='/signup' component={SignUp} />
+          <Route path='/products/:slug' component={ProductDetail} />
+          <Route path='/blog' component={Blog} />
+          <Route path='/search' component={SearchProduct} />
+          <Route path='/blog/:id' component={BlogDetail} />
+          <Route path='/contact-us' component={ContactUs} />
+
+          {/* auth */}
+          <PrivateRoute path='/profile' component={Profile} />
+          <PrivateRoute path='/profile/edit' component={ProfileEdit} />
+          <PrivateRoute
+            path='/profile/change-password'
+            exact
+            component={ChangePassword}
+          />
+
+          {/* checkout */}
+          <Route path='/checkout/shopping-cart' component={ShoppingCart} />
+          <Route path='/checkout/payment' component={CheckOut} />
+          <Route path='/checkout/order-completed' component={OrderCompleted} />
+
+          {/* admin */}
+          <PrivateAdminRoute path='/admin/dashboard' exact>
+            <AdminPage>
+              <AdminDashboard />
+            </AdminPage>
+          </PrivateAdminRoute>
+          <Route path='*' component={NotFound} />
         </Switch>
       </Router>
     </>

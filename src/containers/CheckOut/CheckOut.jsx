@@ -1,42 +1,35 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+
+import CheckOutHero from "./CheckOutHero";
+import PayButton from "src/components/PayButton";
 
 export default function CheckOut() {
+  const [cartItems, setCartItems] = useState([]);
+  const cart = useSelector((state) => state.cart);
+
+  useEffect(() => {
+    setCartItems(cart.cartItems);
+  }, [cart]);
+
   return (
     <main>
-      <section
-        class='breadcrumb_section text-white text-center text-uppercase d-flex align-items-end clearfix bg-fit'
-        style={{
-          backgroundImage: `url(/assets/images/slider/classic_ecommerce/test.png)`,
-        }}
-      >
-        <div class='overlay' data-bg-color='#1d1d1d'></div>
-        <div class='container'>
-          <h1 class='page_title text-white'>Checkout</h1>
-          <ul class='breadcrumb_nav ul_li_center clearfix'>
-            <li>
-              <a href='#!'>Home</a>
-            </li>
-            <li>Shop</li>
-            <li>Checkout</li>
-          </ul>
-        </div>
-      </section>
-
+      <CheckOutHero />
       <section class='checkout_section sec_ptb_140 clearfix'>
         <div class='container'>
           <ul class='checkout_step ul_li clearfix'>
             <li class='activated'>
-              <a href='/checkout/shopping-cart'>
+              <a href='/checkout'>
                 <span>01.</span> Shopping Cart
               </a>
             </li>
             <li class='active'>
-              <a href='/checkout/payment'>
+              <a href='#!'>
                 <span>02.</span> Checkout
               </a>
             </li>
             <li>
-              <a href='/checkout/order-completed'>
+              <a href='#!'>
                 <span>03.</span> Order Completed
               </a>
             </li>
@@ -142,45 +135,11 @@ export default function CheckOut() {
             <h3 class='form_title mb_30'>Billing details</h3>
             <form action='#'>
               <div class='form_wrap'>
-                <div class='row'>
-                  <div class='col-lg-6'>
-                    <div class='form_item'>
-                      <span class='input_title'>
-                        First Name<sup>*</sup>
-                      </span>
-                      <input type='text' name='firstname' />
-                    </div>
-                  </div>
-
-                  <div class='col-lg-6'>
-                    <div class='form_item'>
-                      <span class='input_title'>
-                        Last Name<sup>*</sup>
-                      </span>
-                      <input type='text' name='lastname' />
-                    </div>
-                  </div>
-                </div>
-
                 <div class='form_item'>
                   <span class='input_title'>
-                    Company Name<sup>*</sup>
+                    Full Name<sup>*</sup>
                   </span>
-                  <input type='text' name='company' />
-                </div>
-
-                <div class='option_select'>
-                  <span class='input_title'>
-                    Country<sup>*</sup>
-                  </span>
-                  <select name='country'>
-                    <option value='USA' selected>
-                      United States
-                    </option>
-                    <option value='USA'>United States</option>
-                    <option value='USA'>United States</option>
-                    <option value='USA'>United States</option>
-                  </select>
+                  <input type='text' name='firstname' />
                 </div>
 
                 <div class='form_item'>
@@ -190,29 +149,8 @@ export default function CheckOut() {
                   <input
                     type='text'
                     name='address'
-                    placeholder='House number and street name'
+                    placeholder='House number, street name,...'
                   />
-                </div>
-
-                <div class='form_item'>
-                  <span class='input_title'>
-                    Town/City<sup>*</sup>
-                  </span>
-                  <input type='text' name='city' />
-                </div>
-
-                <div class='form_item'>
-                  <span class='input_title'>
-                    County<sup>*</sup>
-                  </span>
-                  <input type='text' name='county' />
-                </div>
-
-                <div class='form_item'>
-                  <span class='input_title'>
-                    Postcode / Zip<sup>*</sup>
-                  </span>
-                  <input type='text' name='postcode' />
                 </div>
 
                 <div class='form_item'>
@@ -229,29 +167,13 @@ export default function CheckOut() {
                   <input type='email' name='email' />
                 </div>
 
-                <div class='checkbox_item'>
-                  <label for='account_create_checkbox'>
-                    <input id='account_create_checkbox' type='checkbox' />{" "}
-                    Create an account?
-                  </label>
-                </div>
-
-                <hr />
-
-                <div class='checkbox_item mb_30'>
-                  <label for='ship_address_checkbox'>
-                    <input id='ship_address_checkbox' type='checkbox' /> Ship to
-                    a different address?
-                  </label>
-                </div>
-
                 <div class='form_item mb-0'>
                   <span class='input_title'>
                     Order notes<sup>*</sup>
                   </span>
                   <textarea
                     name='note'
-                    placeholder='Note about your order, eg. special notes fordelivery.'
+                    placeholder='Let give the notes for your order'
                   ></textarea>
                 </div>
               </div>
@@ -273,87 +195,41 @@ export default function CheckOut() {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>
-                          <div class='cart_product'>
-                            <div class='item_image'>
-                              <img
-                                src='/assets/images/cart/img_04.jpg'
-                                alt='image_not_found'
-                              />
-                            </div>
-                            <div class='item_content'>
-                              <h4 class='item_title mb-0'>
-                                Top Curabitur Lectus
-                              </h4>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <span class='price_text'>$69.00</span>
-                        </td>
-                        <td>
-                          <span class='quantity_text'>2</span>
-                        </td>
-                        <td>
-                          <span class='total_price'>$138.00</span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td>
-                          <div class='cart_product'>
-                            <div class='item_image'>
-                              <img
-                                src='/assets/images/cart/img_04.jpg'
-                                alt='image_not_found'
-                              />
-                            </div>
-                            <div class='item_content'>
-                              <h4 class='item_title mb-0'>
-                                Dress Lobortis Laculis
-                              </h4>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <span class='price_text'>$69.00</span>
-                        </td>
-                        <td>
-                          <span class='quantity_text'>2</span>
-                        </td>
-                        <td>
-                          <span class='total_price'>$138.00</span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td>
-                          <div class='cart_product'>
-                            <div class='item_image'>
-                              <img
-                                src='/assets/images/cart/img_04.jpg'
-                                alt='image_not_found'
-                              />
-                            </div>
-                            <div class='item_content'>
-                              <h4 class='item_title mb-0'>
-                                Boot Curabitur Lectus
-                              </h4>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <span class='price_text'>$69.00</span>
-                        </td>
-                        <td>
-                          <span class='quantity_text'>2</span>
-                        </td>
-                        <td>
-                          <span class='total_price'>$138.00</span>
-                        </td>
-                      </tr>
-
+                      {cartItems.length > 0 &&
+                        cartItems.map((item, index) => {
+                          return (
+                            <tr>
+                              <td>
+                                <div class='cart_product'>
+                                  <div class='item_image'>
+                                    <img
+                                      src={item?.image}
+                                      alt='image_not_found'
+                                    />
+                                  </div>
+                                  <div class='item_content'>
+                                    <h4 class='item_title mb-0'>
+                                      {item?.name}
+                                    </h4>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>
+                                <span class='price_text'>${item?.price}</span>
+                              </td>
+                              <td>
+                                <span class='quantity_text'>
+                                  {item.quantity}
+                                </span>
+                              </td>
+                              <td>
+                                <span class='total_price'>
+                                  ${item.price * item?.quantity}
+                                </span>
+                              </td>
+                            </tr>
+                          );
+                        })}
                       <tr>
                         <td></td>
                         <td></td>
@@ -361,7 +237,7 @@ export default function CheckOut() {
                           <span class='subtotal_text'>Subtotal</span>
                         </td>
                         <td>
-                          <span class='total_price'>$414.00</span>
+                          <span class='total_price'>${cart.subtotal}</span>
                         </td>
                       </tr>
 
@@ -407,16 +283,17 @@ export default function CheckOut() {
                         <td></td>
                         <td></td>
                         <td>
-                          <span class='total_price'>$135.00</span>
+                          <span class='total_price'>${cart.total}</span>
                         </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
 
+                {/* payment */}
                 <div class='billing_payment_mathod'>
                   <ul class='ul_li_block clearfix'>
-                    <li>
+                    {/* <li>
                       <div class='checkbox_item mb_15 pl-0'>
                         <label for='bank_transfer_checkbox'>
                           <input
@@ -433,7 +310,7 @@ export default function CheckOut() {
                         will not be shipped until the funds have cleared in our
                         account.
                       </p>
-                    </li>
+                    </li> */}
 
                     <li>
                       <div class='checkbox_item mb-0 pl-0'>
@@ -466,9 +343,7 @@ export default function CheckOut() {
                       </div>
                     </li>
                   </ul>
-                  <button type='submit' class='custom_btn bg_default_red'>
-                    PLACE ORDER
-                  </button>
+                  <PayButton cartItems={cartItems} />
                 </div>
               </div>
             </form>

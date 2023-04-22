@@ -64,7 +64,7 @@ export default function SideBar() {
             <a href='/cart'>View Cart</a>
           </li>
           <li>
-            <a href='/checkout-shopping-cart'>Checkout</a>
+            <a href='/checkout/shopping-cart'>Checkout</a>
           </li>
         </ul>
       </div>

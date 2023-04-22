@@ -1,21 +1,19 @@
 import React from "react";
-
 import { ToastContainer } from "react-toastify";
 
-import HomePage from "src/containers/HomePage/HomePage";
 import Header from "src/components/Header/Header";
 import BackToTop from "src/components/BackToTop/BackToTop";
 import SideBar from "src/components/SideBar/SideBar";
 import Footer from "src/components/Footer/Footer";
 
+import RoutesWrapper from "src/routes";
+
 const Wrapper = () => {
-  // const { pathname } = routing?.props?.match;
-  // const pathname = "admin";
-  // let checkAdminPath = pathname.includes("admin");
+  let checkAdminPath = window.location.pathname.includes("admin");
 
   return (
     <div>
-      {/* <BackToTop />
+      <BackToTop />
       {!checkAdminPath ? (
         <>
           <Header />
@@ -32,14 +30,7 @@ const Wrapper = () => {
         </>
       ) : (
         ""
-      )} */}
-
-      <BackToTop />
-      <Header />
-      <HomePage />
-      <SideBar />
-      <Footer />
-      <ToastContainer />
+      )}
     </div>
   );
 };

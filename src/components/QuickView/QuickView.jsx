@@ -49,7 +49,6 @@ const QuickView = () => {
             />
           </div>
           <div className='item_content'>
-            {/* <h2 className='item_title mb_15'>Digital Infrared Thermometer</h2> */}
             <h2 className='item_title mb_15'>{product.title}</h2>
             <div className='rating_star mb_30 clearfix'>
               <ul className='float-left ul_li mr-2'>

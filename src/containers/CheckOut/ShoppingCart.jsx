@@ -1,49 +1,52 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { removeFromCart, addToCart } from "src/store/cart/cart.action";
+import { capitalizeFirstLetter } from "src/utils/convertFirstLetterToUpperCase";
+
+import CheckOutHero from "./CheckOutHero";
 
 export default function ShoppingCart() {
+  const [cartItems, setCartItems] = useState([]);
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
+
+  useEffect(() => {
+    setCartItems(cart.cartItems);
+  }, [cart]);
+
+  const handleDeleteItem = (item) => {
+    dispatch(removeFromCart(item));
+  };
+
+  const handleQuantityIncrease = (item) => {
+    item.increase = 1;
+    dispatch(addToCart(item));
+  };
+
+  const handleQuantityDecrease = (item) => {
+    item.decrease = 1;
+    dispatch(removeFromCart(item));
+  };
+
   return (
     <main>
-      {/* <!-- breadcrumb_section - start
-			================================================== --> */}
-      <section
-        class='breadcrumb_section text-white text-center text-uppercase d-flex align-items-end clearfix'
-        style={{
-          backgroundImage: `url(/assets/images/slider/classic_ecommerce/test.png)`,
-        }}
-      >
-        <div class='overlay' data-bg-color='#1d1d1d'></div>
-        <div class='container'>
-          <h1 class='page_title text-white'>Checkout</h1>
-          <ul class='breadcrumb_nav ul_li_center clearfix'>
-            <li>
-              <a href='#!'>Home</a>
-            </li>
-            <li>Shop</li>
-            <li>Checkout</li>
-          </ul>
-        </div>
-      </section>
-      {/* <!-- breadcrumb_section - end
-			================================================== -->
-
-
-			<!-- cart_section - start
-			================================================== --> */}
+      <CheckOutHero />
       <section class='cart_section sec_ptb_140 clearfix'>
         <div class='container'>
           <ul class='checkout_step ul_li clearfix'>
             <li class='active'>
-              <a href='/checkout/shopping-cart'>
+              <a href='#!'>
                 <span>01.</span> Shopping Cart
               </a>
             </li>
             <li>
-              <a href='/checkout/payment'>
+              <a href='#!'>
                 <span>02.</span> Checkout
               </a>
             </li>
             <li>
-              <a href='/checkout/order-completed'>
+              <a href='#!'>
                 <span>03.</span> Order Completed
               </a>
             </li>
@@ -60,110 +63,60 @@ export default function ShoppingCart() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    <div class='cart_product'>
-                      <div class='item_image'>
-                        <img
-                          src='/assets/images/cart/img_04.jpg'
-                          alt='image_not_found'
-                        />
-                      </div>
-                      <div class='item_content'>
-                        <h4 class='item_title'>Men's Polo T-shirt</h4>
-                        <span class='item_type'>Clothes</span>
-                      </div>
-                      <button type='button' class='remove_btn'>
-                        <i class='fal fa-times'></i>
-                      </button>
-                    </div>
-                  </td>
-                  <td>
-                    <span class='price_text'>$69.00</span>
-                  </td>
-                  <td>
-                    <div class='quantity_input'>
-                      <form action='#'>
-                        <span class='input_number_decrement'>–</span>
-                        <input class='input_number' type='text' value='2' />
-                        <span class='input_number_increment'>+</span>
-                      </form>
-                    </div>
-                  </td>
-                  <td>
-                    <span class='total_price'>$138.00</span>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <div class='cart_product'>
-                      <div class='item_image'>
-                        <img
-                          src='/assets/images/cart/img_05.jpg'
-                          alt='image_not_found'
-                        />
-                      </div>
-                      <div class='item_content'>
-                        <h4 class='item_title'>Men's Polo T-shirt</h4>
-                        <span class='item_type'>Clothes</span>
-                      </div>
-                      <button type='button' class='remove_btn'>
-                        <i class='fal fa-times'></i>
-                      </button>
-                    </div>
-                  </td>
-                  <td>
-                    <span class='price_text'>$23.00</span>
-                  </td>
-                  <td>
-                    <div class='quantity_input'>
-                      <form action='#'>
-                        <span class='input_number_decrement'>–</span>
-                        <input class='input_number' type='text' value='1' />
-                        <span class='input_number_increment'>+</span>
-                      </form>
-                    </div>
-                  </td>
-                  <td>
-                    <span class='total_price'>$23.00</span>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <div class='cart_product'>
-                      <div class='item_image'>
-                        <img
-                          src='/assets/images/cart/img_06.jpg'
-                          alt='image_not_found'
-                        />
-                      </div>
-                      <div class='item_content'>
-                        <h4 class='item_title'>Men's Polo T-shirt</h4>
-                        <span class='item_type'>Clothes</span>
-                      </div>
-                      <button type='button' class='remove_btn'>
-                        <i class='fal fa-times'></i>
-                      </button>
-                    </div>
-                  </td>
-                  <td>
-                    <span class='price_text'>$36.00</span>
-                  </td>
-                  <td>
-                    <div class='quantity_input'>
-                      <form action='#'>
-                        <span class='input_number_decrement'>–</span>
-                        <input class='input_number' type='text' value='1' />
-                        <span class='input_number_increment'>+</span>
-                      </form>
-                    </div>
-                  </td>
-                  <td>
-                    <span class='total_price'>$36.00</span>
-                  </td>
-                </tr>
+                {cartItems.length > 0 &&
+                  cartItems.map((item, index) => {
+                    return (
+                      <tr>
+                        <td>
+                          <div key={item.product} class='cart_product'>
+                            <div class='item_image'>
+                              <img src={item?.image} alt='image_not_found' />
+                            </div>
+                            <div class='item_content'>
+                              <h4 class='item_title'>{item?.name}</h4>
+                              <span class='item_type'>Shoes</span>
+                              <span class='item_type mt-2'>
+                                {capitalizeFirstLetter(item?.color)} -{" "}
+                                {item?.size}
+                              </span>
+                            </div>
+                            <button
+                              type='button'
+                              class='remove_btn'
+                              onClick={() => handleDeleteItem(item)}
+                            >
+                              <i class='fal fa-times'></i>
+                            </button>
+                          </div>
+                        </td>
+                        <td>
+                          <span class='price_text'>${item?.price}</span>
+                        </td>
+                        <td>
+                          <div class='quantity_input pt-3'>
+                            <form action='#'>
+                              <span
+                                onClick={() => handleQuantityDecrease(item)}
+                              >
+                                –
+                              </span>
+                              <input type='text' value={item.quantity} />
+                              <span
+                                onClick={() => handleQuantityIncrease(item)}
+                              >
+                                +
+                              </span>
+                            </form>
+                          </div>
+                        </td>
+                        <td>
+                          <span class='total_price'>
+                            ${item.price * item?.quantity}
+                          </span>
+                        </td>
+                      </tr>
+                    );
+                  })}
               </tbody>
             </table>
           </div>
@@ -205,14 +158,17 @@ export default function ShoppingCart() {
             <div class='col-lg-4 col-md-12 col-sm-12 col-xs-12'>
               <div
                 class='cart_pricing_table pt-0 text-uppercase'
-                data-bg-color='#f2f3f5'
+                style={{ backgroundColor: "#f2f3f5" }}
               >
-                <h3 class='table_title text-center' data-bg-color='#ededed'>
+                <h3
+                  class='table_title text-center'
+                  style={{ backgroundColor: "#ededed" }}
+                >
                   Cart Total
                 </h3>
                 <ul class='ul_li_block clearfix'>
                   <li>
-                    <span>Subtotal</span> <span>$197.99</span>
+                    <span>Subtotal</span> <span>${cart.subtotal}</span>
                   </li>
                   <li>
                     <span>Shipping</span>{" "}
@@ -223,13 +179,10 @@ export default function ShoppingCart() {
                     </span>
                   </li>
                   <li>
-                    <span>Total</span> <span>$197.99</span>
+                    <span>Total</span> <span>${cart.total}</span>
                   </li>
                 </ul>
-                <a
-                  href='shop_checkout_step2.html'
-                  class='custom_btn bg_success'
-                >
+                <a href='/checkout/payment' class='custom_btn bg_success'>
                   Proceed to Checkout
                 </a>
               </div>
@@ -237,8 +190,6 @@ export default function ShoppingCart() {
           </div>
         </div>
       </section>
-      {/* <!-- cart_section - end
-			================================================== --> */}
     </main>
   );
 }

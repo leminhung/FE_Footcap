@@ -79,9 +79,10 @@ export default function Header() {
               <div className='brand_logo'>
                 <a className='brand_link' href='/'>
                   <img
-                    src='/assets/images/logo/logo_03_1x.png'
-                    srcSet='/assets/images/logo/logo_03_2x.png 2x'
+                    src='/images/logo.svg'
+                    srcSet='/images/logo.svg 2x'
                     alt='logo_not_found'
+                    width='200px'
                   />
                 </a>
 

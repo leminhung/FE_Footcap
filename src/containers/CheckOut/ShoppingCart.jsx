@@ -31,7 +31,7 @@ export default function ShoppingCart() {
 
   return (
     <main>
-      <CheckOutHero />
+      <CheckOutHero title={"SHOPPING CART"} />
       <section class='cart_section sec_ptb_140 clearfix'>
         <div class='container'>
           <ul class='checkout_step ul_li clearfix'>

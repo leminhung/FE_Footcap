@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CheckOutHero() {
+export default function CheckOutHero({ title = "" }) {
   return (
     <section
       className='breadcrumb_section text-white text-center text-uppercase d-flex align-items-end clearfix'
@@ -15,13 +15,13 @@ export default function CheckOutHero() {
         }}
       ></div>
       <div className='container'>
-        <h1 className='page_title text-white'>Checkout</h1>
+        <h1 className='page_title text-white'>{title}</h1>
         <ul className='breadcrumb_nav ul_li_center clearfix'>
           <li>
             <a href='#!'>Home</a>
           </li>
           <li>Shop</li>
-          <li>Checkout</li>
+          <li>{title}</li>
         </ul>
       </div>
     </section>

@@ -153,7 +153,10 @@ export default function BlogDetail() {
                 </li>
               </ul>
 
-              <div className='post_share_box mb_50' data-bg-color='#da0a2c'>
+              <div
+                className='post_share_box mb_50'
+                style={{ backgroundColor: "#da0a2c" }}
+              >
                 <h4 className='wrap_title text-uppercase text-white'>
                   Share this Article
                 </h4>
@@ -205,7 +208,7 @@ export default function BlogDetail() {
 
               <div
                 className='post_author mb_100 clearfix'
-                data-bg-color='#e6e6e6'
+                style={{ backgroundColor: "#e6e6e6" }}
               >
                 <div className='author_image'>
                   <img

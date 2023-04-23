@@ -14,7 +14,7 @@ export default function CheckOut() {
 
   return (
     <main>
-      <CheckOutHero />
+      <CheckOutHero title={"CHECKOUT"} />
       <section class='checkout_section sec_ptb_140 clearfix'>
         <div class='container'>
           <ul class='checkout_step ul_li clearfix'>
@@ -193,41 +193,6 @@ export default function CheckOut() {
                       </tr>
 
                       <tr>
-                        <td></td>
-                        <td></td>
-                        <td>
-                          <span class='subtotal_text'>Shipping</span>
-                        </td>
-                        <td class='text-left'>
-                          <div class='checkbox_item mb_15'>
-                            <label for='shipping_checkbox'>
-                              <input
-                                id='shipping_checkbox'
-                                type='checkbox'
-                                checked
-                              />{" "}
-                              Free Shipping
-                            </label>
-                          </div>
-                          <div class='checkbox_item mb_15'>
-                            <label for='flatrate_checkbox'>
-                              <input id='flatrate_checkbox' type='checkbox' />{" "}
-                              Flat rate: $15.00
-                            </label>
-                          </div>
-                          <div class='checkbox_item'>
-                            <label for='localpickup_checkbox'>
-                              <input
-                                id='localpickup_checkbox'
-                                type='checkbox'
-                              />{" "}
-                              Local Pickup: $8.00
-                            </label>
-                          </div>
-                        </td>
-                      </tr>
-
-                      <tr>
                         <td class='text-left'>
                           <span class='subtotal_text'>TOTAL</span>
                         </td>
@@ -263,7 +228,7 @@ export default function CheckOut() {
                       </p>
                     </li> */}
 
-                    <li>
+                    {/* <li>
                       <div class='checkbox_item mb-0 pl-0'>
                         <label for='check_payments'>
                           <input id='check_payments' type='checkbox' />
@@ -278,7 +243,7 @@ export default function CheckOut() {
                           Delivery
                         </label>
                       </div>
-                    </li>
+                    </li> */}
                     <li>
                       <div class='checkbox_item mb-0 pl-0'>
                         <label for='paypal_checkbox'>

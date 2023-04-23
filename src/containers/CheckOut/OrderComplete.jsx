@@ -4,7 +4,7 @@ import CheckOutHero from "./CheckOutHero";
 export default function OrderComplete() {
   return (
     <main>
-      <CheckOutHero />
+      <CheckOutHero title={"CHECKOUT COMPLETED"} />
       <section class='checkout_section sec_ptb_140 clearfix'>
         <div class='container'>
           <ul class='checkout_step ul_li clearfix'>
@@ -25,10 +25,16 @@ export default function OrderComplete() {
             </li>
           </ul>
 
-          <div class='order_complete_alart text-center'>
+          <div class='d-flex flex-column order_complete_alart text-center'>
             <h2>
               Congratulation! You’ve <strong>Completed</strong> Payment.
             </h2>
+            <h4 className='mt-2'>
+              View your order{" "}
+              <a href='/order/view'>
+                <strong>here</strong>
+              </a>
+            </h4>
           </div>
         </div>
       </section>

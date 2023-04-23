@@ -1,5 +1,7 @@
 import axios from "axios";
-import { CART_CLEAR_ITEMS } from "../constants/cartConstants";
+import { toast } from "react-toastify";
+
+import { CART_CLEAR_ITEMS } from "src/constants/cartConstants";
 import {
   ORDER_CREATE_REQUEST,
   ORDER_CREATE_SUCCESS,
@@ -202,7 +204,10 @@ export const listMyOrders = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/orders/myorders`, config);
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_BASE_URL}/${userInfo.actor._id}/order`,
+      config
+    );
 
     dispatch({
       type: ORDER_LIST_MY_SUCCESS,
@@ -213,6 +218,8 @@ export const listMyOrders = () => async (dispatch, getState) => {
       error.response && error.response.data.message
         ? error.response.data.message
         : error.message;
+
+    toast.error(message);
     if (message === "Not authorized, token failed") {
       dispatch(logout());
     }

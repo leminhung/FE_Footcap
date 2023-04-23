@@ -62,7 +62,7 @@ const SignUp = () => {
       <section
         class='register_section sec_ptb_140 parallaxie clearfix bg-fit-signin'
         style={{
-          backgroundImage: `url(/assets/images/backgrounds/bg_23.jpg)`,
+          backgroundImage: `url(/assets/images/backgrounds/signin.jpeg)`,
         }}
       >
         <div class='container'>

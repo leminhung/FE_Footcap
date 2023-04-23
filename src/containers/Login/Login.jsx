@@ -55,10 +55,13 @@ const Login = () => {
       <section
         className='register_section sec_ptb_140 has_overlay parallaxie clearfix bg-fit bg-fit-signin'
         style={{
-          backgroundImage: `url(/assets/images/backgrounds/bg_22.jpg)`,
+          backgroundImage: `url(/assets/images/backgrounds/signin.jpeg)`,
         }}
       >
-        <div className='overlay' data-bg-color='rgba(55, 55, 55, 0.75)'></div>
+        <div
+          className='overlay'
+          style={{ backgroundColor: "rgba(55, 55, 55, 0.75)" }}
+        ></div>
         <div className='container'>
           <div
             className='reg_form_wrap login_form'

@@ -9,7 +9,7 @@ export default function NotFound() {
           backgroundImage: `url(/assets/images/slider/classic_ecommerce/test.png)`,
         }}
       >
-        <div class='overlay' data-bg-color='#1d1d1d'></div>
+        <div class='overlay' style={{ backgroundColor: "#1d1d1d" }}></div>
         <div class='container'>
           <h1 class='page_title text-white'>Login page</h1>
           <ul class='breadcrumb_nav ul_li_center clearfix'>

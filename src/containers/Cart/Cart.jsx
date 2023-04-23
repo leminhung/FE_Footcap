@@ -176,7 +176,7 @@ export default function Cart() {
                     <span>Total</span> <span>${cart.total}</span>
                   </li>
                 </ul>
-                <a href='shop_checkout.html' class='custom_btn bg_success'>
+                <a href='/checkout/shopping-cart' class='custom_btn bg_success'>
                   Proceed to Checkout
                 </a>
               </div>

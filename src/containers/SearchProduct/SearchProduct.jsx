@@ -63,7 +63,7 @@ const SearchProduct = () => {
                     <div class='col-lg-3 col-md-4 col-sm-12 col-xs-12'>
                       <span
                         class='filter_sidebar_btn float-lg-right float-md-right'
-                        data-bg-color='#f9f9f9'
+                        style={{ backgroundColor: "#f9f9f9" }}
                       >
                         <i class='far fa-bars'></i> FILTER
                       </span>

@@ -10,6 +10,10 @@ import ShoppingCart from "src/containers/CheckOut/ShoppingCart";
 import CheckOut from "src/containers/CheckOut/CheckOut";
 import OrderCompleted from "src/containers/CheckOut/OrderComplete";
 
+// View Order
+import ViewOrder from "src/containers/ViewOrder/ViewOrder";
+import ViewOrderDetail from "src/containers/ViewOrder/ViewOrderDetail";
+
 import Login from "src/containers/Login/Login";
 import SignUp from "src/containers/Signup/SignUp";
 import Blog from "src/containers/Blog/Blog";
@@ -66,9 +70,25 @@ const RoutesWrapper = () => {
           />
 
           {/* checkout */}
-          <Route path='/checkout/shopping-cart' component={ShoppingCart} />
-          <Route path='/checkout/payment' component={CheckOut} />
-          <Route path='/checkout/order-completed' component={OrderCompleted} />
+          <PrivateRoute
+            path='/checkout/shopping-cart'
+            exact
+            component={ShoppingCart}
+          />
+          <PrivateRoute path='/checkout/payment' exact component={CheckOut} />
+          <PrivateRoute
+            path='/checkout/order-completed'
+            exact
+            component={OrderCompleted}
+          />
+
+          {/* view ordered */}
+          <PrivateRoute path='/order/view' exact component={ViewOrder} />
+          <PrivateRoute
+            path='/order/view-details'
+            exact
+            component={ViewOrderDetail}
+          />
 
           {/* admin */}
           <PrivateAdminRoute path='/admin/dashboard' exact>

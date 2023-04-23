@@ -19,7 +19,7 @@ export default function CheckOut() {
         <div class='container'>
           <ul class='checkout_step ul_li clearfix'>
             <li class='activated'>
-              <a href='/checkout'>
+              <a href='/checkout/shopping-cart'>
                 <span>01.</span> Shopping Cart
               </a>
             </li>
@@ -129,55 +129,6 @@ export default function CheckOut() {
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class='billing_form mb_50'>
-            <h3 class='form_title mb_30'>Billing details</h3>
-            <form action='#'>
-              <div class='form_wrap'>
-                <div class='form_item'>
-                  <span class='input_title'>
-                    Full Name<sup>*</sup>
-                  </span>
-                  <input type='text' name='firstname' />
-                </div>
-
-                <div class='form_item'>
-                  <span class='input_title'>
-                    Address<sup>*</sup>
-                  </span>
-                  <input
-                    type='text'
-                    name='address'
-                    placeholder='House number, street name,...'
-                  />
-                </div>
-
-                <div class='form_item'>
-                  <span class='input_title'>
-                    Phone<sup>*</sup>
-                  </span>
-                  <input type='tel' name='phone' />
-                </div>
-
-                <div class='form_item'>
-                  <span class='input_title'>
-                    Email Address<sup>*</sup>
-                  </span>
-                  <input type='email' name='email' />
-                </div>
-
-                <div class='form_item mb-0'>
-                  <span class='input_title'>
-                    Order notes<sup>*</sup>
-                  </span>
-                  <textarea
-                    name='note'
-                    placeholder='Let give the notes for your order'
-                  ></textarea>
-                </div>
-              </div>
-            </form>
           </div>
 
           <div class='billing_form'>

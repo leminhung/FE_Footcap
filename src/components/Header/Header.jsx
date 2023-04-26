@@ -797,7 +797,7 @@ export default function Header() {
                           </li>
                           {userInfo?.actor?.role === "admin" ? (
                             <li>
-                              <a href='/admin/dashboard'>
+                              <a href='/admin'>
                                 <i className='fal fa-user-cog'></i> Admin
                                 dashboard
                               </a>

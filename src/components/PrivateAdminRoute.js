@@ -3,12 +3,12 @@ import { Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
-const displayErr = async () => {
+const displayErr = () => {
   toast.error("You need to sign in as an Admin to access this resource!");
   window.location.href = "/signin";
 };
 
-const PrivateAdminRoute = async ({ ...rest }) => {
+const PrivateAdminRoute = ({ ...rest }) => {
   const userLogin = useSelector((state) => state.userLogin);
 
   const { loading, error, userInfo } = userLogin;
@@ -16,7 +16,7 @@ const PrivateAdminRoute = async ({ ...rest }) => {
   if (userInfo?.token) {
     const { actor } = userInfo;
     if (actor.role === "user") {
-      await displayErr();
+      displayErr();
     } else {
       return userInfo?.token && userInfo?.actor.role === "admin" ? (
         <Route {...rest} />
@@ -28,7 +28,7 @@ const PrivateAdminRoute = async ({ ...rest }) => {
     }
   }
 
-  await displayErr();
+  displayErr();
 };
 
 export default PrivateAdminRoute;

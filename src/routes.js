@@ -32,18 +32,7 @@ import PrivateRoute from "src/components/PrivateRoute";
 // Admin
 import AdminPage from "src/admin/index";
 import AdminDashboard from "src/admin/AdminDashboard/index";
-
-// import AdminShowProductList from "src/admin/AdminShowProductList/index";
-// import AdminShowOrderList from "src/admin/AdminShowOrderList/index";
-// import AdminShowOrderDetailList from "src/admin/AdminShowOrderDetailList/index";
-// import AdminCreateProduct from "src/admin/AdminCreateProduct/index";
-// import AdminEditProduct from "src/admin/AdminEditProduct/index";
-// import AdminShowCategoryList from "src/admin/AdminShowCategoryList/index";
-// import AdminCreateCategory from "src/admin/AdminCreateCategory/index";
-// import AdminEditCategory from "src/admin/AdminEditCategory/index";
-// import AdminShowUsersList from "src/admin/AdminShowUsersList/index";
-// import AdminCreateUser from "src/admin/AdminCreateUser/index";
-// import AdminEditUser from "src/admin/AdminEditUser/index";
+import AdminShowProductList from "src/admin/AdminShowProductList/index";
 
 const RoutesWrapper = () => {
   return (
@@ -91,11 +80,18 @@ const RoutesWrapper = () => {
           />
 
           {/* admin */}
-          <PrivateAdminRoute path='/admin/dashboard' exact>
+          <PrivateAdminRoute path='/admin' exact>
             <AdminPage>
               <AdminDashboard />
             </AdminPage>
           </PrivateAdminRoute>
+          <PrivateAdminRoute path='/admin/products' exact>
+            <AdminPage>
+              <AdminShowProductList />
+            </AdminPage>
+          </PrivateAdminRoute>
+
+          {/* Not found */}
           <Route path='*' component={NotFound} />
         </Switch>
       </Router>

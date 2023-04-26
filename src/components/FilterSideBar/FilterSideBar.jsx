@@ -64,7 +64,7 @@ const FilterSideBar = ({ limit, sort }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     const params = {
-      title: search,
+      title: search || undefined,
       category,
       color,
       size,

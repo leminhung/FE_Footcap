@@ -18,12 +18,12 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <div className='sidebarComponent'>
+    <div className='sidebarComponent fixed-left h-100'>
       <div className='wrapper'>
         <div className='menu'>
           <h3>Dashboard</h3>
           <ul>
-            <Link to='/admin/dashboard' className='link'>
+            <Link to='/admin' className='link'>
               <li>
                 <LineStyle className='icon' />
                 Home
@@ -54,7 +54,7 @@ const Sidebar = () => {
                 Category
               </li>
             </Link>
-            <Link to='/admin/productlist' className='link'>
+            <Link to='/admin/products' className='link'>
               <li>
                 <Storefront className='icon' />
                 Products

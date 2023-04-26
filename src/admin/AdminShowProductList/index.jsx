@@ -3,46 +3,28 @@ import { DataGrid } from "@mui/x-data-grid";
 import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 
-import { headers } from "src/utils/getTokenFromLocalStorage";
+import { listProducts } from "src/store/product/product.action";
 
 import "./styles.scss";
 
-export function getList(url) {
-  return axios.get(url);
-}
-
 const AdminShowProductList = () => {
-  const [data, setData] = useState([]);
+  const userLogin = useSelector((state) => state.userLogin);
+  const products = useSelector((state) => state.productList);
 
+  const dispatch = useDispatch();
   useEffect(() => {
-    let mounted = true;
-    getList(`${process.env.REACT_APP_BASE_URL}/products?limit=38`).then(
-      (res) => {
-        if (mounted) {
-          setData(res.data.data);
-        }
-      }
-    );
-    return () => (mounted = false);
+    dispatch(listProducts({ limit: 100 }));
   }, []);
 
+  console.log({ userLogin, products });
+
   const handleDelete = (id) => {
-    const isDelete = window.confirm("Bạn có chắc muốn xóa không?");
-    if (isDelete) {
-      setData(data.filter((item) => item.id !== id));
-      axios
-        .delete(`${process.env.REACT_APP_BASE_URL}/products/${id}`, {
-          headers,
-        })
-        .then((res) => {
-          toast.success("Delete successfully");
-        })
-        .catch((error) => {
-          toast.error(error.message);
-        });
-    }
+    // const isDelete = window.confirm("Do you want to delete item?");
+    // if (isDelete) {
+    //   setData(data.filter((item) => item.id !== id));
+    // }
   };
 
   const columns = [
@@ -55,8 +37,8 @@ const AdminShowProductList = () => {
           <div className='productListField'>
             <img
               src={
-                params.row.images[0]?.path
-                  ? params.row.images[0]?.path
+                params.row.assets[0]?.filename
+                  ? params.row.assets[0]?.filename
                   : "/images/products/default_image.jpeg"
               }
               alt=''
@@ -69,7 +51,7 @@ const AdminShowProductList = () => {
     {
       field: "price",
       headerName: "Price",
-      width: 150,
+      width: 100,
     },
     { field: "discount", headerName: "Discount", width: 120 },
     { field: "size", headerName: "Size", width: 120 },
@@ -115,15 +97,16 @@ const AdminShowProductList = () => {
           </button>
         </Link>
         <DataGrid
-          loading={data.length === 0}
+          loading={false}
           fontSize={16}
-          rows={data}
+          rows={products?.products || []}
           disableSelectionOnClick
           columns={columns}
-          pageSize={11}
+          pageSize={12}
           rowsPerPageOptions={[5]}
           checkboxSelection
           sx={{
+            height: "700px",
             textAlign: "center",
             fontSize: 14,
             boxShadow: 2,

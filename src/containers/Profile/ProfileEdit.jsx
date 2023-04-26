@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 
 import { updateUser } from "src/store/user/user.action";
 
@@ -33,6 +32,9 @@ const ProfileEdit = () => {
     e.preventDefault();
     const user = { name, email, phone, date, avatar };
     dispatch(updateUser(user));
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 0.5);
   };
 
   return (

@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 import {
   CART_ADD_ITEM,
   CART_REMOVE_ITEM,
@@ -10,7 +12,7 @@ export const addToCart = (product) => async (dispatch, getState) => {
     type: CART_ADD_ITEM,
     payload: product,
   });
-
+  toast.success("Added new item");
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
   localStorage.setItem("subtotal", JSON.stringify(getState().cart.subtotal));
   localStorage.setItem("total", JSON.stringify(getState().cart.total));

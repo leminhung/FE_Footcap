@@ -22,6 +22,10 @@ const ChangePassword = () => {
       toast.error("Passwords do not match");
     } else {
       dispatch(updatePassword({ currentPassword, newPassword }));
+      toast.success("Change password successfully");
+      setTimeout(() => {
+        window.location.href = "/signin";
+      }, 0.5);
     }
   };
   return (

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 
 import { logout } from "src/store/user/user.action";
 import { listProducts } from "src/store/product/product.action";
@@ -9,7 +8,6 @@ export default function Header() {
   const [title, setTitle] = useState("");
 
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const cartItems = useSelector((state) => state.cart.cartItems);
   const userLogin = useSelector((state) => state.userLogin);
@@ -26,7 +24,7 @@ export default function Header() {
       title,
     };
     dispatch(listProducts(params));
-    history.push("/search");
+    window.location.href = "/search";
   };
 
   return (
@@ -790,6 +788,11 @@ export default function Header() {
                           <li>
                             <a href='/profile/edit'>
                               <i className='fal fa-user-cog'></i> Settings
+                            </a>
+                          </li>
+                          <li>
+                            <a href='/order/view'>
+                              <i className='fal fa-user-cog'></i> Your order
                             </a>
                           </li>
                           {userInfo?.actor?.role === "admin" ? (

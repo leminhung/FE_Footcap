@@ -100,7 +100,7 @@ export const listProductDetails = (id) => async (dispatch) => {
       payload: data,
     });
   } catch (error) {
-    toast.error(error.response.data.msg);
+    toast.error(error.response.data.msg || error.message);
     dispatch({
       type: PRODUCT_DETAILS_FAIL,
       payload:

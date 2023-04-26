@@ -61,8 +61,8 @@ const RoutesWrapper = () => {
           <Route path='/contact-us' component={ContactUs} />
 
           {/* auth */}
-          <PrivateRoute path='/profile' component={Profile} />
-          <PrivateRoute path='/profile/edit' component={ProfileEdit} />
+          <PrivateRoute path='/profile' exact component={Profile} />
+          <PrivateRoute path='/profile/edit' exact component={ProfileEdit} />
           <PrivateRoute
             path='/profile/change-password'
             exact

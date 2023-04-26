@@ -15,28 +15,28 @@ const Profile = () => {
   return (
     <main className='profile__main'>
       <div className='profile__title'>
-        <h3>Tài khoản</h3>
+        <h3>Personal Inforamation</h3>
       </div>
       <div className='profile__details'>
         <div className='left'>
-          <div className='profile__info-title'>Thông tin tài khoản</div>
+          <div className='profile__info-title'>Your Inforamation</div>
           <div className='profile__info-details'>
-            <p>Điểm tích lũy của bạn: 0</p>
-            <p>Cấp độ khách hàng: Silver</p>
-            <p>Trạng thái tài khoản: Active</p>
+            <p>Your accumulated points: 0</p>
+            <p>Customer level: Silver</p>
+            <p>Account Status: Active</p>
             <p className='isCursor'>
-              <Link to={"/profile/change-password/"}>Thay đổi mật khẩu</Link>
+              <Link to={"/profile/change-password/"}>Change Password</Link>
             </p>
             <p className='isCursor' onClick={() => logoutHandler()}>
-              Đăng xuất
+              Sign out
             </p>
           </div>
         </div>
         <div className='right'>
-          <div className='profile__info-title'>Các sản phẩm ưa thích</div>
+          <div className='profile__info-title'>Favorite products</div>
           <div className='profile__info-details'>
-            <p>Sản phẩm ưu thích </p>
-            <p className='isCursor'>Lịch sử order </p>
+            <p>Products you prefered </p>
+            <p className='isCursor'>History order </p>
           </div>
         </div>
       </div>

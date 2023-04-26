@@ -209,41 +209,6 @@ export default function CheckOut() {
                 {/* payment */}
                 <div class='billing_payment_mathod'>
                   <ul class='ul_li_block clearfix'>
-                    {/* <li>
-                      <div class='checkbox_item mb_15 pl-0'>
-                        <label for='bank_transfer_checkbox'>
-                          <input
-                            id='bank_transfer_checkbox'
-                            type='checkbox'
-                            checked
-                          />{" "}
-                          Direct Bank Transfer
-                        </label>
-                      </div>
-                      <p class='mb-0'>
-                        Make your payment directly into our bank account. Please
-                        use your Order ID as the payment reference. Your order
-                        will not be shipped until the funds have cleared in our
-                        account.
-                      </p>
-                    </li> */}
-
-                    {/* <li>
-                      <div class='checkbox_item mb-0 pl-0'>
-                        <label for='check_payments'>
-                          <input id='check_payments' type='checkbox' />
-                          Check Payments
-                        </label>
-                      </div>
-                    </li>
-                    <li>
-                      <div class='checkbox_item mb-0 pl-0'>
-                        <label for='cash_delivery'>
-                          <input id='cash_delivery' type='checkbox' /> Cash On
-                          Delivery
-                        </label>
-                      </div>
-                    </li> */}
                     <li>
                       <div class='checkbox_item mb-0 pl-0'>
                         <label for='paypal_checkbox'>

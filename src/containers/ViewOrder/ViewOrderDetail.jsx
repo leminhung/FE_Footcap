@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 
@@ -5,6 +6,7 @@ import CheckOutHero from "src/containers/CheckOut/CheckOutHero";
 
 export default function ViewOrderDetail() {
   const [items, setItems] = useState([]);
+  const [images, setImages] = useState([]);
   let location = useLocation();
 
   const history = useHistory();
@@ -17,7 +19,7 @@ export default function ViewOrderDetail() {
     setItems(location.state?.order?.products);
   }, [location.state?.order?.products]);
 
-  console.log(location.state?.order);
+  console.log(images);
 
   return (
     <main>

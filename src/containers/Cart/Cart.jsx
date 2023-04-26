@@ -29,29 +29,6 @@ export default function Cart() {
 
   return (
     <main>
-      <section
-        class='breadcrumb_section text-white text-center text-uppercase d-flex align-items-end clearfix bg-fit'
-        style={{
-          backgroundImage: `url(/assets/images/slider/classic_ecommerce/test.png)`,
-        }}
-      >
-        <div
-          class='overlay'
-          style={{
-            backgroundColor: "#1d1d1d",
-          }}
-        ></div>
-        <div class='container'>
-          <h1 class='page_title text-white'>Cart Page</h1>
-          <ul class='breadcrumb_nav ul_li_center clearfix'>
-            <li>
-              <a href='#!'>Home</a>
-            </li>
-            <li>Shop</li>
-            <li>Shopping Cart</li>
-          </ul>
-        </div>
-      </section>
       <section class='cart_section sec_ptb_140 clearfix'>
         <div class='container'>
           <div class='cart_table mb_50'>

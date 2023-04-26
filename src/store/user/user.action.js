@@ -54,7 +54,7 @@ export const login = (email, password) => async (dispatch) => {
     toast.success("Login successfully");
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
-    toast.error(error.response.data.msg);
+    toast.error(error.response.data.msg || error.message);
     dispatch({
       type: USER_LOGIN_FAIL,
       payload:
@@ -103,7 +103,7 @@ export const register = (name, email, password) => async (dispatch) => {
 
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
-    toast.error(error.response.data.msg);
+    toast.error(error.response.data.msg || error.message);
     dispatch({
       type: USER_REGISTER_FAIL,
       payload:
@@ -180,7 +180,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
     });
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
-    toast.error(error.response.data.msg);
+    toast.error(error.response.data.msg || error.message);
     const message =
       error.response && error.response.data.message
         ? error.response.data.message
@@ -343,7 +343,7 @@ export const updatePassword =
 
       dispatch({ type: USER_DETAILS_RESET });
     } catch (error) {
-      toast.error(error.response.data.msg);
+      toast.error(error.response.data.msg || error.message);
       const message =
         error.response && error.response.data.message
           ? error.response.data.message

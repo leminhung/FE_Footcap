@@ -1,9 +1,14 @@
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
-const PrivateAdminRoute = ({ ...rest }) => {
+const displayErr = async () => {
+  toast.error("You need to sign in as an Admin to access this resource!");
+  window.location.href = "/signin";
+};
+
+const PrivateAdminRoute = async ({ ...rest }) => {
   const userLogin = useSelector((state) => state.userLogin);
 
   const { loading, error, userInfo } = userLogin;
@@ -11,23 +16,19 @@ const PrivateAdminRoute = ({ ...rest }) => {
   if (userInfo?.token) {
     const { actor } = userInfo;
     if (actor.role === "user") {
-      toast.error("You need to sign in as an Admin to access this resource!");
-      return <Redirect to='/' />;
+      await displayErr();
     } else {
-      console.log(
-        "userInfo",
-        userInfo?.token && userInfo?.actor.role === "admin"
-      );
       return userInfo?.token && userInfo?.actor.role === "admin" ? (
         <Route {...rest} />
       ) : (
-        <Redirect to='/' />
+        setTimeout(() => {
+          window.location.href = "/signin";
+        }, 0.5)
       );
     }
   }
 
-  toast.error("You need to sign in as an Admin to access this resource!");
-  return <Redirect to='/' />;
+  await displayErr();
 };
 
 export default PrivateAdminRoute;

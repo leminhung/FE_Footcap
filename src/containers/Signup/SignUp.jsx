@@ -31,6 +31,10 @@ const SignUp = () => {
       toast.error("Passwords do not match");
     } else {
       dispatch(register(name, email, password));
+      toast.success("Sign up successfully");
+      setTimeout(() => {
+        window.location.href = "/signin";
+      }, 0.5);
     }
   };
   return (

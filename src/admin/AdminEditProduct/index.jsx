@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import Chart from "src/admin/components/chart/Chart.jsx";
 import { toast } from "react-toastify";
 import { Publish } from "@mui/icons-material";
 import axios from "axios";
 
-import { headers } from "src/utils/getTokenFromLocalStorage";
-
+import { updateProduct } from "src/store/product/product.action";
 import "./styles.scss";
 
 const productData = [
@@ -27,10 +27,7 @@ const AdminEditProduct = ({ match, history, props }) => {
   const location = useLocation();
   const { data } = location.state;
 
-  console.log(headers);
-
   const [title, setTitle] = useState(data?.title);
-  const [code, setCode] = useState(data?.code);
   const [price, setPrice] = useState(data?.price);
   const [discount, setDiscount] = useState(data?.discount);
   const [size, setSize] = useState(data?.size);
@@ -39,7 +36,26 @@ const AdminEditProduct = ({ match, history, props }) => {
   const [category, setCategory] = useState(data?.category);
   const [categories, setCategories] = useState([]);
 
-  const imagePath = data?.images[0]?.path;
+  // colors
+  const colors = [
+    { color: "#ffa037", name: "green" },
+    { color: "#6c7ae0", name: "blue" },
+    { color: "#f23226", name: "red" },
+    { color: "#828664", name: "pink" },
+    { color: "#68a3c2", name: "blue" },
+    { color: "#009122", name: "green" },
+    { color: "#875546", name: "red" },
+    { color: "#f74877", name: "pink" },
+    { color: "#1f1e29", name: "black" },
+    { color: "#dddddd", name: "pink" },
+  ];
+
+  // sizes
+  const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
+
+  console.log("data-", data);
+
+  const imagePath = data?.assets[0]?.filename;
   const imageDefault = "/images/products/default_image.jpeg";
 
   const [prodDetails] = useState([
@@ -63,10 +79,12 @@ const AdminEditProduct = ({ match, history, props }) => {
       });
   }, []);
 
+  const dispatch = useDispatch();
   //handle submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    const fieldMark = {
+    const product = {
+      productId: data._id,
       title,
       price,
       discount,
@@ -74,24 +92,9 @@ const AdminEditProduct = ({ match, history, props }) => {
       color,
       status,
       category,
-      code,
+      code: data.code,
     };
-    axios
-      .put(
-        `${process.env.REACT_APP_BASE_URL}/products/${match.params.productId}`,
-        fieldMark,
-        { headers }
-      )
-      .then((res) => {
-        if (res) {
-          toast.success(`Update successfull`);
-        }
-        history.push("/admin/productlist");
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error(`Update fail`);
-      });
+    dispatch(updateProduct(product));
   };
 
   return (
@@ -115,7 +118,10 @@ const AdminEditProduct = ({ match, history, props }) => {
           </div>
           <div className='topRight'>
             <div className='topInfo'>
-              <img src={imagePath ? imagePath : imageDefault} alt='Hung dz' />
+              <img
+                src={imagePath ? imagePath : imageDefault}
+                alt='product_not_found'
+              />
               <span>{data?.title}</span>
             </div>
 
@@ -133,80 +139,113 @@ const AdminEditProduct = ({ match, history, props }) => {
           <form>
             <div className='left'>
               <div className='left-item'>
-                <label>Product Code</label>
-                <input
-                  type='text'
-                  value={code}
-                  onChange={(e) => setCode(e.target.value)}
-                />
-
-                <label>Product Name</label>
-                <input
-                  type='text'
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                />
-
-                <label>Product Price</label>
-                <input
-                  type='text'
-                  value={price}
-                  onChange={(e) => setPrice(e.target.value)}
-                />
-
-                <label>Product Discount</label>
-                <input
-                  type='text'
-                  value={discount}
-                  onChange={(e) => setDiscount(e.target.value)}
-                />
-
-                <label>Product NumReviews</label>
-                <input disabled type='text' value={data.numReviews} />
-              </div>
-              <div className='left-item'>
-                <label>Category</label>
-                <div>
-                  <select
-                    className='select'
-                    onChange={(e) => setCategory(e.target.value)}
-                  >
-                    {categories &&
-                      categories.map((category) => (
-                        <option key={category._id} value={category._id}>
-                          {category.title}
-                        </option>
-                      ))}
-                  </select>
+                <div className='d-flex'>
+                  <label>Code</label>
+                  <input type='text' value={data.code} disabled />
                 </div>
 
-                <label>Product Size</label>
-                <input
-                  type='text'
-                  value={size}
-                  onChange={(e) => setSize(e.target.value)}
-                />
+                <div className='d-flex'>
+                  <label>Name</label>
+                  <input
+                    type='text'
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                  />
+                </div>
 
-                <label>Product Color</label>
-                <input
-                  type='text'
-                  value={color}
-                  onChange={(e) => setColor(e.target.value)}
-                />
+                <div className='d-flex'>
+                  <label>Price</label>
+                  <input
+                    type='text'
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
+                  />
+                </div>
 
-                <label>Product Rating</label>
-                <input disabled type='text' value={data.rating} />
+                <div className='d-flex'>
+                  <label>Discount</label>
+                  <input
+                    type='text'
+                    value={discount}
+                    onChange={(e) => setDiscount(e.target.value)}
+                  />
+                </div>
 
-                <label>Status</label>
-                <div>
-                  <select
-                    className='select'
-                    value={status}
-                    onChange={(e) => setStatus(e.target.value)}
-                  >
-                    <option value='còn hàng'>Còn hàng</option>
-                    <option value='hết hàng'>Hết hàng</option>
-                  </select>
+                <div className='d-flex'>
+                  <label>NumReviews</label>
+                  <input disabled type='text' value={data.numReviews} />
+                </div>
+              </div>
+              <div className='left-item'>
+                <div className='d-flex'>
+                  <label>Category</label>
+                  <div>
+                    <select
+                      className='select'
+                      onChange={(e) => setCategory(e.target.value)}
+                    >
+                      {categories &&
+                        categories.map((category) => (
+                          <option key={category._id} value={category._id}>
+                            {category.title}
+                          </option>
+                        ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div className='d-flex fs_size_list'>
+                  <label className='pl-0'>Size</label>
+                  <ul class='ul_li clearfix'>
+                    {sizes.map((size, index) => (
+                      <li>
+                        <label for={`fs_size_${index}`}>
+                          <input
+                            id={`fs_size_${index}`}
+                            type='radio'
+                            name='fs_size_group'
+                            // onClick={() => setSize(size)}
+                          />
+                          {size}
+                        </label>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className='d-flex fs_color_list'>
+                  <label>Color</label>
+                  <ul class='ul_li clearfix ml-2'>
+                    {colors.map((color) => (
+                      <li>
+                        <input
+                          type='radio'
+                          name='fs_color_froup'
+                          // onClick={() => setColor(color.name)}
+                          style={{ backgroundColor: color.color }}
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className='d-flex'>
+                  <label>Rating</label>
+                  <input disabled type='text' value={data.rating} />
+                </div>
+
+                <div className='d-flex'>
+                  <label>Status</label>
+                  <div>
+                    <select
+                      className='select'
+                      value={status}
+                      onChange={(e) => setStatus(e.target.value)}
+                    >
+                      <option value='còn hàng'>Còn hàng</option>
+                      <option value='hết hàng'>Hết hàng</option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
@@ -215,7 +254,7 @@ const AdminEditProduct = ({ match, history, props }) => {
                 <label htmlFor='file'>
                   <img
                     src={imagePath ? imagePath : imageDefault}
-                    alt='Hung dz'
+                    alt='product_not_found'
                   />
                   <Publish className='publish' />
                 </label>

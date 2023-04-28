@@ -73,7 +73,7 @@ const AdminShowProductList = () => {
           <>
             <Link
               to={{
-                pathname: `/admin/edit-product/${params.row.id}`,
+                pathname: `/admin/products/edit/${params.row.id}`,
                 state: { data: params.row },
               }}
             >

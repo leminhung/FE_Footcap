@@ -202,7 +202,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      `/api/products/${product._id}`,
+      `${process.env.REACT_APP_BASE_URL}/products/${product.productId}`,
       product,
       config
     );
@@ -211,12 +211,19 @@ export const updateProduct = (product) => async (dispatch, getState) => {
       type: PRODUCT_UPDATE_SUCCESS,
       payload: data,
     });
+
+    toast.success(`Update successfull`);
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
+    setTimeout(() => {
+      window.location.href = "/admin/products";
+    }, 1500);
   } catch (error) {
     const message =
       error.response && error.response.data.message
         ? error.response.data.message
         : error.message;
+
+    toast.error(message);
     if (message === "Not authorized, token failed") {
       dispatch(logout());
     }

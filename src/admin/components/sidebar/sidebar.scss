@@ -1,8 +1,8 @@
 .sidebarComponent {
   flex: 1;
   max-width: 290px;
-  height: calc(100vh);
-  background-color: #292F42;
+  height: 100vh !important;
+  background-color: #292f42;
   position: sticky;
   top: 50px;
 

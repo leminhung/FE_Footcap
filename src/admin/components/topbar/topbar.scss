@@ -23,7 +23,6 @@
     }
 
     .right {
-
       display: flex;
       align-items: center;
 
@@ -54,8 +53,6 @@
         height: 40px;
         border-radius: 50%;
         cursor: pointer;
-
-
       }
 
       .avatar-admin-hover {
@@ -74,6 +71,7 @@
         min-height: 40px;
         background-color: #fff;
         border: #ccc 1px solid;
+        list-style-type: none;
 
         display: none;
 

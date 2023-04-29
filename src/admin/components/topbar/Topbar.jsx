@@ -5,12 +5,14 @@ const Topbar = () => {
     <div className='topbarComponent'>
       <div className='wrapper'>
         <div className='left'>
-          <img
-            src='/images/logo.svg'
-            alt='FootCapAdmin'
-            width={150}
-            height={55}
-          />
+          <a href='/'>
+            <img
+              src='/images/logo.svg'
+              alt='FootCapAdmin'
+              width={150}
+              height={55}
+            />
+          </a>
         </div>
         <div className='right'>
           {/* <div className="icon">

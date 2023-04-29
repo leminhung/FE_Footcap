@@ -7,12 +7,9 @@ import {
   PermIdentity,
   Storefront,
   AttachMoney,
-  BarChart,
-  MailOutline,
   DynamicFeed,
   ChatBubbleOutline,
   WorkOutline,
-  Report,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
@@ -42,47 +39,41 @@ const Sidebar = () => {
         <div className='menu'>
           <h3>Quick Menu</h3>
           <ul>
-            <Link to='/admin/userslist' className='link'>
-              <li>
-                <PermIdentity className='icon' />
-                Users
-              </li>
-            </Link>
-            <Link to='/admin/categorylist' className='link'>
-              <li>
-                <Storefront className='icon' />
-                Category
-              </li>
-            </Link>
-            <Link to='/admin/products' className='link'>
-              <li>
-                <Storefront className='icon' />
-                Products
-              </li>
-            </Link>
-            <Link to='/admin/order' className='link'>
-              <li>
-                <Storefront className='icon' />
-                Order
-              </li>
-            </Link>
             <li>
-              <AttachMoney className='icon' />
-              Transactions
+              <Link to='/admin/userslist' className='link'>
+                <PermIdentity className='icon' />
+                <span className='ml-1'>Users</span>
+              </Link>
             </li>
             <li>
-              <BarChart className='icon' />
-              Reports
+              <Link to='/admin/categorylist' className='link'>
+                <Storefront className='icon' />
+                <span className='ml-1'>Category</span>
+              </Link>
+            </li>
+            <li>
+              <Link to='/admin/products' className='link'>
+                <Storefront className='icon' />
+                <span className='ml-1'>Products</span>
+              </Link>
+            </li>
+            <li>
+              <Link to='/admin/order' className='link'>
+                <Storefront className='icon' />
+                <span className='ml-1'>Orders</span>
+              </Link>
+            </li>
+            <li>
+              <Link to='/admin/order' className='link'>
+                <AttachMoney className='icon' />
+                <span className='ml-1'>Transactions</span>
+              </Link>
             </li>
           </ul>
         </div>
         <div className='menu'>
           <h3>Notifications</h3>
           <ul>
-            <li>
-              <MailOutline className='icon' />
-              Mail
-            </li>
             <li>
               <DynamicFeed className='icon' />
               Feedback
@@ -99,14 +90,6 @@ const Sidebar = () => {
             <li>
               <WorkOutline className='icon' />
               Manage
-            </li>
-            <li>
-              <Timeline className='icon' />
-              Analytics
-            </li>
-            <li>
-              <Report className='icon' />
-              Report
             </li>
           </ul>
         </div>

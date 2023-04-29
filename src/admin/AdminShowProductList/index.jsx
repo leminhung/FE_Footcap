@@ -2,29 +2,31 @@ import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 
-import { listProducts } from "src/store/product/product.action";
+import { deleteProduct, listProducts } from "src/store/product/product.action";
 
 import "./styles.scss";
 
 const AdminShowProductList = () => {
-  const userLogin = useSelector((state) => state.userLogin);
   const products = useSelector((state) => state.productList);
+  const [data, setData] = useState([]);
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(listProducts({ limit: 100 }));
   }, []);
 
-  console.log({ userLogin, products });
+  useEffect(() => {
+    setData(products?.products || []);
+  }, [products]);
 
   const handleDelete = (id) => {
-    // const isDelete = window.confirm("Do you want to delete item?");
-    // if (isDelete) {
-    //   setData(data.filter((item) => item.id !== id));
-    // }
+    const isDelete = window.confirm("Do you want to delete item?");
+    if (isDelete) {
+      setData(data.filter((item) => item.id !== id));
+    }
+    dispatch(deleteProduct(id));
   };
 
   const columns = [
@@ -91,7 +93,7 @@ const AdminShowProductList = () => {
   return (
     <>
       <div className='productListPage'>
-        <Link style={{ margin: "10px" }} to={`/admin/create-product`}>
+        <Link style={{ margin: "10px" }} to={`/admin/products/create`}>
           <button className='btn-createProduct btn btn-primary'>
             Create product
           </button>
@@ -99,7 +101,7 @@ const AdminShowProductList = () => {
         <DataGrid
           loading={false}
           fontSize={16}
-          rows={products?.products || []}
+          rows={data}
           disableSelectionOnClick
           columns={columns}
           pageSize={12}

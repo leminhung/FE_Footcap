@@ -5,8 +5,10 @@ import Chart from "src/admin/components/chart/Chart.jsx";
 import { toast } from "react-toastify";
 import { Publish } from "@mui/icons-material";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 import { updateProduct } from "src/store/product/product.action";
+import updateImgProfilePicture from "src/utils/updateImgProductProfile";
 import "./styles.scss";
 
 const productData = [
@@ -23,18 +25,21 @@ const productData = [
     Sales: 2100,
   },
 ];
-const AdminEditProduct = ({ match, history, props }) => {
+const AdminEditProduct = ({ match, props }) => {
   const location = useLocation();
   const { data } = location.state;
+  const [isCheckeds, setIsCheckeds] = useState([...Array(10)].fill(false));
+  const [isCheckedSizes, setIsCheckedSizes] = useState(
+    [...Array(6)].fill(false)
+  );
 
   const [title, setTitle] = useState(data?.title);
   const [price, setPrice] = useState(data?.price);
   const [discount, setDiscount] = useState(data?.discount);
-  const [size, setSize] = useState(data?.size);
-  const [color, setColor] = useState(data?.color);
   const [status, setStatus] = useState(data?.status);
   const [category, setCategory] = useState(data?.category);
   const [categories, setCategories] = useState([]);
+  const [selectedFile, setSelectedFile] = useState(null);
 
   // colors
   const colors = [
@@ -42,18 +47,32 @@ const AdminEditProduct = ({ match, history, props }) => {
     { color: "#6c7ae0", name: "blue" },
     { color: "#f23226", name: "red" },
     { color: "#828664", name: "pink" },
-    { color: "#68a3c2", name: "blue" },
-    { color: "#009122", name: "green" },
-    { color: "#875546", name: "red" },
-    { color: "#f74877", name: "pink" },
-    { color: "#1f1e29", name: "black" },
-    { color: "#dddddd", name: "pink" },
+    { color: "#68a3c2", name: "fountain-blue" },
+    { color: "#009122", name: "fun-green" },
+    { color: "#875546", name: "spicy-mix" },
+    { color: "#f74877", name: "violet-red" },
+    { color: "#1f1e29", name: "gray" },
+    { color: "#dddddd", name: "alto" },
   ];
 
   // sizes
   const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
 
-  console.log("data-", data);
+  // set colors product have
+  useEffect(() => {
+    setIsCheckeds(
+      colors.map((color) => {
+        if (data.color.includes(color.name)) return true;
+        return false;
+      })
+    );
+    setIsCheckedSizes(
+      sizes.map((size) => {
+        if (data.size.includes(size)) return true;
+        return false;
+      })
+    );
+  }, []);
 
   const imagePath = data?.assets[0]?.filename;
   const imageDefault = "/images/products/default_image.jpeg";
@@ -80,21 +99,50 @@ const AdminEditProduct = ({ match, history, props }) => {
   }, []);
 
   const dispatch = useDispatch();
+  const history = useHistory();
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   //handle submit
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    let colorsSelected = colors.map((color, index) =>
+      isCheckeds[index] ? color.name : undefined
+    );
+
+    let sizesSelected = sizes.map((size, index) =>
+      isCheckedSizes[index] ? size : undefined
+    );
     const product = {
       productId: data._id,
       title,
       price,
       discount,
-      size,
-      color,
+      size: sizesSelected.filter(Boolean),
+      color: colorsSelected.filter(Boolean),
       status,
       category,
       code: data.code,
     };
+
     dispatch(updateProduct(product));
+    await updateImgProfilePicture(data._id, selectedFile, userInfo.token);
+    history.push("/admin/products");
+  };
+
+  const handleCheckedColor = (result, index) => {
+    isCheckeds[index] = !result;
+    setIsCheckeds([...isCheckeds]);
+  };
+
+  const handleCheckedSize = (result, index) => {
+    isCheckedSizes[index] = !result;
+    setIsCheckedSizes([...isCheckedSizes]);
+  };
+
+  const handleFileSelect = (e) => {
+    const files = Array.from(e.target.files);
+    setSelectedFile(`/images/products/41/${files[0].name}`);
   };
 
   return (
@@ -102,7 +150,7 @@ const AdminEditProduct = ({ match, history, props }) => {
       <div className='productPage'>
         <div className='titleContainer'>
           <h1>Edit Product</h1>
-          <Link to='/newProduct'>
+          <Link to='/admin/products/create'>
             <button>Create</button>
           </Link>
         </div>
@@ -202,9 +250,12 @@ const AdminEditProduct = ({ match, history, props }) => {
                         <label for={`fs_size_${index}`}>
                           <input
                             id={`fs_size_${index}`}
-                            type='radio'
+                            type='checkbox'
                             name='fs_size_group'
-                            // onClick={() => setSize(size)}
+                            onClick={() =>
+                              handleCheckedSize(isCheckedSizes[index], index)
+                            }
+                            checked={isCheckedSizes[index]}
                           />
                           {size}
                         </label>
@@ -216,13 +267,16 @@ const AdminEditProduct = ({ match, history, props }) => {
                 <div className='d-flex fs_color_list'>
                   <label>Color</label>
                   <ul class='ul_li clearfix ml-2'>
-                    {colors.map((color) => (
+                    {colors.map((color, index) => (
                       <li>
                         <input
-                          type='radio'
+                          type='checkbox'
                           name='fs_color_froup'
-                          // onClick={() => setColor(color.name)}
+                          onClick={() =>
+                            handleCheckedColor(isCheckeds[index], index)
+                          }
                           style={{ backgroundColor: color.color }}
+                          checked={isCheckeds[index]}
                         />
                       </li>
                     ))}
@@ -242,8 +296,8 @@ const AdminEditProduct = ({ match, history, props }) => {
                       value={status}
                       onChange={(e) => setStatus(e.target.value)}
                     >
-                      <option value='còn hàng'>Còn hàng</option>
-                      <option value='hết hàng'>Hết hàng</option>
+                      <option value='còn hàng'>Stock</option>
+                      <option value='hết hàng'>Out of stock</option>
                     </select>
                   </div>
                 </div>
@@ -253,12 +307,19 @@ const AdminEditProduct = ({ match, history, props }) => {
               <div className='upload'>
                 <label htmlFor='file'>
                   <img
-                    src={imagePath ? imagePath : imageDefault}
+                    src={
+                      selectedFile ? selectedFile : imagePath || imageDefault
+                    }
                     alt='product_not_found'
                   />
                   <Publish className='publish' />
                 </label>
-                <input type='file' id='file' style={{ display: "none" }} />
+                <input
+                  type='file'
+                  id='file'
+                  style={{ display: "none" }}
+                  onChange={(e) => handleFileSelect(e)}
+                />
               </div>
             </div>
           </form>

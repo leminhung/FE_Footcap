@@ -65,12 +65,10 @@ export const listProducts = (params) => async (dispatch) => {
           page: params?.page,
           price: params.price,
           limit: params?.limit,
-          sort: params?.sort,
+          sort: params?.sort || "-createdAt",
         },
       }
     );
-
-    console.log(data);
 
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
@@ -127,7 +125,10 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
       },
     };
 
-    await axios.delete(`/api/products/${id}`, config);
+    await axios.delete(
+      `${process.env.REACT_APP_BASE_URL}/products/${id}`,
+      config
+    );
 
     dispatch({
       type: PRODUCT_DELETE_SUCCESS,
@@ -137,6 +138,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
       error.response && error.response.data.message
         ? error.response.data.message
         : error.message;
+    toast.error(message);
     if (message === "Not authorized, token failed") {
       dispatch(logout());
     }
@@ -147,42 +149,64 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
   }
 };
 
-export const createProduct = () => async (dispatch, getState) => {
-  try {
-    dispatch({
-      type: PRODUCT_CREATE_REQUEST,
-    });
+export const createProduct =
+  (product, images = []) =>
+  async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: PRODUCT_CREATE_REQUEST,
+      });
 
-    const {
-      userLogin: { userInfo },
-    } = getState();
+      const {
+        userLogin: { userInfo },
+      } = getState();
 
-    const config = {
-      headers: {
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    };
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
 
-    const { data } = await axios.post(`/api/products`, {}, config);
+      const { data, status } = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/products`,
+        product,
+        config
+      );
 
-    dispatch({
-      type: PRODUCT_CREATE_SUCCESS,
-      payload: data,
-    });
-  } catch (error) {
-    const message =
-      error.response && error.response.data.message
-        ? error.response.data.message
-        : error.message;
-    if (message === "Not authorized, token failed") {
-      dispatch(logout());
+      console.log("data--", data);
+
+      await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/products/${data.data?._id}/photo`,
+        {
+          paths: images,
+        },
+        config
+      );
+      toast.success("Create product successfully");
+      dispatch({
+        type: PRODUCT_CREATE_SUCCESS,
+        payload: data,
+      });
+
+      setTimeout(() => {
+        window.location.href = "/admin/products";
+      }, 1500);
+    } catch (error) {
+      console.log({ error });
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      toast.error(message);
+      if (message === "Request failed with status code 401") {
+        dispatch(logout());
+      }
+      dispatch({
+        type: PRODUCT_CREATE_FAIL,
+        payload: message,
+      });
     }
-    dispatch({
-      type: PRODUCT_CREATE_FAIL,
-      payload: message,
-    });
-  }
-};
+  };
 
 export const updateProduct = (product) => async (dispatch, getState) => {
   try {
@@ -214,9 +238,6 @@ export const updateProduct = (product) => async (dispatch, getState) => {
 
     toast.success(`Update successfull`);
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
-    setTimeout(() => {
-      window.location.href = "/admin/products";
-    }, 1500);
   } catch (error) {
     const message =
       error.response && error.response.data.message

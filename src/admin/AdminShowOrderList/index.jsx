@@ -1,39 +1,25 @@
 import { DataGrid } from "@mui/x-data-grid";
-
-import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import "./styles.scss";
+import { useSelector, useDispatch } from "react-redux";
+import QuickViewOrderDetail from "src/admin/components/QuickView/QuickViewOrderDetail";
 
-export const getHeader = () => {
-  const userToken = JSON.parse(localStorage.getItem("jwt"))?.token;
-  const headers = {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${userToken}`,
-  };
-  return headers;
-};
+import "./styles.scss";
+import { listOrders } from "src/store/order/order.action";
+
 const AdminShowOrderList = () => {
   const [data, setData] = useState([]);
+  const [orderId, setOrderId] = useState("");
+  const [totalPrice, setTotalPrice] = useState(0);
+  const orders = useSelector((state) => state.orderList.orders);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(listOrders());
+  }, []);
 
   useEffect(() => {
-    try {
-      axios
-        .get("http://localhost:5000/api/v1/order", { headers: getHeader() })
-        .then((res) => {
-          const data = res.data.data.map((val, index) => {
-            return { ...val, id: index };
-          });
-          setData(data);
-        })
-        .catch((err) => {
-          //history.push("/signin");
-          console.log(err);
-        });
-    } catch (err) {
-      console.log("err", err);
-    }
-  }, []);
+    setData(orders?.data || []);
+  }, [orders]);
 
   const getUserAvatar = (params) => {
     try {
@@ -44,7 +30,7 @@ const AdminShowOrderList = () => {
     }
   };
   const columns = [
-    { field: "id", headerName: "ID", width: 100 },
+    { field: "_id", headerName: "ID", width: 200 },
     {
       field: "username",
       headerName: "User",
@@ -62,22 +48,22 @@ const AdminShowOrderList = () => {
     {
       field: "address",
       headerName: "Address",
-      width: 90,
+      width: 160,
     },
     {
       field: "status",
       headerName: "Status",
-      width: 160,
-    },
-    {
-      field: "note",
-      headerName: "Note",
-      width: 160,
+      width: 80,
     },
     {
       field: "total_price",
-      headerName: "Total Price",
-      width: 160,
+      headerName: "Total Price($)",
+      width: 120,
+      renderCell: (params) => {
+        return (
+          <div className='productListField'>{params.row.total_price / 100}</div>
+        );
+      },
     },
     {
       field: "action",
@@ -86,10 +72,19 @@ const AdminShowOrderList = () => {
       renderCell: (params) => {
         return (
           <>
-            <Link to={`/admin/order-detail/${params.row._id}`}>
-              <button className='editButton '>Xem Chi Tiết</button>
-            </Link>
-            {/* <DeleteOutline className='deleteButton' onClick={() => handleDelete(params)} /> */}
+            <a
+              className='tooltips'
+              data-placement='top'
+              href='#!'
+              data-toggle='modal'
+              data-target='#quickview_modal_order_detail'
+              onClick={() => {
+                setOrderId(params.row._id);
+                setTotalPrice(params.row.total_price / 100);
+              }}
+            >
+              <button className='editButton'>Order Details</button>
+            </a>
           </>
         );
       },
@@ -100,6 +95,8 @@ const AdminShowOrderList = () => {
     <>
       <div className='productListPage'>
         <DataGrid
+          getRowId={(row) => row._id}
+          loading={data.length === 0}
           fontSize={16}
           rows={data}
           disableSelectionOnClick
@@ -118,6 +115,7 @@ const AdminShowOrderList = () => {
           }}
         />
       </div>
+      <QuickViewOrderDetail orderId={orderId} totalPrice={totalPrice} />
     </>
   );
 };

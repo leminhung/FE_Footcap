@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 
@@ -18,8 +17,6 @@ export default function ViewOrderDetail() {
   useEffect(() => {
     setItems(location.state?.order?.products);
   }, [location.state?.order?.products]);
-
-  console.log(images);
 
   return (
     <main>

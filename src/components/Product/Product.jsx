@@ -135,7 +135,9 @@ const Product = (props) => {
           <ul className='product_color ul_li nav clearfix'>
             {product.color.map((c) => (
               <li>
-                <a style={{ backgroundColor: `${colors[c]}` }} href='#!'></a>
+                <a style={{ backgroundColor: `${colors[c]}` }} href='#!'>
+                  {" "}
+                </a>
               </li>
             ))}
           </ul>

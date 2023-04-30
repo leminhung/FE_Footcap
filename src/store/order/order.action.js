@@ -83,7 +83,10 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/orders/${id}`, config);
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_BASE_URL}/order-detail/${id}`,
+      config
+    );
 
     dispatch({
       type: ORDER_DETAILS_SUCCESS,
@@ -246,7 +249,10 @@ export const listOrders = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/orders`, config);
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_BASE_URL}/order`,
+      config
+    );
 
     dispatch({
       type: ORDER_LIST_SUCCESS,

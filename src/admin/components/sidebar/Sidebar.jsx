@@ -58,15 +58,9 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
-              <Link to='/admin/order' className='link'>
+              <Link to='/admin/orderslist' className='link'>
                 <Storefront className='icon' />
                 <span className='ml-1'>Orders</span>
-              </Link>
-            </li>
-            <li>
-              <Link to='/admin/order' className='link'>
-                <AttachMoney className='icon' />
-                <span className='ml-1'>Transactions</span>
               </Link>
             </li>
           </ul>

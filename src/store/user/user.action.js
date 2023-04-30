@@ -151,11 +151,13 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
   }
 };
 
-export const updateUserProfile = (user) => async (dispatch, getState) => {
+export const updateUserByAdmin = (user) => async (dispatch, getState) => {
   try {
     dispatch({
       type: USER_UPDATE_PROFILE_REQUEST,
     });
+
+    console.log("user--", user);
 
     const {
       userLogin: { userInfo },
@@ -168,23 +170,19 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.put(`/api/users/profile`, user, config);
+    await axios.put(
+      `${process.env.REACT_APP_BASE_URL}/auth/updateuserdetails/${user._id}`,
+      user,
+      config
+    );
 
-    dispatch({
-      type: USER_UPDATE_PROFILE_SUCCESS,
-      payload: data,
-    });
-    dispatch({
-      type: USER_LOGIN_SUCCESS,
-      payload: data,
-    });
-    localStorage.setItem("userInfo", JSON.stringify(data));
+    toast.success("Update successfully");
   } catch (error) {
-    toast.error(error.response.data.msg || error.message);
     const message =
       error.response && error.response.data.message
         ? error.response.data.message
         : error.message;
+    toast.error(message);
     if (message === "Not authorized, token failed") {
       dispatch(logout());
     }
@@ -211,7 +209,10 @@ export const listUsers = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/users`, config);
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_BASE_URL}/auth/getallusers`,
+      config
+    );
 
     dispatch({
       type: USER_LIST_SUCCESS,
@@ -222,6 +223,7 @@ export const listUsers = () => async (dispatch, getState) => {
       error.response && error.response.data.message
         ? error.response.data.message
         : error.message;
+    toast.error(message);
     if (message === "Not authorized, token failed") {
       dispatch(logout());
     }
@@ -292,6 +294,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
     dispatch({ type: USER_UPDATE_SUCCESS });
 
     dispatch({ type: USER_DETAILS_SUCCESS, payload: data });
+    localStorage.setItem("userInfo", JSON.stringify(data));
     toast.success("Update successfully");
 
     dispatch({ type: USER_DETAILS_RESET });

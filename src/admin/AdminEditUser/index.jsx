@@ -1,61 +1,49 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { toast } from "react-toastify";
+import moment from "moment";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useLocation, useHistory } from "react-router-dom";
+
+import Chart from "src/admin/components/chart/Chart.jsx";
+import { updateUserByAdmin } from "src/store/user/user.action";
 
 import "./styles.scss";
 
-const AdminEditUser = ({ match, history }) => {
-  const userToken = JSON.parse(localStorage.getItem("jwt"))?.token;
-  const headers = {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${userToken}`,
-  };
-
+const AdminEditUser = () => {
   const location = useLocation();
+  const history = useHistory();
   const { data } = location.state;
 
-  console.log(data);
+  const productData = [
+    {
+      name: "Jan",
+      Sales: 4000,
+    },
+    {
+      name: "Feb",
+      Sales: 2500,
+    },
+    {
+      name: "Mar",
+      Sales: 2100,
+    },
+  ];
 
-  const [user, setUser] = useState(data);
   const [userName, setUserName] = useState(data?.name);
   const [role, setRole] = useState(data?.role);
 
-  useEffect(() => {
-    axios
-      .get(
-        `${process.env.REACT_APP_BASE_URL}/auth/getuser/${match.params.userId}`,
-        { headers: headers }
-      )
-      .then((res) => {
-        setUser(res.data.data);
-      });
-  }, []);
-
+  const dispatch = useDispatch();
   //submit update
   const handleSubmit = (e) => {
     e.preventDefault();
-    const isUpdate = window.confirm("Bạn có chắc muốn sửa không?");
+    const isUpdate = window.confirm("Do you want to edit information?");
+
     if (isUpdate) {
-      axios
-        .put(
-          `${process.env.REACT_APP_BASE_URL}/auth/updateuserdetails/${match.params.userId}`,
-          {
-            name: userName,
-            role: role,
-          },
-          { headers: headers }
-        )
-        .then((res) => {
-          if (res) {
-            toast.success(`Update successfull`);
-          }
-          history.push("/admin/userslist");
-        })
-        .catch((error) => {
-          console.log(error);
-          toast.error(`Update fail`);
-        });
+      data.name = userName;
+      data.role = role;
+      dispatch(updateUserByAdmin(data));
+      setTimeout(() => {
+        history.push("/admin/userslist");
+      }, 1500);
     }
   };
 
@@ -64,11 +52,7 @@ const AdminEditUser = ({ match, history }) => {
       <div className='userPage'>
         <div className='titleContainer'>
           <h1>Edit User</h1>
-          {/* <Link to='/newProduct'>
-            <button>Create</button>
-          </Link> */}
         </div>
-
         <div className='top'>
           <div className='topRight'>
             <div className='topInfo'>
@@ -91,60 +75,67 @@ const AdminEditUser = ({ match, history }) => {
                 <div className='key'>Email: </div>
                 <div className='value'>{data?.email}</div>
               </div>
-              {/* <div className='infoItem'>
+              <div className='infoItem'>
                 <div className='key'>Phone: </div>
-                <div className='value'>{data?.phone}</div>
-              </div> */}
+                <div className='value'>
+                  {data?.phone ? data?.phone : "0123456789"}
+                </div>
+              </div>
               <div className='infoItem'>
                 <div className='key'>Role: </div>
                 <div className='value'>{data?.role}</div>
               </div>
               <div className='infoItem'>
                 <div className='key'>CreatedAt: </div>
-                <div className='value'>{data?.createdAt}</div>
+                <div className='value'>
+                  {moment(data.createdAt).format("lll")}
+                </div>
               </div>
               <div className='infoItem'>
                 <div className='key'>UpdatedAt: </div>
-                <div className='value'>{data?.updatedAt}</div>
+                <div className='value'>
+                  {moment(data.updatedAt).format("lll")}
+                </div>
               </div>
             </div>
           </div>
           <div className='topLeft'>
-            {/* <Chart
+            <Chart
               data={productData}
-              dataKey="Sales"
-              title="Sales Perfomance"
+              dataKey='Sales'
+              title='Orders History'
               grid
-            /> */}
+            />
           </div>
         </div>
         <div className='bottom'>
           <form>
             <div className='left'>
               <div className='left-item'>
-                <label>User Name</label>
-                <input
-                  type='text'
-                  value={userName}
-                  onChange={(e) => setUserName(e.target.value)}
-                />
-
-                <label>Role</label>
-                {/* <input
-                  type='text'
-                  value={role}
-                  onChange={(e) => setRole(e.target.value)}
-                /> */}
-                <select onChange={(e) => setRole(e.target.value)}>
-                  <option value='user' selected={role === "user"}>
-                    User
-                  </option>
-                  <option value='admin' selected={role === "admin"}>
-                    Admin
-                  </option>
-                </select>
+                <div>
+                  <label>Username</label>
+                  <input
+                    className='ml-3'
+                    type='text'
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
+                  />
+                </div>
+                <div className='d-flex'>
+                  <label>Role</label>
+                  <select
+                    className='ml-3'
+                    onChange={(e) => setRole(e.target.value)}
+                  >
+                    <option value='user' selected={role === "user"}>
+                      User
+                    </option>
+                    <option value='admin' selected={role === "admin"}>
+                      Admin
+                    </option>
+                  </select>
+                </div>
               </div>
-              <div className='left-item'></div>
             </div>
             <div className='right'></div>
           </form>

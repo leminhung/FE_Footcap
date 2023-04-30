@@ -46,7 +46,7 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
-              <Link to='/admin/categorylist' className='link'>
+              <Link to='/admin/categorieslist' className='link'>
                 <Storefront className='icon' />
                 <span className='ml-1'>Category</span>
               </Link>

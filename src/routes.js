@@ -35,14 +35,16 @@ import AdminDashboard from "src/admin/AdminDashboard/index";
 import AdminShowProductList from "src/admin/AdminShowProductList/index";
 import AdminCreateProduct from "src/admin/AdminCreateProduct/index";
 import AdminEditProduct from "src/admin/AdminEditProduct/index";
+
 // import AdminShowOrderList from "src/admin/AdminShowOrderList/index";
 // import AdminShowOrderDetailList from "src/admin/AdminShowOrderDetailList/index";
-// import AdminShowCategoryList from "src/admin/AdminShowCategoryList/index";
-// import AdminCreateCategory from "src/admin/AdminCreateCategory/index";
-// import AdminEditCategory from "src/admin/AdminEditCategory/index";
-// import AdminShowUsersList from "src/admin/AdminShowUsersList/index";
-// import AdminCreateUser from "src/admin/AdminCreateUser/index";
-// import AdminEditUser from "src/admin/AdminEditUser/index";
+
+import AdminShowCategoryList from "src/admin/AdminShowCategoryList/index";
+import AdminCreateCategory from "src/admin/AdminCreateCategory/index";
+import AdminEditCategory from "src/admin/AdminEditCategory/index";
+
+import AdminShowUsersList from "src/admin/AdminShowUsersList/index";
+import AdminEditUser from "src/admin/AdminEditUser/index";
 
 const RoutesWrapper = () => {
   return (
@@ -110,6 +112,35 @@ const RoutesWrapper = () => {
           <PrivateAdminRoute path='/admin/products/create' exact>
             <AdminPage>
               <AdminCreateProduct />
+            </AdminPage>
+          </PrivateAdminRoute>
+
+          {/* admin user */}
+          <PrivateAdminRoute path='/admin/userslist' exact>
+            <AdminPage>
+              <AdminShowUsersList />
+            </AdminPage>
+          </PrivateAdminRoute>
+          <PrivateAdminRoute path='/admin/userslist/edit' exact>
+            <AdminPage>
+              <AdminEditUser />
+            </AdminPage>
+          </PrivateAdminRoute>
+
+          {/* admin category */}
+          <PrivateAdminRoute path='/admin/categorieslist' exact>
+            <AdminPage>
+              <AdminShowCategoryList />
+            </AdminPage>
+          </PrivateAdminRoute>
+          <PrivateAdminRoute path='/admin/categorieslist/create' exact>
+            <AdminPage>
+              <AdminCreateCategory />
+            </AdminPage>
+          </PrivateAdminRoute>
+          <PrivateAdminRoute path='/admin/categorieslist/edit' exact>
+            <AdminPage>
+              <AdminEditCategory />
             </AdminPage>
           </PrivateAdminRoute>
 

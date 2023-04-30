@@ -125,9 +125,21 @@ const AdminEditProduct = ({ match, props }) => {
       code: data.code,
     };
 
-    dispatch(updateProduct(product));
-    await updateImgProfilePicture(data._id, selectedFile, userInfo.token);
-    history.push("/admin/products");
+    if (
+      !title ||
+      !price ||
+      !discount ||
+      !category ||
+      isCheckedSizes.length === 0 ||
+      isCheckeds.length === 0 ||
+      !selectedFile
+    ) {
+      toast.error("Please fill in fields before creating product!");
+    } else {
+      dispatch(updateProduct(product));
+      await updateImgProfilePicture(data._id, selectedFile, userInfo.token);
+      history.push("/admin/products");
+    }
   };
 
   const handleCheckedColor = (result, index) => {

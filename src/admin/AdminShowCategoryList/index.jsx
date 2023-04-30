@@ -4,6 +4,10 @@ import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+
+import { logout } from "src/store/user/user.action";
 
 import "./styles.scss";
 
@@ -13,11 +17,15 @@ export function getList(url) {
 
 const AdminShowCategoryList = () => {
   const [data, setData] = useState([]);
-  const userToken = JSON.parse(localStorage.getItem("jwt"))?.token;
+  const userLogin = useSelector((state) => state.userLogin);
+
+  const { userInfo } = userLogin;
   const headers = {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${userToken}`,
+    Authorization: `Bearer ${userInfo.token}`,
   };
+
+  const cate_defaultImg = "/images/cate_default.png";
 
   useEffect(() => {
     let mounted = true;
@@ -29,6 +37,8 @@ const AdminShowCategoryList = () => {
     return () => (mounted = false);
   }, []);
 
+  const dispatch = useDispatch();
+
   const handleDelete = async (id) => {
     let totalProductByCategory = await axios
       .get(`${process.env.REACT_APP_BASE_URL}/categories/${id}/products`)
@@ -36,10 +46,12 @@ const AdminShowCategoryList = () => {
         return res.data.data.length;
       });
 
-    const isDelete = window.confirm("Bạn có chắc muốn xóa không?");
+    const isDelete = window.confirm("Do you want to remove this category?");
     if (isDelete) {
       if (totalProductByCategory > 0) {
-        toast.error("Danh mục đang có sản phẩm, không thể xóa!");
+        toast.error(
+          "Ohh this category is including some products, not allow to remove!"
+        );
       } else {
         setData(data.filter((item) => item._id !== id));
         await axios
@@ -50,7 +62,16 @@ const AdminShowCategoryList = () => {
             toast.success("Delete successfully");
           })
           .catch((error) => {
-            toast.error(error.message);
+            if (error.response?.status === 401) {
+              toast.error(
+                "You are not authorized or maybe token expired, pls login again"
+              );
+              setTimeout(() => {
+                dispatch(logout());
+              }, 2000);
+            } else {
+              toast.error(error?.message);
+            }
           });
       }
     }
@@ -66,9 +87,7 @@ const AdminShowCategoryList = () => {
           <div className='productListField'>
             <img
               src={
-                params.row.thumbnail
-                  ? params.row.thumbnail
-                  : "/images/products/default_image.jpeg"
+                params.row.thumbnail ? params.row.thumbnail : cate_defaultImg
               }
               alt=''
             />
@@ -93,7 +112,7 @@ const AdminShowCategoryList = () => {
           <>
             <Link
               to={{
-                pathname: `/admin/edit-category/${params.row._id}`,
+                pathname: `/admin/categorieslist/edit`,
                 state: { data: params.row },
               }}
             >
@@ -111,10 +130,10 @@ const AdminShowCategoryList = () => {
   return (
     <>
       <div className='cateListPage'>
-        <Link style={{ margin: "10px" }} to={`/admin/create-category`}>
-          <button className='btn-createProduct btn btn-primary'>
-            Create Category
-          </button>
+        <Link style={{ margin: "10px" }} to={`/admin/categorieslist/create`}>
+          <div className='buttonWrapper'>
+            <button className='btn btn-primary'>Create Category</button>
+          </div>
         </Link>
         <DataGrid
           loading={data.length === 0}

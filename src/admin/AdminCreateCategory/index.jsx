@@ -1,19 +1,26 @@
 import { useState } from "react";
-
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import "./styles.scss";
+import { logout } from "src/store/user/user.action";
 
-const AdminCreateCategory = ({ history }) => {
+const AdminCreateCategory = () => {
   const [title, setTitle] = useState("");
+  const [thumbnail, setThumbnail] = useState(undefined);
 
-  const userToken = JSON.parse(localStorage.getItem("jwt"))?.token;
+  const userLogin = useSelector((state) => state.userLogin);
+
+  const { userInfo } = userLogin;
   const headers = {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${userToken}`,
+    Authorization: `Bearer ${userInfo.token}`,
   };
 
+  const dispatch = useDispatch();
+  const history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -21,8 +28,8 @@ const AdminCreateCategory = ({ history }) => {
       .post(
         `${process.env.REACT_APP_BASE_URL}/categories`,
         {
-          title: title,
-          thumbnail: `/images/${imgFileName}`,
+          title,
+          thumbnail,
         },
         { headers: headers }
       )
@@ -30,23 +37,28 @@ const AdminCreateCategory = ({ history }) => {
         if (res) {
           toast.success("Category created successfully");
         }
-        history.push("/admin/categorylist");
+        history.push("/admin/categorieslist");
       })
       .catch((error) => {
-        toast.error("Category created fail");
-        console.log(error);
-        toast.error(error.message);
+        if (error.response?.status === 401) {
+          toast.error(
+            "You are not authorized or maybe token expired, pls login again"
+          );
+          setTimeout(() => {
+            dispatch(logout());
+          }, 1500);
+        } else {
+          toast.error(error?.message);
+        }
       });
   };
 
-  const [img, setImg] = useState();
-  const [imgFileName, setImgFileName] = useState("");
-  const onImageChange = (e) => {
-    const [file] = e.target.files;
-    setImg(URL.createObjectURL(file));
-    setImgFileName(file.name);
-    console.log(file);
+  const handleChangeThumbnail = (e) => {
+    const files = Array.from(e.target.files);
+    setThumbnail(`/images/categories/${files[0].name}`);
   };
+
+  const cate_defaultImg = "/images/cate_default.png";
 
   return (
     <>
@@ -66,16 +78,26 @@ const AdminCreateCategory = ({ history }) => {
 
               <div className='item'>
                 <label>Thumbnail</label>
-                <input type='file' id='file' onChange={onImageChange} />
-                <img src={img} alt='' />
+                <input
+                  type='file'
+                  id='file'
+                  onChange={(e) => handleChangeThumbnail(e)}
+                />
+                <img
+                  className='mt-3'
+                  src={thumbnail ? thumbnail : cate_defaultImg}
+                  alt=''
+                />
               </div>
-              <button
-                onClick={handleSubmit}
-                type='submit'
-                className='btn btn-primary btn-block mb-4'
-              >
-                Create
-              </button>
+              <div className='buttonWrapper'>
+                <button
+                  onClick={handleSubmit}
+                  type='submit'
+                  className='btn btn-primary mb-4'
+                >
+                  Create
+                </button>
+              </div>
             </div>
           </div>
         </form>

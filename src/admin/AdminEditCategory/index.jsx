@@ -1,9 +1,9 @@
 import { Publish } from "@mui/icons-material";
-
 import axios from "axios";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 import Chart from "src/admin/components/chart/Chart.jsx";
 
 import "./styles.scss";
@@ -22,14 +22,16 @@ const productData = [
     Sales: 2100,
   },
 ];
-const AdminEditCategory = ({ match, history, props }) => {
+const AdminEditCategory = () => {
   const location = useLocation();
+  const history = useHistory();
   const { data } = location.state;
+  const userLogin = useSelector((state) => state.userLogin);
 
-  const userToken = JSON.parse(localStorage.getItem("jwt"))?.token;
+  const { userInfo } = userLogin;
   const headers = {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${userToken}`,
+    Authorization: `Bearer ${userInfo.token}`,
   };
 
   const [title, setTitle] = useState(data?.title);
@@ -40,15 +42,15 @@ const AdminEditCategory = ({ match, history, props }) => {
   //handle submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    const isUpdate = window.confirm("Bạn có chắc muốn sửa không?");
+    const isUpdate = window.confirm("Are you want to edit?");
     if (isUpdate) {
       const fieldMark = {
-        title: title,
-        thumbnail: `/images/${imgFileName}`,
+        title,
+        thumbnail,
       };
       axios
         .put(
-          `${process.env.REACT_APP_BASE_URL}/categories/${match.params.categoryId}`,
+          `${process.env.REACT_APP_BASE_URL}/categories/${data?._id}`,
           fieldMark,
           { headers }
         )
@@ -56,7 +58,7 @@ const AdminEditCategory = ({ match, history, props }) => {
           if (res) {
             toast.success(`Update successfull`);
           }
-          history.push("/admin/categorylist");
+          history.push("/admin/categorieslist");
         })
         .catch((error) => {
           console.log(error);
@@ -65,13 +67,9 @@ const AdminEditCategory = ({ match, history, props }) => {
     }
   };
 
-  const [img, setImg] = useState("");
-  const [imgFileName, setImgFileName] = useState("");
-  const onImageChange = (e) => {
-    const [file] = e.target.files;
-    setImg(URL.createObjectURL(file));
-    setImgFileName(file.name);
-    console.log(file);
+  const handleChangeThumbnail = (e) => {
+    const files = Array.from(e.target.files);
+    setThumbnail(`/images/categories/${files[0].name}`);
   };
 
   return (
@@ -124,7 +122,7 @@ const AdminEditCategory = ({ match, history, props }) => {
               <div className='upload'>
                 <label htmlFor='file'>
                   <img
-                    src={thumbnail ? (img ? img : thumbnail) : imageDefault}
+                    src={thumbnail ? thumbnail : imageDefault}
                     alt='product thumbnail'
                   />
                   <Publish className='publish' />
@@ -132,7 +130,7 @@ const AdminEditCategory = ({ match, history, props }) => {
                 <input
                   type='file'
                   id='file'
-                  onChange={onImageChange}
+                  onChange={(e) => handleChangeThumbnail(e)}
                   style={{ display: "none" }}
                 />
               </div>

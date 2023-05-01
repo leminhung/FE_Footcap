@@ -30,10 +30,10 @@ export default function Footer() {
 
                 <ul className='df_contact_info ul_li_block clearfix'>
                   <li>
-                    <i className='fas fa-phone-alt'></i> 001-6688-9999
+                    <i className='fas fa-phone-alt'></i> 0843-987-789
                   </li>
                   <li>
-                    <i className='fas fa-envelope'></i> contact@site.com
+                    <i className='fas fa-envelope'></i> leminhung@gmail.com
                   </li>
                 </ul>
               </div>
@@ -170,9 +170,9 @@ export default function Footer() {
           <div className='row align-items-center'>
             <div className='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
               <p className='copyright_text mb-0'>
-                @2021 Designed By{" "}
+                @2023 Sports Store{" "}
                 <a href='#!' className='author_link text-white'>
-                  jthemes
+                  Ecommerce
                 </a>
                 .
               </p>

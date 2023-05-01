@@ -4,12 +4,19 @@ import {
   CART_SAVE_SHIPPING_ADDRESS,
   CART_SAVE_PAYMENT_METHOD,
   CART_CLEAR_ITEMS,
+  GET_COUPON_SUCCESS,
 } from "src/constants/cartConstants";
 
 import { roundNumber } from "src/utils/roundNumber";
 
 export const cartReducer = (
-  state = { cartItems: [], shippingAddress: {}, subtotal: 0, total: 0 },
+  state = {
+    cartItems: [],
+    shippingAddress: {},
+    subtotal: 0,
+    total: 0,
+    couponValue: 0,
+  },
   action
 ) => {
   switch (action.type) {
@@ -84,6 +91,11 @@ export const cartReducer = (
         cartItems: state.cartItems.filter((x) => x !== existedItem),
         subtotal,
         total: roundNumber(subtotal * 0.9),
+      };
+    case GET_COUPON_SUCCESS:
+      return {
+        ...state,
+        couponValue: action.payload.data.discount,
       };
     case CART_SAVE_SHIPPING_ADDRESS:
       return {

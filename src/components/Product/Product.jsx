@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 import ImageItem from "src/components/Image/ImageItem";
 import { setProduct } from "src/store/product/product.action";
-import { addToCart } from "src/store/cart/cart.action";
 
 const itemDisplay = {
   active: "tab-pane fade active",
@@ -33,19 +32,8 @@ const ProductActionButtons = ({ product }) => {
     dispatch(setProduct(product));
   };
 
-  const handleAction = (title) => {
-    if (title.includes("Cart")) {
-      const props = {
-        product: product._id,
-        name: product.title,
-        image: product.assets[0]?.filename,
-        price: product.price,
-        quantity: 1,
-        size: product.size[0],
-        color: product.color[0],
-      };
-      dispatch(addToCart(props));
-    }
+  const handleAction = () => {
+    dispatch(setProduct(product));
   };
   return (
     <ul className='product_action_btns ul_li_center clearfix'>
@@ -67,12 +55,14 @@ const ProductActionButtons = ({ product }) => {
           );
         }
         return (
-          <li onClick={() => handleAction(item.title)}>
+          <li onClick={() => handleAction()}>
             <a
               className='tooltips'
               data-placement='top'
               title={item.title}
               href='#!'
+              data-toggle='modal'
+              data-target='#quickview_modal_add_to_cart'
             >
               <i className={item.class}></i>
             </a>
@@ -84,7 +74,7 @@ const ProductActionButtons = ({ product }) => {
 };
 
 const Product = (props) => {
-  const { product, index, setRerender, rerender } = props;
+  const { product, index } = props;
 
   // colors
   const colors = {

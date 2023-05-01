@@ -50,12 +50,14 @@ export default function SideBar() {
             <span>${cart.subtotal}</span>
           </li>
           <li>
-            <span>Discount 10%:</span>
-            <span>{cart.subtotal ? cart.subtotal * -0.1 : 0}</span>
+            <span>Discount:</span>
+            <span>
+              {cart.couponValue !== 0 ? cart.couponValue * -1 + "$" : 0}
+            </span>
           </li>
           <li>
             <span>Total:</span>
-            <span>${cart.total}</span>
+            <span>${cart.subtotal - cart.couponValue}</span>
           </li>
         </ul>
 

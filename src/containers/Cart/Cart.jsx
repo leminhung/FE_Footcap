@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { removeFromCart, addToCart } from "src/store/cart/cart.action";
+import {
+  removeFromCart,
+  addToCart,
+  checkValidCoupon,
+} from "src/store/cart/cart.action";
 import { capitalizeFirstLetter } from "src/utils/convertFirstLetterToUpperCase";
 
 export default function Cart() {
   const [cartItems, setCartItems] = useState([]);
+  const [couponCode, setCouponCode] = useState("");
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
@@ -25,6 +30,13 @@ export default function Cart() {
   const handleQuantityDecrease = (item) => {
     item.decrease = 1;
     dispatch(removeFromCart(item));
+  };
+
+  const handleGetCoupon = () => {
+    dispatch(
+      checkValidCoupon({ coupon_code: couponCode, total: cart.subtotal })
+    );
+    setCouponCode("");
   };
 
   return (
@@ -106,35 +118,23 @@ export default function Cart() {
                 <div class='coupon_form'>
                   <div class='form_item mb-0'>
                     <input
+                      value={couponCode}
                       type='text'
                       class='coupon'
                       placeholder='Coupon Code'
+                      onChange={(e) => setCouponCode(e.target.value)}
                     />
                   </div>
                   <button
                     type='submit'
                     class='custom_btn bg_danger text-uppercase'
+                    onClick={() => handleGetCoupon()}
                   >
                     Apply Coupon
                   </button>
                 </div>
               </div>
 
-              <div class='col-lg-5 col-md-12 col-sm-12 col-xs-12'>
-                <div class='cart_update_btn'>
-                  <button
-                    type='button'
-                    class='custom_btn bg_secondary text-uppercase'
-                  >
-                    Update Cart
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class='row justify-content-lg-end'>
-            <div class='col-lg-4 col-md-12 col-sm-12 col-xs-12'>
               <div
                 class='cart_pricing_table pt-0 text-uppercase'
                 style={{ backgroundColor: "#f2f3f5" }}
@@ -150,7 +150,11 @@ export default function Cart() {
                     <span>Subtotal</span> <span>${cart.subtotal}</span>
                   </li>
                   <li>
-                    <span>Total</span> <span>${cart.total}</span>
+                    <span>Discount</span> <span>${cart.couponValue}</span>
+                  </li>
+                  <li>
+                    <span>Total</span>{" "}
+                    <span>${cart.subtotal - cart.couponValue}</span>
                   </li>
                 </ul>
                 <a href='/checkout/shopping-cart' class='custom_btn bg_success'>

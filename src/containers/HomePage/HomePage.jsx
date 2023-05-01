@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import Product from "src/components/Product/Product";
 import ProductSkeleton from "src/components/Product/ProductSkeleton/ProductSkeleton";
 import QuickView from "src/components/QuickView/QuickView";
+import QuickViewAddToCart from "src/components/QuickView/QuickViewAddToCart";
 import FilterSideBar from "src/components/FilterSideBar/FilterSideBar";
 import OfferSection from "src/components/OfferSection/OfferSection";
 
@@ -12,8 +13,6 @@ import "./styles.css";
 const HomePage = () => {
   const [limit, setLimit] = useState(12);
   const [sort, setSort] = useState(undefined);
-
-  console.log("helo");
 
   const handleChangeSort = (value) => {
     setSort(value);
@@ -200,6 +199,9 @@ const HomePage = () => {
 
       {/* product quick view */}
       <QuickView />
+
+      {/* product quick view add to cart */}
+      <QuickViewAddToCart />
     </body>
   );
 };

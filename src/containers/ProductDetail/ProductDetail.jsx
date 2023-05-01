@@ -215,22 +215,6 @@ const Product = ({ product = {} }) => {
                   </a>
                 </li>
               </ul>
-
-              <hr />
-
-              <ul className='product_info ul_li_block clearfix'>
-                <li>
-                  <strong>SKU:</strong> U2012
-                </li>
-                <li>
-                  <strong>Categories:</strong> <a href='#!'>Dress</a>{" "}
-                  <a href='#!'>Handbag</a> <a href='#!'>T-Shirts</a>
-                </li>
-                <li>
-                  <strong>Tags:</strong> <a href='#!'>Hot</a>{" "}
-                  <a href='#!'>Women</a>
-                </li>
-              </ul>
             </div>
           </div>
         </div>

@@ -18800,10 +18800,12 @@ blockquote .blockquote_title {
   color: #2e2e2e;
   font-family: "Jost", sans-serif;
 }
-.cart_table tr th:first-child, .cart_table tr td:first-child {
+.cart_table tr th:first-child,
+.cart_table tr td:first-child {
   padding-left: 80px;
 }
-.cart_table td, .cart_table th {
+.cart_table td,
+.cart_table th {
   border: none;
   padding: 25px;
   vertical-align: middle;
@@ -18923,7 +18925,7 @@ blockquote .blockquote_title {
 /* checkout content - start */
 .checkout_step {
   margin: -5px;
-  margin-bottom: 25px;
+  margin-bottom: 50px;
 }
 .checkout_step li {
   padding: 5px;
@@ -19059,7 +19061,8 @@ blockquote .blockquote_title {
   font-weight: 700;
   border-bottom: 1px solid #e6e6e6;
 }
-.checkout_table .table th, .checkout_table .table td {
+.checkout_table .table th,
+.checkout_table .table td {
   vertical-align: middle;
 }
 .checkout_table .table td {

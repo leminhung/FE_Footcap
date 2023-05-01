@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+
+import { addToCart } from "src/store/cart/cart.action";
 
 const QuickView = () => {
+  const [color, setColor] = useState(undefined);
+  const [size, setSize] = useState(undefined);
+
   const { product = {} } = useSelector((state) => state.product);
 
   const dispatch = useDispatch();
   const handleAction = () => {
-    // handle add to wishlist
+    if (!color || !size) {
+      toast.error("Please fill in color or size");
+    } else {
+      const props = {
+        product: product._id,
+        name: product.title,
+        image: product.assets[0]?.filename,
+        price: product.price,
+        color,
+        size,
+        quantity: 1,
+      };
+      dispatch(addToCart(props));
+    }
   };
 
   // colors
@@ -21,15 +40,17 @@ const QuickView = () => {
     { color: "#f74877", name: "violet-red" },
     { color: "#1f1e29", name: "gray" },
     { color: "#dddddd", name: "alto" },
+    { color: "#1f1e29", name: "black" },
+    { color: "#cc7b4a", name: "brown" },
   ];
 
   // sizes
-  const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
+  const sizesProd = ["XS", "S", "M", "L", "XL", "XXL", "3XL"];
 
   return (
     <div
       className='quickview_modal modal fade pb-0'
-      id='quickview_modal'
+      id='quickview_modal_add_to_cart'
       tabindex='-1'
       role='dialog'
       aria-hidden='true'
@@ -81,9 +102,7 @@ const QuickView = () => {
             <span className='item_price'>${product.price}</span>
             <p>{product.description}</p>
             <div className='quantity_form clearfix'>
-              <strong className='list_title'>
-                Quantity: {product.quantity}
-              </strong>
+              <strong className='list_title'>Status: In stock</strong>
             </div>
             <div className='d-flex mb-3 fs_color_list clearfix'>
               <strong className='list_title'>Color:</strong>
@@ -93,9 +112,10 @@ const QuickView = () => {
                     return (
                       <li>
                         <input
-                          type='checkbox'
+                          type='radio'
                           name='fs_color_froup'
                           style={{ backgroundColor: color.color }}
+                          onClick={() => setColor(color.name)}
                         />
                       </li>
                     );
@@ -106,15 +126,15 @@ const QuickView = () => {
             <div className='d-flex mb-3 fs_size_list clearfix'>
               <strong className='list_title'>Size:</strong>
               <ul class='ul_li clearfix'>
-                {sizes.map((size, index) => {
+                {sizesProd.map((size, index) => {
                   if (product?.size?.includes(size)) {
                     return (
                       <li>
-                        <label for={`fs_size_${index}`}>
+                        <label>
                           <input
-                            id={`fs_size_${index}`}
-                            type='checkbox'
+                            type='radio'
                             name='fs_size_group'
+                            onClick={() => setSize(size)}
                           />
                           {size}
                         </label>
@@ -127,7 +147,7 @@ const QuickView = () => {
             <ul className='btns_group ul_li clearfix'>
               <li onClick={() => handleAction()}>
                 <a href='#!' className='custom_btn bg_carparts_red'>
-                  Add to Whitelist
+                  Add to Cart
                 </a>
               </li>
               <li>

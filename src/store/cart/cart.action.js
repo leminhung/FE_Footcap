@@ -1,11 +1,38 @@
 import { toast } from "react-toastify";
+import axios from "axios";
 
 import {
   CART_ADD_ITEM,
   CART_REMOVE_ITEM,
   CART_SAVE_SHIPPING_ADDRESS,
   CART_SAVE_PAYMENT_METHOD,
+  GET_COUPON_SUCCESS,
 } from "src/constants/cartConstants";
+
+export const checkValidCoupon =
+  ({ coupon_code, total }) =>
+  async (dispatch, getState) => {
+    try {
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/coupons/check`,
+        { coupon_code, total }
+      );
+
+      dispatch({
+        type: GET_COUPON_SUCCESS,
+        payload: data,
+      });
+      toast.success(
+        `Yeah, your payment just has decreased ${data.data?.discount}$`
+      );
+      localStorage.setItem(
+        "couponValue",
+        JSON.stringify(getState().cart.couponValue)
+      );
+    } catch (error) {
+      toast.error(error.response.data.msg || "Invalid request");
+    }
+  };
 
 export const addToCart = (product) => async (dispatch, getState) => {
   dispatch({

@@ -73,6 +73,7 @@ const FilterSideBar = ({ limit, sort }) => {
       limit,
       sort: sort ? sort : "-sold",
     };
+    console.log(size);
     dispatch(listProducts(params));
   }, [dispatch, category, color, size, price, limit, sort, search]);
 

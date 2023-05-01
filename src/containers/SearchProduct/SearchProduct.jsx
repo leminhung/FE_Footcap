@@ -17,6 +17,7 @@ const SearchProduct = () => {
   };
 
   const products = useSelector((state) => state.productList);
+  const keywordSearch = useSelector((state) => state.productSearch.search);
   return (
     <div class='search-mt-120'>
       <div id='thetop'></div>
@@ -26,7 +27,7 @@ const SearchProduct = () => {
             <div class='row mb_30 align-items-center justify-content-lg-between'>
               <div class='col-lg-4 col-md-12 col-sm-12 col-xs-12'>
                 <div class='ecommerce_section_title'>
-                  <h2 class='title_text mb-0'>Search Products</h2>
+                  <h2 class='title_text mb-0'>Search "{keywordSearch}"</h2>
                 </div>
               </div>
 

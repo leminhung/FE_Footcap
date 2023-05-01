@@ -35,102 +35,6 @@ export default function CheckOut() {
             </li>
           </ul>
 
-          <div class='row'>
-            <div class='col-lg-6'>
-              <div class='checkout_collapse_content'>
-                <div class='wrap_heade'>
-                  <p class='mb-0'>
-                    Returning customer?{" "}
-                    <a
-                      class='collapsed'
-                      data-toggle='collapse'
-                      href='#loginform_collapse'
-                      aria-expanded='false'
-                      role='button'
-                    >
-                      Click here to login
-                    </a>
-                  </p>
-                </div>
-                <div
-                  id='loginform_collapse'
-                  class='collapse_form_wrap collapse'
-                >
-                  <div class='card-body'>
-                    <form action='#'>
-                      <div class='row'>
-                        <div class='col-lg-6'>
-                          <div class='form_item'>
-                            <input
-                              type='email'
-                              name='email'
-                              placeholder='Email'
-                            />
-                          </div>
-                        </div>
-                        <div class='col-lg-6'>
-                          <div class='form_item'>
-                            <input
-                              type='password'
-                              name='password'
-                              placeholder='Password'
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div class='login_button'>
-                        <div class='checkbox_item'>
-                          <label for='remember_checkbox'>
-                            <input id='remember_checkbox' type='checkbox' />{" "}
-                            Remember me
-                          </label>
-                        </div>
-                        <button type='submit' class='custom_btn bg_default_red'>
-                          Login Now
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class='col-lg-6'>
-              <div class='checkout_collapse_content'>
-                <div class='wrap_heade'>
-                  <p class='mb-0'>
-                    <i class='ti-info-alt'></i>
-                    Have a coupon?{" "}
-                    <a
-                      class='collapsed'
-                      data-toggle='collapse'
-                      href='#coupon_collapse'
-                      aria-expanded='false'
-                    >
-                      Click here to enter your code
-                    </a>
-                  </p>
-                </div>
-                <div id='coupon_collapse' class='collapse_form_wrap collapse'>
-                  <div class='card-body'>
-                    <form action='#'>
-                      <div class='form_item'>
-                        <input
-                          type='text'
-                          name='coupon'
-                          placeholder='Coupon Code'
-                        />
-                      </div>
-                      <button type='submit' class='custom_btn bg_default_red'>
-                        Apply coupon
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <div class='billing_form'>
             <h3 class='form_title mb_30'>Your order</h3>
             <form action='#'>
@@ -191,6 +95,16 @@ export default function CheckOut() {
                           <span class='total_price'>${cart.subtotal}</span>
                         </td>
                       </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                          <span class='subtotal_text'>Discount</span>
+                        </td>
+                        <td>
+                          <span class='total_price'>${cart.couponValue}</span>
+                        </td>
+                      </tr>
 
                       <tr>
                         <td class='text-left'>
@@ -199,7 +113,9 @@ export default function CheckOut() {
                         <td></td>
                         <td></td>
                         <td>
-                          <span class='total_price'>${cart.total}</span>
+                          <span class='total_price'>
+                            ${cart.subtotal - cart.couponValue}
+                          </span>
                         </td>
                       </tr>
                     </tbody>
@@ -212,8 +128,7 @@ export default function CheckOut() {
                     <li>
                       <div class='checkbox_item mb-0 pl-0'>
                         <label for='paypal_checkbox'>
-                          <input id='paypal_checkbox' type='checkbox' /> Paypal{" "}
-                          <a href='#!'>
+                          <a href='https://paypay.ne.jp/'>
                             <img
                               class='paypal_image'
                               src='/assets/images/payment_methods_03.png'
@@ -224,7 +139,10 @@ export default function CheckOut() {
                       </div>
                     </li>
                   </ul>
-                  <PayButton cartItems={cartItems} />
+                  <PayButton
+                    cartItems={cartItems}
+                    discount={cart.couponValue}
+                  />
                 </div>
               </div>
             </form>

@@ -102,7 +102,7 @@ export default function CheckOut() {
                           <span class='subtotal_text'>Discount</span>
                         </td>
                         <td>
-                          <span class='total_price'>${cart.couponValue}</span>
+                          <span class='total_price'>${cart.coupon.value}</span>
                         </td>
                       </tr>
 
@@ -114,7 +114,7 @@ export default function CheckOut() {
                         <td></td>
                         <td>
                           <span class='total_price'>
-                            ${cart.subtotal - cart.couponValue}
+                            ${cart.subtotal - cart.coupon.value}
                           </span>
                         </td>
                       </tr>
@@ -139,10 +139,7 @@ export default function CheckOut() {
                       </div>
                     </li>
                   </ul>
-                  <PayButton
-                    cartItems={cartItems}
-                    discount={cart.couponValue}
-                  />
+                  <PayButton cartItems={cartItems} coupon={cart.coupon} />
                 </div>
               </div>
             </form>

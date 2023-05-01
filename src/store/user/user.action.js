@@ -51,6 +51,9 @@ export const login = (email, password) => async (dispatch) => {
       payload: data,
     });
     toast.success("Login successfully");
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 1500);
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
     toast.error(error.response.data.msg || error.message);
@@ -64,10 +67,43 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 
+export const sendMailGetNewPassword = (email) => async (dispatch) => {
+  try {
+    const { data, ...rest } = await axios.post(
+      `${process.env.REACT_APP_BASE_URL}/auth/forget-password`,
+      { email },
+      config
+    );
+
+    toast.warn(`Email was sent to ${email}, please check your email!`);
+  } catch (error) {
+    toast.error(error.response.data.msg || error.message);
+  }
+};
+
+export const resetPassword =
+  ({ password, resettoken }) =>
+  async (dispatch) => {
+    try {
+      const { data, ...rest } = await axios.put(
+        `${process.env.REACT_APP_BASE_URL}/auth/reset-password`,
+        { password, resettoken },
+        config
+      );
+      toast.success(`Reset password successfully, please login again`);
+      setTimeout(() => {
+        window.location.href = "/signin";
+      }, 1500);
+    } catch (error) {
+      toast.error(error.response.data.msg || error.message);
+    }
+  };
+
 export const logout = () => (dispatch) => {
   localStorage.removeItem("userInfo");
   localStorage.removeItem("subtotal");
   localStorage.removeItem("total");
+  localStorage.removeItem("coupon");
   localStorage.removeItem("cartItems");
   localStorage.removeItem("shippingAddress");
   localStorage.removeItem("paymentMethod");

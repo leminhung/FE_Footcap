@@ -42,7 +42,7 @@ export default function Cart() {
   return (
     <main>
       <section class='cart_section sec_ptb_140 clearfix'>
-        <div class='container'>
+        <div class='container mt-5'>
           <div class='cart_table mb_50'>
             <table class='table'>
               <thead class='text-uppercase'>
@@ -150,11 +150,11 @@ export default function Cart() {
                     <span>Subtotal</span> <span>${cart.subtotal}</span>
                   </li>
                   <li>
-                    <span>Discount</span> <span>${cart.couponValue}</span>
+                    <span>Discount</span> <span>${cart.coupon.value}</span>
                   </li>
                   <li>
                     <span>Total</span>{" "}
-                    <span>${cart.subtotal - cart.couponValue}</span>
+                    <span>${cart.subtotal - cart.coupon.value}</span>
                   </li>
                 </ul>
                 <a href='/checkout/shopping-cart' class='custom_btn bg_success'>

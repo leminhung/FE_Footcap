@@ -171,11 +171,11 @@ export default function ShoppingCart() {
                     <span>Subtotal</span> <span>${cart.subtotal}</span>
                   </li>
                   <li>
-                    <span>Discount</span> <span>${cart.couponValue}</span>
+                    <span>Discount</span> <span>${cart.coupon.value}</span>
                   </li>
                   <li>
                     <span>Total</span>{" "}
-                    <span>${cart.subtotal - cart.couponValue}</span>
+                    <span>${cart.subtotal - cart.coupon.value}</span>
                   </li>
                 </ul>
                 <a href='/checkout/payment' class='custom_btn bg_success'>

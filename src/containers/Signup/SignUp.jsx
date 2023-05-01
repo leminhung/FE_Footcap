@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { register } from "src/store/user/user.action";
+import { checkEmailValid } from "src/utils/checkValidationField";
 
 import "./SignUp.css";
 
@@ -12,6 +13,7 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [errEmailMsg, setErrorEmailMsg] = useState("");
 
   const dispatch = useDispatch();
 
@@ -27,59 +29,36 @@ const SignUp = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
+
+    if (!checkEmailValid(email)) {
+      setErrorEmailMsg("Email is invalid format");
+    } else if (password !== confirmPassword) {
       toast.error("Passwords do not match");
     } else {
       dispatch(register(name, email, password));
       toast.success("Sign up successfully");
       setTimeout(() => {
-        window.location.href = "/signin";
+        history.push("/signin");
       }, 0.5);
     }
   };
   return (
     <main>
       <section
-        class='breadcrumb_section text-white text-center text-uppercase d-flex align-items-end clearfix bg-fit'
-        style={{
-          backgroundImage: `url(/assets/images/slider/classic_ecommerce/test.png)`,
-        }}
-      >
-        <div
-          class='overlay'
-          style={{
-            backgroundColor: `#1d1d1d`,
-          }}
-        ></div>
-        <div class='container'>
-          <h1 class='page_title text-white'>Register Page</h1>
-          <ul class='breadcrumb_nav ul_li_center clearfix'>
-            <li>
-              <a href='#!'>Home</a>
-            </li>
-            <li>Pages</li>
-            <li>Register</li>
-          </ul>
-        </div>
-      </section>
-
-      <section
-        class='register_section sec_ptb_140 parallaxie clearfix bg-fit-signin'
+        class='register_section sec_ptb_140 has_overlay parallaxie clearfix bg-fit bg-fit-signin '
         style={{
           backgroundImage: `url(/assets/images/backgrounds/signin.jpeg)`,
         }}
       >
+        <div
+          className='overlay'
+          style={{ backgroundColor: "rgba(55, 55, 55, 0.75)" }}
+        ></div>
         <div class='container'>
-          <div
-            class='reg_form_wrap signup_form'
-            style={{
-              backgroundImage: `url(/assets/images/reg_bg_02.png)`,
-              backgroundRepeat: "no-repeat",
-            }}
-          >
+          <div class='reg_form_wrap signup_form'>
             <form action='#'>
-              <div class='reg_form'>
-                <h2 class='form_title text-uppercase'>Register</h2>
+              <div class='reg_form mx-auto'>
+                <h2 class='form_title text-uppercase text-center'>Register</h2>
                 <div class='form_item'>
                   <input
                     type='text'
@@ -94,11 +73,11 @@ const SignUp = () => {
                     name='email'
                     placeholder='Email'
                     onChange={(e) => setEmail(e.target.value)}
+                    onClick={() => setErrorEmailMsg("")}
                   />
                 </div>
-                <div class='form_item'>
-                  <input type='tel' name='phone' placeholder='phone' />
-                </div>
+                <p className='text-danger mb-4'>{errEmailMsg}</p>
+
                 <div class='form_item'>
                   <input
                     type='password'
@@ -114,12 +93,6 @@ const SignUp = () => {
                     placeholder='Confirm Password'
                     onChange={(e) => setConfirmPassword(e.target.value)}
                   />
-                </div>
-                <div class='checkbox_item mb_30'>
-                  <label for='agree_checkbox'>
-                    <input id='agree_checkbox' type='checkbox' /> I agree to the
-                    Terms of User
-                  </label>
                 </div>
                 <button
                   type='submit'

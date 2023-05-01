@@ -8,3 +8,11 @@
 .bg-fit-signin {
   background-position: center;
 }
+
+.signup_form {
+  padding: 80px 0px !important;
+}
+
+.signup_form .reg_form {
+  max-width: 520px !important;
+}

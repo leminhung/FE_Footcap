@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import {
   USER_DETAILS_FAIL,
   USER_DETAILS_REQUEST,

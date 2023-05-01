@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useSelector } from "react-redux";
 
-const PayButton = ({ cartItems, discount }) => {
+const PayButton = ({ cartItems, coupon = { value: 0, code: " " } }) => {
   const user = useSelector((state) => state.userLogin?.userInfo?.actor);
 
   const handleCheckout = (e) => {
@@ -12,7 +12,7 @@ const PayButton = ({ cartItems, discount }) => {
         {
           cartItems,
           userId: user._id,
-          discount,
+          coupon,
         }
       )
       .then((response) => {

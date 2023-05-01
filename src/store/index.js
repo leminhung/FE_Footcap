@@ -70,9 +70,9 @@ const total = localStorage.getItem("total")
   ? JSON.parse(localStorage.getItem("total"))
   : 0;
 
-const couponValue = localStorage.getItem("couponValue")
-  ? JSON.parse(localStorage.getItem("couponValue"))
-  : 0;
+const coupon = localStorage.getItem("coupon")
+  ? JSON.parse(localStorage.getItem("coupon"))
+  : { value: 0, code: "" };
 
 // user
 const userInfoFromStorage = localStorage.getItem("userInfo")
@@ -90,7 +90,7 @@ const initialState = {
     shippingAddress: shippingAddressFromStorage,
     subtotal,
     total,
-    couponValue,
+    coupon,
   },
   userLogin: { userInfo: userInfoFromStorage },
 };

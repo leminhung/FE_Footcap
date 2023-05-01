@@ -52,12 +52,12 @@ export default function SideBar() {
           <li>
             <span>Discount:</span>
             <span>
-              {cart.couponValue !== 0 ? cart.couponValue * -1 + "$" : 0}
+              {cart.coupon.value !== 0 ? cart.coupon.value * -1 + "$" : 0}
             </span>
           </li>
           <li>
             <span>Total:</span>
-            <span>${cart.subtotal - cart.couponValue}</span>
+            <span>${cart.subtotal - cart.coupon.value}</span>
           </li>
         </ul>
 

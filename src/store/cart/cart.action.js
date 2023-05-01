@@ -26,8 +26,11 @@ export const checkValidCoupon =
         `Yeah, your payment just has decreased ${data.data?.discount}$`
       );
       localStorage.setItem(
-        "couponValue",
-        JSON.stringify(getState().cart.couponValue)
+        "coupon",
+        JSON.stringify({
+          value: data.data?.discount,
+          code: data.data?.coupon_code,
+        })
       );
     } catch (error) {
       toast.error(error.response.data.msg || "Invalid request");

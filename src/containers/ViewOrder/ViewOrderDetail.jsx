@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 
 import CheckOutHero from "src/containers/CheckOut/CheckOutHero";
+import { capitalizeFirstLetter } from "src/utils/convertFirstLetterToUpperCase";
 
 export default function ViewOrderDetail() {
   const [items, setItems] = useState([]);
-  const [images, setImages] = useState([]);
   let location = useLocation();
 
   const history = useHistory();
@@ -54,6 +54,10 @@ export default function ViewOrderDetail() {
                                     <h4 class='item_title mb-0'>
                                       {item?.name}
                                     </h4>
+                                    <span class='item_type mt-2'>
+                                      {capitalizeFirstLetter(item?.color)} -{" "}
+                                      {item?.size}
+                                    </span>
                                   </div>
                                 </div>
                               </td>

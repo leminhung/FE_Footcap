@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import HomePage from "src/containers/HomePage/HomePage";
 import NotFound from "src/containers/NotFound/NotFound";
@@ -16,8 +16,10 @@ import ViewOrderDetail from "src/containers/ViewOrder/ViewOrderDetail";
 
 import Login from "src/containers/Login/Login";
 import SignUp from "src/containers/Signup/SignUp";
-import Blog from "src/containers/Blog/Blog";
-import BlogDetail from "src/containers/Blog/BlogDetail";
+import ForgotPassword from "src/containers/ForgotPassword/ForgotPassword";
+import ResetPassword from "src/containers/ResetPassword/ResetPassword";
+// import Blog from "src/containers/Blog/Blog";
+// import BlogDetail from "src/containers/Blog/BlogDetail";
 import ContactUs from "src/containers/ContactUs/ContactUs";
 import Profile from "src/containers/Profile/Profile";
 import ProfileEdit from "src/containers/Profile/ProfileEdit";
@@ -53,11 +55,13 @@ const RoutesWrapper = () => {
         <Route path='/cart' component={Cart} />
         <Route path='/signin' component={Login} />
         <Route path='/signup' component={SignUp} />
+        <Route path='/forgot-password' component={ForgotPassword} />
+        <Route path='/reset-password' component={ResetPassword} />
         <Route path='/products/:slug' component={ProductDetail} />
-        {/* <Route path='/blog' component={Blog} /> */}
         <Route path='/search' component={SearchProduct} />
-        {/* <Route path='/blog/:id' component={BlogDetail} /> */}
         <Route path='/contact-us' component={ContactUs} />
+        {/* <Route path='/blog/:id' component={BlogDetail} /> */}
+        {/* <Route path='/blog' component={Blog} /> */}
 
         {/* auth */}
         <PrivateRoute path='/profile' exact component={Profile} />

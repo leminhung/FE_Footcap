@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { login } from "src/store/user/user.action";
+import { sendMailGetNewPassword } from "src/store/user/user.action";
 import { checkEmailValid } from "src/utils/checkValidationField";
 
-import "./Login.css";
+import "./ForgotPassword.css";
 
-const Login = () => {
+const ForgotPassword = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [errEmailMsg, setErrorEmailMsg] = useState("");
 
   const dispatch = useDispatch();
@@ -19,7 +18,7 @@ const Login = () => {
     if (!checkEmailValid(email)) {
       setErrorEmailMsg("Email is invalid format");
     } else {
-      dispatch(login(email, password));
+      dispatch(sendMailGetNewPassword(email));
     }
   };
 
@@ -39,7 +38,7 @@ const Login = () => {
           <div className='reg_form_wrap login_form'>
             <form action='#'>
               <div className='reg_form mx-auto'>
-                <h2 className='form_title text-uppercase text-center'>Login</h2>
+                <h2 className='form_title text-center'>Forgot Password</h2>
                 <div className='form_item mb-2'>
                   <input
                     id='email_input'
@@ -54,43 +53,13 @@ const Login = () => {
                   </label>
                 </div>
                 <p className='text-danger mb-4'>{errEmailMsg}</p>
-                <div className='form_item'>
-                  <input
-                    id='password_input'
-                    type='password'
-                    name='password'
-                    placeholder='password'
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  <label for='password_input'>
-                    <i className='fal fa-unlock-alt'></i>
-                  </label>
-                </div>
-                <a
-                  className='forget_pass text-uppercase mb_30'
-                  href='/forgot-password'
-                >
-                  Forgot password?
-                </a>
                 <button
                   type='submit'
                   className='custom_btn bg_default_red text-uppercase mb_50'
                   onClick={(e) => submitHandler(e)}
                 >
-                  Login
+                  Send Mail
                 </button>
-
-                <div className='create_account text-center'>
-                  <h4 className='small_title_text text-center text-uppercase'>
-                    Have not account yet?
-                  </h4>
-                  <a
-                    className='create_account_btn text-uppercase'
-                    href='/signup'
-                  >
-                    Sign Up
-                  </a>
-                </div>
               </div>
             </form>
           </div>
@@ -100,4 +69,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgotPassword;

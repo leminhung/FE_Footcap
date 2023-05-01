@@ -15,7 +15,7 @@ export const cartReducer = (
     shippingAddress: {},
     subtotal: 0,
     total: 0,
-    couponValue: 0,
+    coupon: { value: 0, code: "" },
   },
   action
 ) => {
@@ -95,7 +95,10 @@ export const cartReducer = (
     case GET_COUPON_SUCCESS:
       return {
         ...state,
-        couponValue: action.payload.data.discount,
+        coupon: {
+          value: action.payload.data.discount,
+          code: action.payload.data.coupon_code,
+        },
       };
     case CART_SAVE_SHIPPING_ADDRESS:
       return {

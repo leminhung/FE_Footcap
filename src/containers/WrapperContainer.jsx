@@ -10,11 +10,17 @@ import RoutesWrapper from "src/routes";
 
 const Wrapper = () => {
   let checkAdminPath = window.location.pathname.includes("admin");
+  let checkSignin = window.location.pathname.includes("signin");
+  let checkSignup = window.location.pathname.includes("signup");
+  let checkPasswordSubDomain = window.location.pathname.includes("password");
 
   return (
     <div>
       <BackToTop />
-      {!checkAdminPath ? (
+      {!checkAdminPath &&
+      !checkSignin &&
+      !checkSignup &&
+      !checkPasswordSubDomain ? (
         <>
           <Header />
           <SideBar />
@@ -24,7 +30,10 @@ const Wrapper = () => {
       )}
       <RoutesWrapper />
       <ToastContainer />
-      {!checkAdminPath ? (
+      {!checkAdminPath &&
+      !checkSignin &&
+      !checkSignup &&
+      !checkPasswordSubDomain ? (
         <>
           <Footer />
         </>

@@ -25,7 +25,7 @@ const productData = [
     Sales: 2100,
   },
 ];
-const AdminEditProduct = ({ match, props }) => {
+const AdminEditProduct = () => {
   const location = useLocation();
   const { data } = location.state;
   const [isCheckeds, setIsCheckeds] = useState([...Array(10)].fill(false));
@@ -51,7 +51,7 @@ const AdminEditProduct = ({ match, props }) => {
     { color: "#009122", name: "fun-green" },
     { color: "#875546", name: "spicy-mix" },
     { color: "#f74877", name: "violet-red" },
-    { color: "#1f1e29", name: "gray" },
+    { color: "#1f1e29", name: "black" },
     { color: "#dddddd", name: "alto" },
   ];
 

@@ -48,12 +48,13 @@ const FilterSideBar = ({ limit, sort }) => {
     { color: "#6c7ae0", name: "blue" },
     { color: "#f23226", name: "red" },
     { color: "#828664", name: "pink" },
-    { color: "#68a3c2", name: "blue" },
-    { color: "#009122", name: "green" },
-    { color: "#875546", name: "red" },
-    { color: "#f74877", name: "pink" },
+    { color: "#68a3c2", name: "fountain-blue" },
+    { color: "#009122", name: "fun-green" },
+    { color: "#875546", name: "spicy-mix" },
+    { color: "#f74877", name: "violet-red" },
+    { color: "#1f1e29", name: "gray" },
+    { color: "#dddddd", name: "alto" },
     { color: "#1f1e29", name: "black" },
-    { color: "#dddddd", name: "pink" },
   ];
 
   // sizes

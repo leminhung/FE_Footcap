@@ -293,23 +293,27 @@ export const createProductReview =
     }
   };
 
-export const listTopProducts = () => async (dispatch) => {
-  try {
-    dispatch({ type: PRODUCT_TOP_REQUEST });
+export const listTopProducts =
+  ({ id, cateId }) =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: PRODUCT_TOP_REQUEST });
 
-    const { data } = await axios.get(`/api/products/top`);
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}/products/related?_id[$ne]=${id}&category=${cateId}`
+      );
 
-    dispatch({
-      type: PRODUCT_TOP_SUCCESS,
-      payload: data,
-    });
-  } catch (error) {
-    dispatch({
-      type: PRODUCT_TOP_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
+      dispatch({
+        type: PRODUCT_TOP_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: PRODUCT_TOP_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };

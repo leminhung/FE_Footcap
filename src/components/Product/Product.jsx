@@ -116,7 +116,7 @@ const Product = (props) => {
             <Link
               to={{
                 pathname: `products/${product.slug}`,
-                state: { from: product.id },
+                state: { from: product.id, category: product.category },
               }}
             >
               {product.title}

@@ -7,10 +7,7 @@ const OfferSection = () => {
         <div class='row no-gutters justify-content-lg-between'>
           <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
             <div class='ce_offer_fullimage offer_fullimage text-white text-center'>
-              <img
-                src='/assets/images/offer/classic_ecommerce/imgg_01.jpg'
-                alt='image_not_found'
-              />
+              <img src='/images/cta-1.jpg' alt='image_not_found' />
               <div class='item_content'>
                 <h3 class='item_title text-white mb_15'>Read The Blog</h3>
                 <a class='text_btn text-uppercase' href='#!'>
@@ -22,16 +19,16 @@ const OfferSection = () => {
 
           <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
             <div class='ce_offer_fullimage offer_fullimage text-white text-center'>
-              <img
-                src='/assets/images/offer/classic_ecommerce/imgg_02.jpg'
-                alt='image_not_found'
-              />
+              <img src='/images/cta-2.jpg' alt='image_not_found' />
               <div class='item_content'>
                 <h3 class='item_title text-white mb_15'>
-                  Follow Our Store On Instagram
+                  Follow Our Store On Facebook
                 </h3>
-                <a class='text_btn text-uppercase' href='#!'>
-                  <span>@JTHEMES</span>
+                <a
+                  class='text_btn text-uppercase'
+                  href='https://www.facebook.com/leminh.hung.9256'
+                >
+                  <span>Min Hung</span>
                 </a>
               </div>
             </div>

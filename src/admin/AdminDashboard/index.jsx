@@ -23,9 +23,12 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_BASE_URL}/auth/getallusers`, {
-        headers: headers,
-      })
+      .get(
+        `${process.env.REACT_APP_BASE_URL}/auth/getallusers?sort=-createdAt`,
+        {
+          headers: headers,
+        }
+      )
       .then((res) => {
         setUsersData(res.data.data);
       })
@@ -38,7 +41,9 @@ const AdminDashboard = () => {
   const [ordersData, setOrdersData] = useState([]);
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_BASE_URL}/order`, { headers: headers })
+      .get(`${process.env.REACT_APP_BASE_URL}/order?sort=-createdAt`, {
+        headers: headers,
+      })
       .then((res) => {
         setOrdersData(res.data.data);
       })
@@ -83,7 +88,7 @@ const AdminDashboard = () => {
 
   return (
     <>
-      <div className='homePage'>
+      <div className='homePage mt-3'>
         <FeaturedInfo ordersData={ordersData} />
         <Chart
           data={dataChartUser}

@@ -27,10 +27,6 @@ const Sidebar = () => {
               </li>
             </Link>
             <li>
-              <Timeline className='icon' />
-              Analytics
-            </li>
-            <li>
               <TrendingUp className='icon' />
               Sales
             </li>

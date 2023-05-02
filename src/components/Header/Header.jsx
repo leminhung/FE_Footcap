@@ -5,6 +5,8 @@ import { useHistory } from "react-router-dom";
 import { logout } from "src/store/user/user.action";
 import { listProducts } from "src/store/product/product.action";
 
+import './Header.css'
+
 export default function Header() {
   const [title, setTitle] = useState("");
 
@@ -42,27 +44,27 @@ export default function Header() {
             <div className='col-lg-6'>
               <ul className='primary_social_links ul_li_right clearfix'>
                 <li>
-                  <a href='#!'>
+                  <a href='https://www.facebook.com/leminh.hung.9256'>
                     <i className='fab fa-facebook-f'></i>
                   </a>
                 </li>
                 <li>
-                  <a href='#!'>
+                  <a href='https://www.facebook.com/leminh.hung.9256'>
                     <i className='fab fa-twitter'></i>
                   </a>
                 </li>
                 <li>
-                  <a href='#!'>
+                  <a href='https://www.facebook.com/leminh.hung.9256'>
                     <i className='fab fa-linkedin-in'></i>
                   </a>
                 </li>
                 <li>
-                  <a href='#!'>
+                  <a href='https://www.facebook.com/leminh.hung.9256'>
                     <i className='fab fa-instagram'></i>
                   </a>
                 </li>
                 <li>
-                  <a href='#!'>
+                  <a href='https://www.facebook.com/leminh.hung.9256'>
                     <i className='fab fa-google-play'></i>
                   </a>
                 </li>
@@ -118,7 +120,9 @@ export default function Header() {
               <nav className='main_menu clearfix'>
                 <ul className='ul_li_center clearfix'>
                   <li className='menu_item_has_child'>
-                    <a href='#!'>Home</a>
+                    <a href='#!' className='header_title_item'>
+                      Home
+                    </a>
                     <div className='mega_menu text-center'>
                       <div
                         className='background'
@@ -383,7 +387,9 @@ export default function Header() {
                     </div>
                   </li>
                   <li className='menu_item_has_child'>
-                    <a href='#!'>Shop</a>
+                    <a href='#!' className='header_title_item'>
+                      Shop
+                    </a>
                     <div className='mega_menu'>
                       <div
                         className='background'
@@ -659,7 +665,9 @@ export default function Header() {
                     </div>
                   </li>
                   <li className='menu_item_has_child'>
-                    <a href='#!'>Pages</a>
+                    <a href='#!' className='header_title_item'>
+                      Blogs
+                    </a>
                     <ul className='submenu'>
                       <li className='menu_item_has_child'>
                         <a href='#!'>Shop Inner Pages</a>
@@ -721,10 +729,14 @@ export default function Header() {
                     </ul>
                   </li>
                   <li>
-                    <a href='#!'>About us</a>
+                    <a href='#!' className='header_title_item'>
+                      About us
+                    </a>
                   </li>
                   <li>
-                    <a href='contact.html'>Contact us</a>
+                    <a href='contact.html' className='header_title_item'>
+                      Contact us
+                    </a>
                   </li>
                 </ul>
               </nav>

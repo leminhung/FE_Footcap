@@ -1,0 +1,15 @@
+.footer_section .brand_logo_cus {
+  font-size: 28px;
+  margin-top: -24px;
+}
+
+.footer_section .cus_first_letter {
+  font-size: 48px;
+  font-weight: 700;
+  color: tomato;
+}
+
+.footer_section .cus_second_letter {
+  font-weight: 600;
+  color: white;
+}

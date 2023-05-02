@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./Footer.css";
+
 export default function Footer() {
   return (
     <footer className='footer_section default_footer clearfix'>
@@ -14,12 +16,9 @@ export default function Footer() {
             <div className='col-lg-3 col-md-6 col-sm-12 col-xs-12'>
               <div className='footer_widget df_about_area'>
                 <div className='brand_logo mb_30'>
-                  <a href='/'>
-                    <img
-                      src='/assets/images/logo/logo_28_1x.png'
-                      srcSet='/assets/images/logo/logo_28_2x.png 2x'
-                      alt='logo_not_found'
-                    />
+                  <a href='/' className='brand_logo_cus'>
+                    <span className='cus_first_letter'>F</span>
+                    <span className='cus_second_letter'>ootcap</span>
                   </a>
                 </div>
 
@@ -49,17 +48,18 @@ export default function Footer() {
                     <div className='small_product'>
                       <div className='item_image'>
                         <img
-                          src='/assets/images/footer/img_1.jpg'
+                          src='/images/insta-1.jpg'
                           alt='image_not_found'
+                          width='100px'
                         />
                       </div>
                       <div className='item_content'>
                         <h3 className='item_title'>
                           <a className='text-white' href='#!'>
-                            Lobortis Laculis ut Condimentum
+                            Island Club Adilette Premium Slides
                           </a>
                         </h3>
-                        <span className='item_price'>$110.00</span>
+                        <span className='item_price'>$140.00</span>
                       </div>
                     </div>
                   </li>
@@ -68,17 +68,18 @@ export default function Footer() {
                     <div className='small_product'>
                       <div className='item_image'>
                         <img
-                          src='/assets/images/footer/img_2.jpg'
+                          src='/images/insta-2.jpg'
                           alt='image_not_found'
+                          width='100px'
                         />
                       </div>
                       <div className='item_content'>
                         <h3 className='item_title'>
                           <a className='text-white' href='#!'>
-                            Lobortis Laculis ut Condimentum
+                            Adizero Suner Adios Pro 3.0 Shoes
                           </a>
                         </h3>
-                        <span className='item_price'>$110.00</span>
+                        <span className='item_price'>$120.00</span>
                       </div>
                     </div>
                   </li>
@@ -96,17 +97,18 @@ export default function Footer() {
                     <div className='small_product'>
                       <div className='item_image'>
                         <img
-                          src='/assets/images/footer/img_3.jpg'
+                          src='/images/insta-3.jpg'
                           alt='image_not_found'
+                          width='100px'
                         />
                       </div>
                       <div className='item_content'>
                         <h3 className='item_title'>
                           <a className='text-white' href='#!'>
-                            Lobortis Laculis ut Condimentum
+                            Forum Low CL x Indigo Herz Shoes
                           </a>
                         </h3>
-                        <span className='item_price'>$110.00</span>
+                        <span className='item_price'>$200.00</span>
                       </div>
                     </div>
                   </li>
@@ -115,17 +117,18 @@ export default function Footer() {
                     <div className='small_product'>
                       <div className='item_image'>
                         <img
-                          src='/assets/images/footer/img_4.jpg'
+                          src='/images/insta-5.jpg'
                           alt='image_not_found'
+                          width='100px'
                         />
                       </div>
                       <div className='item_content'>
                         <h3 className='item_title'>
                           <a className='text-white' href='#!'>
-                            Lobortis Laculis ut Condimentum
+                            Superstar Hero x Indigo Hez Shoes
                           </a>
                         </h3>
-                        <span className='item_price'>$110.00</span>
+                        <span className='item_price'>$230.00</span>
                       </div>
                     </div>
                   </li>
@@ -181,22 +184,22 @@ export default function Footer() {
             <div className='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
               <ul className='circle_social_links ul_li_right clearfix'>
                 <li>
-                  <a href='#!'>
+                  <a href='https://www.facebook.com/leminh.hung.9256'>
                     <i className='fab fa-facebook-f'></i>
                   </a>
                 </li>
                 <li>
-                  <a href='#!'>
+                  <a href='https://www.facebook.com/leminh.hung.9256'>
                     <i className='fab fa-twitter'></i>
                   </a>
                 </li>
                 <li>
-                  <a href='#!'>
+                  <a href='https://www.facebook.com/leminh.hung.9256'>
                     <i className='fab fa-instagram'></i>
                   </a>
                 </li>
                 <li>
-                  <a href='#!'>
+                  <a href='https://www.facebook.com/leminh.hung.9256'>
                     <i className='fab fa-whatsapp'></i>
                   </a>
                 </li>

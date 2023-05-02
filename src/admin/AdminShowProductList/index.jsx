@@ -99,7 +99,7 @@ const AdminShowProductList = () => {
           </button>
         </Link>
         <DataGrid
-          loading={false}
+          loading={data.length === 0}
           fontSize={16}
           rows={data}
           disableSelectionOnClick

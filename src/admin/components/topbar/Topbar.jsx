@@ -1,6 +1,9 @@
+import { useSelector } from "react-redux";
 import "./topbar.scss";
 
 const Topbar = () => {
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
   return (
     <div className='topbarComponent'>
       <div className='wrapper'>
@@ -15,21 +18,14 @@ const Topbar = () => {
           </a>
         </div>
         <div className='right'>
-          {/* <div className="icon">
-            <NotificationsNone />
-            <span>2</span>
-          </div>
-          <div className="icon">
-            <Language />
-            <span>2</span>
-          </div>
-          <div className="icon">
-            <Settings />
-          </div> */}
           <div className='avatar-admin-hover'>
             <img
               className='avatar-admin'
-              src='https://i.ibb.co/xG2ygZT/btter.jpg'
+              src={
+                userInfo?.actor.avatar
+                  ? userInfo?.actor.avatar
+                  : "https://i.ibb.co/xG2ygZT/btter.jpg"
+              }
               alt='adminPic'
             />
             <ul className='account-option-list'>

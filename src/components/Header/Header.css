@@ -1,3 +1,7 @@
 .header_section .header_title_item:hover {
   color: tomato !important;
 }
+
+.header_section .settings_options .custom_icon {
+  opacity: 0.7;
+}

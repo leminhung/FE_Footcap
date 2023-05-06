@@ -100,8 +100,10 @@ const Product = ({ product = {} }) => {
                       style={{ backgroundColor: "#f7f7f7" }}
                     >
                       <img
-                        src='/assets/images/product_brands/img_01.png'
+                        src='/images/cate_default.png'
                         alt='image_not_found'
+                        width='60px'
+                        height='30px'
                       />
                     </span>
                   </div>
@@ -242,7 +244,10 @@ const Product = ({ product = {} }) => {
                 <div className='col-lg-3 col-md-4 col-sm-12 col-xs-12'>
                   <div className='image_wrap'>
                     <img
-                      src='/assets/images/details/shop/img_06.jpg'
+                      src={
+                        product.data.assets.length > 1 &&
+                        product.data.assets[2].filename
+                      }
                       alt='image_not_found'
                     />
                   </div>
@@ -250,43 +255,52 @@ const Product = ({ product = {} }) => {
 
                 <div className='col-lg-9 col-md-8 col-sm-12 col-xs-12'>
                   <div className='content_wrap'>
+                    <h4 className='list_title'>Introduction</h4>
                     <p className='mb_30'>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur
-                    </p>
-
-                    <h4 className='list_title'>Pretium turpis et arcu</h4>
-                    <p className='mb_30'>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur
+                      {product.data.long_description
+                        ? product.data.long_description.split("&&")[0]
+                        : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus culpa soluta, incidunt natus quia dicta laudantium exercitationem quisquam voluptatem facilis, velit amet, eveniet vel itaque et minima asperiores optio! Repellat."}
                     </p>
 
                     <h4 className='list_title'>Unordered list</h4>
                     <p className='mb_30'>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur.
+                      {product.data.long_description
+                        ? product.data.long_description.split("&&")[1]
+                        : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus culpa soluta, incidunt natus quia dicta laudantium exercitationem quisquam voluptatem facilis, velit amet, eveniet vel itaque et minima asperiores optio! Repellat."}
                     </p>
 
-                    <ul className='product_info ul_li_block clearfix'>
-                      <li>
-                        <strong>Color:</strong> Brown, Grey, Nude, Red
-                      </li>
-                      <li>
-                        <strong>Size:</strong> L, M, S, XL, XS
-                      </li>
-                    </ul>
+                    <div className='fs_color_list d-flex'>
+                      <strong>Color:</strong>
+                      <ul class='ul_li clearfix ml-3'>
+                        {product.data.color.map((c) => (
+                          <li>
+                            <input
+                              type='radio'
+                              name='fs_color_froup'
+                              style={{ backgroundColor: `${colors[c]}` }}
+                            />
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className='fs_color_list d-flex'>
+                      <strong>Size:</strong>
+                      <ul class='ul_li clearfix'>
+                        {product.data.size.map((size, index) => (
+                          <li className='ml-0'>
+                            <label for={`fs_size_${index}`}>
+                              <input
+                                id={`fs_size_${index}`}
+                                type='radio'
+                                name='fs_size_group'
+                              />
+                              {size}
+                            </label>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>

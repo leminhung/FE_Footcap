@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { logout } from "src/store/user/user.action";
 import { listProducts } from "src/store/product/product.action";
 
-import './Header.css'
+import "./Header.css";
 
 export default function Header() {
   const [title, setTitle] = useState("");
@@ -806,14 +806,15 @@ export default function Header() {
                           </li>
                           <li>
                             <a href='/order/view'>
-                              <i className='fal fa-user-cog'></i> Your order
+                              <i class='fas fa-shipping-fast custom_icon'></i>{" "}
+                              Your order
                             </a>
                           </li>
                           {userInfo?.actor?.role === "admin" ? (
                             <li>
                               <a href='/admin'>
-                                <i className='fal fa-user-cog'></i> Admin
-                                dashboard
+                                <i class='fas fa-chart-line custom_icon'></i>{" "}
+                                Admin dashboard
                               </a>
                             </li>
                           ) : (

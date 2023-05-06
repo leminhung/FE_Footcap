@@ -33,7 +33,7 @@ const AdminShowProductList = () => {
     {
       field: "product",
       headerName: "Product",
-      width: 230,
+      width: 280,
       renderCell: (params) => {
         return (
           <div className='productListField'>
@@ -55,10 +55,8 @@ const AdminShowProductList = () => {
       headerName: "Price",
       width: 100,
     },
-    { field: "discount", headerName: "Discount", width: 120 },
     { field: "size", headerName: "Size", width: 120 },
-    { field: "color", headerName: "Color", width: 120 },
-    { field: "rating", headerName: "Rating", width: 120 },
+    { field: "color", headerName: "Color", width: 160 },
     { field: "numReviews", headerName: "NumReviews", width: 120 },
     {
       field: "status",

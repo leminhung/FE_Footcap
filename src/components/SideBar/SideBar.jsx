@@ -644,13 +644,14 @@ export default function SideBar() {
                 </li>
                 <li>
                   <a href='/order/view'>
-                    <i className='fal fa-user-cog'></i> Your order
+                    <i class='fas fa-shipping-fast custom_icon'></i> Your order
                   </a>
                 </li>
                 {userInfo?.actor?.role === "admin" ? (
                   <li>
                     <a href='/admin'>
-                      <i className='fal fa-user-cog'></i> Admin dashboard
+                      <i class='fas fa-chart-line custom_icon'></i> Admin
+                      dashboard
                     </a>
                   </li>
                 ) : (

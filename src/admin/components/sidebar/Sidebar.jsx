@@ -4,11 +4,14 @@ import {
   LineStyle,
   TrendingUp,
   PermIdentity,
-  Storefront,
   DynamicFeed,
   ChatBubbleOutline,
   WorkOutline,
 } from "@mui/icons-material";
+import CategoryIcon from "@mui/icons-material/Category";
+import LocalMallIcon from "@mui/icons-material/LocalMall";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
@@ -41,25 +44,25 @@ const Sidebar = () => {
             </li>
             <li>
               <Link to='/admin/categorieslist' className='link'>
-                <Storefront className='icon' />
+                <CategoryIcon className='icon' />
                 <span className='ml-1'>Category</span>
               </Link>
             </li>
             <li>
               <Link to='/admin/products' className='link'>
-                <Storefront className='icon' />
+                <LocalMallIcon className='icon' />
                 <span className='ml-1'>Products</span>
               </Link>
             </li>
             <li>
               <Link to='/admin/orderslist' className='link'>
-                <Storefront className='icon' />
+                <LocalShippingIcon className='icon' />
                 <span className='ml-1'>Orders</span>
               </Link>
             </li>
             <li>
               <Link to='/admin/couponlist' className='link'>
-                <Storefront className='icon' />
+                <FavoriteIcon className='icon' />
                 <span className='ml-1'>Coupons</span>
               </Link>
             </li>

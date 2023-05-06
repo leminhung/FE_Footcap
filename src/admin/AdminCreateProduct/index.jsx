@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { Publish } from "@mui/icons-material";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { v4 as uuidv4 } from "uuid";
 
 import { createProduct } from "src/store/product/product.action";
 
@@ -12,9 +11,10 @@ import "./styles.scss";
 const AdminCreateProduct = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
-  const [code, setCode] = useState(uuidv4());
+  const [quantity, setQuantity] = useState();
   const [price, setPrice] = useState("");
-  const [discount, setDiscount] = useState("");
+  const [description, setDescription] = useState("");
+  const [longDescription, setLongDescription] = useState("");
   const [category, setCategory] = useState("");
   const [categories, setCategories] = useState([]);
   let [selectedFiles, setSelectedFiles] = useState(
@@ -53,7 +53,7 @@ const AdminCreateProduct = () => {
     if (
       !name ||
       !price ||
-      !discount ||
+      !quantity ||
       !category ||
       isCheckedSizes.length === 0 ||
       isCheckeds.length === 0 ||
@@ -64,11 +64,12 @@ const AdminCreateProduct = () => {
       const productToCreate = {
         title: name,
         price,
-        code,
+        quantity,
         size: sizesSelected.filter(Boolean),
         color: colorsSelected.filter(Boolean),
         status: 1,
-        discount,
+        description,
+        long_description: longDescription,
         featured: 1,
         category,
       };
@@ -76,6 +77,7 @@ const AdminCreateProduct = () => {
     }
   };
 
+  // should select 4 files in once
   const handleFileSelect = (e) => {
     const files = Array.from(e.target.files);
     selectedFiles = [];
@@ -128,10 +130,6 @@ const AdminCreateProduct = () => {
                 />
               </div>
               <div className='item'>
-                <label>Code</label>
-                <input type='text' disabled value={code} />
-              </div>
-              <div className='item'>
                 <label>Price</label>
                 <input
                   onChange={(e) => setPrice(e.target.value)}
@@ -139,16 +137,43 @@ const AdminCreateProduct = () => {
                   placeholder='Enter product price'
                 />
               </div>
+              <div className='item activeContainer'>
+                <label> Category </label>
+                <select onChange={(e) => setCategory(e.target.value)}>
+                  {categories &&
+                    categories.map((category) => (
+                      <option key={category._id} value={category._id}>
+                        {category.title}
+                      </option>
+                    ))}
+                </select>
+              </div>
               <div className='item'>
-                <label>Discount</label>
-                <input
-                  onChange={(e) => setDiscount(e.target.value)}
+                <label>Long Description</label>
+                <textarea
+                  onChange={(e) => setLongDescription(e.target.value)}
                   type='text'
-                  placeholder='Enter product discount'
+                  placeholder='Enter long description'
                 />
               </div>
             </div>
             <div className='edit-box'>
+              <div className='item'>
+                <label>Quantity</label>
+                <input
+                  onChange={(e) => setQuantity(e.target.value)}
+                  type='text'
+                  placeholder='Enter quantity'
+                />
+              </div>
+              <div className='item'>
+                <label>Description</label>
+                <input
+                  onChange={(e) => setDescription(e.target.value)}
+                  type='text'
+                  placeholder='Enter product description'
+                />
+              </div>
               <div className='item fs_size_list'>
                 <label className='justify-content-start pl-0'>Size</label>
                 <ul class='ul_li clearfix'>
@@ -187,17 +212,6 @@ const AdminCreateProduct = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
-              <div className='item activeContainer'>
-                <label> Category </label>
-                <select onChange={(e) => setCategory(e.target.value)}>
-                  {categories &&
-                    categories.map((category) => (
-                      <option key={category._id} value={category._id}>
-                        {category.title}
-                      </option>
-                    ))}
-                </select>
               </div>
               <div className='d-flex mt-4'>
                 {selectedFiles.map((file) => (

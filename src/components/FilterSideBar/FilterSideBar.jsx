@@ -72,7 +72,7 @@ const FilterSideBar = ({ limit, sort }) => {
       price: { gte: price.from, lte: price.to },
       page: 1,
       limit,
-      sort: sort ? sort : "-sold",
+      sort: sort ? sort : "-createdAt",
     };
     console.log(size);
     dispatch(listProducts(params));

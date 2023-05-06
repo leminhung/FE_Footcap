@@ -47,6 +47,10 @@ import AdminEditCategory from "src/admin/AdminEditCategory/index";
 import AdminShowUsersList from "src/admin/AdminShowUsersList/index";
 import AdminEditUser from "src/admin/AdminEditUser/index";
 
+import AdminShowCouponList from "src/admin/AdminShowCouponList/index";
+import AdminCreateCoupon from "src/admin/AdminCreateCoupon/index";
+import AdminEditCoupon from "src/admin/AdminEditCoupon/index";
+
 const RoutesWrapper = () => {
   return (
     <>
@@ -150,6 +154,23 @@ const RoutesWrapper = () => {
         <PrivateAdminRoute path='/admin/orderslist' exact>
           <AdminPage>
             <AdminShowOrderList />
+          </AdminPage>
+        </PrivateAdminRoute>
+
+        {/* admin coupons */}
+        <PrivateAdminRoute path='/admin/couponlist' exact>
+          <AdminPage>
+            <AdminShowCouponList />
+          </AdminPage>
+        </PrivateAdminRoute>
+        <PrivateAdminRoute path='/admin/couponlist/create' exact>
+          <AdminPage>
+            <AdminCreateCoupon />
+          </AdminPage>
+        </PrivateAdminRoute>
+        <PrivateAdminRoute path='/admin/couponlist/edit' exact>
+          <AdminPage>
+            <AdminEditCoupon />
           </AdminPage>
         </PrivateAdminRoute>
 

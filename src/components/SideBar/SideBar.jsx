@@ -1,13 +1,22 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { removeFromCart } from "src/store/cart/cart.action";
+import { logout } from "src/store/user/user.action";
 
 export default function SideBar() {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+  const userLogin = useSelector((state) => state.userLogin);
+
+  const { userInfo } = userLogin;
 
   const handleDeleteItem = (product) => {
     dispatch(removeFromCart(product));
+  };
+
+  const logoutHandler = () => {
+    dispatch(logout());
   };
 
   return (
@@ -77,11 +86,12 @@ export default function SideBar() {
         </button>
 
         <div className='msb_widget brand_logo text-center'>
-          <a href='index.html'>
+          <a href='/'>
             <img
-              src='/assets/images/logo/logo_25_1x.png'
-              srcSet='/assets/images/logo/logo_25_2x.png 2x'
+              src='/images/logo.svg'
+              srcSet='/images/logo.svg 2x'
               alt='logo_not_found'
+              width='200px'
             />
           </a>
         </div>
@@ -509,7 +519,7 @@ export default function SideBar() {
                 aria-haspopup='true'
                 aria-expanded='false'
               >
-                Pages
+                Blogs
               </a>
               <ul className='dropdown-menu'>
                 <li className='dropdown'>
@@ -596,7 +606,7 @@ export default function SideBar() {
               </ul>
             </li>
             <li>
-              <a href='contact.html'>Conatct</a>
+              <a href='contact.html'>Contact us</a>
             </li>
           </ul>
         </div>
@@ -605,35 +615,70 @@ export default function SideBar() {
           <h3 className='title_text mb_30 text-uppercase'>
             <i className='fas fa-user mr-2'></i> User Info
           </h3>
-          <div className='profile_info clearfix'>
-            <div className='user_thumbnail'>
-              <img
-                src='/assets/images/meta/img_01.png'
-                alt='thumbnail_not_found'
-              />
+          {userInfo ? (
+            <>
+              <div className='profile_info clearfix'>
+                <div className='user_thumbnail'>
+                  <img
+                    src={userInfo?.actor?.avatar}
+                    alt='thumbnail_not_found'
+                  />
+                </div>
+                <div className='user_content'>
+                  <h4 className='user_name'>{userInfo?.actor?.name}</h4>
+                  <span className='user_title'>
+                    {userInfo?.actor?.role ? userInfo?.actor?.role : ""}
+                  </span>
+                </div>
+              </div>
+              <ul className='settings_options ul_li_block clearfix'>
+                <li>
+                  <a href='/profile'>
+                    <i className='fal fa-user-circle'></i> Profile
+                  </a>
+                </li>
+                <li>
+                  <a href='/profile/edit'>
+                    <i className='fal fa-user-cog'></i> Settings
+                  </a>
+                </li>
+                <li>
+                  <a href='/order/view'>
+                    <i className='fal fa-user-cog'></i> Your order
+                  </a>
+                </li>
+                {userInfo?.actor?.role === "admin" ? (
+                  <li>
+                    <a href='/admin'>
+                      <i className='fal fa-user-cog'></i> Admin dashboard
+                    </a>
+                  </li>
+                ) : (
+                  ""
+                )}
+                <li onClick={() => logoutHandler()}>
+                  <a href='#!'>
+                    <i className='fal fa-sign-out-alt'></i> Logout
+                  </a>
+                </li>
+              </ul>
+            </>
+          ) : (
+            <div className='dropdown_content'>
+              <ul className='settings_options ul_li_block clearfix'>
+                <li>
+                  <a href='/signin'>
+                    <i className='fal fa-user-circle'></i> Sign in
+                  </a>
+                </li>
+                <li>
+                  <a href='/signup'>
+                    <i className='fal fa-user-cog'></i> Sign up
+                  </a>
+                </li>
+              </ul>
             </div>
-            <div className='user_content'>
-              <h4 className='user_name'>Jone Doe</h4>
-              <span className='user_title'>Seller</span>
-            </div>
-          </div>
-          <ul className='settings_options ul_li_block clearfix'>
-            <li>
-              <a href='#!'>
-                <i className='fal fa-user-circle'></i> Profile
-              </a>
-            </li>
-            <li>
-              <a href='#!'>
-                <i className='fal fa-user-cog'></i> Settings
-              </a>
-            </li>
-            <li>
-              <a href='#!'>
-                <i className='fal fa-sign-out-alt'></i> Logout
-              </a>
-            </li>
-          </ul>
+          )}
         </div>
       </div>
 

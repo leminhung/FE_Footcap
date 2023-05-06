@@ -2,11 +2,9 @@ import "./sidebar.scss";
 
 import {
   LineStyle,
-  Timeline,
   TrendingUp,
   PermIdentity,
   Storefront,
-  AttachMoney,
   DynamicFeed,
   ChatBubbleOutline,
   WorkOutline,
@@ -57,6 +55,12 @@ const Sidebar = () => {
               <Link to='/admin/orderslist' className='link'>
                 <Storefront className='icon' />
                 <span className='ml-1'>Orders</span>
+              </Link>
+            </li>
+            <li>
+              <Link to='/admin/couponlist' className='link'>
+                <Storefront className='icon' />
+                <span className='ml-1'>Coupons</span>
               </Link>
             </li>
           </ul>

@@ -12,20 +12,34 @@ const QuickView = () => {
 
   const dispatch = useDispatch();
   const handleAction = () => {
+    // check if fields are not filled in
     if (!color || !size) {
       toast.error("Please fill in color or size");
-    } else {
-      const props = {
-        product: product._id,
-        name: product.title,
-        image: product.assets[0]?.filename,
-        price: product.price,
-        color,
-        size,
-        quantity: 1,
-      };
-      dispatch(addToCart(props));
+      return;
     }
+
+    // check available
+    const quantityAvailable =
+      product.quantity - product?.quantity_purchased || 0;
+    if (product.quantity > quantityAvailable) {
+      toast.error(
+        `Sorry, the store only has ${product.quantity} item available
+        `
+      );
+      return;
+    }
+
+    const props = {
+      product: product._id,
+      name: product.title,
+      image: product.assets[0]?.filename,
+      price: product.price,
+      color,
+      size,
+      quantity: 1,
+      available: quantityAvailable,
+    };
+    dispatch(addToCart(props));
   };
 
   // colors

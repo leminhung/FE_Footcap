@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import ProductDetailSkeleton from "src/containers/ProductDetail/ProductDetailSkeleton";
 import ProductRelated from "src/components/ProductRelated/ProductRelated";
@@ -37,6 +38,21 @@ const Product = ({ product = {} }) => {
   const dispatch = useDispatch();
   const handleAction = (e) => {
     e.preventDefault();
+
+    // check quantity available
+    const quantityAvailable =
+      product.data.quantity - product.data?.quantity_purchased || 0;
+    if (quantity > quantityAvailable) {
+      toast.error(`Sorry, the store only has ${quantity} item available`);
+      return;
+    }
+
+    // make sure all the field are filled in
+    if (!size || !color || quantity === 0) {
+      toast.error(`Ohh, please fill in all the fields before add to cart`);
+      return;
+    }
+
     let prod = {
       product: product.data._id,
       name: product.data.title,
@@ -45,6 +61,7 @@ const Product = ({ product = {} }) => {
       quantity,
       size,
       color,
+      available: quantityAvailable,
     };
     dispatch(addToCart(prod));
   };
@@ -127,7 +144,7 @@ const Product = ({ product = {} }) => {
                   <div className='item_brand d-flex align-items-center'>
                     <span className='brand_title'>Sold:</span>
                     <span className='brand_image d-flex align-items-center justify-content-center'>
-                      {product.data.quantity_purchased}
+                      {product.data?.quantity_purchased || 0}
                     </span>
                   </div>
                 </div>
@@ -136,7 +153,8 @@ const Product = ({ product = {} }) => {
                   <div className='d-flex align-items-center clearfix'>
                     <span>Available: </span>
                     <span className='ml-2 text-success'>
-                      {product.data.quantity - product.data.quantity_purchased}
+                      {product.data.quantity -
+                        product.data?.quantity_purchased || 0}
                     </span>
                   </div>
                 </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 import {
   removeFromCart,
@@ -7,6 +8,7 @@ import {
   checkValidCoupon,
 } from "src/store/cart/cart.action";
 import { capitalizeFirstLetter } from "src/utils/convertFirstLetterToUpperCase";
+import { checkQuantityBeforeAddToCart } from "src/utils/checkQuantifyAvailable";
 
 import CheckOutHero from "./CheckOutHero";
 
@@ -26,6 +28,12 @@ export default function ShoppingCart() {
 
   const handleQuantityIncrease = (item) => {
     item.increase = 1;
+    if (!checkQuantityBeforeAddToCart(item, 1, cartItems)) {
+      toast.error(
+        `Ohh, we only have ${item?.available} items, but your cart already add more than ${item?.available} for this product`
+      );
+      return;
+    }
     dispatch(addToCart(item));
   };
 

@@ -1,14 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
 import { addToCart } from "src/store/cart/cart.action";
 
+import { checkQuantityBeforeAddToCart } from "src/utils/checkQuantifyAvailable";
+
 const QuickView = () => {
   const [color, setColor] = useState(undefined);
   const [size, setSize] = useState(undefined);
+  const [cartItems, setCartItems] = useState([]);
 
   const { product = {} } = useSelector((state) => state.product);
+
+  const cart = useSelector((state) => state.cart);
+
+  useEffect(() => {
+    setCartItems(cart.cartItems);
+  }, [cart]);
 
   const dispatch = useDispatch();
   const handleAction = () => {
@@ -25,6 +34,14 @@ const QuickView = () => {
       toast.error(
         `Sorry, the store only has ${product.quantity} item available
         `
+      );
+      return;
+    }
+
+    product.available = quantityAvailable;
+    if (!checkQuantityBeforeAddToCart(product, 1, cartItems)) {
+      toast.error(
+        `Ohh, we only have ${quantityAvailable} items, but your cart already added more than ${quantityAvailable} for this product`
       );
       return;
     }

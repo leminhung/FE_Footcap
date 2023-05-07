@@ -14,6 +14,7 @@ import { addToCart } from "src/store/cart/cart.action";
 
 import { roundNumber } from "src/utils/roundNumber";
 import { capitalizeFirstLetter } from "src/utils/convertFirstLetterToUpperCase";
+import { checkQuantityBeforeAddToCart } from "src/utils/checkQuantifyAvailable";
 
 const itemDisplay = {
   active: "tab-pane active",
@@ -24,6 +25,13 @@ const Product = ({ product = {} }) => {
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState(undefined);
   const [size, setSize] = useState(undefined);
+  const [cartItems, setCartItems] = useState([]);
+
+  const cart = useSelector((state) => state.cart);
+
+  useEffect(() => {
+    setCartItems(cart.cartItems);
+  }, [cart]);
 
   // colors
   const colors = {
@@ -50,6 +58,14 @@ const Product = ({ product = {} }) => {
     // make sure all the field are filled in
     if (!size || !color || quantity === 0) {
       toast.error(`Ohh, please fill in all the fields before add to cart`);
+      return;
+    }
+
+    product.data.available = quantityAvailable;
+    if (!checkQuantityBeforeAddToCart(product?.data, quantity, cartItems)) {
+      toast.error(
+        `Ohh, we only have ${quantityAvailable} items, but your cart already added more than ${quantityAvailable} for this product`
+      );
       return;
     }
 

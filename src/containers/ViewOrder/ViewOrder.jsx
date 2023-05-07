@@ -6,6 +6,16 @@ import moment from "moment";
 import CheckOutHero from "src/containers/CheckOut/CheckOutHero";
 import { listMyOrders } from "src/store/order/order.action";
 
+import "./ViewOrder.css";
+
+const Loading = () => {
+  return (
+    <div className='text-center mt-4'>
+      <div class='order_loader mx-auto'></div>
+    </div>
+  );
+};
+
 export default function ViewOrder() {
   const { orders, loading } = useSelector((state) => state.orderListMy);
 
@@ -41,7 +51,7 @@ export default function ViewOrder() {
                       </tr>
                     </thead>
                     <tbody>
-                      {!loading &&
+                      {!loading ? (
                         orders?.data?.map((item, index) => {
                           return (
                             <tr>
@@ -81,7 +91,10 @@ export default function ViewOrder() {
                               </td>
                             </tr>
                           );
-                        })}
+                        })
+                      ) : (
+                        <Loading />
+                      )}
                     </tbody>
                   </table>
                 </div>

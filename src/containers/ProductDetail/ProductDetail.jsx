@@ -90,15 +90,12 @@ const Product = ({ product = {} }) => {
               <span className='item_price'>
                 ${product.data.price} – ${roundNumber(product.data.price * 1.2)}
               </span>
-              <hr />
-              <div className='row mb_30 align-items-center justify-content-lg-between'>
+              <hr className='my-4' />
+              <div className='row align-items-center justify-content-lg-between'>
                 <div className='col-lg-5 col-md-12 col-sm-12 col-xs-12'>
                   <div className='item_brand d-flex align-items-center'>
                     <span className='brand_title'>Brands:</span>
-                    <span
-                      className='brand_image d-flex align-items-center justify-content-center'
-                      style={{ backgroundColor: "#f7f7f7" }}
-                    >
+                    <span className='brand_image d-flex align-items-center justify-content-center'>
                       <img
                         src='/images/cate_default.png'
                         alt='image_not_found'
@@ -125,8 +122,28 @@ const Product = ({ product = {} }) => {
                   </div>
                 </div>
               </div>
+              <div className='row align-items-center justify-content-lg-between'>
+                <div className='col-lg-5 col-md-12 col-sm-12 col-xs-12'>
+                  <div className='item_brand d-flex align-items-center'>
+                    <span className='brand_title'>Sold:</span>
+                    <span className='brand_image d-flex align-items-center justify-content-center'>
+                      {product.data.quantity_purchased}
+                    </span>
+                  </div>
+                </div>
+
+                <div className='col-lg-7 col-md-12 col-sm-12 col-xs-12'>
+                  <div className='d-flex align-items-center clearfix'>
+                    <span>Available: </span>
+                    <span className='ml-2 text-success'>
+                      {product.data.quantity - product.data.quantity_purchased}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
               <p className='mb-0'>{product.data.description}</p>
-              <hr />
+              <hr className='my-4' />
               <div class='fs_widget fs_color_list pb-0 mb-4'>
                 <h3 class='list_title mb_15 text-uppercase'>Color</h3>
                 <form action='#'>
@@ -202,7 +219,7 @@ const Product = ({ product = {} }) => {
                 </li>
               </ul>
 
-              <ul className='btns_group_2 ul_li clearfix'>
+              {/* <ul className='btns_group_2 ul_li clearfix'>
                 <li>
                   <a href='#!'>
                     <span>
@@ -219,7 +236,7 @@ const Product = ({ product = {} }) => {
                     Compare
                   </a>
                 </li>
-              </ul>
+              </ul> */}
             </div>
           </div>
         </div>
@@ -275,6 +292,7 @@ const Product = ({ product = {} }) => {
                         {product.data.color.map((c) => (
                           <li>
                             <input
+                              disabled
                               type='radio'
                               name='fs_color_froup'
                               style={{ backgroundColor: `${colors[c]}` }}
@@ -287,11 +305,11 @@ const Product = ({ product = {} }) => {
                     <div className='fs_color_list d-flex'>
                       <strong>Size:</strong>
                       <ul class='ul_li clearfix'>
-                        {product.data.size.map((size, index) => (
+                        {product.data.size.map((size) => (
                           <li className='ml-0'>
-                            <label for={`fs_size_${index}`}>
+                            <label>
                               <input
-                                id={`fs_size_${index}`}
+                                disabled
                                 type='radio'
                                 name='fs_size_group'
                               />

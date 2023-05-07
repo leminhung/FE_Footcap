@@ -55,13 +55,25 @@ const AdminShowProductList = () => {
       headerName: "Price",
       width: 100,
     },
+    {
+      field: "quantity",
+      headerName: "Quantity",
+      width: 100,
+    },
     { field: "size", headerName: "Size", width: 120 },
     { field: "color", headerName: "Color", width: 160 },
-    { field: "numReviews", headerName: "NumReviews", width: 120 },
+    { field: "numReviews", headerName: "NumReviews", width: 100 },
     {
       field: "status",
       headerName: "Status",
-      width: 100,
+      width: 120,
+      renderCell: (params) => {
+        return (
+          <div className='productListField'>
+            {params.row.status === "1" ? "in stock" : "out of stock"}
+          </div>
+        );
+      },
     },
 
     {

@@ -34,8 +34,9 @@ const AdminEditProduct = () => {
   );
 
   const [title, setTitle] = useState(data?.title);
+  const [quantity, setQuantity] = useState(data?.quantity);
   const [price, setPrice] = useState(data?.price);
-  const [discount, setDiscount] = useState(data?.discount);
+  const [description, setDescription] = useState(data?.long_description);
   const [status, setStatus] = useState(data?.status);
   const [category, setCategory] = useState(data?.category);
   const [categories, setCategories] = useState([]);
@@ -117,10 +118,11 @@ const AdminEditProduct = () => {
       productId: data._id,
       title,
       price,
-      discount,
+      long_description: description,
       size: sizesSelected.filter(Boolean),
       color: colorsSelected.filter(Boolean),
       status,
+      quantity,
       category,
       code: data.code,
     };
@@ -128,7 +130,7 @@ const AdminEditProduct = () => {
     if (
       !title ||
       !price ||
-      !discount ||
+      !description ||
       !category ||
       isCheckedSizes.length === 0 ||
       isCheckeds.length === 0 ||
@@ -200,16 +202,20 @@ const AdminEditProduct = () => {
             <div className='left'>
               <div className='left-item'>
                 <div className='d-flex'>
-                  <label>Code</label>
-                  <input type='text' value={data.code} disabled />
-                </div>
-
-                <div className='d-flex'>
                   <label>Name</label>
                   <input
                     type='text'
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
+                  />
+                </div>
+
+                <div className='d-flex'>
+                  <label>Quantity</label>
+                  <input
+                    type='text'
+                    value={quantity}
+                    onChange={(e) => setQuantity(e.target.value)}
                   />
                 </div>
 
@@ -222,18 +228,15 @@ const AdminEditProduct = () => {
                   />
                 </div>
 
-                <div className='d-flex'>
-                  <label>Discount</label>
-                  <input
+                <div>
+                  <div>
+                    <label>Long Description</label>
+                  </div>
+                  <textarea
                     type='text'
-                    value={discount}
-                    onChange={(e) => setDiscount(e.target.value)}
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
                   />
-                </div>
-
-                <div className='d-flex'>
-                  <label>NumReviews</label>
-                  <input disabled type='text' value={data.numReviews} />
                 </div>
               </div>
               <div className='left-item'>
@@ -308,8 +311,8 @@ const AdminEditProduct = () => {
                       value={status}
                       onChange={(e) => setStatus(e.target.value)}
                     >
-                      <option value='còn hàng'>Stock</option>
-                      <option value='hết hàng'>Out of stock</option>
+                      <option value='1'>Stock</option>
+                      <option value='0'>Out of stock</option>
                     </select>
                   </div>
                 </div>

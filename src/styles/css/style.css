@@ -16925,7 +16925,8 @@ blockquote .blockquote_title {
 .other_post_wrap .other_post:last-child {
   text-align: right;
 }
-.other_post_wrap .other_post span, .other_post_wrap .other_post small {
+.other_post_wrap .other_post span,
+.other_post_wrap .other_post small {
   display: block;
 }
 .other_post_wrap .other_post small {
@@ -16968,7 +16969,8 @@ blockquote .blockquote_title {
   font-size: 20px;
 }
 
-.comment_form .form_item input, .comment_form .form_item textarea {
+.comment_form .form_item input,
+.comment_form .form_item textarea {
   background-color: #f3f4f6;
 }
 .comment_form .form_item textarea {
@@ -17119,6 +17121,9 @@ blockquote .blockquote_title {
 
 .shop_details_content .mb_30 {
   margin-bottom: 25px;
+}
+.shop_details_content .mb_25 {
+  margin-bottom: 20px;
 }
 .shop_details_content .item_title {
   font-size: 40px;
@@ -18265,7 +18270,8 @@ blockquote .blockquote_title {
   width: 50%;
   padding: 5px;
 }
-.fm_details_section .di_tab_nav img, .fm_details_section .di_tab_nav a {
+.fm_details_section .di_tab_nav img,
+.fm_details_section .di_tab_nav a {
   width: 100%;
   display: block;
 }

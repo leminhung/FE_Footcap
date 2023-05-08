@@ -11,11 +11,11 @@ exports.checkQuantityBeforeAddToCart = (
     (p) => p.product === product.product || p.product === product._id
   );
   if (products.length === 0) return true;
-  console.log(products);
+  // console.log(products);
 
   const totalQuantity = products.reduce(getSum, 0);
 
-  console.log(totalQuantity + numberOfItemsToAdd, product?.available);
+  // console.log(totalQuantity + numberOfItemsToAdd, product?.available);
   if (totalQuantity + numberOfItemsToAdd > product?.available) {
     return false;
   }

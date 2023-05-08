@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import ProductDetailSkeleton from "src/containers/ProductDetail/ProductDetailSkeleton";
-import ProductRelated from "src/components/ProductRelated/ProductRelated";
+import RelateProduct from "src/components/RelateProduct/RelateProduct";
 
 import {
   listProductDetails,
@@ -21,7 +21,7 @@ const itemDisplay = {
   unactive: "tab-pane fade",
 };
 
-const Product = ({ product = {} }) => {
+const Product = ({ product = {}, productTopRated = {} }) => {
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState(undefined);
   const [size, setSize] = useState(undefined);
@@ -252,25 +252,6 @@ const Product = ({ product = {} }) => {
                   </a>
                 </li>
               </ul>
-
-              {/* <ul className='btns_group_2 ul_li clearfix'>
-                <li>
-                  <a href='#!'>
-                    <span>
-                      <i className='far fa-heart'></i>
-                    </span>{" "}
-                    Add to Wishlist
-                  </a>
-                </li>
-                <li>
-                  <a href='#!'>
-                    <span>
-                      <i className='fal fa-repeat'></i>
-                    </span>{" "}
-                    Compare
-                  </a>
-                </li>
-              </ul> */}
             </div>
           </div>
         </div>
@@ -400,6 +381,7 @@ const Product = ({ product = {} }) => {
             </div>
           </div>
         </div>
+        <RelateProduct productTopRated={productTopRated.data} />
       </div>
     </section>
   );
@@ -410,18 +392,18 @@ const ProductDetail = () => {
 
   const dispatch = useDispatch();
   const product = useSelector((state) => state.productDetails.product);
-  // const productTopRated = useSelector(
-  //   (state) => state.productTopRated.products
-  // );
+  const productTopRated = useSelector(
+    (state) => state.productTopRated.products
+  );
 
   useEffect(() => {
     dispatch(listProductDetails(location.state?.from));
-    // dispatch(
-    //   listTopProducts({
-    //     id: location.state.from,
-    //     cateId: location.state.category,
-    //   })
-    // );
+    dispatch(
+      listTopProducts({
+        id: location.state.from,
+        cateId: location.state.category,
+      })
+    );
   }, [dispatch, location.state]);
 
   return (
@@ -452,11 +434,10 @@ const ProductDetail = () => {
         </div>
       </div>
       {product?.data?.assets ? (
-        <Product product={product} />
+        <Product product={product} productTopRated={productTopRated} />
       ) : (
         <ProductDetailSkeleton />
       )}
-      {/* <ProductRelated productTopRated={productTopRated} /> */}
     </main>
   );
 };

@@ -300,7 +300,7 @@ export const listTopProducts =
       dispatch({ type: PRODUCT_TOP_REQUEST });
 
       const { data } = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/products/related?_id[$ne]=${id}&category=${cateId}`
+        `${process.env.REACT_APP_BASE_URL}/products/related?_id[$ne]=${id}&category=${cateId}&limit=12`
       );
 
       dispatch({

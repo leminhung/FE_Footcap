@@ -141,17 +141,16 @@ const Product = ({ product = {}, productTopRated = {} }) => {
 
                 <div className='col-lg-7 col-md-12 col-sm-12 col-xs-12'>
                   <div className='rating_review_wrap d-flex align-items-center clearfix'>
+                    <span>{product.data.numReviews} Review(s)</span>
                     <ul className='rating_star ul_li'>
-                      {[...Array(product.data.rating)].map(() => (
+                      {[
+                        ...Array(product.data.rating ? product.data.rating : 1),
+                      ].map(() => (
                         <li>
                           <i className='fas fa-star'></i>
                         </li>
                       ))}
                     </ul>
-                    <span>{product.data.numReviews} Review(s)</span>
-                    <button type='button' className='add_review_btn'>
-                      Add Your Review
-                    </button>
                   </div>
                 </div>
               </div>
@@ -178,10 +177,10 @@ const Product = ({ product = {}, productTopRated = {} }) => {
 
               <p className='mb-0'>{product.data.description}</p>
               <hr className='my-4' />
-              <div class='fs_widget fs_color_list pb-0 mb-4'>
-                <h3 class='list_title mb_15 text-uppercase'>Color</h3>
+              <div className='fs_widget fs_color_list pb-0 mb-4'>
+                <h3 className='list_title mb_15 text-uppercase'>Color</h3>
                 <form action='#'>
-                  <ul class='ul_li clearfix'>
+                  <ul className='ul_li clearfix'>
                     {product.data.color.map((c) => (
                       <li>
                         <input
@@ -200,7 +199,7 @@ const Product = ({ product = {}, productTopRated = {} }) => {
                 <h4 className='list_title text-uppercase'>Size</h4>
                 <div className='d-flex'>
                   <form action='#' className='mr-3'>
-                    <ul class='ul_li clearfix'>
+                    <ul className='ul_li clearfix'>
                       {product.data.size.map((size, index) => (
                         <li className='ml-0'>
                           <label for={`fs_size_${index}`}>
@@ -268,6 +267,11 @@ const Product = ({ product = {}, productTopRated = {} }) => {
                 Reviews
               </a>
             </li>
+            <li>
+              <a data-toggle='tab' href='#add_reviews_tab'>
+                Add Your Reviews
+              </a>
+            </li>
           </ul>
 
           <div className='tab-content'>
@@ -303,7 +307,7 @@ const Product = ({ product = {}, productTopRated = {} }) => {
 
                     <div className='fs_color_list d-flex'>
                       <strong>Color:</strong>
-                      <ul class='ul_li clearfix ml-3'>
+                      <ul className='ul_li clearfix ml-3'>
                         {product.data.color.map((c) => (
                           <li>
                             <input
@@ -319,7 +323,7 @@ const Product = ({ product = {}, productTopRated = {} }) => {
 
                     <div className='fs_color_list d-flex'>
                       <strong>Size:</strong>
-                      <ul class='ul_li clearfix'>
+                      <ul className='ul_li clearfix'>
                         {product.data.size.map((size) => (
                           <li className='ml-0'>
                             <label>
@@ -339,7 +343,95 @@ const Product = ({ product = {}, productTopRated = {} }) => {
               </div>
             </div>
 
-            <div id='reviews_tab' className='tab-pane fade'>
+            <div
+              id='reviews_tab'
+              className='row d-flex justify-content-start mt-100 mb-100 tab-pane fade'
+            >
+              <div className='row mb_50'>
+                <div className='col-lg-12'>
+                  <div className='comment-widgets'>
+                    <div className='d-flex flex-row comment-row m-t-0'>
+                      <div className='p-2'>
+                        <img
+                          src='https://i.imgur.com/Ur43esv.jpg'
+                          alt='user'
+                          width='50'
+                          className='rounded-circle'
+                        />
+                      </div>
+                      <div className='comment-text w-100'>
+                        <h6 className='font-medium'>James Thomas</h6>{" "}
+                        <span className='m-b-15 d-block'>
+                          This is awesome website. I would love to comeback
+                          again. This is awesome website. I would love to
+                          comeback again.{" "}
+                        </span>
+                        <div className='comment-footer'>
+                          {" "}
+                          <span className='text-muted float-right'>
+                            April 14, 2019
+                          </span>{" "}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr />
+                  <div className='comment-widgets'>
+                    <div className='d-flex flex-row comment-row m-t-0'>
+                      <div className='p-2'>
+                        <img
+                          src='https://i.imgur.com/Ur43esv.jpg'
+                          alt='user'
+                          width='50'
+                          className='rounded-circle'
+                        />
+                      </div>
+                      <div className='comment-text w-100'>
+                        <h6 className='font-medium'>James Thomas</h6>{" "}
+                        <span className='m-b-15 d-block'>
+                          This is awesome website. I would love to comeback
+                          again.{" "}
+                        </span>
+                        <div className='comment-footer'>
+                          {" "}
+                          <span className='text-muted float-right'>
+                            April 14, 2019
+                          </span>{" "}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr />
+                  <div className='comment-widgets'>
+                    <div className='d-flex flex-row comment-row m-t-0'>
+                      <div className='p-2'>
+                        <img
+                          src='https://i.imgur.com/Ur43esv.jpg'
+                          alt='user'
+                          width='50'
+                          className='rounded-circle'
+                        />
+                      </div>
+                      <div className='comment-text w-100'>
+                        <h6 className='font-medium'>James Thomas</h6>{" "}
+                        <span className='m-b-15 d-block'>
+                          This is awesome website. I would love to comeback
+                          again.{" "}
+                        </span>
+                        <div className='comment-footer'>
+                          {" "}
+                          <span className='text-muted float-right'>
+                            April 14, 2019
+                          </span>{" "}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id='add_reviews_tab' className='tab-pane fade'>
               <form action='#'>
                 <div className='row'>
                   <div className='col-lg-6 col-md-6 col-sm-12 col-xs-12'>

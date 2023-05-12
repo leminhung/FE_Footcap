@@ -2,6 +2,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import QuickViewOrderDetail from "src/admin/components/QuickView/QuickViewOrderDetail";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 import "./styles.scss";
 import { listOrders } from "src/store/order/order.action";
@@ -53,7 +54,26 @@ const AdminShowOrderList = () => {
     {
       field: "status",
       headerName: "Status",
-      width: 80,
+      width: 140,
+      renderCell: (params) => {
+        // const [status, setStatus] = useState(params.value);
+
+        // const handleChange = (event) => {
+        //   setStatus(event.target.value);
+        // };
+        // {
+        //   /* <Select value={status} onChange={handleChange}> */
+        // }
+        return (
+          <FormControl fullWidth>
+            <Select value={'pending'}>
+              <MenuItem value='Pending'>Pending</MenuItem>
+              <MenuItem value='In Progress'>In Progress</MenuItem>
+              <MenuItem value='Complete'>Complete</MenuItem>
+            </Select>
+          </FormControl>
+        );
+      },
     },
     {
       field: "total_price",

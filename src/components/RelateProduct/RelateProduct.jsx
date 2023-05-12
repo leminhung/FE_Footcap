@@ -47,14 +47,24 @@ const RelateProduct = ({ productTopRated = [{}] }) => {
         },
       },
     ],
-    // autoplay: true,
-    // autoplaySpeed: 3000,
-    // adaptiveHeight: false,
   };
 
   return (
     <div>
       {" "}
+      <div className='details_description_tab'>
+        <ul className='ul_li text-uppercase' role='tablist'>
+          <li>
+            <a
+              className='active font-weight-bold text-dark'
+              data-toggle='tab'
+              href='#!'
+            >
+              <h4>Relate products</h4>
+            </a>
+          </li>
+        </ul>
+      </div>
       <hr class='mt-0 mb_100' />
       <div class='popular_products arrow_ycenter mt__30'>
         {/* related products */}

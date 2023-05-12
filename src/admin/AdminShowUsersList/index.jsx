@@ -4,14 +4,24 @@ import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 
 import { DataGrid } from "@mui/x-data-grid";
+import { DeleteOutline } from "@mui/icons-material";
+import { toast } from "react-toastify";
+import axios from "axios";
 
-import { listUsers } from "src/store/user/user.action";
+import { listUsers, logout } from "src/store/user/user.action";
 import "./styles.scss";
 
 const AdminShowUsersList = () => {
   const [data, setData] = useState([]);
 
   const users = useSelector((state) => state.userList?.users);
+  const userLogin = useSelector((state) => state.userLogin);
+
+  const { userInfo } = userLogin;
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${userInfo.token}`,
+  };
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -22,7 +32,56 @@ const AdminShowUsersList = () => {
     setData(users?.data || []);
   }, [users]);
 
-  console.log(data);
+  const handleDelete = async (id) => {
+    let totalOrderByUser = await axios
+      .get(`${process.env.REACT_APP_BASE_URL}/order?user=${id}`, { headers })
+      .then((res) => {
+        return res.data.data.length;
+      })
+      .catch((error) => {
+        if (error.response?.status === 401) {
+          toast.error(
+            "You are not authorized or maybe token expired, pls login again"
+          );
+          setTimeout(() => {
+            dispatch(logout());
+          }, 2000);
+        } else {
+          toast.error(error?.message);
+        }
+      });
+
+    console.log(totalOrderByUser);
+    const isDelete = window.confirm("Do you want to remove this category?");
+    if (isDelete) {
+      if (totalOrderByUser > 0) {
+        toast.error(
+          "Ohh this user is including some orders, not allow to remove!"
+        );
+      } else {
+        setData(data.filter((item) => item._id !== id));
+        await axios
+          .delete(`${process.env.REACT_APP_BASE_URL}/auth/deleteuser/${id}`, {
+            headers,
+          })
+          .then((res) => {
+            toast.success("Delete successfully");
+          })
+          .catch((error) => {
+            if (error.response?.status === 401) {
+              toast.error(
+                "You are not authorized or maybe token expired, pls login again"
+              );
+              setTimeout(() => {
+                dispatch(logout());
+              }, 2000);
+            } else {
+              toast.error(error?.message);
+            }
+          });
+      }
+    }
+  };
 
   const columns = [
     {
@@ -75,6 +134,10 @@ const AdminShowUsersList = () => {
             >
               <button className='editButton'>Edit</button>
             </Link>
+            <DeleteOutline
+              className='deleteButton'
+              onClick={() => handleDelete(params.row._id)}
+            />
           </>
         );
       },
@@ -84,7 +147,7 @@ const AdminShowUsersList = () => {
     <>
       <div className='productListPage'>
         <div className='titleContainer'>
-          <h1>List User</h1>
+          <h2>List User</h2>
         </div>
         <DataGrid
           loading={data.length === 0}

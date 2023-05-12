@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
+import StarRating from "star-rating-react";
 
 import ProductDetailSkeleton from "src/containers/ProductDetail/ProductDetailSkeleton";
 import RelateProduct from "src/components/RelateProduct/RelateProduct";
@@ -23,11 +24,15 @@ const itemDisplay = {
 
 const Product = ({ product = {}, productTopRated = {} }) => {
   const [quantity, setQuantity] = useState(1);
+  const [rating, setRating] = useState(3);
   const [color, setColor] = useState(undefined);
   const [size, setSize] = useState(undefined);
   const [cartItems, setCartItems] = useState([]);
 
   const cart = useSelector((state) => state.cart);
+  const userLogin = useSelector((state) => state.userLogin);
+
+  const { userInfo } = userLogin;
 
   useEffect(() => {
     setCartItems(cart.cartItems);
@@ -51,7 +56,9 @@ const Product = ({ product = {}, productTopRated = {} }) => {
     const quantityAvailable =
       product.data.quantity - product.data?.quantity_purchased || 0;
     if (quantity > quantityAvailable) {
-      toast.error(`Sorry, the store only has ${quantity} item available`);
+      toast.error(
+        `Sorry, the store only has ${quantityAvailable} item available`
+      );
       return;
     }
 
@@ -432,44 +439,42 @@ const Product = ({ product = {}, productTopRated = {} }) => {
             </div>
 
             <div id='add_reviews_tab' className='tab-pane fade'>
-              <form action='#'>
-                <div className='row'>
-                  <div className='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
-                    <div className='form_item'>
-                      <input type='text' name='name' placeholder='Your Name' />
+              {userInfo ? (
+                <form action='#'>
+                  <div className='row'>
+                    <div className='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                      <div className='form_item d-flex'>
+                        <span className='my-auto'>Give your star: </span>
+                        <div className='ml-2'>
+                          <StarRating
+                            size={5}
+                            value={rating}
+                            onChange={(value) => setRating(value)}
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  <div className='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
-                    <div className='form_item'>
-                      <input
-                        type='email'
-                        name='email'
-                        placeholder='Your Email'
-                      />
-                    </div>
+                  <div className='form_item'>
+                    <textarea
+                      name='message'
+                      placeholder='Your Message'
+                    ></textarea>
                   </div>
-
-                  <div className='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
-                    <div className='form_item'>
-                      <input type='text' name='subject' placeholder='Subject' />
-                    </div>
-                  </div>
-                </div>
-
-                <div className='form_item'>
-                  <textarea
-                    name='message'
-                    placeholder='Your Message'
-                  ></textarea>
-                </div>
-                <button
-                  type='submit'
-                  className='custom_btn bg_default_red text-uppercase'
-                >
-                  Submit Review
-                </button>
-              </form>
+                  <button
+                    type='submit'
+                    className='custom_btn bg_default_red text-uppercase'
+                  >
+                    Submit Review
+                  </button>
+                </form>
+              ) : (
+                <span>
+                  Please login to add your review.{" "}
+                  <a href='/signin'>Login now?</a>
+                </span>
+              )}
             </div>
           </div>
         </div>

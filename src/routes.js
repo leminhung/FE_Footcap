@@ -39,6 +39,7 @@ import AdminCreateProduct from "src/admin/AdminCreateProduct/index";
 import AdminEditProduct from "src/admin/AdminEditProduct/index";
 
 import AdminShowOrderList from "src/admin/AdminShowOrderList/index";
+import AdminEditOrder from "src/admin/AdminEditOrder/index";
 
 import AdminShowCategoryList from "src/admin/AdminShowCategoryList/index";
 import AdminCreateCategory from "src/admin/AdminCreateCategory/index";
@@ -154,6 +155,11 @@ const RoutesWrapper = () => {
         <PrivateAdminRoute path='/admin/orderslist' exact>
           <AdminPage>
             <AdminShowOrderList />
+          </AdminPage>
+        </PrivateAdminRoute>
+        <PrivateAdminRoute path='/admin/orderslist/edit' exact>
+          <AdminPage>
+            <AdminEditOrder />
           </AdminPage>
         </PrivateAdminRoute>
 

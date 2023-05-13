@@ -1,8 +1,9 @@
 import { DataGrid } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+
 import QuickViewOrderDetail from "src/admin/components/QuickView/QuickViewOrderDetail";
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 import "./styles.scss";
 import { listOrders } from "src/store/order/order.action";
@@ -45,7 +46,7 @@ const AdminShowOrderList = () => {
         );
       },
     },
-    { field: "phone", headerName: "Phone", width: 200 },
+    { field: "phone", headerName: "Phone", width: 160 },
     {
       field: "address",
       headerName: "Address",
@@ -54,26 +55,7 @@ const AdminShowOrderList = () => {
     {
       field: "status",
       headerName: "Status",
-      width: 140,
-      renderCell: (params) => {
-        // const [status, setStatus] = useState(params.value);
-
-        // const handleChange = (event) => {
-        //   setStatus(event.target.value);
-        // };
-        // {
-        //   /* <Select value={status} onChange={handleChange}> */
-        // }
-        return (
-          <FormControl fullWidth>
-            <Select value={'pending'}>
-              <MenuItem value='Pending'>Pending</MenuItem>
-              <MenuItem value='In Progress'>In Progress</MenuItem>
-              <MenuItem value='Complete'>Complete</MenuItem>
-            </Select>
-          </FormControl>
-        );
-      },
+      width: 100,
     },
     {
       field: "total_price",
@@ -88,7 +70,7 @@ const AdminShowOrderList = () => {
     {
       field: "action",
       headerName: "Action",
-      width: 150,
+      width: 200,
       renderCell: (params) => {
         return (
           <>
@@ -105,6 +87,14 @@ const AdminShowOrderList = () => {
             >
               <button className='editButton'>Order Details</button>
             </a>
+            <Link
+              to={{
+                pathname: `/admin/orderslist/edit`,
+                state: { data: params.row },
+              }}
+            >
+              <button className='editButton'>Edit</button>
+            </Link>
           </>
         );
       },

@@ -62,9 +62,7 @@ const AdminShowOrderList = () => {
       headerName: "Total Price($)",
       width: 120,
       renderCell: (params) => {
-        return (
-          <div className='productListField'>{params.row.total_price / 100}</div>
-        );
+        return <div className='productListField'>{params.row.total_price}</div>;
       },
     },
     {
@@ -82,7 +80,7 @@ const AdminShowOrderList = () => {
               data-target='#quickview_modal_order_detail'
               onClick={() => {
                 setOrderId(params.row._id);
-                setTotalPrice(params.row.total_price / 100);
+                setTotalPrice(params.row.total_price);
               }}
             >
               <button className='editButton'>Order Details</button>

@@ -52,7 +52,7 @@ export default function ViewOrder() {
                     </thead>
                     <tbody>
                       {!loading ? (
-                        orders?.data?.map((item, index) => {
+                        orders?.data?.reverse().map((item, index) => {
                           return (
                             <tr>
                               <td>
@@ -67,12 +67,12 @@ export default function ViewOrder() {
                               </td>
                               <td>
                                 <span class='price_text text-success'>
-                                  ${item?.order?.total_price / 100}
+                                  ${item?.order?.total_price}
                                 </span>
                               </td>
                               <td>
                                 <span class='quantity_text text-info'>
-                                  Pending
+                                  {item?.order?.status || "In processing"}
                                 </span>
                               </td>
                               <td>

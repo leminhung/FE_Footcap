@@ -86,7 +86,7 @@ export default function ViewOrderDetail() {
                         <td></td>
                         <td>
                           <span class='total_price'>
-                            ${location.state?.order.order.total_price / 100}
+                            ${location.state?.order.order.total_price}
                           </span>
                         </td>
                       </tr>

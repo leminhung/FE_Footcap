@@ -5,6 +5,7 @@ import { ArrowDownward, ArrowUpward } from "@mui/icons-material";
 import { listProducts } from "src/store/product/product.action";
 
 import "./featuredInfo.scss";
+import { roundNumber } from "src/utils/roundNumber";
 
 const FeaturedInfo = ({ ordersData }) => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const FeaturedInfo = ({ ordersData }) => {
   const [sales, setSales] = useState("0");
   useEffect(() => {
     const totalSales = ordersData.reduce((total, order) => {
-      return total + order.total_price / 100;
+      return total + order.total_price;
     }, 0);
 
     setSales(totalSales);
@@ -40,7 +41,7 @@ const FeaturedInfo = ({ ordersData }) => {
       <div className='item'>
         <span className='title'>Sales</span>
         <div>
-          <span className='money'>{sales}</span>
+          <span className='money'>{roundNumber(sales)}</span>
           <span> USD</span>
           <span className='moneyRate'>
             -1,4 <ArrowDownward className='icon negative' />

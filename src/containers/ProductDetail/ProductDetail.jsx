@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import StarRating from "star-rating-react";
+import axios from "axios";
+import moment from "moment";
 
 import ProductDetailSkeleton from "src/containers/ProductDetail/ProductDetailSkeleton";
 import RelateProduct from "src/components/RelateProduct/RelateProduct";
@@ -12,6 +14,7 @@ import {
   listTopProducts,
 } from "src/store/product/product.action";
 import { addToCart } from "src/store/cart/cart.action";
+import { logout } from "src/store/user/user.action";
 
 import { roundNumber } from "src/utils/roundNumber";
 import { capitalizeFirstLetter } from "src/utils/convertFirstLetterToUpperCase";
@@ -22,21 +25,46 @@ const itemDisplay = {
   unactive: "tab-pane fade",
 };
 
+export function getList(url) {
+  return axios.get(url);
+}
+
 const Product = ({ product = {}, productTopRated = {} }) => {
   const [quantity, setQuantity] = useState(1);
-  const [rating, setRating] = useState(3);
   const [color, setColor] = useState(undefined);
   const [size, setSize] = useState(undefined);
   const [cartItems, setCartItems] = useState([]);
 
+  // add review
+  const [rating, setRating] = useState(3);
+  const [reviewMsg, setReviewMsg] = useState("");
+
+  // comments
+  const [comments, setComments] = useState([]);
+
   const cart = useSelector((state) => state.cart);
   const userLogin = useSelector((state) => state.userLogin);
 
+  // get user info from store
   const { userInfo } = userLogin;
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${userInfo.token}`,
+  };
 
   useEffect(() => {
     setCartItems(cart.cartItems);
   }, [cart]);
+
+  useEffect(() => {
+    let mounted = true;
+    getList(`${process.env.REACT_APP_BASE_URL}/reviews`).then((res) => {
+      if (mounted) {
+        setComments(res.data.data);
+      }
+    });
+    return () => (mounted = false);
+  }, []);
 
   // colors
   const colors = {
@@ -87,6 +115,40 @@ const Product = ({ product = {}, productTopRated = {} }) => {
       available: quantityAvailable,
     };
     dispatch(addToCart(prod));
+  };
+
+  const handleSubmitAddReview = (e) => {
+    e.preventDefault();
+    axios
+      .post(
+        `${process.env.REACT_APP_BASE_URL}/reviews`,
+        {
+          content: reviewMsg,
+          rating,
+          user: userInfo?.actor?._id,
+          product: product.data._id,
+        },
+        { headers: headers }
+      )
+      .then((res) => {
+        if (res) {
+          toast.success("Post rating successfully");
+          setRating(3);
+          setReviewMsg("");
+        }
+      })
+      .catch((error) => {
+        if (error.response?.status === 401) {
+          toast.error(
+            "You are not authorized or maybe token expired, pls login again"
+          );
+          setTimeout(() => {
+            dispatch(logout());
+          }, 1500);
+        } else {
+          toast.error(error?.message);
+        }
+      });
   };
 
   return (
@@ -356,84 +418,37 @@ const Product = ({ product = {}, productTopRated = {} }) => {
             >
               <div className='row mb_50'>
                 <div className='col-lg-12'>
-                  <div className='comment-widgets'>
-                    <div className='d-flex flex-row comment-row m-t-0'>
-                      <div className='p-2'>
-                        <img
-                          src='https://i.imgur.com/Ur43esv.jpg'
-                          alt='user'
-                          width='50'
-                          className='rounded-circle'
-                        />
-                      </div>
-                      <div className='comment-text w-100'>
-                        <h6 className='font-medium'>James Thomas</h6>{" "}
-                        <span className='m-b-15 d-block'>
-                          This is awesome website. I would love to comeback
-                          again. This is awesome website. I would love to
-                          comeback again.{" "}
-                        </span>
-                        <div className='comment-footer'>
-                          {" "}
-                          <span className='text-muted float-right'>
-                            April 14, 2019
-                          </span>{" "}
+                  {comments.map((c) => (
+                    <>
+                      <div className='comment-widgets'>
+                        <div className='d-flex flex-row comment-row m-t-0'>
+                          <div className='p-2'>
+                            <img
+                              src={
+                                c.user
+                                  ? c.user?.avatar
+                                  : "https://i.imgur.com/Ur43esv.jpg"
+                              }
+                              alt='user'
+                              width='50'
+                              className='rounded-circle'
+                            />
+                          </div>
+                          <div className='comment-text w-100'>
+                            <h6 className='font-medium'>{c.user?.name}</h6>{" "}
+                            <span className='m-b-15 d-block'>{c.content}</span>
+                            <div className='comment-footer'>
+                              {" "}
+                              <span className='text-muted float-right'>
+                                {moment(c.updatedAt).format("lll")}
+                              </span>{" "}
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                  <hr />
-                  <div className='comment-widgets'>
-                    <div className='d-flex flex-row comment-row m-t-0'>
-                      <div className='p-2'>
-                        <img
-                          src='https://i.imgur.com/Ur43esv.jpg'
-                          alt='user'
-                          width='50'
-                          className='rounded-circle'
-                        />
-                      </div>
-                      <div className='comment-text w-100'>
-                        <h6 className='font-medium'>James Thomas</h6>{" "}
-                        <span className='m-b-15 d-block'>
-                          This is awesome website. I would love to comeback
-                          again.{" "}
-                        </span>
-                        <div className='comment-footer'>
-                          {" "}
-                          <span className='text-muted float-right'>
-                            April 14, 2019
-                          </span>{" "}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <hr />
-                  <div className='comment-widgets'>
-                    <div className='d-flex flex-row comment-row m-t-0'>
-                      <div className='p-2'>
-                        <img
-                          src='https://i.imgur.com/Ur43esv.jpg'
-                          alt='user'
-                          width='50'
-                          className='rounded-circle'
-                        />
-                      </div>
-                      <div className='comment-text w-100'>
-                        <h6 className='font-medium'>James Thomas</h6>{" "}
-                        <span className='m-b-15 d-block'>
-                          This is awesome website. I would love to comeback
-                          again.{" "}
-                        </span>
-                        <div className='comment-footer'>
-                          {" "}
-                          <span className='text-muted float-right'>
-                            April 14, 2019
-                          </span>{" "}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                      <hr />
+                    </>
+                  ))}
                 </div>
               </div>
             </div>
@@ -460,11 +475,13 @@ const Product = ({ product = {}, productTopRated = {} }) => {
                     <textarea
                       name='message'
                       placeholder='Your Message'
+                      onChange={(e) => setReviewMsg(e.target.value)}
                     ></textarea>
                   </div>
                   <button
                     type='submit'
                     className='custom_btn bg_default_red text-uppercase'
+                    onClick={(e) => handleSubmitAddReview(e)}
                   >
                     Submit Review
                   </button>

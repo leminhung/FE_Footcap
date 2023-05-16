@@ -33,7 +33,7 @@ const FeaturedInfo = ({ ordersData }) => {
         <div>
           <span className='money'>{ordersData.length}</span>
           <span className='moneyRate'>
-            +12,4 <ArrowUpward className='icon' />
+            +12 <ArrowUpward className='icon' />
           </span>
         </div>
       </div>
@@ -44,7 +44,7 @@ const FeaturedInfo = ({ ordersData }) => {
           <span className='money'>{roundNumber(sales)}</span>
           <span> USD</span>
           <span className='moneyRate'>
-            -1,4 <ArrowDownward className='icon negative' />
+            +1,4 <ArrowUpward className='icon negative' />
           </span>
         </div>
       </div>
@@ -54,7 +54,7 @@ const FeaturedInfo = ({ ordersData }) => {
         <div>
           <span className='money'>{productList.total}</span>
           <span className='moneyRate'>
-            -11,4 <ArrowDownward className='icon negative' />
+            -11 <ArrowDownward className='icon negative' />
           </span>
         </div>
       </div>

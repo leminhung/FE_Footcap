@@ -117,6 +117,14 @@ const Product = ({ product = {}, productTopRated = {} }) => {
     dispatch(addToCart(prod));
   };
 
+  let averageRating = 0;
+  if (comments.length > 0)
+    averageRating = comments.reduce(function (prev, cur) {
+      return prev + cur?.rating;
+    }, 0);
+
+  console.log("averageRating--", averageRating);
+
   const handleSubmitAddReview = (e) => {
     e.preventDefault();
     axios
@@ -158,16 +166,32 @@ const Product = ({ product = {}, productTopRated = {} }) => {
           <div className='col-lg-5 col-md-5'>
             <div className='shop_details_image'>
               <div className='tab-content'>
-                {product.data.assets.slice(0, 4).map((item, index) => (
-                  <div
-                    id={`tab_${index + 1}`}
-                    className={
-                      index === 0 ? itemDisplay.active : itemDisplay.unactive
-                    }
-                  >
-                    <img src={item.filename} alt='image_not_found' />
+                {product.data.assets.length > 0 ? (
+                  product.data.assets.slice(0, 4).map((item, index) => (
+                    <div
+                      id={`tab_${index + 1}`}
+                      className={
+                        index === 0 ? itemDisplay.active : itemDisplay.unactive
+                      }
+                    >
+                      <img
+                        src={
+                          item?.filename
+                            ? item?.filename
+                            : "/images/products/default_image.jpeg"
+                        }
+                        alt='image_not_found'
+                      />
+                    </div>
+                  ))
+                ) : (
+                  <div id={`tab_${1}`} className={itemDisplay.active}>
+                    <img
+                      src={"/images/products/default_image.jpeg"}
+                      alt='image_not_found'
+                    />
                   </div>
-                ))}
+                )}
               </div>
 
               <ul className='nav ul_li clearfix' role='tablist'>
@@ -178,7 +202,14 @@ const Product = ({ product = {}, productTopRated = {} }) => {
                       data-toggle='tab'
                       href={`#tab_${index + 1}`}
                     >
-                      <img src={item.filename} alt='image_not_found' />
+                      <img
+                        src={
+                          item?.filename
+                            ? item?.filename
+                            : "/images/products/default_image.jpeg"
+                        }
+                        alt='image_not_found'
+                      />
                     </a>
                   </li>
                 ))}
@@ -210,10 +241,14 @@ const Product = ({ product = {}, productTopRated = {} }) => {
 
                 <div className='col-lg-7 col-md-12 col-sm-12 col-xs-12'>
                   <div className='rating_review_wrap d-flex align-items-center clearfix'>
-                    <span>{product.data.numReviews} Review(s)</span>
+                    <span>{comments.length} Review(s)</span>
                     <ul className='rating_star ul_li'>
                       {[
-                        ...Array(product.data.rating ? product.data.rating : 1),
+                        ...Array(
+                          comments.length > 0
+                            ? Math.floor(averageRating / comments.length)
+                            : 0
+                        ),
                       ].map(() => (
                         <li>
                           <i className='fas fa-star'></i>
@@ -350,8 +385,9 @@ const Product = ({ product = {}, productTopRated = {} }) => {
                   <div className='image_wrap'>
                     <img
                       src={
-                        product.data.assets.length > 1 &&
-                        product.data.assets[2].filename
+                        product.data.assets.length > 1
+                          ? product.data.assets[2].filename
+                          : "/images/products/default_image.jpeg"
                       }
                       alt='image_not_found'
                     />

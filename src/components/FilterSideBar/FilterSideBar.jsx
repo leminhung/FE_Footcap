@@ -166,7 +166,7 @@ const FilterSideBar = ({ limit, sort }) => {
         </div>
 
         {/* related posts */}
-        <div class='fs_widget fs_realted_post'>
+        {/* <div class='fs_widget fs_realted_post'>
           <h3 class='fs_widget_title text-uppercase'>Your may also like</h3>
           <div class='small_blog'>
             <a href='blog_details.html' class='item_image'>
@@ -218,7 +218,7 @@ const FilterSideBar = ({ limit, sort }) => {
               <span class='post_date'>March 12, 2020</span>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

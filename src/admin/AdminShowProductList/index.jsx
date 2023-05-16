@@ -62,7 +62,7 @@ const AdminShowProductList = () => {
     },
     { field: "size", headerName: "Size", width: 120 },
     { field: "color", headerName: "Color", width: 160 },
-    { field: "numReviews", headerName: "NumReviews", width: 100 },
+    { field: "quantity_purchased", headerName: "Purchased", width: 100 },
     {
       field: "status",
       headerName: "Status",

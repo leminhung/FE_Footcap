@@ -123,7 +123,7 @@ export default function Header() {
                     <a href='#!' className='header_title_item'>
                       Home
                     </a>
-                    <div className='mega_menu text-center'>
+                    {/* <div className='mega_menu text-center'>
                       <div
                         className='background'
                         style={{
@@ -384,13 +384,13 @@ export default function Header() {
                           </ul>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </li>
                   <li className='menu_item_has_child'>
                     <a href='#!' className='header_title_item'>
                       Shop
                     </a>
-                    <div className='mega_menu'>
+                    {/* <div className='mega_menu'>
                       <div
                         className='background'
                         style={{
@@ -662,13 +662,13 @@ export default function Header() {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </li>
                   <li className='menu_item_has_child'>
                     <a href='#!' className='header_title_item'>
                       Blogs
                     </a>
-                    <ul className='submenu'>
+                    {/* <ul className='submenu'>
                       <li className='menu_item_has_child'>
                         <a href='#!'>Shop Inner Pages</a>
                         <ul className='submenu'>
@@ -726,7 +726,7 @@ export default function Header() {
                           </li>
                         </ul>
                       </li>
-                    </ul>
+                    </ul> */}
                   </li>
                   <li>
                     <a href='#!' className='header_title_item'>
@@ -734,7 +734,7 @@ export default function Header() {
                     </a>
                   </li>
                   <li>
-                    <a href='contact.html' className='header_title_item'>
+                    <a href='#!' className='header_title_item'>
                       Contact us
                     </a>
                   </li>

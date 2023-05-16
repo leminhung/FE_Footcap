@@ -1,42 +1,28 @@
-# Frontend-ecommerce
+# Footcap
 
 ## Project structure
 ```
-repo/
+FE_SportStore/
   |__public/
-  | |__css/
-  | | |__style.css
+  | |__assets/
   | |__images/
-  |   |__*.jpg
-  |   |__*.png
-  |   |__*.svg
   | |__...
   |__src/
   | |__admin/
-  |   |__AdminCreateCategory.js
-  |   |__AdminDashBoard.js
-  |   |__AdminEditProductCategory.js
-  |   |__...
-  | |__cart/
-  |   |__AddToCart.js
-  |   |__OrderSuccess.js
+  |   |__Admin*
+  |   |__components
   |   |__...
   | |__component/
   |   |__Header
   |   |__Cart
-  |   |__ProductList
+  |   |__Private*.js
   |   |__...
   | |__constants/
-  |   |__cartConstants.js
-  |   |__endpoints.js
-  |   |__errorMessage.js
+  | |__containers/
+  |   |__HomePage
+  |   |__ViewOrder
+  |   |__WrapperContainer.js
   |   |__...
-  | |__images/
-  |   |__*.png
-  |   |__*.jpg
-  | |__product/
-  |   |__createProduct.js
-  |   |__viewProduct.js
   | |__store/
   |   |__cart
   |     |__cart.actions.js
@@ -50,45 +36,40 @@ repo/
   |   |__user
   |     |__user.actions.js
   |     |__user.reducer.js
-  |     |__user.service.js
   |   |__index.js
-  |   |__root.reducer.js
-  | |__stripebutton/
-  |   |__StripeButton.js
-  | |__user/
-  |   |__Signin
-  |   |__Signup
-  |   |__*.js
+  | |__styles/
+  |   |__css
+  |   |__font
+  |   |__scss
   | |__utils/
-  |   |__Axios.js
-  | |__App.css  
-  | |__App.js  
-  | |__index.js  
+  |   |__*.js
+  | |__routes.js  
   |__.env
   |__.gitignore
   |__jsconfig.json
   |__package.json
   |__README.md
-  |__yarn.lock
 ```
 
 Purpose of folders
-* `src/admin/*js` chứa các file thực hiện chức năng và thành phần của Admin
-* `src/component/*` chứa các files và folders là các components của website
-* `src/constants/*.js` định nghĩa giá trị của các biến sử dụng trong project 
-* `src/store` là nơi quản lý `state` của website bằng redux 
-* `src/utils` là nơi chứa những chức năng cần thiết để có thê reuse lại trong project 
-* `.env` là nơi chứa các biến môi trường
-* `package.json` là nơi chứa các thư viện được sử dụng trong project
+* `src/admin/*` including files that handle the functions & components of ddmin role
+* `src/containers/*` including files & folders just are pages of website
+* `src/components/*` including files & folders just are components of website
+* `src/constants/*.js` defind constants vars that use in whole project 
+* `src/store` that is where handles `state` of website by using redux 
+* `src/utils` that is where includes some necessary to be reusable in project 
+* `.env` including some vars environment
+* `routes.js` that is where handle routing of website
+* `package.json` that is where hold libs that used in project
 
 
 ## Guide
 
 ```sh
-$ git clone https://github.com/leminhung/frontend-ecommerce
-$ cd frontend-ecommerce
-$ npm install
-$ npm start
+$ git clone https://github.com/leminhung/FE_SportStore
+$ cd FE_SportStore
+$ yarn 
+$ yarn start
 ```
 
 ## References

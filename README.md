@@ -52,14 +52,15 @@ FE_SportStore/
 ```
 
 Purpose of folders
-* `src/admin/*js` chứa các file thực hiện chức năng và thành phần của Admin
-* `src/components/*` chứa các files và folders là các components của website
-* `src/constants/*.js` định nghĩa giá trị của các biến  sử dụng trong project 
-* `src/store` nơi quản lý `state` của website bằng redux 
-* `src/utils` nơi chứa những chức năng cần thiết để có thê reuse lại trong project 
-* `.env` nơi chứa các biến môi trường
-* `routes.js` nơi quản lý routing của website
-* `package.json` nơi chứa các thư viện được sử dụng trong project
+* `src/admin/*` including files that handle the functions & components of ddmin role
+* `src/containers/*` including files & folders just are pages of website
+* `src/components/*` including files & folders just are components of website
+* `src/constants/*.js` defind constants vars that use in whole project 
+* `src/store` that is where handles `state` of website by using redux 
+* `src/utils` that is where includes some necessary to be reusable in project 
+* `.env` including some vars environment
+* `routes.js` that is where handle routing of website
+* `package.json` that is where hold libs that used in project
 
 
 ## Guide

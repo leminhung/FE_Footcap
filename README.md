@@ -1,4 +1,4 @@
-# Frontend-ecommerce
+# Footcap
 
 ## Project structure
 ```

@@ -58,13 +58,15 @@ const Product = ({ product = {}, productTopRated = {} }) => {
 
   useEffect(() => {
     let mounted = true;
-    getList(`${process.env.REACT_APP_BASE_URL}/reviews`).then((res) => {
+    getList(
+      `${process.env.REACT_APP_BASE_URL}/products/reviews?product=${product.data._id}`
+    ).then((res) => {
       if (mounted) {
         setComments(res.data.data);
       }
     });
     return () => (mounted = false);
-  }, []);
+  }, [product.data._id]);
 
   // colors
   const colors = {

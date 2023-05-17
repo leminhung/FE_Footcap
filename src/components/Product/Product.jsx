@@ -132,7 +132,8 @@ const Product = (props) => {
             ))}
           </ul>
           <span className='item_price'>
-            <strong>${product.price}</strong> <del>$35.00</del>
+            <strong>${product.price}</strong>{" "}
+            <del>${product?.price_before ? product?.price_before : 60}</del>
           </span>
         </div>
       </div>

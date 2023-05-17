@@ -49,7 +49,7 @@ const Product = ({ product = {}, productTopRated = {} }) => {
   const { userInfo } = userLogin;
   const headers = {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${userInfo.token}`,
+    Authorization: `Bearer ${userInfo?.token}`,
   };
 
   useEffect(() => {
